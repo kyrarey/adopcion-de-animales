@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Tobi",
+        "species": "perro",
+        "age": "cachorro",
+        "gender": "macho",
+        "location": "CABA",
+        "url_path1": "/01.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Martina",
+        "species": "perro",
+        "age": "cachorro",
+        "gender": "hembra",
+        "location": "Neuquén",
+        "url_path1": "/02.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Gokú",
+        "species": "perro",
+        "age": "jóven",
+        "gender": "macho",
+        "location": "CABA",
+        "url_path1": "/03.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Tomás",
+        "species": "perro",
+        "age": "adulto",
+        "gender": "macho",
+        "location": "CABA",
+        "url_path1": "/04.jpg"
+    },
+    {
+        "id":5,
+        "name": "Guadalupe",
+        "species": "perro",
+        "age": "senior",
+        "gender": "hembra",
+        "location": "Bahía Blanca",
+        "url_path1": "/05.jpg"
+    },
+    {
+        "id":6,
+        "name": "Junior",
+        "species": "perro",
+        "age": "cachorro",
+        "gender": "macho",
+        "location": "Mar del Plata",
+        "url_path1": "/06.jpg"
+    }
+]
