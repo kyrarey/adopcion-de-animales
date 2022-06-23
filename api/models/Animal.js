@@ -32,10 +32,6 @@ var AnimalSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    // location: {          //DOS VECES, LINEA 23
-    //   type: String,
-    //   required: true,
-    // },
     sex: {
       type: String, //or boolean?
       required: true,
@@ -46,7 +42,7 @@ var AnimalSchema = new mongoose.Schema(
     },
     age:{                   //AGREGADO POR FABRI
         type: String,
-    }
+    },
   },
   { timestamps: true }
 );
@@ -54,3 +50,4 @@ var AnimalSchema = new mongoose.Schema(
 const Animal = mongoose.model("Animal", AnimalSchema);
 
 module.exports = Animal;
+
