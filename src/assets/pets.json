@@ -6,7 +6,11 @@
         "age": "cachorro",
         "gender": "macho",
         "location": "CABA",
-        "url_path1": "/01.jpg"
+        "url_path1": "/01.jpg",
+        "descripcion": "Mover la cola, correr por el jardin y dormir mucho",
+        "vacunas": "Falta",
+        "apodo": "Toto"
+        
     },
     {
         "id": 2,
@@ -15,7 +19,12 @@
         "age": "cachorro",
         "gender": "hembra",
         "location": "Neuquén",
-        "url_path1": "/02.jpg"
+        "url_path1": "/02.jpg",
+        "descripcion": "Olfatear todo, dormir mucho y jugar con otros perros",
+        "vacunas": "Todas",
+        "apodo": "Mar",
+        "imagenes": ["/01.jpg", "/02.jpg", "/03.jpg"]
+
     },
     {
         "id": 3,
@@ -24,7 +33,10 @@
         "age": "jóven",
         "gender": "macho",
         "location": "CABA",
-        "url_path1": "/03.jpg"
+        "url_path1": "/03.jpg",
+        "descripcion": "Comer, que le saquen fotos mientras duerme y dormir en la cama",
+        "vacunas": "Todas",
+        "apodo": "kakaroto"
     },
     {
         "id": 4,
@@ -33,7 +45,11 @@
         "age": "adulto",
         "gender": "macho",
         "location": "CABA",
-        "url_path1": "/04.jpg"
+        "url_path1": "/04.jpg",
+        "descripcion": "Mover la cola, correr por el jardin y dormir mucho",
+        "vacunas": "Todas",
+        "apodo": "Tom"
+
     },
     {
         "id":5,
@@ -42,7 +58,11 @@
         "age": "senior",
         "gender": "hembra",
         "location": "Bahía Blanca",
-        "url_path1": "/05.jpg"
+        "url_path1": "/05.jpg",
+        "descripcion": "Dormir todo el dia, correr por el jardin y ladrarle a los autos",
+        "vacunas": "Faltan",
+        "apodo": "Guada"
+
     },
     {
         "id":6,
@@ -51,6 +71,10 @@
         "age": "cachorro",
         "gender": "macho",
         "location": "Mar del Plata",
-        "url_path1": "/06.jpg"
+        "url_path1": "/06.jpg",
+        "descripcion": "Comer, jugar con otros perros y dormir mucho",
+        "vacunas": "Faltan",
+        "apodo": "Monstruo"
+
     }
 ]
