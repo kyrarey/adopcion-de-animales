@@ -7,10 +7,10 @@ import s from './Slider.module.css';
 
 const Slider = () => {
     const [width, setWidth] = useState(0);
-    const carousel = useRef();
+    //const carousel = useRef();
     
     useEffect(() => {
-        console.log(carousel)
+        //console.log(carousel)
         //setWidth(slider.current.scrollWidth - slider.current.offsetWidth);
     }, [])
 
@@ -27,8 +27,8 @@ const Slider = () => {
         <motion.div className={s.sliderContainer}>
             <motion.div className={s.slider} drag="x" dragConstraints={{ right: 0, left: -950 }}>
                 {pets.map(pet => (
-                    <motion.div className={s.item}>
-                            <PetCard key={pet.id} pet={pet} />
+                    <motion.div key={pet.id} className={s.item}>
+                            <PetCard  pet={pet} />
                     </motion.div>)
                 )}
             </motion.div>

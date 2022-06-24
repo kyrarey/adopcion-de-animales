@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+
 .petCard {
     list-style: none;
     text-decoration: none;
@@ -5,10 +7,8 @@
     border-style: solid 1px grey;
     background-color: white;
     transition: all 200ms;
-    font-family: MuseoSans;
     width: 400px;
-    justify-content: center;
-
+    margin: 0 auto;
 }
 
 .petCard:hover {
@@ -19,9 +19,23 @@
 }
 
 .favButton {
-    display:inline-block;
+    border:none;
+    background-color:transparent;
+    font-size: 2em;
+    color: red;
+    background-position: center  ;
     margin: 0% 0% 5% 5%;
-    justify-self: right;
+    position: relative;
+}
+
+.favRegHeartButton {
+    border:none;
+    background-color:transparent;
+    font-size: 2em;
+    color: red;
+    background-position: center  ;
+    margin: 0% 0% 5% 5%;
+    position: relative;
 }
 
 .petImage {
@@ -35,10 +49,13 @@
 .petInfo {
     padding: 5% 5% 5% 5%;
     line-height: 1.4;
-    letter-spacing: .04em;
+    letter-spacing: .07em;
+    font-family: 'Comic Neue';
+    font-size: 1.1em;
 }
 
 .petName {
     color: #6504b5;
     font-size: 2em;
+    letter-spacing: .08em;
 }

@@ -6,7 +6,7 @@ const Home = () => {
 
     return (
         <div className={s.body}>
-            <h1 >Conoce a nuestros pequeños</h1>
+            <h1 className={s.title}>Conoce a nuestros pequeños</h1>
             <Slider />
         </div>
     )
