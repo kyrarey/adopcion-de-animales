@@ -6,15 +6,12 @@ var AnimalSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    lastname: {
-      type: String,
-    },
     history: {
-      type: String,
+      type: Text, //cambiado a text por Cris
     },
     image: {
       type: [Object], //cambio, era un STRING para poder almacenar varias fotos del animal
-      required: true,
+      required: false, //cambiado a false por Cris
     },
     fundationId: {
       type: String,
@@ -37,13 +34,16 @@ var AnimalSchema = new mongoose.Schema(
       required: true,
     },
     personality: {
-      type: String,
+      type: Text, //cambiado a text por Cris
       required: true,
     },
     age:{                   //AGREGADO POR FABRI
         type: String,
     },
+    vaccines:{                   //AGREGADO POR CRIS
+      type: String,
   },
+},
   { timestamps: true }
 );
 

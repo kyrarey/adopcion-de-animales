@@ -1,0 +1,25 @@
+.grid {
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 5%;
+    grid-column-gap: 5%;
+    grid-template-columns: repeat(3, 1fr);
+    text-decoration: none;
+    text-align: left;
+    padding-top: 2%;
+    padding-bottom: 8%;
+    background-color: rgba(228, 228, 228, 0.99);
+}
+
+@media only screen and (min-width:820px) and (max-width:1100px){
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding-bottom: 0;
+    }
+}
+
+@media (max-width:819px){
+    .grid {
+        grid-template-columns: 100%;
+    }
+}
