@@ -62,14 +62,6 @@ const SinglePetCard = () => {
                 <div className={s.smallImgcol}>
                 {/* {pet.imagenes.map(imagen => <img width='30%' height='90%' className='small-img p-1' src={require(`../../assets/img${imagen}`)}></img>  )} */}
                 </div>
-              </section>
-            </>
-          );
-        }
-      })}
-    </div>
-  );
-};
 
 export default SinglePetCard;
 

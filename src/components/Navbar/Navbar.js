@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css'
 
 const Navbar = () => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('user')));
+  }, []);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <div className="container-fluid">
@@ -80,12 +86,14 @@ const Navbar = () => {
       </ul>
 
       <ul className="navbar-nav ms-auto">
+
         <Link to="/login">
           <button className="btn">Login</button>
         </Link>
         <Link to="/register">
           <button className="btn">Register</button>
         </Link>
+
       </ul>
     </div>
   </div>

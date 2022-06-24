@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
+
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -31,3 +32,4 @@ const App = () => {
 };
 
 export default App;
+
