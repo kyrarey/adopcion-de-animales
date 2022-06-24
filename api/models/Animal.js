@@ -37,8 +37,11 @@ var AnimalSchema = new mongoose.Schema(
       type: Text, //cambiado a text por Cris
       required: true,
     },
-    age:{                   //AGREGADO POR FABRI
-        type: String,
+    age: {
+      type: String,
+    },
+    vaccines: {
+      type: String,
     },
     vaccines:{                   //AGREGADO POR CRIS
       type: String,
@@ -50,4 +53,3 @@ var AnimalSchema = new mongoose.Schema(
 const Animal = mongoose.model("Animal", AnimalSchema);
 
 module.exports = Animal;
-

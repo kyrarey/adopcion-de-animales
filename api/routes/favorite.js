@@ -11,7 +11,7 @@ router.post("/add", (req, res) => {
 
 //ver favoritos
 router.get("/:userId", (req, res) => {
-  Favorite.findAll({
+  Favorite.find({
     where: { userId: req.params.userId },
     include: Animal,
   }).then((favorite) => res.send(favorite));
@@ -19,9 +19,8 @@ router.get("/:userId", (req, res) => {
 
 //eliminar favorito
 router.delete("/delete", (req, res) => {
-  Favorite.findByPk(req.params.id)
-    .then((favorite) => {
-      favorite.destroy();
+  Favorite.findByIdAndRemove(req.params.id)
+    .then(() => {
       res.sendStatus(200);
     })
     .catch((err) => {
