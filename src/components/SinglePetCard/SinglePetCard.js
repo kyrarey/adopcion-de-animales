@@ -36,7 +36,7 @@ const SinglePetCard = () => {
 
             <div className='col-lg-6 col-md-12 col-12'>
               <h6> Patitas con techo </h6>
-              <h2 className='py-4'> {pet.apodo}</h2>
+              <h2 key={i} className='py-4'> {pet.apodo}</h2>
               <h6>Nombre: {pet.name}</h6>
               <h6>Edad: {pet.age}</h6>
               <h6>Genero: {pet.gender}</h6>
@@ -50,6 +50,7 @@ const SinglePetCard = () => {
 
            </section>
          </>
+         
         )
       }}
       )

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const db = require("../db")
 
 //registrar usuario nuevo
 router.post("/register", (req, res) => {
@@ -14,6 +15,12 @@ router.post("/register", (req, res) => {
 });
 
 //login usuario con JWT
+router.post("/login", (req,res) =>{
+  User.find(req.user.data)
+  .then((user) => { 
+    res.status(201).send(user)
+  })
+});
 
 //editar usuario
 router.put("/:id", (req, res) => {

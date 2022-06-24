@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      required: true,
+      required: false,
     },
     lastname: {
       type: String,
@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema(
     },
     image: {
       type: String,
-      required: true,
+      required: false,
     },
     password: {
       type: String,
@@ -34,14 +34,14 @@ const UserSchema = new mongoose.Schema(
     fundation: {
       type: Boolean,
       default: false,
-      required: true,
+      required: false,
     },
     location: {
       type: String,
-      required: true,
+      required: false,
     },
   },
-  { timestamps: true }
+  { timestamps: false }
 );
 
 UserSchema.pre("save", async function (next) {

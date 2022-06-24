@@ -1,0 +1,41 @@
+.body{
+    background-color: #00ac96;
+}
+
+.content {
+    margin: 8%;
+    background-color: #fff;
+    padding: 4rem 1rem 4rem 1rem;
+    box-shadow: 0 0 5px rgba (0,0,0, .05);
+}
+
+.signin-text{
+    font-style:normal;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.form-control{
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0px;
+    height: auto;
+
+}
+
+.btn-class{
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 0;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    margin-top: 1px;
+}
+
+.btn-class:hover {
+    background-color: #00ac96;
+    cursor: pointer;
+}
