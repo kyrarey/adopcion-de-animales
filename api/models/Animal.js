@@ -40,7 +40,7 @@ var AnimalSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    age:{                   //AGREGADO POR FABRI
+    age:{
         type: String,
     },
   },

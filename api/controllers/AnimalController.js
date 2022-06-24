@@ -31,7 +31,6 @@ class AnimalControllers {
   }
 
   static async getOne(req, res) {
-    console.log("entra al get one controller")
     const { error, data } = await AnimalServices.getOne(req.params.id);
     if (error) {
       return res.status(404).send(data);

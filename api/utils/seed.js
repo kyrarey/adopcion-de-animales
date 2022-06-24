@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const Category = require('../models/Category')
+const Species = require('../models/Species')
 // const User = require('../models/User')
 const Animal = require("../models/Animal")
 const axios = require("axios");
@@ -15,8 +15,8 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-// const species = [{species:"Perro"},{species:"Gato"}]
+  
+  const species = [{SpeciesName:"Perro"},{SpeciesName:"Gato"}]
 
 const fakeAnimals = [
   {
@@ -108,8 +108,8 @@ const fakeAnimals = [
 const seedDb = async () => {
     await Animal.deleteMany();
     await Animal.insertMany(fakeAnimals);
-  //   await Species.deleteMany();
-  //   await Species.insertMany(species);
+    await Species.deleteMany();
+    await Species.insertMany(species);
 };
 
 seedDb();
