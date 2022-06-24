@@ -13,7 +13,7 @@ var AnimalSchema = new mongoose.Schema(
       type: String,
     },
     image: {
-      type: [Object], //cambio, era un STRING para poder almacenar varias fotos del animal
+      type: [Object],
       required: true,
     },
     fundationId: {
@@ -40,8 +40,11 @@ var AnimalSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    age:{                   //AGREGADO POR FABRI
-        type: String,
+    age: {
+      type: String,
+    },
+    vaccines: {
+      type: String,
     },
   },
   { timestamps: true }
@@ -50,4 +53,3 @@ var AnimalSchema = new mongoose.Schema(
 const Animal = mongoose.model("Animal", AnimalSchema);
 
 module.exports = Animal;
-
