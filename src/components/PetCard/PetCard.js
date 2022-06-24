@@ -15,17 +15,19 @@ const PetCard = ({ pet }) => {
     }
     
     return (
+
         <div>
+
         <li className={s.petCard}>
             <Link to={`/animals/${pet.id}`}>
                 <img className={s.petImage} 
-                     src={require(`../../assets/img${pet.url_path1}`)} 
-                     alt={pet.name}>
+                     src={require(`../../assets/img${pet.image[0]}`)} 
+                     alt={pet.animalname}>
                 </img>
             </Link>
             <div className={s.petInfo}>
-                <span className={s.petName}>{capitalizeFirst(pet.name)}</span><br/>
-                <span>{`${capitalizeFirst(pet.age)}, ${capitalizeFirst(pet.gender)}`}</span><br/>
+                <span className={s.petName}>{capitalizeFirst(pet.animalname)}</span><br/>
+                <span>{`${capitalizeFirst(pet.age)}, ${capitalizeFirst(pet.sex)}`}</span><br/>
                 <span>{capitalizeFirst(pet.location)}</span>
             </div>
             

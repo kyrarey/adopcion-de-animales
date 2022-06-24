@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-// const Category = require('../models/Category')
+const Species = require('../models/Species')
 // const User = require('../models/User')
 const Animal = require("../models/Animal")
 const axios = require("axios");
@@ -15,101 +15,326 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-// const species = [{species:"Perro"},{species:"Gato"}]
+  
+  const species = [{SpeciesName:"Perro"},{SpeciesName:"Gato"}]
 
 const fakeAnimals = [
   {
+    animalname: "zen",
+    history: "Este pequeño nació en un criadero para consumo de reptiles y fue rescatado por una de nuestras activistas",
+    image: [
+            "/01-01.jpg",
+            "/01-02.jpg",
+            "/01-03.jpg"
+            ],
+    fundationId: "1",
+    location: "bahía blanca, buenos aires",
+    size: "pequeño",
+    species: "hamster",
+    sex: "macho",
+    personality: "Tímido, tranquilo, comelón.",
+    age: "cachorro",
+    vaccines: "No requeridas para esta especie"
+},
+{
+    animalname: "yori",
+    history: "Se la encontró corriendo alrededor de un basurero en el centro de la ciudad antes de ser rescatada. Fue acogida por un hogar temporal mientras se recuperaba y ahora está lista para ser adoptada.",
+    image: [
+            "/02-01.jpg",
+            "/02-02.jpg",
+            "/02-03.jpg"
+            ],
+    fundationId: "1",
+    location: "bahía blanca, buenos aires",
+    size: "mediano",
+    species: "hamster",
+    sex: "hembra",
+    personality: "Activa (le gusta trepar a cualquier cosa), le disgustan los movimientos bruscos o repentinos.",
+    age: "adulto",
+    vaccines: "No requeridas para esta especie"
+},
+{
+    animalname: "anatolia",
+    history: "Se la encontró corriendo alrededor de un basurero en el centro de la ciudad antes de ser rescatada. Fue acogida por un hogar temporal mientras se recuperaba y ahora está lista para ser adoptada.",
+    image: [
+            "/03-01.jpg",
+            "/03-02.jpg",
+            "/03-03.jpg"
+            ],
+    fundationId: "2",
+    location: "neuquén, neuquén",
+    size: "mediano",
+    species: "cabra",
+    sex: "hembra",
+    personality: "Le gusta pastar todo el día y acurrucarse por la noche. Ama jugar con otras mascotas",
+    age: "jóven",
+    vaccines: "Al día"
+},
+{
+    animalname: "fa",
+    history: "El ojo izquierdo de fa fue removido quirúrgicamente debido a un abseso que estab creciendo detrás de él. Después de la cirugía, su ojo no fue completamente cerrado y necesitá limpieza externa en caso de que exista alguna descarga desde el interior.",
+    image: [
+            "/04-01.jpg",
+            "/04-02.jpg",
+            "/04-03.jpg"
+            ],
+    fundationId: "1",
+    location: "bahía blanca, buenos aires",
+    size: "grande",
+    species: "hamster",
+    sex: "macho",
+    personality: "Aunque al principio era muy tímido, con el tiempo ha aprendido a amar la interacción humana y le encanta si esta se realiza con cuidado y delicadeza.",
+    age: "adulto",
+    vaccines: "No requeridas para esta especie"
+},
+{
+    animalname: "joker",
+    history: "Joker formaba parte de una manada de gatos ferales rescatados en el norte de la ciudad. Al principio le costaba adaptarse a la presencia de humanos u otras especies, pero ahora le encanta pasar el día recibiendo mimos. Se ha convertido en un gato de interiores, por lo que no se recomienda mantenerlo fuera de su hogar o permitirle salir a la calle.",
+    image: [
+            "/05-01.jpg",
+            "/05-02.jpg",
+            "/05-03.jpg"
+            ],
+    fundationId: "3",
+    location: "marull, códoba",
+    size: "mediano",
+    species: "cat",
+    sex: "macho",
+    personality: "Bueno para interactual con otros humanos, no le gustan otros gatos. Juguetón y mimoso",
+    age: "adulto",
+    vaccines: "Al día"
+},
+{
     animalname: "apolo",
+    history: "La familia de apolo se tuvo que mudar de país y lo dejaron en la fundación para que encuentre un nuevo hogar",
     image: [
-      "https://images7.alphacoders.com/329/thumbbig-329386.webp",
-      "https://images4.alphacoders.com/223/thumbbig-223754.webp",
-    ],
-    fundationId: "1",
-    location: "Zona oeste",
+            "/06-01.jpg",
+            "/06-02.jpg",
+            "/06-03.jpg"
+            ],
+    fundationId: "4",
+    location: "la plata, buenos aires",
     size: "mediano",
     species: "perro",
-    sex: "Macho",
-    personality: "jugueton, demandante y carinoso",
-    age: "4 anos",
-  },
-  {
-    animalname: "Lola",
+    sex: "macho",
+    personality: "Apolo es muy bueno con los niños, es protector y juguetón, si tienes niños en casa, no podrás encontrar un mejor compañero de juego para ellos.",
+    age: "adulto",
+    vaccines: "Al día"
+},
+{
+    animalname: "lola",
+    history: "El humano de Lola falleció hace unos días y la fundación se hizo cargo de ella mientras encuentra una nueva familia.",
     image: [
-      "https://images7.alphacoders.com/329/thumbbig-329386.webp",
-      "https://images4.alphacoders.com/223/thumbbig-223754.webp",
-    ],
-    fundationId: "1",
-    location: "Zona oeste",
-    size: "mediano",
+            "/07-01.jpg",
+            "/07-02.jpg",
+            "/07-03.jpg"
+            ],
+    fundationId: "5",
+    location: "san isidro, buenos aires",
+    size: "grande",
     species: "perro",
-    sex: "Hembra",
-    personality: "jugueton, demandante y carinoso",
-    age: "4 anos",
-  },
-  {
-    animalname: "Baco",
+    sex: "hembra",
+    personality: "Muy activa, necesita tomar largos paseos a diario para drenar toda su energía. Le gusta jugar con sus juguetes y ama la comida.",
+    age: "joven",
+    vaccines: "Al día"
+},
+{
+    animalname: "baco",
+    history: "La familia de baco atraviesa por graves problemas económicos, que no les permite darle la vida que se merece, por tal razón lo trajeron con nosotros para encontrarle un hogar que lo ame tanto como ellos y que le pueda brindar un hogar con las comodidades que un perrito de su edad necesita. ",
     image: [
-      "https://images7.alphacoders.com/329/thumbbig-329386.webp",
-      "https://images4.alphacoders.com/223/thumbbig-223754.webp",
-    ],
-    fundationId: "1",
-    location: "Zona oeste",
-    size: "mediano",
+            "/08-01.jpg",
+            "/08-02.jpg",
+            "/08-03.jpg"
+            ],
+    fundationId: "5",
+    location: "san isidro, buenos aires",
+    size: "pequeño",
     species: "perro",
-    sex: "Macho",
-    personality: "jugueton, demandante y carinoso",
-    age: "4 anos",
-  },
-  {
-    animalname: "michi",
+    sex: "macho",
+    personality: "Tranquilo, gentil, le gusta acompañar a su familia de una manera pasiva y amorosa.",
+    age: "senior",
+    vaccines: "Al día"
+},
+{
+    animalname: "luzmila",
+    history: "Esta pequeña es un manojo de amor, fue encontrada deambulando en el centro de la ciudad cuando un alma gentil la rescató y la trajo con nosotros.",
     image: [
-        "https://images3.alphacoders.com/865/thumbbig-86537.webp",
-        "https://images3.alphacoders.com/916/thumbbig-91659.webp",
-    ],
-    fundationId: "1",
-    location: "CABA",
-    size: "chiquito",
-    species: "gato",
-    sex: "Hembra",
-    personality: "jugueton y carinoso",
-    age: "2 anos",
-  },
-  {
-    animalname: "michifus",
+            "/09-01.jpg",
+            "/09-02.jpg",
+            "/09-03.jpg"
+            ],
+    fundationId: "5",
+    location: "san isidro, buenos aires",
+    size: "pequeño",
+    species: "perro",
+    sex: "hembra",
+    personality: "Juguetona, cariñosa, ama que la mimen y también los días de paseos largos.",
+    age: "jóven",
+    vaccines: "Al día"
+},
+{
+    animalname: "sasha",
+    history: "Hermosa gatita encontrada en las inmediaciones del hospital docente, fue traída por una estudiante a la que le pedía comida diariamente.",
     image: [
-        "https://images3.alphacoders.com/865/thumbbig-86537.webp",
-        "https://images3.alphacoders.com/916/thumbbig-91659.webp",
-    ],
-    fundationId: "1",
-    location: "CABA",
-    size: "chiquito",
+            "/10-01.jpg",
+            "/10-02.jpg",
+            "/10-03.jpg"
+            ],
+    fundationId: "6",
+    location: "CABA, buenos aires",
+    size: "mediano",
     species: "gato",
-    sex: "Hembra",
-    personality: "jugueton y carinoso",
-    age: "2 anos",
-  },
-  {
-    animalname: "miau",
+    sex: "hembra",
+    personality: "Muy amigable, le gusta socializar con humanos y con perros pero no le gustan mucho los gatos.",
+    age: "adulto",
+    vaccines: "Al día"
+},
+{
+    animalname: "cat woman",
+    history: "Antes de ser rescatada se la veía frecuentemente sobre los techos de las casas de Villa Urquiza, en busca de ratones o alguna que otra paloma.",
     image: [
-        "https://images3.alphacoders.com/865/thumbbig-86537.webp",
-        "https://images3.alphacoders.com/916/thumbbig-91659.webp",
-    ],
-    fundationId: "1",
-    location: "CABA",
-    size: "chiquito",
+            "/11-01.jpg",
+            "/11-02.jpg",
+            "/11-03.jpg"
+            ],
+    fundationId: "6",
+    location: "CABA, buenos aires",
+    size: "mediano",
     species: "gato",
-    sex: "Hembra",
-    personality: "jugueton y carinoso",
-    age: "2 anos",
-  },
+    sex: "hembra",
+    personality: "Ágil e intrépida, le gusta mucho la comida- de todo tipo, por lo que hay que tener cuidado de no sobrealimentarla.",
+    age: "senior",
+    vaccines: "Al día"
+},
+{
+    animalname: "audi",
+    history: "Este guapo caballero fue encontrado por una de nuestras voluntarias en las inmediaciones del mercado de Liniers, se acercó muy amigablemente y fue traído a la fundación.",
+    image: [
+            "/12-01.jpg",
+            "/12-02.jpg",
+            "/12-03.jpg"
+            ],
+    fundationId: "6",
+    location: "CABA, buenos aires",
+    size: "pequeño",
+    species: "gato",
+    sex: "macho",
+    personality: "Le encanta tener toda la atención siempre, por lo que no es muy bueno compartiendo espacio con otros animales, de la misma o de diferente especie.",
+    age: "cachorro",
+    vaccines: "Al día"
+},
+{
+    animalname: "chess",
+    history: "Solía pasar sus días alegrando los paseos de los turistas que acuden a Caminito, hasta que un día fue atropellado, llevado a una clínica por un turista y luego vino con nosotros, que lo estamos cuidando hasta ahora.",
+    image: [
+            "/13-01.jpg",
+            "/13-02.jpg",
+            "/13-03.jpg"
+            ],
+    fundationId: "6",
+    location: "CABA, buenos aires",
+    size: "mediano",
+    species: "gato",
+    sex: "macho",
+    personality: "Chess tiene mucha personalidad, él sabe muy bien lo que quiere y siempre lo consigue. Es determinado y cariñoso, siempre en busca de alguna aventura.",
+    age: "jóven",
+    vaccines: "Al día"
+},
+{
+    animalname: "garfield",
+    history: "Este guapo gato dorado tiene leucemia felina, por lo que requiere tomar su medicina a diario (lo cual hace sin chistar) y no debe salir de su casa para evitar contagiar a otros gatitos.",
+    image: [
+            "/14-01.jpg",
+            "/14-02.jpg",
+            "/14-03.jpg"
+            ],
+    fundationId: "6",
+    location: "CABA, buenos aires",
+    size: "grande",
+    species: "gato",
+    sex: "macho",
+    personality: "Tal como su homónimo de las caricaturas, a Garfield le encanta la comida, dormir y recibir mimos. Es ideal para una familia sin niños o con hijos adolecentes.",
+    age: "adulto",
+    vaccines: "Al día"
+},
+{
+    animalname: "sobra gris",
+    history: "El esposo de su humana desarrollo un grave cuadro respiratorio y por recomemdación médica no puede estar cerca de gatos o perros, por eso este increíble animal está ahora con nosostros en busca de una nueva familia.",
+    image: [
+            "/15-01.jpg",
+            "/15-02.jpg",
+            "/15-03.jpg"
+            ],
+    fundationId: "6",
+    location: "CABA, buenos aires",
+    size: "grande",
+    species: "gato",
+    sex: "macho",
+    personality: "Tal como el mítico caballo de LOTR, le encanta salir en busca de aventuras, por lo que quien decida adptar a este pequeño, tendrá que ser ingenioso para evitar que salga de su casa, pues sabemos que la calle está llena de peligros para estos pequeñines.",
+    age: "adulto",
+    vaccines: "Al día"
+},
+{
+    animalname: "francis",
+    history: "No se sabe por qué, pero un día de primavera se vió a Francis caminando sin rumbo a la orilla del río e inmediatamente fue traído con nosotros.",
+    image: [
+            "/16-01.jpg",
+            "/16-02.jpg",
+            "/16-03.jpg"
+            ],
+    fundationId: "2",
+    location: "neuquén, neuquén",
+    size: "mediano",
+    species: "ganzo",
+    sex: "macho",
+    personality: "Le gusta estar en el pasto, recibir el sol e investigar su entorno, es muy activo",
+    age: "jóven",
+    vaccines: "Al día"
+},
+{
+    animalname: "carmelita",
+    history: "Carmelita llegó a nosotros después de que desarrolló un padecimiento que impide que su lana crezca normalmente. Su antiguo hogar era una granja de producción de lana de oveja.",
+    image: [
+            "/17-01.jpg",
+            "/17-02.jpg",
+            "/17-03.jpg"
+            ],
+    fundationId: "2",
+    location: "neuquén, neuquén",
+    size: "grande",
+    species: "oveja",
+    sex: "hembra",
+    personality: "Tranquila, ama tomar el sol y que la acaricien en la cabeza.",
+    age: "adulto",
+    vaccines: "Al día"
+},
+{
+    animalname: "alberto",
+    history: "La granja en la que vivía este intrépido burrito fue vendida y él fue traído con nosotros de inmediato.",
+    image: [
+            "/18-01.jpg",
+            "/18-02.jpg",
+            "/18-03.jpg"
+            ],
+    fundationId: "2",
+    location: "neuquén, neuquén",
+    size: "extra-grande",
+    species: "burro",
+    sex: "macho",
+    personality: "Alberto ama estar rodeado de humanos y ayuda en todo lo que puede. Necesita estar en una granja o una casa con mucho espacio verde para que pueda explorar.",
+    age: "adulto",
+    vaccines: "Al día"
+}
+
+
+
 ];
 
 const seedDb = async () => {
     await Animal.deleteMany();
     await Animal.insertMany(fakeAnimals);
-  //   await Species.deleteMany();
-  //   await Species.insertMany(species);
+    await Species.deleteMany();
+    await Species.insertMany(species);
 };
 
 seedDb();
