@@ -50,6 +50,17 @@ const SinglePetCard = () => {
                     <h6 className="mt-5 mb-5">Le gusta:</h6>
                     <span> {pet.descripcion}</span>
                   </div>
+      {
+      pets.map( (pet, i) => { if (pet.id==params.id){ 
+        return (
+          <>
+          <section className='container sproduct my-5 pt-5'>
+           <div className='row mt-5'>
+            <div className='col-lg-5 col-md-12 col-12'>
+              <img className='img-fluid pb-1' width='600px' src={require(`../../assets/img${pet.url_path1}`)} alt={pet.name}></img><br/>
+              <div className={s.smallImgGroup}> 
+                <div className={s.smallImgcol}>
+                {/* {pet.imagenes.map(imagen => <img width='30%' height='90%' className='small-img p-1' src={require(`../../assets/img${imagen}`)}></img>  )} */}
                 </div>
               </section>
             </>
