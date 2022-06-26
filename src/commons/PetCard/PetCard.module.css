@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-
 .petCard {
     list-style: none;
     text-decoration: none;
@@ -52,13 +50,13 @@
     padding: 5% 5% 5% 5%;
     line-height: 1.4;
     letter-spacing: .07em;
-    font-family: 'Comic Neue';
+    font-family: var(--articleFont);
     font-size: 1.1em;
 }
 
 .petName {
     text-decoration: none;
-    color: #6504b5;
+    color: var(--mainColor);
     font-size: 2em;
     letter-spacing: .08em;
 }

@@ -15,9 +15,6 @@ const PetCard = ({ pet }) => {
     }
     
     return (
-
-        <div>
-
         <li className={s.petCard}>
             <Link to={`/animals/${pet.id}`}>
                 <img className={s.petImage} 
@@ -33,7 +30,6 @@ const PetCard = ({ pet }) => {
             
             <button className={s.favButton} type="submit" onClick={addToFav} >  {isFav? null: <FaRegHeart /> }</button>
         </li>
-        </div>
     )
 }
 
