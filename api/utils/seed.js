@@ -258,7 +258,7 @@ const fakeAnimals = [
     vaccines: "Al día"
 },
 {
-    animalname: "sobra gris",
+    animalname: "sombra gris",
     history: "El esposo de su humana desarrollo un grave cuadro respiratorio y por recomemdación médica no puede estar cerca de gatos o perros, por eso este increíble animal está ahora con nosostros en busca de una nueva familia.",
     image: [
             "/15-01.jpg",
@@ -270,7 +270,7 @@ const fakeAnimals = [
     size: "grande",
     species: "gato",
     sex: "macho",
-    personality: "Tal como el mítico caballo de LOTR, le encanta salir en busca de aventuras, por lo que quien decida adptar a este pequeño, tendrá que ser ingenioso para evitar que salga de su casa, pues sabemos que la calle está llena de peligros para estos pequeñines.",
+    personality: "Como el mítico caballo de LOTR, a Sombra Gris le encanta salir en busca de aventuras, por lo que quien decida adoptar a este pequeño, tendrá que ser ingenioso para evitar que salga de su casa, pues sabemos que la calle está llena de peligros para estos pequeñines.",
     age: "adulto",
     vaccines: "Al día"
 },

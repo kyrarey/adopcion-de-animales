@@ -11,6 +11,7 @@ import Favorite from "./components/Favorite/Favorite";
 import Search from "./components/Search/Search";
 import Association from "./components/Association/Association";
 import Grid from "./components/Grid/Grid";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -25,8 +26,9 @@ const App = () => {
         <Route path="/favorite/:userId" element={<Favorite />} />
         <Route path="/search" element={<Search />} />
         <Route path="/association" element={<Association />} />
-        <Route path="/animals" element={<Grid />} />
+        <Route path="/animals/pages/:id" element={<Grid />} />
       </Routes>
+      <Footer />
     </>
   );
 };

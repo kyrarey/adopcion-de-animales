@@ -1,29 +1,48 @@
 import { useState, useEffect } from "react";
-import pets from "../../assets/pets.json";
+import { useNavigate, useParams} from "react-router-dom";
+//import pets from "../../assets/pets.json";
 import find from "../../hooks/find";
-import randElemArray from "../../hooks/randElemArray";
-import s from "./Grid.module.css"
-import PetCard from "../PetCard/PetCard";
+import { fixedElemArray } from "../../hooks/arrGen";
+import PetCard from "../../commons/PetCard/PetCard";
+import s from "./Grid.module.css";
 
 const Grid = () => {
-/*     const [pets, setPets] = useState([]);
+    const [pets, setPets] = useState([]);
+    const [totalPets, setTotalPets] = useState(0);
+    const petsPerPage = 6;
+    const navigate = useNavigate();
+    let count = useParams().id;
 
     useEffect(() => {
-        find("/pets")
-        .then(petsObj => {
-            let petsAux = randElemArray(7,petsObj)
+        find("/animal/all")
+        .then(petsArr => {
+            setTotalPets(petsArr.length);
+            let petsAux = [];
+            petsAux = fixedElemArray(petsArr, petsPerPage, count);
             setPets(petsAux);
         })
         .catch(err => console.log(err));
-    },[]) */
+    }, [count]); 
 
-    let petsAux = randElemArray(pets.length,pets);
+    const pagesQty = Math.ceil(totalPets/petsPerPage);
+
+    const addOnClick = () => {
+        count  < pagesQty  ? count++ : count = pagesQty;
+        navigate(`/animals/pages/${count}`);
+    }
+
+    const subsOnClick = () => {
+        count > 1 ? count-- : count = 1;
+        navigate(`/animals/pages/${count}`);
+    }
 
     return (
-        <div>
+        <div className={s.container}>
             <ul className={s.grid}>
-                {petsAux.map(pet => <PetCard key={pet.id} pet={pet}/>)}
+                { pets.map(pet => <PetCard key={pet.animalname} pet={pet}/>)}
             </ul>
+            {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}
+            {count < pagesQty ? <button className={s.button} type="submit" onClick={addOnClick}>Siguiente</button> : ""}
         </div>
     )
 }
