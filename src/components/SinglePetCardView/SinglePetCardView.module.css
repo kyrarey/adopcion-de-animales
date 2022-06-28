@@ -1,0 +1,12 @@
+.smallImgGroup{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* .smallImgcol{
+    flex-basis: 24%;
+    cursor: pointer;
+  
+  } */
+  
+  

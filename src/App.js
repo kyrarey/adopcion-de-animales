@@ -12,6 +12,7 @@ import Search from "./components/Search/Search";
 import Association from "./components/Association/Association";
 import Grid from "./components/Grid/Grid";
 import Footer from "./components/Footer/Footer";
+import AdoptantForm from "./components/Form/AdoptantForm"
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/association" element={<Association />} />
         <Route path="/animals/pages/:id" element={<Grid />} />
+        <Route path="/account/form" element={<AdoptantForm />} />
       </Routes>
       <Footer />
     </>

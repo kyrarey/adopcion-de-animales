@@ -16,7 +16,7 @@ const PetCard = ({ pet }) => {
     
     return (
         <li className={s.petCard}>
-            <Link to={`/animals/${pet.id}`}>
+            <Link to={`/animals/${pet._id}`}>
                 <img className={s.petImage} 
                      src={require(`../../assets/img${pet.image[0]}`)} 
                      alt={pet.animalname}>
