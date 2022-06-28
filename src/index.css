@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
 :root {
     --mainColor: #6504b5; /*Color de Títulos en el cuerpo del documento */
     --bGroundColor: rgba(228, 228, 228, 0.99); /*Color del background en el cuerpo del documento */
     --articleFont: 'Comic Neue'; /*Fuente en el cuerpo del documento */
-    text-decoration: none;
+    --bannerFont: 'Amatic SC';
 }
