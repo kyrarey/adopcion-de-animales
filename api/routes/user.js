@@ -5,6 +5,17 @@ const db = require("../db")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
+
+const UserControllers = require("../controllers/UserController");
+
+//router.post("/register", UserControllers.addOne);
+router.get("/account/:userId", UserControllers.getOne);
+router.put("/:userId", UserControllers.updateOne);
+router.delete("/:userId", UserControllers.deleteOne);
+
+
+
+
 // Register
 router.post('/register', async (req, res) => {
   console.log(req.body, '            register')
@@ -20,6 +31,7 @@ router.post('/register', async (req, res) => {
   } catch (err) {
     console.error(err);
   }
+
 });
 
 // Login
@@ -46,47 +58,14 @@ router.post('/login', async (req, res) => {
   });
 });
 
-
-
-//editar usuario
-router.put("/:id", (req, res) => {
-  User.findByPk({ where: { id: req.params.id } })
-    .then((user) => {
-      user.update(req.body);
-      res.status(200).send(user);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-});
-
-//retornar usuario logeado
-router.get("/account", (req, res) => {
-  if (req.user) {
-    res.send(req.user);
-  } else {
-    res.sendStatus(401);
-  }
-});
-
-//eliminar user
-router.delete("/:id", (req, res) => {
-  User.findByPk(req.params.id)
-    .then((user) => {
-      user.destroy(); //borra el usuario de la db(sequelize)
-      res.sendStatus(200);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-});
-
 //logout user
 router.get("/logout", function (req, res) {
   req.session.destroy(() => {
     req.logout();
     res.redirect("/");
   });
-});
+}); */
+
+
 
 module.exports = router;
