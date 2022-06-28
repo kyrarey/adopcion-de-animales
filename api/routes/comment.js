@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const CommentControllers = require("../controllers/CommentController");
 
-router.get("/:commentId", CommentControllers.getAll);
+router.get("/:animalId", CommentControllers.getComments);
 router.post("/:commentId", CommentControllers.addOne);
 
 /* //ver comentarios
