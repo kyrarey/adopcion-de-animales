@@ -1,4 +1,23 @@
 .sliderContainer {
+    margin: 0 ;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    cursor: grab;
+    height: 100%;
+    width: 400px;
+}
+
+.item {
+    width: 100%;
+    height: 100%;
+    padding: 2em 30em 2em 0em;
+
+}
+
+.sliderContainer {
     margin: 0 auto;
     overflow: hidden;
 }

@@ -1,18 +1,19 @@
 import About from '../About/About';
 import Slider from '../Slider/Slider';
-import s from './Home.module.css';
 import AllCard from '../AllCard/AllCard';
+import AutoSlider from '../AutomaticSlider/AutoSlider';
+import s from './Home.module.css';
 
 const Home = () => {
     
     return (
         <div className={s.homeContainer}>
-            <div className={s.sliderDiv}>
-                <h1 className={s.title}>Algunos de nuestros guerreros</h1>
-                <Slider />
-            </div >
+            <AutoSlider />
             <div className={s.violetRectangle}></div>
-            <div className={s.whiteRectangle}></div>
+            <h1 className={s.title}>Tu nuevo compañero está esperando por ti</h1>
+            <div className={s.sliderDiv}>
+                <Slider />
+            </div>
             <div className={s.violetRectangle}></div>
             <div className={s.articleGrid}>
                 <About />
