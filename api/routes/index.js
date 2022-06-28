@@ -5,11 +5,13 @@ const favoriteRouter = require("./favorite");
 const commentRouter = require("./comment");
 const animalRouter = require("./animal");
 const speciesRouter = require("./species")
+const userFoundationRouter = require("./userFoundation")
 
 router.use("/user", userRouter);
 router.use("/favorite", favoriteRouter);
 router.use("/comment", commentRouter);
 router.use("/animal", animalRouter);
 router.use("/species", speciesRouter);
+router.use("/orgs", userFoundationRouter);
 
 module.exports = router;

@@ -18,16 +18,16 @@ const Favorite = () => {
 
   //borrar un animal de la lista
   const deleteAnimal = (id) => {
-    axios
-      .delete(`http://localhost:3000/favorite/${favorite.id}`, {
-        data: { animalId: id },
-      })
-      .then(() => {
-        alert("eliminado con exito"); //esto se saca despues
-      })
-      .catch(() => {
-        alert("no se pudo eliminar");
-      });
+    // axios
+    //   .delete(`http://localhost:3000/favorite/${favorite.id}`, {
+    //     data: { animalId: id },
+    //   })
+    //   .then(() => {
+    //     alert("eliminado con exito"); //esto se saca despues
+    //   })
+    //   .catch(() => {
+    //     alert("no se pudo eliminar");
+    //   });
   };
 
   return (
