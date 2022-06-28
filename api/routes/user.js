@@ -1,9 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
-const db = require("../db")
+const UserControllers = require("../controllers/UserController");
 
-//registrar usuario nuevo
+router.post("/register", UserControllers.addOne);
+router.get("/account/:userId", UserControllers.getOne);
+router.put("/:userId", UserControllers.updateOne);
+router.delete("/:userId", UserControllers.deleteOne);
+
+module.exports = router;
+
+/* //registrar usuario nuevo
 router.post("/register", (req, res) => {
   User.create(req.body)
     .then((user) => {
@@ -61,6 +67,4 @@ router.get("/logout", function (req, res) {
     req.logout();
     res.redirect("/");
   });
-});
-
-module.exports = router;
+}); */

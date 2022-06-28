@@ -2,12 +2,12 @@ const CommentServices = require("../services/Comment");
 
 class CommentControllers {
   //ver comentarios
-  static async getAll(req, res) {
-    const { error, data } = await CommentServices.getAll();
+  static async getComments(req, res) {
+    const { error, data } = await CommentServices.getComments(req.params.id);
     if (error) {
-      return res.status(404).send(data);
+      return res.status(500).send({ message: data.message });
     }
-    res.status(200).send(data);
+    res.status(201).send(data);
   }
 
   //agregar comentario
