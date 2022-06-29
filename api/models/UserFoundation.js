@@ -22,6 +22,14 @@ const UserFoundationSchema = new mongoose.Schema(
     },
     description:{
         type: String,
+    },
+    email:{
+      type: String,
+      required: true,
+    },
+    password:{
+      type: String,
+      required: true,
     }
   },
   { timestamps: true }
