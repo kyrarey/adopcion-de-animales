@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
-const db = require("../db")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-
+const db = require("../db");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const UserControllers = require("../controllers/UserController");
 
@@ -12,9 +11,6 @@ const UserControllers = require("../controllers/UserController");
 router.get("/account/:userId", UserControllers.getOne);
 router.put("/:userId", UserControllers.updateOne);
 router.delete("/:userId", UserControllers.deleteOne);
-
-
-
 
 // Register
 router.post('/register', async (req, res) => {
@@ -30,7 +26,6 @@ router.post('/register', async (req, res) => {
   } catch (err) {
     console.error(err);
   }
-
 });
 
 // Login
@@ -42,7 +37,7 @@ router.post('/login', async (req, res) => {
       : await bcrypt.compare(req.body.password, user.password);
   if (!(user && passwordIsCorrect)) {
     return res.status(401).json({
-      error: 'invalid user or password',
+      error: "invalid user or password",
     });
   }
   const userForToken = {
@@ -64,7 +59,5 @@ router.get("/logout", function (req, res) {
     res.redirect("/");
   });
 });
-
-
 
 module.exports = router;

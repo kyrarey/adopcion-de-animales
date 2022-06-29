@@ -7,28 +7,32 @@ import RemoveIcon from "@mui/icons-material/Remove";
 
 const Favorite = () => {
   const [animal, setAnimal] = useState([]);
+  const [user, setUser] = useState({});
+
+  setUser(JSON.parse(localStorage.getItem("user")));
 
   //traer todos los animales favoritos
-  /* useEffect(() => {
+  useEffect(() => {
     axios
-      .get(`http://localhost:3000/favorite/${user.id}`)
+      .get(`http://localhost:3030/favorite/${user.id}`)
       .then((res) => res.data)
       .then((pet) => setAnimal(pet));
-  }, [animal]); */
+  }, [animal]);
 
   //borrar un animal de la lista
-  const deleteAnimal = (id) => {
-    // axios
-    //   .delete(`http://localhost:3000/favorite/${favorite.id}`, {
-    //     data: { animalId: id },
-    //   })
-    //   .then(() => {
-    //     alert("eliminado con exito"); //esto se saca despues
-    //   })
-    //   .catch(() => {
-    //     alert("no se pudo eliminar");
-    //   });
-  };
+  /*  const deleteAnimal = (id) => {
+    axios
+      .delete(`http://localhost:3030/favorite/${favorite.id}`, {
+        data: { animalId: id },
+      })
+      .then(() => {
+        alert("eliminado con exito"); //esto se saca despues
+      })
+      .catch(() => {
+        alert("no se pudo eliminar");
+      });
+  }; */
+
 
   return (
     <div className="container">
@@ -59,7 +63,7 @@ const Favorite = () => {
                   type="button"
                   class="btn btn-danger"
                   onClick={() => {
-                    deleteAnimal(pet.id);
+                    /* deleteAnimal(pet.id); */
                   }}
                 >
                   <RemoveIcon />
