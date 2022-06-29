@@ -13,6 +13,7 @@ import Association from "./components/Association/Association";
 import Grid from "./components/Grid/Grid";
 import Footer from "./components/Footer/Footer";
 import AdoptantForm from "./components/Form/AdoptantForm"
+import AssociationProfile from "./components/AssociationProfile/AssociationProfile";
 
 import OrgGrid from "./components/FoundationGrid/FoundationGrid";
 
@@ -31,8 +32,9 @@ const App = () => {
         <Route path="/association" element={<Association />} />
         <Route path="/animals/pages/:id" element={<Grid />} />
         <Route path="/account/form" element={<AdoptantForm />} />
-
         <Route path="/orgs/pages/:id" element={<OrgGrid />} />
+        {/* fundacion */}
+        <Route path="/associationProfile" element={<AssociationProfile/>} />
       </Routes>
       <Footer />
     </>
