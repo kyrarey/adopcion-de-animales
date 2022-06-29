@@ -26,7 +26,7 @@ const App = () => {
         <Route path="/animals/:id" element={<SinglePetCard />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/account" element={<Account />} />
+        <Route path="/account/:id" element={<Account />} />
         <Route path="/favorite/:userId" element={<Favorite />} />
         <Route path="/search" element={<Search />} />
         <Route path="/association" element={<Association />} />

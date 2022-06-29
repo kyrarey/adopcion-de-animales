@@ -9,7 +9,6 @@
     grid-row-gap: 4%;
     grid-column-gap: 3%;
     grid-template-columns: repeat(3, 1fr);
-    text-decoration: none;
     text-align: left;
     padding-top: 2%;
     padding-bottom: 2%;
