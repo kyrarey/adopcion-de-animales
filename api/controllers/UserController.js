@@ -14,7 +14,7 @@ class UserControllers {
 
   //retornar usuario logeado
   static async getOne(req, res) {
-    const { error, data } = await UserServices.getOne(req.params.id);
+    const { error, data } = await UserServices.getOne(req.params.userId);
     if (error) {
       return res.status(404).send(data);
     }
@@ -26,7 +26,7 @@ class UserControllers {
   //editar usuario
   static async updateOne(req, res) {
     const { error, data } = await UserServices.updateOne(
-      req.params.id,
+      req.params.userId,
       req.body
     );
     if (error) {

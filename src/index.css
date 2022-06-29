@@ -2,8 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 
 :root {
-    --mainColor: #6504b5; /*Color de Títulos en el cuerpo del documento */
+    --mainColor: #6504b5; /*Color primario en el cuerpo del documento */
     --bGroundColor: rgba(228, 228, 228, 0.99); /*Color del background en el cuerpo del documento */
-    --articleFont: 'Comic Neue'; /*Fuente en el cuerpo del documento */
-    --bannerFont: 'Amatic SC';
+    --articleFont: 'Comic Neue'; /*Fuente de párrafos en el cuerpo del documento */
+    --bannerFont: 'Amatic SC'; /*Fuente de títulos en el cuerpo del documento */
+    --cardShadow: 0 2px 5px rgba(0,0,0,0.3); /*Sombra aplicada a las cards de animales */
 }

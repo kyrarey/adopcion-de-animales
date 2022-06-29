@@ -13,8 +13,7 @@ router.put("/:userId", UserControllers.updateOne);
 router.delete("/:userId", UserControllers.deleteOne);
 
 // Register
-router.post("/register", async (req, res) => {
-  console.log(req.body, "            register");
+router.post('/register', async (req, res) => {
   try {
     const salt = await bcrypt.genSalt(10);
     const password = await bcrypt.hash(req.body.password, salt);
@@ -30,13 +29,13 @@ router.post("/register", async (req, res) => {
 });
 
 // Login
-router.post("/login", async (req, res) => {
-  const user = await User.findOne({ user: req.body });
+router.post('/login', async (req, res) => {
+  const user = await User.findOne({email:req.body.email});
   const passwordIsCorrect =
     user === null
       ? false
       : await bcrypt.compare(req.body.password, user.password);
-  if (user && passwordIsCorrect) {
+  if (!(user && passwordIsCorrect)) {
     return res.status(401).json({
       error: "invalid user or password",
     });
@@ -46,9 +45,9 @@ router.post("/login", async (req, res) => {
     mail: user.mail,
   };
   const token = jwt.sign(userForToken, "organizacion.messi");
-  console.log(user);
+  console.log(user, '   user')
   res.send({
-    ...user.dataValues,
+    ...user._doc,
     token,
   });
 });

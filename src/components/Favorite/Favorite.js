@@ -33,6 +33,7 @@ const Favorite = () => {
       });
   }; */
 
+
   return (
     <div className="container">
       <div className="favorite">
