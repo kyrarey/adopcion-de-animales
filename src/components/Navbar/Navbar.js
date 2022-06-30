@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './Navbar.css'
-import { useNavigate } from "react-router-dom";
+
 
 const Navbar = () => {
-  const [user, setUser] = useState({});
-  const navigate = useNavigate()
-  useEffect(() => {
-    setUser(JSON.parse(localStorage.getItem('user')));
-  }, []);
+  const [user, setUser] = useState();
+
+  const getUser= () => {
+  setUser(JSON.parse(localStorage.getItem('user')));
+  }
+  
+  useEffect(getUser, []);
 
 
-
+  
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -25,7 +27,7 @@ const Navbar = () => {
           <span></span>
         </button>
 
-        {user ? (
+        {user?.isAuthenticated ? (
           <div className="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -52,7 +54,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
 
-                <Link to="/asociation">
+                <Link to="/association/pages/1">
                   <span className="nav-link">Fundaciones</span>
                 </Link>
               </li>
@@ -89,24 +91,20 @@ const Navbar = () => {
                 <button className="btn"
                       onClick={user => {
                         localStorage.removeItem('user', user);
-                      }}>Logout</button>
+                         }}>Logout</button>
               </Link>
             </ul>
           </div>
         ) : (
-
-
           <ul className="navbar-nav ms-auto">
-
             <Link to="/login">
-              <button className="btn">Login</button>
+              <button className="btn"> Login </button>
             </Link>
             <Link to="/register">
-              <button className="btn">Register</button>
+              <button className="btn"> Register </button>
             </Link>
           </ul>
-
-        )}
+  )}
 
       </div>
     </nav>
