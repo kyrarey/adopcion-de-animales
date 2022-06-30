@@ -1,29 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Favorite.css";
 import PetsIcon from "@mui/icons-material/Pets";
 import RemoveIcon from "@mui/icons-material/Remove";
+import find from "../../hooks/find";
 
 const Favorite = () => {
+  const navigate = useNavigate();
   const [animal, setAnimal] = useState([]);
-  const [user, setUser] = useState({});
+  const [petsArr, setPetsArr] = useState([]);
 
-  setUser(JSON.parse(localStorage.getItem("user")));
-
-  //traer todos los animales favoritos
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3030/favorite/${user.id}`)
-      .then((res) => res.data)
-      .then((pet) => setAnimal(pet));
-  }, [animal]);
+  const user = JSON.parse(localStorage.getItem("user"));
 
   //borrar un animal de la lista
-  /*  const deleteAnimal = (id) => {
+  const deleteAnimal = (pet) => {
+    deletePet(pet);
     axios
-      .delete(`http://localhost:3030/favorite/${favorite.id}`, {
-        data: { animalId: id },
+      .delete(`http://localhost:3030/favorite/${animal._id}`, {
+        data: { animalId: pet },
       })
       .then(() => {
         alert("eliminado con exito"); //esto se saca despues
@@ -31,45 +26,87 @@ const Favorite = () => {
       .catch(() => {
         alert("no se pudo eliminar");
       });
-  }; */
+  };
 
+  const deletePet = (params) => {
+    console.log("params :", params._id);
+    const newAnimal = animal.filter((pet) => pet._id !== params._id);
+    setAnimal(newAnimal);
+  };
+
+  //traer todos los animales favoritos
+  useEffect(() => {
+    console.log("user._id :", user._id);
+    axios
+      .get(`http://localhost:3030/favorite/${user._id}`)
+      .then((res) => res.data)
+      .then((pet) => {
+        setAnimal(pet);
+      });
+
+    find("/animal/all")
+      .then((petsArr) => {
+        setPetsArr(petsArr);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const filterAnimals = [];
+  const filter = () => {
+    for (let j = 0; j < petsArr.length; j++) {
+      for (let i = 0; i < animal.length; i++) {
+        if (petsArr[j]._id === animal[i].animalId) {
+          filterAnimals.push(petsArr[j]);
+        }
+      }
+    }
+  };
+  filter();
 
   return (
     <div className="container">
       <div className="favorite">
-        <h2 class="p-3 fs-2 border-top border-bottom border-2">
+        <h2 class="p-3 fs-1 border-top border-bottom border-2">
           {" "}
           <PetsIcon fontSize="large" /> Tu cucha{" "}
         </h2>
         {animal.length === 0 ? (
           <p>No tienes animales agregados aun! </p>
         ) : (
-          animal.map((pet) => (
+          filterAnimals.map((pet) => (
             <div className="row">
-              <div className="col-2">
-                <img src={pet.animal.img} width="150"></img>
+              <div
+                className="col-2"
+                onClick={() => {
+                  navigate(`/animals/${pet._id}`);
+                }}
+              >
+                {pet.image ? (
+                  <img src={pet.image} alt={pet.animalname} width="150"></img>
+                ) : null}
               </div>
               <div className="col-9">
                 <p>
-                  <strong> Nombre: </strong> {pet.animal.name}
+                  <strong> Nombre: </strong> {pet.animalname}
                 </p>
                 <p>
-                  <strong> Fundacion: </strong> {pet.association}
+                  <strong> Locacion: </strong> {pet.location}
+                </p>
+                <p>
+                  {pet.sex}, {pet.age}, {pet.species}
                 </p>
               </div>
-
               <div className="col-1">
                 <button
                   type="button"
-                  class="btn btn-danger"
+                  class="btn"
                   onClick={() => {
-                    /* deleteAnimal(pet.id); */
+                    deleteAnimal(pet);
                   }}
                 >
                   <RemoveIcon />
                 </button>
               </div>
-              <div></div>
             </div>
           ))
         )}

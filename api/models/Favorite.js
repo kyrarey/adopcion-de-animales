@@ -2,12 +2,17 @@ const mongoose = require("mongoose");
 
 const FavoriteSchema = new mongoose.Schema(
   {
-    animals: [
+    animalId: {
+      type: String,
+      required: true,
+    },
+    /*  animals: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Pet", //array de obj
-      },
+      }, 
     ],
+    */
     userId: {
       type: String,
       required: true,

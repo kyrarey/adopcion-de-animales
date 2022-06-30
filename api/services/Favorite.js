@@ -2,9 +2,11 @@ const Favorite = require("../models/Favorite");
 
 class FavoriteServices {
   //ver favoritos
-  static async getAll(params) {
+  static async getById(params) {
+    console.log("params :", params);
+
     try {
-      const data = await Favorite.find(params).exec();
+      const data = await Favorite.find({ userId: params.userId });
       return {
         error: false,
         data: data,
@@ -46,7 +48,7 @@ class FavoriteServices {
       console.error(error);
       return {
         error: true,
-        data: "error: couldn't delete Animal, it doesn't exist.",
+        data: "error: couldn't delete animal, it doesn't exist.",
       };
     }
   }
