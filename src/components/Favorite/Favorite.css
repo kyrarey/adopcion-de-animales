@@ -1,0 +1,34 @@
+.favorite {
+  margin: 70px;
+  background-color: var(--bGroundColor);
+  font-family: var(--articleFont);
+  text-decoration: none;
+}
+
+.favorite h2 {
+  font-size: 47px;
+  color: var(--mainColor);
+  margin: 30px;
+}
+
+.favorite p {
+  font-size: 17px;
+  color: var(--mainColor);
+  margin: 30px;
+}
+
+.favorite .row {
+  margin: 30px;
+  padding: 20px;
+  box-shadow: 1px 1px 1px 1px #e4d7e9;
+}
+
+.favorite .row:hover {
+  background-color: rgb(215, 201, 231);
+}
+
+.favorite .btn {
+  background-color: var(--mainColor);
+  margin: 10px;
+  padding: 5px;
+}

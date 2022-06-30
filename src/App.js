@@ -1,4 +1,5 @@
 import React from "react";
+import { GlobalProvider } from "./GlobalContext";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
@@ -13,7 +14,7 @@ import Search from "./components/Search/Search";
 import Association from "./components/Association/Association";
 import Grid from "./components/Grid/Grid";
 import Footer from "./components/Footer/Footer";
-import AdoptantForm from "./components/Form/AdoptantForm"
+import AdoptantForm from "./components/Form/AdoptantForm";
 import AssociationProfile from "./components/AssociationProfile/AssociationProfile";
 import OrgGrid from "./components/FoundationGrid/FoundationGrid";
 
@@ -21,7 +22,7 @@ const App = () => {
   const path = useLocation().pathname.slice(1,8);
 
   return (
-    <>
+    <GlobalProvider>
       <Navbar />
       {path === "account" ? <Sidebar /> : null}
       <Routes>
@@ -29,21 +30,20 @@ const App = () => {
         <Route path="/animals/:id" element={<SinglePetCard />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/favorite" element={<Favorite />} />
         <Route path="/account/:id" element={<Account />}/>
         <Route path="/account/edit/:id" element={<EditAccount />} />
-        <Route path="/favorite/:userId" element={<Favorite />} />
         <Route path="/search" element={<Search />} />
         <Route path="/association/pages/:id" element={<OrgGrid />} />
         <Route path="/animals/pages/:id" element={<Grid />} />
         <Route path="/form" element={<AdoptantForm />} />
         {/* <Route path="/orgs/pages/:id" element={<OrgGrid />} /> */}
         {/* fundacion */}
-        <Route path="/associationProfile" element={<AssociationProfile/>} />
+        <Route path="/associationProfile" element={<AssociationProfile />} />
       </Routes>
       <Footer />
-    </>
+    </GlobalProvider>
   );
 };
 
 export default App;
-
