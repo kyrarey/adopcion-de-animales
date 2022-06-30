@@ -40,7 +40,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
 
-                <Link to="/profile">
+                <Link to={`/account/${user._id}`}>
                   <span className="nav-link">{user?.email?.split('@')[0]}</span>
                 </Link>
               </li>

@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    position: absolute ;
+    height:143%;
+    width: 15%;
+    background-color: rgb(243, 208, 243);
+}
+
+.card {
+    height:100%;
+    width: 100%;
+    font-family: var(--bannerFont);
+    color: var(--mainColor);
+    background-color: rgb(243, 208, 243);
+}
+
+.item {
+    margin: 50% 20% 50% 20%; 
+    text-align: center;
+}
+
+.title {
+    font-size: 2.5em;
+}
+
+.img {
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+@media (max-width:990px){
+    .img {
+        width: 50px;
+        height: 50px;
+    }
+    .title {
+        font-size: 1.5em;
+    }
+}
