@@ -28,7 +28,7 @@ const Sidebar = () => {
                 </div>
                 <div className={s.item}>
                     <h3 className={s.title}>Mis Favoritos</h3>
-                    <Link to={`favorite/${id}`}>
+                    <Link to={`/favorite`}>
                         <img className={s.img} 
                             src={require(`../../assets/img/favs.jpg`)}
                             alt="Favs">
