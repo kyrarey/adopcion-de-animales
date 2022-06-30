@@ -3,8 +3,9 @@ const router = express.Router();
 const CommentControllers = require("../controllers/CommentController");
 
 router.get("/:animalId", CommentControllers.getComments);
-router.post("/:commentId", CommentControllers.addOne);
-
+router.post("/", CommentControllers.addOne);
+router.put("/:id", CommentControllers.updateOne);
+router.delete("/:id", CommentControllers.deleteOne);
 /* //ver comentarios
 router.get("/:commentId", (req, res) => {
   Comment.find({ where: { animalId: req.params.animalId } }).then((comment) =>

@@ -18,6 +18,28 @@ class CommentControllers {
     }
     res.status(201).send(data);
   }
+
+  //editar comment
+  static async updateOne(req, res) {
+    console.log(req.body,"req body", req.params.id,   "controller")
+    const { error, data } = await CommentServices.updateOne(
+      req.params.id,
+      req.body
+    );
+    if (error) {
+      return res.status(404).send(data);
+    }
+    res.status(200).send(data);
+  }
+
+  //borrar un comment
+  static async deleteOne(req, res) {
+    const { error, data } = await CommentServices.deleteOne(req.params.id);
+    if (error) {
+      return res.status(404).send(data);
+    }
+    res.status(200).send(data);
+  }
 }
 
 module.exports = CommentControllers;
