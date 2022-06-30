@@ -64,8 +64,8 @@ const Account = () => {
                             }
                         })
                         .then(serverAnswer => {
-                            console.log("SERVER RESPONSE: ",serverAnswer.data);
-                            navigate(`/${serverAnswer.data.id}`);
+                            console.log("SERVER RESPONSE: ",serverAnswer);
+                            navigate(`/account/${serverAnswer.data.id}`);
                         })
                         .catch(err => console.log(err))
                     }}

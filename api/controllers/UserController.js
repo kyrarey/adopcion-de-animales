@@ -27,8 +27,9 @@ class UserControllers {
   static async updateOne(req, res) {
     const { error, data } = await UserServices.updateOne(
       req.params.userId,
-      req.body
+      req.body,
     );
+
     if (error) {
       return res.status(404).send(data);
     }
