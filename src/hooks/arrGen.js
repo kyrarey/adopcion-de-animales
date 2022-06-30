@@ -22,11 +22,6 @@ export const fixedElemArray = (arr, arrLength, count) => {
     let petsAux = [];
     let initNum = arrLength * parseInt(count - 1);
     let finalNum = arrLength * (parseInt(count) );
-/*     console.log("ARR en function: ", arr)
-    console.log("COUNT EN FUNCTION: ", count)
-    console.log("ARRLENGHT:" ,arrLength)
-    console.log("INIT: ", initNum)
-    console.log("FINAL: ", finalNum) */
     for (let i = initNum; i < finalNum; i++) {
         if(arr[i] !== undefined)
             petsAux.push(arr[i])

@@ -5,12 +5,15 @@ const jwt = require("jsonwebtoken");
 
 const UserSchema = new mongoose.Schema(
   {
-    username: {
+    name: {
       type: String,
-      required: false,
     },
     lastname: {
       type: String,
+    },
+    username: {
+      type: String,
+      required: false,
     },
     email: {
       type: String,
@@ -49,6 +52,8 @@ const UserSchema = new mongoose.Schema(
 //   this.password = await bcrypt.hash(this.password, salt);
 //   next();
 // });
+
+
 
 const User = mongoose.model("User", UserSchema);
 

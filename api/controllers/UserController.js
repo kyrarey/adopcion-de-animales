@@ -25,10 +25,12 @@ class UserControllers {
 
   //editar usuario
   static async updateOne(req, res) {
+    console.log("REQ.BODY",req.body)
     const { error, data } = await UserServices.updateOne(
       req.params.userId,
-      req.body
+      req.body,
     );
+
     if (error) {
       return res.status(404).send(data);
     }
