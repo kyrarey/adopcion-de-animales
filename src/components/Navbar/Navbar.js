@@ -4,16 +4,31 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
+  const [search, setSearch] = useState('')
 
-  const getUser= () => {
+  const getUser = () => {
     // const local = JSON.parse(localStorage.getItem('user'))
-  setUser(JSON.parse(localStorage.getItem('user')));
+    setUser(JSON.parse(localStorage.getItem("user")));
+  };
+
+  useEffect(() => getUser(), []);
+  // console.log(user, "    user");
+
+  const onChange = (e) =>{
+    e.preventDefault()
+    setSearch(e.target.value)
+  }
+
+  const onSearch = () =>{
+    // useEffect(()=>{
+    //   axios.get(`http://localhost:3000/search/`)
+    //   .then(res => res.data)
+    //   .then(search => res.send(search))
+    // })
   }
 
 
-  useEffect(()=> getUser(), []);
-  console.log(user, "    user")
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -54,11 +69,11 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link to="/favorite/:userId"></Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to="/search">
                   <span className="nav-link">Buscar mascota</span>
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link to="/association/pages/1">
                   <span className="nav-link">Fundaciones</span>
@@ -97,7 +112,28 @@ const Navbar = () => {
                 </ul>
               </li>
             </ul>
-
+            <ul class=" ">
+              <form class="nav-item d-flex align-self-center">
+                <div class="input-group ">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Busqueda"
+                    onChange={onChange}
+                  >
+                   
+                  </input>
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="button-addon2"
+                    onClick={onSearch}
+                  >
+                    Search icon
+                  </button>
+                </div>
+              </form>
+            </ul>
             <ul className="navbar-nav ms-auto">
               <Link to="/">
                 <button
