@@ -53,10 +53,7 @@ const UserSchema = new mongoose.Schema(
 //   next();
 // });
 
-UserSchema.post("updateOne", user => {
-  console.log("USER:", user)
-  this.set ({image:  `/${user._id}.jpg`})
-});
+
 
 const User = mongoose.model("User", UserSchema);
 

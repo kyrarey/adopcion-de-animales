@@ -21,7 +21,7 @@ class UserServices {
 
   //retornar usuario logeado
   static async getOne(id) {
-    console.log("entra al get one services");
+    //console.log("entra al get one services");
     try {
       const data = await User.findById(id).exec();
       return {
@@ -43,7 +43,8 @@ class UserServices {
   static async updateOne(id, body) {
     try {
       const data = await User.findByIdAndUpdate(id, body);
-      fs.rename("src/assets/img/users/01.jpg",`src/assets/img/users/${data.image}`, err => {if (err) console.log(err)})  
+      data.image =`/${data.id}.jpg` ;
+      fs.rename("src/assets/img/users/01.jpg",`src/assets/img/users${data.image}`, err => {if (err) console.log(err)})  
       //console.log(data)
       return {
         error: false,
