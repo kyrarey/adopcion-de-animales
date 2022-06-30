@@ -19,8 +19,10 @@ const Login = () => {
           email: loginEmail,
           password: loginPassword,
         });
-        localStorage.setItem('user', JSON.stringify(user.data));
-        console.log(user)
+        console.log(user.data, " data")
+        const newUser = {_id: user.data._id, email: user.data.email, fundation: user.data.fundation, token: user.data.token, isAuthenticated:true}
+        localStorage.setItem('user', JSON.stringify(newUser));
+        // console.log(user)
           navigate('/');
         } catch (error) {
         console.log(error.response);

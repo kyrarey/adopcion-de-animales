@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
-
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -14,7 +13,6 @@ import Grid from "./components/Grid/Grid";
 import Footer from "./components/Footer/Footer";
 import AdoptantForm from "./components/Form/AdoptantForm"
 import AssociationProfile from "./components/AssociationProfile/AssociationProfile";
-
 import OrgGrid from "./components/FoundationGrid/FoundationGrid";
 
 const App = () => {

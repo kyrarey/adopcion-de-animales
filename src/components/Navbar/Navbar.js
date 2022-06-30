@@ -7,12 +7,13 @@ const Navbar = () => {
   const [user, setUser] = useState();
 
   const getUser= () => {
+    // const local = JSON.parse(localStorage.getItem('user'))
   setUser(JSON.parse(localStorage.getItem('user')));
   }
-  
-  useEffect(getUser, []);
 
 
+  useEffect(()=> getUser(), []);
+  console.log(user, "    user")
   
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
