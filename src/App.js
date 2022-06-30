@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
@@ -18,9 +18,11 @@ import AssociationProfile from "./components/AssociationProfile/AssociationProfi
 import OrgGrid from "./components/FoundationGrid/FoundationGrid";
 
 const App = () => {
+
+
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/animals/:id" element={<SinglePetCard />}></Route>

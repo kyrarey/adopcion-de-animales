@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
     mail: user.mail,
   };
   const token = jwt.sign(userForToken, "organizacion.messi");
-  console.log(user, '   user')
+  // console.log(user, '   user')
   res.send({
     ...user._doc,
     token,

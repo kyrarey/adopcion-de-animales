@@ -23,7 +23,9 @@ class UserServices {
     console.log("entra al get one services");
     try {
       const data = await User.findById(id).exec();
+      console.log(data, 'data')
       return {
+
         error: false,
         data: data,
       };
