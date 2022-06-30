@@ -34,7 +34,7 @@ const SinglePetCard = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    navigate("/account/form")
+    navigate("/form")
   }
 
 

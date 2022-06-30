@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/search" element={<Search />} />
         <Route path="/association/pages/:id" element={<OrgGrid />} />
         <Route path="/animals/pages/:id" element={<Grid />} />
-        <Route path="/account/form" element={<AdoptantForm />} />
+        <Route path="/form" element={<AdoptantForm />} />
         {/* <Route path="/orgs/pages/:id" element={<OrgGrid />} /> */}
         {/* fundacion */}
         <Route path="/associationProfile" element={<AssociationProfile/>} />
