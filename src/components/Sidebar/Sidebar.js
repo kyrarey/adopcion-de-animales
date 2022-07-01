@@ -21,8 +21,11 @@ const Sidebar = () => {
                     <Link to={`/account/${id}`}> 
                         <img className={s.img} 
                             link to={`/account/${id}`}
-                            src={user.image ? require(`../../assets/img/users${user.image}.jpg`) : require(`../../assets/img/users/no_user.jpg`)}
-                            alt="Foto de perfil">
+                            src={user.image 
+                            ? user.image === "no_user" ? require(`../../assets/img/users/no_user.jpg`) : require(`../../assets/img/users${user.image}.jpg`)
+                            : require(`../../assets/img/users/no_user.jpg`)
+                        }
+                        alt="Foto de perfil">
                         </img>
                     </Link>
                 </div>

@@ -7,15 +7,7 @@ import s from "./Account.module.css";
 const Account = () => {
     const navigate = useNavigate();
     let id = useParams().id;
-    const [user, setUser] = useState( {
-       /*  name: "",
-        lastname: "",
-        username: "",
-        email: "",
-        bio: "",
-        image: "",
-        location: "", */
-    })
+    const [user, setUser] = useState({})
 
     useEffect(() => {
         find(`/user/account/${id}`)
@@ -27,6 +19,7 @@ const Account = () => {
         e.preventDefault();
         navigate(`/account/edit/${id}`)
     }
+ 
 
     return (
         <div className={s.container}>
@@ -35,7 +28,10 @@ const Account = () => {
                 <div className={s.data}>
                     <div className={s.imgContainer}>
                     <img className={s.userImage} 
-                        src={user.image ? require(`../../assets/img/users${user.image}.jpg`) : require(`../../assets/img/users/no_user.jpg`)}
+                        src={user.image 
+                            ? user.image === "no_user" ? require(`../../assets/img/users/no_user.jpg`) : require(`../../assets/img/users${user.image}.jpg`)
+                            : require(`../../assets/img/users/no_user.jpg`)
+                        }
                         alt="Foto de perfil">
                     </img>
                     </div>

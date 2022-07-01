@@ -51,7 +51,6 @@ const EditAccount = () => {
                     onSubmit={values => {
                         const body = new FormData();
                         
-                        body.append("image",`/${id}`);
                         if (values.name) body.append( "name", values.name.toLowerCase());
                         if (values.lastname) body.append( "lastname", values.lastname.toLowerCase());
                         if (values.username) body.append( "username", values.username);
@@ -59,7 +58,10 @@ const EditAccount = () => {
                         if (values.password) body.append( "password", values.password);
                         if (values.bio) body.append( "bio", values.bio);
                         if (values.location) body.append( "location", values.location);
-                        if (values.photo) body.append( "photo", values.photo);
+                        if (values.photo) {
+                            body.append("image",`/${id}`)
+                            body.append( "photo", values.photo)
+                        };
           
                         axios({
                             method: 'put',
