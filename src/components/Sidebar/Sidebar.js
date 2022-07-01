@@ -17,8 +17,8 @@ const Sidebar = () => {
         <div className={s.container}>
             <div className={s.card}>
                 <div className={s.item}>
-                    <h3 className={s.title}>Mi Cuenta</h3>
-                    <Link to={`/account/${id}`}> 
+                    <Link className = {s.link} to={`/account/${id}`}> 
+                        <h3 className={s.title}>Mi Cuenta</h3>
                         <img className={s.img} 
                             link to={`/account/${id}`}
                             src={user.image 
@@ -30,8 +30,8 @@ const Sidebar = () => {
                     </Link>
                 </div>
                 <div className={s.item}>
-                    <h3 className={s.title}>Mis Favoritos</h3>
-                    <Link to={`/favorite`}>
+                    <Link className = {s.link} to={`/favorite`}>
+                        <h3 className={s.title}>Mis Favoritos</h3>
                         <img className={s.img} 
                             src={require(`../../assets/img/favs.jpg`)}
                             alt="Favs">
