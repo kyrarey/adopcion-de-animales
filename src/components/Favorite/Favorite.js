@@ -38,7 +38,7 @@ const Favorite = () => {
 
   //traer todos los animales favoritos
   useEffect(() => {
-    console.log("user._id :", user._id);
+    //console.log("user._id :", user._id);
     axios
       .get(`http://localhost:3030/favorite/${user._id}`)
       .then((res) => res.data)
