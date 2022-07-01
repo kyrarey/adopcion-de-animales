@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import find from "../../hooks/find";
+import capitalizeFirst from "../../hooks/capitalizeFirst";
 import "./Favorite.css";
 import PetsIcon from "@mui/icons-material/Pets";
 import RemoveIcon from "@mui/icons-material/Remove";
-import find from "../../hooks/find";
+
 
 const Favorite = () => {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ const Favorite = () => {
 
   //borrar un animal de la lista
   const deleteAnimal = (pet) => {
-    deletePet(pet);
+     deletePet(pet);
     axios
       .delete(`http://localhost:3030/favorite/${animal._id}`, {
         data: { animalId: pet },
@@ -29,7 +31,7 @@ const Favorite = () => {
   };
 
   const deletePet = (params) => {
-    console.log("params :", params._id);
+    //console.log("params :", params._id);
     const newAnimal = animal.filter((pet) => pet._id !== params._id);
     setAnimal(newAnimal);
   };
@@ -81,19 +83,19 @@ const Favorite = () => {
                   navigate(`/animals/${pet._id}`);
                 }}
               >
-                {pet.image ? (
-                  <img src={pet.image} alt={pet.animalname} width="150"></img>
+                {pet.image[0] ? (
+                  <img src={require(`../../assets/img${pet.image[0]}`)} alt={pet.animalname} width="150"></img>
                 ) : null}
               </div>
               <div className="col-9">
                 <p>
-                  <strong> Nombre: </strong> {pet.animalname}
+                  <strong> Nombre: </strong> {pet.animalname && capitalizeFirst(pet.animalname)}
                 </p>
                 <p>
-                  <strong> Locacion: </strong> {pet.location}
+                  <strong> Locacion: </strong> {pet.location && capitalizeFirst(pet.location)}
                 </p>
                 <p>
-                  {pet.sex}, {pet.age}, {pet.species}
+                  {pet.sex && capitalizeFirst(pet.sex)}, {pet.age}, {pet.species}
                 </p>
               </div>
               <div className="col-1">
