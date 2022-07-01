@@ -24,6 +24,15 @@
     transition-duration: 1s;
 }
 
+.link {
+    text-decoration: none;
+    color: inherit
+}
+
+.link:hover {
+    color:inherit
+}
+
 .cardImage {
     border-radius: 5% 5% 0% 0%;
     width: 100%;
