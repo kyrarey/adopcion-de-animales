@@ -84,7 +84,7 @@ const Favorite = () => {
                 }}
               >
                 {pet.image[0] ? (
-                  <img src={require(`../../assets/img${pet.image[0]}`)} alt={pet.animalname} width="150"></img>
+                  <img src={require(`../../assets/img/pets${pet.image[0]}`)} alt={pet.animalname} width="150"></img>
                 ) : null}
               </div>
               <div className="col-9">

@@ -1,5 +1,5 @@
 .favorite {
-  margin: 70px;
+  margin: 70px 70px 70px 20%;
   background-color: var(--bGroundColor);
   font-family: var(--articleFont);
   text-decoration: none;

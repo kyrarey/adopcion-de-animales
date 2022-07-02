@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate  } from "react-router-dom";
-import { Formik, Field, Form, ErrorMessage} from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import find from "../../hooks/find";
+import { update } from "../../hooks/alert";
 import s from "./EditAccount.module.css";
 const FormData = require('form-data');
 
@@ -24,40 +25,31 @@ const EditAccount = () => {
                 <h1 className={s.title}>Mi cuenta</h1>
                 <Formik
                     initialValues= {{
-                        name: "",
-                        lastname: "",
                         username: "",
                         email: "",
                         password: "",
-                        bio: "",
-                        location: "",
+                        confirm_password: "",
                         photo: ""
                     }}
                     validationSchema= {Yup.object({
-                        name: Yup.string("Debe ser una cadena de caracteres"),
-                        lastname: Yup.string("Debe ser una cadena de caracteres"),
                         username: Yup.string("Debe ser una cadena de caracteres"),
                         email: Yup.string()
                                 .email("Ingrese un email válido"),
                         password: Yup.string("")
                                 .min (8)
                                 .matches(
-                                    /^(?=.*[!@#\$%\^&\*])/,
+                                    /^(?=.*[!@#$%^&*])/,
                                     "Debe tener al menos 8 caracteres y 1 caracter especial"
                                   ),
-                        bio:Yup.string("Debe ser una cadena de caracteres"),
-                        location:Yup.string("Debe ser una cadena de caracteres")
+                        confirm_password: Yup.string("")
+                                .oneOf([Yup.ref('password'), null], 'La contraseña no coincide'),
                     })}
                     onSubmit={values => {
                         const body = new FormData();
-                        
-                        if (values.name) body.append( "name", values.name.toLowerCase());
-                        if (values.lastname) body.append( "lastname", values.lastname.toLowerCase());
+
                         if (values.username) body.append( "username", values.username);
                         if (values.email) body.append( "email", values.email.toLowerCase());
                         if (values.password) body.append( "password", values.password);
-                        if (values.bio) body.append( "bio", values.bio);
-                        if (values.location) body.append( "location", values.location);
                         if (values.photo) {
                             body.append("image",`/${id}`)
                             body.append( "photo", values.photo)
@@ -73,6 +65,7 @@ const EditAccount = () => {
                         })
                         .then(serverAnswer => {
                             //console.log("SERVER RESPONSE: ",serverAnswer);
+                            update();
                             navigate(`/account/${serverAnswer.data.id}`);
                         })
                         .catch(err => console.log(err))
@@ -80,14 +73,7 @@ const EditAccount = () => {
                     >
                     {formProps => (
                     <Form className={s.form}>
-                        <div>Nombre</div>
-                        <Field className={s.input} name="name" type="text" placeholder={user.name ? `${user.name}` : ""}/> <br/>
-                        <ErrorMessage className={s.error} name="name" /> <br/>
-
-                        <div>Apellido</div>
-                        <Field className={s.input} name="lastname" type="text" placeholder={user.lastname ? `${user.lastname}` : ""}/> <br/>
-                        <ErrorMessage className={s.error} name="lastname" /> <br/>
-                        
+                     
                         <div>Usuario</div>
                         <Field className={s.input} name="username" type="text" placeholder={user.username ? `${user.username}` : ""}/> <br/>
                         <ErrorMessage className={s.error} name="username" /> <br/>
@@ -99,16 +85,11 @@ const EditAccount = () => {
                         <div>Contraseña</div>
                         <Field className={s.input} name="password" type="text" /> <br/> 
                         <ErrorMessage className={s.error} name="password" /> <br/>
-                        
-                        <div>Ubicación</div>
-                        <Field className={s.input} name="location" type="text" placeholder={user.location ? `${user.location}` : ""}/> <br/>
-                        <ErrorMessage className={s.error} name="location" /> <br/>
 
-                        <div>Acerca de mi</div>
-                        <Field className={s.largeInput} name="bio" type="text" placeholder={user.bio ? `${user.bio}` : ""}/> <br/>
-                        <ErrorMessage className={s.error} name="bio" /> <br/>
+                        <div>Repetir contraseña</div>
+                        <Field className={s.input} name="confirm_password" type="text" /> <br/> 
+                        <ErrorMessage className={s.error} name="confirm_password" /> <br/>
     
-
                         <div>Foto</div>
                         <input name="photo" type="file" 
                         onChange={e => formProps.setFieldValue("photo", e.target.files[0])}/><br/><br/>

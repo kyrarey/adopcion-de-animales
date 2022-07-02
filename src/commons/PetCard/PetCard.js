@@ -34,12 +34,10 @@ const PetCard = ({ pet }) => {
   }; */
 
   return (
-    // Cambie de un LI a un DIV para que el link quede por fuera del boton de fav
     <div className={s.petCard}>
-      {/* Cambiar de lugar el link para que se pueda clickear en toda la card */}
       <Link className={s.link} to={`/animals/${pet._id}`}>
         <img className={s.petImage}
-          src={require(`../../assets/img${pet.image[0]}`)}
+          src={require(`../../assets/img/pets${pet.image[0]}`)}
           alt={pet.animalname}
         ></img>
         <div className={s.petInfo}>

@@ -53,7 +53,7 @@ class UserServices {
   static async updateOne(id, body) {
     try {
       const data = await User.findByIdAndUpdate(id, body);
-      console.log("BODY", body)
+      //console.log("BODY", body)
       if(fs.existsSync("src/assets/img/users/01.jpg")){
         data.image =`/${data.id}.jpg` ;
         fs.rename("src/assets/img/users/01.jpg",`src/assets/img/users${data.image}`, err => {if (err) console.log(err)})
