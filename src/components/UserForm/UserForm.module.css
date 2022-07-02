@@ -40,8 +40,6 @@
     height: 200px;
     overflow: hidden;
     border-radius: 50%;
-    border-style: solid 1px grey;
-    box-shadow: var(--cardShadow);
 }
 
 .data {
@@ -91,7 +89,6 @@
     border-style: solid 1px grey;
     box-shadow: var(--cardShadow);
 }
-
 
 .button {
     height: 2.3em;
