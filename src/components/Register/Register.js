@@ -2,6 +2,7 @@ import "./Register.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import { registered } from "../../hooks/alert";
 import validator from "validator";
 
 const Register = () => {
@@ -19,7 +20,8 @@ const Register = () => {
         email: registerEmail,
         password: registerPassword,
       });
-      alert("Register Succesfull");
+      registered();
+      /* alert("Register Succesfull"); */
       navigate("/login");
     } else {
       alert("Set a valid email");
