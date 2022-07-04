@@ -5,7 +5,7 @@ import "./Navbar.css";
 
 const Navbar = () => {
   const [user, setUser] = useState({});
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("");
 
   const getUser = () => {
     // const local = JSON.parse(localStorage.getItem('user'))
@@ -15,20 +15,17 @@ const Navbar = () => {
   useEffect(() => getUser(), []);
   // console.log(user, "    user");
 
-  const onChange = (e) =>{
-    e.preventDefault()
-    setSearch(e.target.value)
-  }
+  const onChange = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value);
+  };
 
-  const onSearch = () =>{
-    // useEffect(()=>{
-    //   axios.get(`http://localhost:3000/search/`)
-    //   .then(res => res.data)
-    //   .then(search => res.send(search))
-    // })
-  }
-
-
+  const onSearch = () => {
+    axios
+      .get(`http://localhost:3030/search/${search}`)
+      .then(res => console.log(res.data));
+      // .then(search => res.send(search));
+  };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -120,9 +117,7 @@ const Navbar = () => {
                     class="form-control"
                     placeholder="Busqueda"
                     onChange={onChange}
-                  >
-                   
-                  </input>
+                  />
                   <button
                     class="btn btn-outline-secondary"
                     type="button"

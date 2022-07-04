@@ -6,6 +6,7 @@ const commentRouter = require("./comment");
 const animalRouter = require("./animal");
 const speciesRouter = require("./species")
 const userFoundationRouter = require("./userFoundation")
+const searchRouter = require("./search")
 
 router.use("/user", userRouter);
 router.use("/favorite", favoriteRouter);
@@ -13,5 +14,6 @@ router.use("/comment", commentRouter);
 router.use("/animal", animalRouter);
 router.use("/species", speciesRouter);
 router.use("/orgs", userFoundationRouter);
+router.use("/search", searchRouter);
 
 module.exports = router;
