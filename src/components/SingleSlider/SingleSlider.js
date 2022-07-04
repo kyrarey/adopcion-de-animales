@@ -45,7 +45,7 @@ const SingleSlider = ({ images }) => {
             <AnimatePresence className={s.container} initial={false} custom={direction}>
                 <motion.img className={s.img}
                 key={page}
-                src={images[0] && require(`../../assets/img${images[imageIndex]}`) }
+                src={images[0] && require(`../../assets/img/pets${images[imageIndex]}`) }
                 custom={direction}
                 variants={variants}
                 initial="enter"

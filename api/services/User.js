@@ -24,9 +24,19 @@ class UserServices {
     //console.log("entra al get one services");
     try {
       const data = await User.findById(id).exec();
+
       return {
         error: false,
-        data: data,
+        data: {
+          id: data._id,
+          name: data.name,
+          lastname: data.lastname,
+          username: data.username,
+          email: data.email,
+          bio: data.bio,
+          image: fs.existsSync(`src/assets/img/users/${data.image}.jpg`) ? data.image : "no_user",
+          location: data.location,
+        },
       };
     } catch (error) {
       console.error(error, "    error");
@@ -43,9 +53,11 @@ class UserServices {
   static async updateOne(id, body) {
     try {
       const data = await User.findByIdAndUpdate(id, body);
-      data.image =`/${data.id}.jpg` ;
-      fs.rename("src/assets/img/users/01.jpg",`src/assets/img/users${data.image}`, err => {if (err) console.log(err)})  
-      //console.log(data)
+      //console.log("BODY", body)
+      if(fs.existsSync("src/assets/img/users/01.jpg")){
+        data.image =`/${data.id}.jpg` ;
+        fs.rename("src/assets/img/users/01.jpg",`src/assets/img/users${data.image}`, err => {if (err) console.log(err)})
+      } 
       return {
         error: false,
         data: {

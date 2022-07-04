@@ -1,8 +1,6 @@
 .container {
-    display: flex;
-    flex-direction: column;
+    padding: 0% 0% 5% 0%;
     position: absolute ;
-    height:143%;
     width: 15%;
     background-color: rgb(243, 208, 243);
 }
@@ -10,14 +8,31 @@
 .card {
     height:100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
     font-family: var(--bannerFont);
     color: var(--mainColor);
     background-color: rgb(243, 208, 243);
 }
 
 .item {
-    margin: 50% 20% 50% 20%; 
+    margin: 30% 20% 30% 20%; 
     text-align: center;
+}
+
+.item:hover {
+    transform: scale(1.1);
+    opacity: 1;
+    transition-duration: 1s;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit
+}
+
+.link:hover {
+    color:inherit
 }
 
 .title {

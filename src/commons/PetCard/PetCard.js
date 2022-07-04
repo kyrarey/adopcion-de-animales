@@ -12,7 +12,7 @@ const PetCard = ({ pet }) => {
   const notify = (text) => toast(text);
 
   const user = JSON.parse(localStorage.getItem("user"));
-  console.log("user :", user);
+  //console.log("user :", user);
 
   let isFav = false;
 
@@ -37,16 +37,12 @@ const PetCard = ({ pet }) => {
   }; */
 
   return (
-    // Cambie de un LI a un DIV para que el link quede por fuera del boton de fav
     <div className={s.petCard}>
-      {/* Cambiar de lugar el link para que se pueda clickear en toda la card */}
-      <Link to={`/animals/${pet._id}`}>
-        <img
-          className={s.petImage}
-          src={require(`../../assets/img${pet.image[0]}`)}
+      <Link className={s.link} to={`/animals/${pet._id}`}>
+        <img className={s.petImage}
+          src={require(`../../assets/img/pets${pet.image[0]}`)}
           alt={pet.animalname}
         ></img>
-
         <div className={s.petInfo}>
           <span className={s.petName}>{capitalizeFirst(pet.animalname)}</span>
           <br />

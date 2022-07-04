@@ -13,7 +13,7 @@ const Navbar = () => {
 
 
   useEffect(()=> getUser(), []);
-  console.log(user, "    user")
+  //console.log(user, "    user")
   
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">

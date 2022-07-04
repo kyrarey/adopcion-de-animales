@@ -9,8 +9,10 @@ import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import Sidebar from "./components/Sidebar/Sidebar";
-import EditAccount from "./components/EditAccount/EditAccount";
 import Account from "./components/Account/Account";
+import EditAccount from "./components/EditAccount/EditAccount";
+import UserForm from "./components/UserForm/UserForm";
+import EditForm from "./components/EditForm/EditForm";
 import Favorite from "./components/Favorite/Favorite";
 import Search from "./components/Search/Search";
 import Association from "./components/Association/Association";
@@ -20,6 +22,8 @@ import AdoptantForm from "./components/Form/AdoptantForm";
 import AssociationProfile from "./components/AssociationProfile/AssociationProfile";
 import OrgGrid from "./components/FoundationGrid/FoundationGrid";
 import NotFound from "./components/NotFound/NotFound";
+
+
 
 const App = () => {
   const path = useLocation().pathname.slice(1, 8);
@@ -35,8 +39,10 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/favorite" element={<Favorite />} />
-        <Route path="/account/:id" element={<Account />} />
         <Route path="/account/edit/:id" element={<EditAccount />} />
+        <Route path="/account/form/:id" element={<UserForm />} />
+        <Route path="/account/form/edit/:id" element={<EditForm />} />
+        <Route path="/account/favorite" element={<Favorite />} />
         <Route path="/search" element={<Search />} />
         <Route path="/association/pages/:id" element={<OrgGrid />} />
         <Route path="/animals/pages/:id" element={<Grid />} />

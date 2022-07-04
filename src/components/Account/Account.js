@@ -7,15 +7,7 @@ import s from "./Account.module.css";
 const Account = () => {
     const navigate = useNavigate();
     let id = useParams().id;
-    const [user, setUser] = useState( {
-       /*  name: "",
-        lastname: "",
-        username: "",
-        email: "",
-        bio: "",
-        image: "",
-        location: "", */
-    })
+    const [user, setUser] = useState({})
 
     useEffect(() => {
         find(`/user/account/${id}`)
@@ -27,6 +19,7 @@ const Account = () => {
         e.preventDefault();
         navigate(`/account/edit/${id}`)
     }
+ 
 
     return (
         <div className={s.container}>
@@ -35,24 +28,19 @@ const Account = () => {
                 <div className={s.data}>
                     <div className={s.imgContainer}>
                     <img className={s.userImage} 
-                        src={user.image ? require(`../../assets/img/users${user.image}.jpg`) : require(`../../assets/img/users/no_user.jpg`)}
+                        src={user.image 
+                            ? user.image === "no_user" ? require(`../../assets/img/users/no_user.jpg`) : require(`../../assets/img/users${user.image}.jpg`)
+                            : require(`../../assets/img/users/no_user.jpg`)
+                        }
                         alt="Foto de perfil">
                     </img>
                     </div>
-                    <h4 className={s.subTitle}>Nombre</h4>
-                    <p  className={s.info}>{user.name && capitalizeFirst(user.name)}</p>
-                    <h4 className={s.subTitle}>Apellido </h4>
-                    <p  className={s.info}>{user.lastname && capitalizeFirst(user.lastname)}</p>
                     <h4 className={s.subTitle}>Usuario</h4>
                     <p  className={s.info}>{user.username}</p>
                     <h4 className={s.subTitle}>E-mail</h4>
                     <p  className={s.info}>{user.email}</p>
                     <h4 className={s.subTitle}>Contraseña</h4>
                     <p  className={s.info}>***********</p>
-                    <h4 className={s.subTitle}>Dirección</h4>
-                    <p  className={s.infoLarge}>{user.location}</p>
-                    <h4 className={s.subTitle}>Acerca de mi (Reseña personal, tipo de vivienda, estilo de vida, etc.)</h4>
-                    <p  className={s.infoLarger}>{user.bio}</p>
                 </div>
             <button className={s.button} onClick={handleClick}>Editar info</button>
             </div>
