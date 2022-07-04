@@ -6,9 +6,11 @@ import capitalizeFirst from "../../hooks/capitalizeFirst";
 import "./Favorite.css";
 import PetsIcon from "@mui/icons-material/Pets";
 import RemoveIcon from "@mui/icons-material/Remove";
-
+import find from "../../hooks/find";
+import { toast } from "react-toastify";
 
 const Favorite = () => {
+  const notify = (text) => toast(text);
   const navigate = useNavigate();
   const [animal, setAnimal] = useState([]);
   const [petsArr, setPetsArr] = useState([]);
@@ -17,16 +19,25 @@ const Favorite = () => {
 
   //borrar un animal de la lista
   const deleteAnimal = (pet) => {
-     deletePet(pet);
+    deletePet(pet);
+    console.log("pet :", pet);
     axios
       .delete(`http://localhost:3030/favorite/${animal._id}`, {
         data: { animalId: pet },
       })
       .then(() => {
-        alert("eliminado con exito"); //esto se saca despues
+        for (let i = 0; i < filterAnimals.length; i++) {
+          const index =
+            filterAnimals[i]._id === pet._id
+              ? (index = filterAnimals[i])
+              : (index = null);
+          filterAnimals.slice(index, index + 1);
+          console.log("index :", index);
+          notify("Eliminado con exito");
+        }
       })
       .catch(() => {
-        alert("no se pudo eliminar");
+        notify("No se pudo eliminar");
       });
   };
 
@@ -62,6 +73,8 @@ const Favorite = () => {
         }
       }
     }
+    console.log("animal :", animal);
+    console.log("filterAnimals :", filterAnimals);
   };
   filter();
 

@@ -1,6 +1,7 @@
 import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import axios from "axios";
 import validator from "validator";
 
@@ -8,6 +9,7 @@ const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
+  const notify = (text) => toast(text);
 
   const login = async (e) => {
     e.preventDefault();
@@ -21,12 +23,12 @@ const Login = () => {
         const newUser = {_id: user.data._id, email: user.data.email, fundation: user.data.fundation, token: user.data.token, isAuthenticated:true}
         localStorage.setItem('user', JSON.stringify(newUser));
         // console.log(user)
-          navigate('/');
-        } catch (error) {
+        navigate("/");
+      } catch (error) {
         console.log(error.response);
       }
     } else {
-      alert("Set a valid email");
+      notify("Email invalido");
     }
   };
 

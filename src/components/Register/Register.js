@@ -4,11 +4,13 @@ import { useNavigate } from "react-router";
 import axios from "axios";
 import { registered } from "../../hooks/alert";
 import validator from "validator";
+import { toast } from "react-toastify";
 
 const Register = () => {
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const navigate = useNavigate();
+  const notify = (text) => toast(text);
 
   const register = async (e) => {
     console.log(registerEmail);
@@ -20,11 +22,11 @@ const Register = () => {
         email: registerEmail,
         password: registerPassword,
       });
+      notify("Registro exitoso");
       registered();
-      /* alert("Register Succesfull"); */
       navigate("/login");
     } else {
-      alert("Set a valid email");
+      notify("Email invalido");
     }
   };
 

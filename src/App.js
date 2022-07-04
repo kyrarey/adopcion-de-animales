@@ -1,6 +1,8 @@
 import React from "react";
 import { GlobalProvider } from "./GlobalContext";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
 import Navbar from "./components/Navbar/Navbar";
@@ -19,22 +21,24 @@ import Footer from "./components/Footer/Footer";
 import AdoptantForm from "./components/Form/AdoptantForm";
 import AssociationProfile from "./components/AssociationProfile/AssociationProfile";
 import OrgGrid from "./components/FoundationGrid/FoundationGrid";
+import NotFound from "./components/NotFound/NotFound";
 
 
 
 const App = () => {
-  const path = useLocation().pathname.slice(1,8);
+  const path = useLocation().pathname.slice(1, 8);
 
   return (
     <GlobalProvider>
+      <ToastContainer />
       <Navbar />
       {path === "account" ? <Sidebar /> : null}
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/animals/:id" element={<SinglePetCard />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/animals/:id" element={<SinglePetCard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/account/:id" element={<Account />}/>
+        <Route path="/favorite" element={<Favorite />} />
         <Route path="/account/edit/:id" element={<EditAccount />} />
         <Route path="/account/form/:id" element={<UserForm />} />
         <Route path="/account/form/edit/:id" element={<EditForm />} />
@@ -46,6 +50,8 @@ const App = () => {
         {/* <Route path="/orgs/pages/:id" element={<OrgGrid />} /> */}
         {/* fundacion */}
         <Route path="/associationProfile" element={<AssociationProfile />} />
+        <Route path="*" element={<Navigate to="404" />} />
+        <Route path="404" element={<NotFound />} />
       </Routes>
       <Footer />
     </GlobalProvider>
