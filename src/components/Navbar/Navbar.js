@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [user, setUser] = useState({});
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const getUser = () => {
     // const local = JSON.parse(localStorage.getItem('user'))
@@ -23,8 +24,10 @@ const Navbar = () => {
   const onSearch = () => {
     axios
       .get(`http://localhost:3030/search/${search}`)
-      .then(res => console.log(res.data));
-      // .then(search => res.send(search));
+      .then((res) => res.data)
+      .then((search) => setSearch(search));
+
+    navigate(`/search/${search}`);
   };
 
   return (

@@ -2,7 +2,6 @@ import React,{useState, useEffect} from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
-
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -30,7 +29,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/account/:id" element={<Account />} />
         <Route path="/favorite/:userId" element={<Favorite />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search/:search" element={<Search />} />
         <Route path="/association/pages/:id" element={<OrgGrid />} />
         <Route path="/animals/pages/:id" element={<Grid />} />
         <Route path="/account/form" element={<AdoptantForm />} />
