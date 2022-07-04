@@ -23,8 +23,6 @@ import AssociationProfile from "./components/AssociationProfile/AssociationProfi
 import OrgGrid from "./components/FoundationGrid/FoundationGrid";
 import NotFound from "./components/NotFound/NotFound";
 
-
-
 const App = () => {
   const path = useLocation().pathname.slice(1, 8);
 
@@ -39,6 +37,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/favorite" element={<Favorite />} />
+        <Route path="/account/:id" element={<Account />} />
         <Route path="/account/edit/:id" element={<EditAccount />} />
         <Route path="/account/form/:id" element={<UserForm />} />
         <Route path="/account/form/edit/:id" element={<EditForm />} />
