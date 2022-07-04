@@ -35,20 +35,12 @@ const Account = () => {
                         alt="Foto de perfil">
                     </img>
                     </div>
-                   {/*  <h4 className={s.subTitle}>Nombre</h4>
-                    <p  className={s.info}>{user.name && capitalizeFirst(user.name)}</p>
-                    <h4 className={s.subTitle}>Apellido </h4>
-                    <p  className={s.info}>{user.lastname && capitalizeFirst(user.lastname)}</p> */}
                     <h4 className={s.subTitle}>Usuario</h4>
                     <p  className={s.info}>{user.username}</p>
                     <h4 className={s.subTitle}>E-mail</h4>
                     <p  className={s.info}>{user.email}</p>
                     <h4 className={s.subTitle}>Contraseña</h4>
                     <p  className={s.info}>***********</p>
-                   {/*  <h4 className={s.subTitle}>Dirección</h4>
-                    <p  className={s.infoLarge}>{user.location}</p>
-                    <h4 className={s.subTitle}>Acerca de mi (Reseña personal, tipo de vivienda, estilo de vida, etc.)</h4>
-                    <p  className={s.infoLarger}>{user.bio}</p> */}
                 </div>
             <button className={s.button} onClick={handleClick}>Editar info</button>
             </div>

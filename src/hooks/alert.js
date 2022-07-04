@@ -8,4 +8,14 @@ export function update(){
       showConfirmButton: false,
       timer: 1500
     })
-  }
+}
+
+export function registered(){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Usuario registrado',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
