@@ -22,7 +22,7 @@ const Register = () => {
         email: registerEmail,
         password: registerPassword,
       });
-      notify("Registro exitoso");
+      /*  notify("Registro exitoso"); */
       registered();
       navigate("/login");
     } else {

@@ -6,7 +6,6 @@ import capitalizeFirst from "../../hooks/capitalizeFirst";
 import "./Favorite.css";
 import PetsIcon from "@mui/icons-material/Pets";
 import RemoveIcon from "@mui/icons-material/Remove";
-import find from "../../hooks/find";
 import { toast } from "react-toastify";
 
 const Favorite = () => {
@@ -97,18 +96,25 @@ const Favorite = () => {
                 }}
               >
                 {pet.image[0] ? (
-                  <img src={require(`../../assets/img/pets${pet.image[0]}`)} alt={pet.animalname} width="150"></img>
+                  <img
+                    src={require(`../../assets/img/pets${pet.image[0]}`)}
+                    alt={pet.animalname}
+                    width="150"
+                  ></img>
                 ) : null}
               </div>
               <div className="col-9">
                 <p>
-                  <strong> Nombre: </strong> {pet.animalname && capitalizeFirst(pet.animalname)}
+                  <strong> Nombre: </strong>{" "}
+                  {pet.animalname && capitalizeFirst(pet.animalname)}
                 </p>
                 <p>
-                  <strong> Locacion: </strong> {pet.location && capitalizeFirst(pet.location)}
+                  <strong> Locacion: </strong>{" "}
+                  {pet.location && capitalizeFirst(pet.location)}
                 </p>
                 <p>
-                  {pet.sex && capitalizeFirst(pet.sex)}, {pet.age}, {pet.species}
+                  {pet.sex && capitalizeFirst(pet.sex)}, {pet.age},{" "}
+                  {pet.species}
                 </p>
               </div>
               <div className="col-1">
