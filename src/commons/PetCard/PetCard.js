@@ -6,8 +6,11 @@ import capitalizeFirst from "../../hooks/capitalizeFirst";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { toast } from "react-toastify";
 
 const PetCard = ({ pet }) => {
+  const notify = (text) => toast(text);
+
   const user = JSON.parse(localStorage.getItem("user"));
   console.log("user :", user);
 
@@ -22,7 +25,7 @@ const PetCard = ({ pet }) => {
       })
       .then(() => {
         isFav ? (isFav = false) : (isFav = true);
-        alert("agregado con exito");
+        notify("Agregado con exito");
       });
   };
 
