@@ -4,9 +4,10 @@ import { useGlobalContext } from "../../GlobalContext";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Navbar.css";
+import { GoSearch } from "react-icons/go";
 
 const Navbar = () => {
-  const [search, setSearch] = useState()
+  const [search, setSearch] = useState();
   const notify = (text) => toast(text);
   const navigate = useNavigate();
   const { newUser, setNewUser } = useGlobalContext();
@@ -38,7 +39,6 @@ const Navbar = () => {
     navigate(`/search/${search}`);
   };
 
-
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -59,7 +59,6 @@ const Navbar = () => {
           <span></span>
         </button>
         {userStorage.isAuthenticated ? (
-
           <div
             className="collapse navbar-collapse justify-content-between"
             id="navbarSupportedContent"
@@ -139,7 +138,7 @@ const Navbar = () => {
                     id="button-addon2"
                     onClick={onSearch}
                   >
-                    Search icon
+                    {<GoSearch />}
                   </button>
                 </div>
               </form>
@@ -153,14 +152,36 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <ul className="navbar-nav ms-auto">
-            <Link to="/login">
-              <button className="btn"> Login </button>
-            </Link>
-            <Link to="/register">
-              <button className="btn"> Register </button>
-            </Link>
-          </ul>
+          <>
+            <ul class="searchBarOut">
+              <form class="nav-item d-flex align-self-center">
+                <div class="input-group ">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Busqueda"
+                    onChange={onChange}
+                  />
+                  <button
+                    class="btn btn-outline-secondary"
+                    type="button"
+                    id="button-addon2"
+                    onClick={onSearch}
+                  >
+                    {<GoSearch />}
+                  </button>
+                </div>
+              </form>
+            </ul>
+            <ul className="navbar-nav ms-auto">
+              <Link to="/login">
+                <button className="btn"> Login </button>
+              </Link>
+              <Link to="/register">
+                <button className="btn"> Register </button>
+              </Link>
+            </ul>
+          </>
         )}
       </div>
     </nav>

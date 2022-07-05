@@ -104,3 +104,8 @@ ul {
   background-color: #0a3d62;
   color: grey;
 }
+
+.searchBarOut{
+  display: flex;
+  margin-left: 50%;
+}
