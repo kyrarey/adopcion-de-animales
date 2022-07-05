@@ -19,3 +19,23 @@ export function registered(){
     timer: 1500
   })
 }
+
+export function notLoggedIn(){
+  Swal.fire({
+    position: 'center',
+    icon: 'warning',
+    title: 'Debes estar logueado para continuar',
+    showConfirmButton: false,
+    timer: 2000
+  })
+}
+
+export function notFormCompleted(){
+  Swal.fire({
+    position: 'center',
+    icon: 'warning',
+    title: 'Debes haber llenado tu formulario para continuar',
+    showConfirmButton: false,
+    timer: 2000
+  })
+}

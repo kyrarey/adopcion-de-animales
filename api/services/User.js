@@ -33,9 +33,16 @@ class UserServices {
           lastname: data.lastname,
           username: data.username,
           email: data.email,
+          location: data.location,
+          age: data.age,
+          city: data.city,
+          housing: data.housing,
+          houseIsRented: data.houseIsRented,
+          havePets: data.havePets,
+          isAllergic: data.isAllergic,
+          isFormComplete: data.isFormComplete,
           bio: data.bio,
           image: fs.existsSync(`src/assets/img/users/${data.image}.jpg`) ? data.image : "no_user",
-          location: data.location,
         },
       };
     } catch (error) {
