@@ -12,10 +12,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { newUser, setNewUser } = useGlobalContext();
 
+
   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
     : {};
-
   const handlelogout = (e) => {
     e.preventDefault();
     axios.get("http://localhost:3030/user/logout").then((res) => {
