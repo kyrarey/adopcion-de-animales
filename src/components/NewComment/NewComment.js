@@ -49,7 +49,7 @@ const NewComment = () => {
             />
           </div>
           <div className="col" id="button">
-            <button class="btn btn-default"> Agregar comentario </button>
+            <button className="btn btn-default"> Agregar comentario </button>
           </div>
         </form>
       </div>

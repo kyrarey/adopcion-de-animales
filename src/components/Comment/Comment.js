@@ -32,7 +32,7 @@ const Comment = () => {
             <li>
               {console.log(review)}
               <div className="container">
-                <div class="row">
+                <div className="row">
                   <div className="col-2">
                     <div>
                       <img
@@ -59,7 +59,7 @@ const Comment = () => {
       </ul>
       <div className="pb-5" align="center">
         <Link to={`/comment/add/${foundationId}`}>
-          <button type="button" class="btn btn-default cart">
+          <button type="button" className="btn btn-default cart">
             Agregar comentario
           </button>
         </Link>
