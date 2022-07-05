@@ -2,10 +2,10 @@ const express = require("express");
 const router = express.Router();
 const CommentControllers = require("../controllers/CommentController");
 
-router.get("/:animalId", CommentControllers.getComments);
-router.post("/", CommentControllers.addOne);
-router.put("/:id", CommentControllers.updateOne);
-router.delete("/:id", CommentControllers.deleteOne);
+router.get("/:foundationId", CommentControllers.getComments);
+router.post("/add/:foundationId", CommentControllers.addOne);
+router.put("/:commentId", CommentControllers.updateOne);
+router.delete("/:commentId", CommentControllers.deleteOne);
 /* //ver comentarios
 router.get("/:commentId", (req, res) => {
   Comment.find({ where: { animalId: req.params.animalId } }).then((comment) =>

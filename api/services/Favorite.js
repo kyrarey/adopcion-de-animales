@@ -39,7 +39,7 @@ class FavoriteServices {
   //eliminar favorito
   static async deleteOne(id) {
     try {
-      const result = await Favorite.findByIdAndDelete(id);
+      const result = await Favorite.findByIdAndRemove(id);
       return {
         error: false,
         data: "Animal deleted successfully",

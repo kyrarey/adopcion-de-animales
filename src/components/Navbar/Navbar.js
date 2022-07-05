@@ -1,40 +1,43 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useGlobalContext } from "../../GlobalContext";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [user, setUser] = useState({});
-  const [search, setSearch] = useState("");
+  const notify = (text) => toast(text);
   const navigate = useNavigate();
+  const { newUser, setNewUser } = useGlobalContext();
 
-  const getUser = () => {
-    // const local = JSON.parse(localStorage.getItem('user'))
-    setUser(JSON.parse(localStorage.getItem("user")));
+  const userStorage = !!localStorage.getItem("newUser")
+    ? JSON.parse(localStorage.getItem("newUser"))
+    : {};
+
+  const handlelogout = (e) => {
+    e.preventDefault();
+    axios.get("http://localhost:3030/user/logout").then((res) => {
+      notify(`Logged out`);
+      localStorage.removeItem("newUser");
+      setNewUser({});
+      navigate("/");
+    });
   };
-
-  useEffect(() => getUser(), []);
-  // console.log(user, "    user");
-
 
   const onChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
 
-
   const onSearch = () => {
     axios
       .get(`http://localhost:3030/search/${search}`)
       .then((res) => res.data)
       .then((search) => setSearch(search));
-
     navigate(`/search/${search}`);
   };
 
-  useEffect(()=> getUser(), []);
-  //console.log(user, "    user")
-  
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -55,8 +58,8 @@ const Navbar = () => {
           <span></span>
           <span></span>
         </button>
+        {userStorage.isAuthenticated ? (
 
-        {user?.isAuthenticated ? (
           <div
             className="collapse navbar-collapse justify-content-between"
             id="navbarSupportedContent"
@@ -68,17 +71,17 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-
-
-                <Link to={`/account/${user._id}`}>
-                  <span className="nav-link">{user?.email?.split('@')[0]}</span>
-
+                <Link to={`/account/${userStorage._id}`}>
+                  <span className="nav-link">
+                    {userStorage?.email?.split("@")[0]}
+                  </span>
                 </Link>
               </li>
               <li className="nav-item">
                 <Link to="/favorite/:userId"></Link>
               </li>
               {/* <li className="nav-item">
+
                 <Link to="/search">
                   <span className="nav-link">Buscar mascota</span>
                 </Link>
@@ -143,12 +146,7 @@ const Navbar = () => {
             </ul>
             <ul className="navbar-nav ms-auto">
               <Link to="/">
-                <button
-                  className="btn"
-                  onClick={(user) => {
-                    localStorage.removeItem("user", user);
-                  }}
-                >
+                <button className="btn" onClick={handlelogout}>
                   Logout
                 </button>
               </Link>

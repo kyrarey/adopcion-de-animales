@@ -6,27 +6,43 @@ import capitalizeFirst from "../../hooks/capitalizeFirst";
 import "./Favorite.css";
 import PetsIcon from "@mui/icons-material/Pets";
 import RemoveIcon from "@mui/icons-material/Remove";
-
+import { toast } from "react-toastify";
+import { useGlobalContext } from "../../GlobalContext";
 
 const Favorite = () => {
+  const notify = (text) => toast(text);
   const navigate = useNavigate();
   const [animal, setAnimal] = useState([]);
   const [petsArr, setPetsArr] = useState([]);
+  const { newUser } = useGlobalContext();
+  const filterAnimals = [];
 
-  const user = JSON.parse(localStorage.getItem("user"));
+  const userStorage = !!localStorage.getItem("newUser")
+    ? JSON.parse(localStorage.getItem("newUser"))
+    : {};
 
   //borrar un animal de la lista
   const deleteAnimal = (pet) => {
-     deletePet(pet);
+    deletePet(pet);
+    console.log("pet :", pet);
     axios
       .delete(`http://localhost:3030/favorite/${animal._id}`, {
         data: { animalId: pet },
       })
       .then(() => {
-        alert("eliminado con exito"); //esto se saca despues
+        /*    let index = 0; */
+        for (let i = 0; i < filterAnimals.length; i++) {
+          if (filterAnimals[i]._id === pet._id) filterAnimals.splice(i, i + 1);
+          console.log("filterAnimals :", filterAnimals);
+          if (i > filterAnimals.length) return filterAnimals;
+          console.log("i :", i);
+        }
+        /* console.log("index :", index);
+        filterAnimals.slice(index, index + 1); */
+        notify("Eliminado con exito");
       })
       .catch(() => {
-        alert("no se pudo eliminar");
+        notify("No se pudo eliminar");
       });
   };
 
@@ -38,9 +54,8 @@ const Favorite = () => {
 
   //traer todos los animales favoritos
   useEffect(() => {
-    //console.log("user._id :", user._id);
     axios
-      .get(`http://localhost:3030/favorite/${user._id}`)
+      .get(`http://localhost:3030/favorite/${userStorage._id}`)
       .then((res) => res.data)
       .then((pet) => {
         setAnimal(pet);
@@ -53,7 +68,6 @@ const Favorite = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const filterAnimals = [];
   const filter = () => {
     for (let j = 0; j < petsArr.length; j++) {
       for (let i = 0; i < animal.length; i++) {
@@ -62,6 +76,8 @@ const Favorite = () => {
         }
       }
     }
+    console.log("animal :", animal);
+    console.log("filterAnimals :", filterAnimals);
   };
   filter();
 
@@ -84,18 +100,25 @@ const Favorite = () => {
                 }}
               >
                 {pet.image[0] ? (
-                  <img src={require(`../../assets/img${pet.image[0]}`)} alt={pet.animalname} width="150"></img>
+                  <img
+                    src={require(`../../assets/img/pets${pet.image[0]}`)}
+                    alt={pet.animalname}
+                    width="150"
+                  ></img>
                 ) : null}
               </div>
               <div className="col-9">
                 <p>
-                  <strong> Nombre: </strong> {pet.animalname && capitalizeFirst(pet.animalname)}
+                  <strong> Nombre: </strong>{" "}
+                  {pet.animalname && capitalizeFirst(pet.animalname)}
                 </p>
                 <p>
-                  <strong> Locacion: </strong> {pet.location && capitalizeFirst(pet.location)}
+                  <strong> Locacion: </strong>{" "}
+                  {pet.location && capitalizeFirst(pet.location)}
                 </p>
                 <p>
-                  {pet.sex && capitalizeFirst(pet.sex)}, {pet.age}, {pet.species}
+                  {pet.sex && capitalizeFirst(pet.sex)}, {pet.age},{" "}
+                  {pet.species}
                 </p>
               </div>
               <div className="col-1">

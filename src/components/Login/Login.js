@@ -1,13 +1,17 @@
 import "./Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import axios from "axios";
 import validator from "validator";
+import { useGlobalContext } from "../../GlobalContext";
 
 const Login = () => {
+  const { newUser, setNewUser } = useGlobalContext();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
+  const notify = (text) => toast(text);
 
   const login = async (e) => {
     e.preventDefault();
@@ -18,17 +22,23 @@ const Login = () => {
           password: loginPassword,
         });
 
-        //console.log(user.data, " data")
-        const newUser = {_id: user.data._id, email: user.data.email, fundation: user.data.fundation, token: user.data.token, isAuthenticated:true}
-        localStorage.setItem('user', JSON.stringify(newUser));
+        const loginUser = {
+          _id: user.data._id,
+          email: user.data.email,
+          fundation: user.data.fundation,
+          token: user.data.token,
+          isAuthenticated: true,
+        };
+        localStorage.setItem("newUser", JSON.stringify(loginUser));
+        setNewUser(loginUser);
+        console.log("newUser", newUser);
+        navigate("/");
+      } catch (error) {
 
-        // console.log(user)
-          navigate('/');
-        } catch (error) {
         console.log(error.response);
       }
     } else {
-      alert("Set a valid email");
+      notify("Email invalido");
     }
   };
 

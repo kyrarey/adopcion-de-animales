@@ -43,6 +43,35 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    age: {
+      type: Number,
+      required: false,
+    },
+    city: {
+      type: String,
+      required: false,
+    },
+    housing: {
+      type: String,
+      required: false,
+    },
+    houseIsRented: {
+      type: Boolean,
+      required: false,
+    },
+    havePets: {
+      type: Boolean,
+      required: false,
+    },
+    isAllergic: {
+      type: Boolean,
+      required: false,
+    },
+    isFormComplete: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   { timestamps: false }
 );

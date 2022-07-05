@@ -20,7 +20,6 @@ const Sidebar = () => {
                     <Link className = {s.link} to={`/account/${id}`}> 
                         <h3 className={s.title}>Mi Cuenta</h3>
                         <img className={s.img} 
-                            link to={`/account/${id}`}
                             src={user.image 
                             ? user.image === "no_user" ? require(`../../assets/img/users/no_user.jpg`) : require(`../../assets/img/users${user.image}.jpg`)
                             : require(`../../assets/img/users/no_user.jpg`)
@@ -30,7 +29,16 @@ const Sidebar = () => {
                     </Link>
                 </div>
                 <div className={s.item}>
-                    <Link className = {s.link} to={`/favorite`}>
+                    <Link className = {s.link} to={`/account/form/${id}`}> 
+                        <h3 className={s.title}>Mi Formulario</h3>
+                        <img className={s.img} 
+                            src={require(`../../assets/img/form.jpg`)}
+                            alt="Favs">
+                        </img>
+                    </Link>
+                </div>
+                <div className={s.item}>
+                    <Link className = {s.link} to={`/account/favorite`}>
                         <h3 className={s.title}>Mis Favoritos</h3>
                         <img className={s.img} 
                             src={require(`../../assets/img/favs.jpg`)}
