@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import find from "../../hooks/find";
 import capitalizeFirst from "../../hooks/capitalizeFirst";
-import s from "./SinglePetCard.module.css";
+import { notLoggedIn, notFormCompleted } from "../../hooks/alert";
 import SingleSlider from "../SingleSlider/SingleSlider";
+import s from "./SinglePetCard.module.css";
 
 
 const SinglePetCard = () => {
   const params = useParams();
   const id = params.id;
   const navigate = useNavigate();
+
+  const isLoggedIn = true;
+  const isFormComplete = false;
 
   const [pet, setPet] = useState({
     "_id": "",
@@ -34,7 +38,17 @@ const SinglePetCard = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    navigate("/form")
+    if (isLoggedIn) {
+      if (isFormComplete) {
+        navigate("/form")
+      } else {
+        notFormCompleted();
+        navigate(`/account/form/edit/${id}`)
+      }
+    } else {
+        notLoggedIn();
+        navigate("/login");
+    }
   }
 
 
@@ -58,6 +72,7 @@ const SinglePetCard = () => {
             <p  className={s.info}>{pet.history}</p>
             <h4 className={s.subTitle}>Ubicación</h4>
             <p  className={s.info}>{pet.location && capitalizeFirst(pet.location)}</p>
+        
           </div>
           <button className={s.button} onClick={handleClick}>
             {`Adoptar a ${pet.animalname && capitalizeFirst(pet.animalname)}`}
@@ -69,7 +84,6 @@ const SinglePetCard = () => {
 
   )
 }
-
 
 export default SinglePetCard;
 
