@@ -43,6 +43,17 @@ const EditAccount = () => {
                                   ),
                         confirm_password: Yup.string("")
                                 .oneOf([Yup.ref('password'), null], 'La contraseña no coincide'),
+                        photo: Yup.mixed()
+                                .test(
+                                    "fileSize",
+                                    "El archivo es demasiado grande",
+                                    value => !value || (value && value.size <= 160*1024)
+                                )
+                                .test(
+                                    "fileFormat",
+                                    "El archivo debe tener formato .jpg",
+                                    value => !value || (value => value && ["image/jpg", "image/jpeg"].includes(value.type))
+                                ),
                     })}
                     onSubmit={values => {
                         const body = new FormData();
@@ -76,24 +87,35 @@ const EditAccount = () => {
                      
                         <div>Usuario</div>
                         <Field className={s.input} name="username" type="text" placeholder={user.username ? `${user.username}` : ""}/> <br/>
-                        <ErrorMessage className={s.error} name="username" /> <br/>
-
+                        <div className={s.error} >
+                            <ErrorMessage name="username" /> <br/>
+                        </div>
+                        
                         <div>E-mail</div>
                         <Field className={s.input} name="email" type="text" placeholder={user.email ? `${user.email}` : ""}/> <br/>
-                        <ErrorMessage className={s.error} name="email" /> <br/>
+                        <div className={s.error} >
+                            <ErrorMessage name="email" /> <br/>
+                        </div>
 
                         <div>Contraseña</div>
-                        <Field className={s.input} name="password" type="text" /> <br/> 
-                        <ErrorMessage className={s.error} name="password" /> <br/>
+                        <Field className={s.input} name="password" type="password" /> <br/> 
+                        <div className={s.error} >
+                            <ErrorMessage name="password" /> <br/>
+                        </div>
 
                         <div>Repetir contraseña</div>
-                        <Field className={s.input} name="confirm_password" type="text" /> <br/> 
-                        <ErrorMessage className={s.error} name="confirm_password" /> <br/>
-    
+                        <Field className={s.input} name="confirm_password" type="password" /> <br/> 
+                        <div className={s.error} >
+                            <ErrorMessage name="confirm_password" /> <br/>
+                        </div>
+
                         <div>Foto</div>
-                        <input name="photo" type="file" 
-                        onChange={e => formProps.setFieldValue("photo", e.target.files[0])}/><br/><br/>
-                        
+                        <input className= {s.input} name="photo" type="file" 
+                        onChange={e => formProps.setFieldValue("photo", e.target.files[0])}/><br/>
+                        <div className={s.error} >
+                            <ErrorMessage name="photo" /> <br/>
+                        </div>
+
                         <button className={s.button} 
                             type="submit">
                             LISTO

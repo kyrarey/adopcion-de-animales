@@ -19,7 +19,7 @@ const UserForm = () => {
         e.preventDefault();
         navigate(`/account/form/edit/${id}`)
     }
- 
+
     return (
         <div className={s.container}>
             <div className={s.card}>
@@ -32,17 +32,17 @@ const UserForm = () => {
                     <h4 className={s.subTitle}>Edad</h4>
                     <p  className={s.info}>{user.age}</p>
                     <h4 className={s.subTitle}>Ciudad de residencia</h4>
-                    <p  className={s.info}>{user.city}</p>
+                    <p  className={s.info}>{user.city&& capitalizeFirst(user.city)}</p>
                     <h4 className={s.subTitle}>Dirección</h4>
-                    <p  className={s.infoLarge}>{user.location}</p>
+                    <p  className={s.infoLarge}>{user.location && capitalizeFirst(user.location)}</p>
                     <h4 className={s.subTitle}>Tipo de vivienda</h4>
-                    <p  className={s.info}>{user.housing}</p>
+                    <p  className={s.info}>{user.housing && capitalizeFirst(user.housing)}</p>
                     <h4 className={s.subTitle}>Vivienda alquilada</h4>
-                    <p  className={s.info}>{user.houseIsRented}</p>
+                    <p  className={s.info}>{user.houseIsRented ? "Si" : "No"}</p>
                     <h4 className={s.subTitle}>Otras mascotas</h4>
-                    <p  className={s.info}>{user.havePets}</p>
+                    <p  className={s.info}>{user.havePets ? "Si" : "No"}</p>
                     <h4 className={s.subTitle}>Alergias de algún tipo</h4>
-                    <p  className={s.info}>{user.isAllergic}</p>
+                    <p  className={s.info}>{user.isAllergic ? "Si" : "No"}</p>
                     <h4 className={s.subTitle}>Acerca de mi (Reseña personal, estilo de vida, etc.)</h4>
                     <p  className={s.infoLarger}>{user.bio}</p>
                 </div>
