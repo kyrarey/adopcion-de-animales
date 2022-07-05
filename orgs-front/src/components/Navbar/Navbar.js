@@ -87,7 +87,7 @@ const Navbar = () => {
               </li> */}
               <li className="nav-item">
                 <Link to="/association/pages/1">
-                  <span className="nav-link">Fundaciones</span>
+                  <span className="nav-link">Otras Fundaciones</span>
                 </Link>
               </li>
               <li className="nav-item dropdown">
@@ -123,26 +123,7 @@ const Navbar = () => {
                 </ul>
               </li>
             </ul>
-            <ul className=" ">
-              <form className="nav-item d-flex align-self-center">
-                <div className="input-group ">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Busqueda"
-                    onChange={onChange}
-                  />
-                  <button
-                    className="btn btn-outline-secondary"
-                    type="button"
-                    id="button-addon2"
-                    onClick={onSearch}
-                  >
-                    {<GoSearch />}
-                  </button>
-                </div>
-              </form>
-            </ul>
+                    
             <ul className="navbar-nav ms-auto">
               <Link to="/">
                 <button className="btn" onClick={handlelogout}>
@@ -153,26 +134,7 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-            <ul className="searchBarOut">
-              <form className="nav-item d-flex align-self-center">
-                <div className="input-group ">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Busqueda"
-                    onChange={onChange}
-                  />
-                  <button
-                    className="btn btn-outline-secondary"
-                    type="button"
-                    id="button-addon2"
-                    onClick={onSearch}
-                  >
-                    {<GoSearch />}
-                  </button>
-                </div>
-              </form>
-            </ul>
+      
             <ul className="navbar-nav ms-auto">
               <Link to="/login">
                 <button className="btn"> Login </button>

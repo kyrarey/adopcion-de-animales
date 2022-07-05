@@ -7,6 +7,7 @@ import validator from "validator";
 import { useGlobalContext } from "../../GlobalContext";
 
 const Login = () => {
+  const [foundationName, setFoundationName] = useState("")
   const { newUser, setNewUser } = useGlobalContext();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -17,7 +18,8 @@ const Login = () => {
     e.preventDefault();
     if (validator.isEmail(loginEmail)) {
       try {
-        const user = await axios.post("http://localhost:3030/user/login", {
+        const user = await axios.post("http://localhost:3030/orgs/register", {
+          foundationName: foundationName,
           email: loginEmail,
           password: loginPassword,
         });
@@ -49,13 +51,22 @@ const Login = () => {
           <div className="col-md-6 mb-">
             <img
               className="img-fluid"
-              src="https://i0.wp.com/wipy.tv/wp-content/uploads/2019/01/Muri%C3%B3-el-perrito-m%C3%A1s-famosos-de-internet-2.jpg?fit=1000%2C600&ssl=1"
+              src="https://nupec.com/wp-content/uploads/2020/07/Captura-de-pantalla-2020-07-02-a-las-15.19.50.png"
             ></img>
           </div>
           <div className="col-md-6">
             <h3 className="signin-text mb-3">Log In</h3>
             <form>
-              <div className="form-group">
+            <div className="form-group">
+                <input
+                  className="form-control mt-3 mb-2"
+                  type="fundacion"
+                  name="text"
+                  placeholder="Nombre de la fundacion"
+                  onChange={(e) => setFoundationName(e.target.value)}
+                ></input>
+              </div>
+              <div className="form-group mt-3 mb-2">
                 <input
                   className="form-control"
                   type="email"

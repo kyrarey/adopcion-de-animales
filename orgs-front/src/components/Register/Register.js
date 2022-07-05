@@ -7,6 +7,7 @@ import validator from "validator";
 import { toast } from "react-toastify";
 
 const Register = () => {
+  const [foundationName, setFoundationName] = useState("")
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerEmail, setRegisterEmail] = useState("");
   const navigate = useNavigate();
@@ -18,7 +19,8 @@ const Register = () => {
 
     e.preventDefault();
     if (validator.isEmail(registerEmail)) {
-      await axios.post("http://localhost:3030/user/register", {
+      await axios.post("http://localhost:3030/orgs/register", {
+        foundationName: foundationName,
         email: registerEmail,
         password: registerPassword,
       });
@@ -37,18 +39,27 @@ const Register = () => {
           <div className="col-md-6 mb-">
             <img
               className="img-fluid"
-              src="https://i0.wp.com/wipy.tv/wp-content/uploads/2019/01/Muri%C3%B3-el-perrito-m%C3%A1s-famosos-de-internet-2.jpg?fit=1000%2C600&ssl=1"
+              src="https://nupec.com/wp-content/uploads/2020/07/Captura-de-pantalla-2020-07-02-a-las-15.19.50.png"
             ></img>
           </div>
           <div className="col-md-6">
             <h3 className="signin-text mb-3">Register</h3>
             <form>
+            <div className="form-group">
+                <input
+                  className="form-control mt-3 mb-2"
+                  type="fundacion"
+                  name="text"
+                  placeholder="Nombre de la fundacion"
+                  onChange={(e) => setFoundationName(e.target.value)}
+                ></input>
+              </div>
               <div className="form-group">
                 <input
-                  className="form-control"
+                  className="form-control mt-3 mb-2"
                   type="email"
                   name="email"
-                  placeholder="Email"
+                  placeholder="Email de Fundacion"
                   onChange={(e) => setRegisterEmail(e.target.value)}
                 ></input>
               </div>
