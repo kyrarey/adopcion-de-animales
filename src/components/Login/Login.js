@@ -1,9 +1,10 @@
 import "./Login.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
 import validator from "validator";
+import jwt_decode from "jwt-decode"
 
 const Login = () => {
   const [loginEmail, setLoginEmail] = useState("");
@@ -31,6 +32,28 @@ const Login = () => {
       notify("Email invalido");
     }
   };
+
+  //google identity services
+
+  function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token: ", response.credential);
+    let userObject = jwt_decode(response.credential);
+    console.log("esto es userObject: ", userObject);
+  }
+
+
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "612122618522-uosm7c7e9t124jnulbmlitb1isotp1oq.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      { theme: "outline", size: "large" }
+    )
+  }, [])
 
   return (
     <>
@@ -70,6 +93,7 @@ const Login = () => {
                 ¿No tenés cuenta?&nbsp;
                 <a href="/register">Crear cuenta</a>
               </p>
+          <div id="signInDiv"></div>
             </form>
           </div>
         </div>
