@@ -1,0 +1,25 @@
+.articleContainer {
+    font-family: var(--articleFont);
+    background-color: white;
+    border-style: solid;
+    border-color: var(--bGroundColor);
+    border-radius: 5%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    margin: 1.5% 13% 1.5% 11%;
+        padding: 4%;
+    text-align: center;
+    color: var(--mainColor);
+}
+
+.articleTitle {
+    padding-top: 3%;
+    font-family: var(--articleFont);
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.article {
+    text-align: justify;
+    font-size: 1.5em;
+    color: black;
+}
