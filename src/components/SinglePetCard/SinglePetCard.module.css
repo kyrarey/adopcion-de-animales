@@ -23,8 +23,9 @@
   color: var(--mainColor);
 }
 
-.content {
-
+.columns {
+  display: flex;
+  column-gap: 5%;
 }
 
 .text {
@@ -43,6 +44,10 @@
   font-size: 0.65em;
   margin-bottom: 3.5%;
   font-family: var(--articleFont);
+}
+
+.waIcon {
+  color: #00bb2d;
 }
 
 .button {
