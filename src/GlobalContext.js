@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 
 //inital state
 const GlobalContext = React.createContext({
-  user: {},
+  newUser: {},
 });
 
 export const useGlobalContext = () => {
@@ -12,15 +12,18 @@ export const useGlobalContext = () => {
 };
 
 export const GlobalProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [newUser, setNewUser] = useState({});
+  /* const [newFavorite, setNewFavorite] = useState([]); */
   const [animalSearch, setAnimalSearch] = useState([]);
   const [searchType, setSearchType] = useState("");
 
   return (
     <GlobalContext.Provider
       value={{
-        user,
-        setUser,
+        newUser,
+        setNewUser,
+        /* newFavorite,
+        setNewFavorite, */
         animalSearch,
         setAnimalSearch,
         searchType,

@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const fs = require('fs');
+const fs = require("fs");
 
 class UserServices {
   //registrar usuario nuevo
@@ -61,10 +61,16 @@ class UserServices {
     try {
       const data = await User.findByIdAndUpdate(id, body);
       //console.log("BODY", body)
-      if(fs.existsSync("src/assets/img/users/01.jpg")){
-        data.image =`/${data.id}.jpg` ;
-        fs.rename("src/assets/img/users/01.jpg",`src/assets/img/users${data.image}`, err => {if (err) console.log(err)})
-      } 
+      if (fs.existsSync("src/assets/img/users/01.jpg")) {
+        data.image = `/${data.id}.jpg`;
+        fs.rename(
+          "src/assets/img/users/01.jpg",
+          `src/assets/img/users${data.image}`,
+          (err) => {
+            if (err) console.log(err);
+          }
+        );
+      }
       return {
         error: false,
         data: {
@@ -76,7 +82,7 @@ class UserServices {
           bio: data.bio,
           image: data.image,
           location: data.location,
-        }
+        },
       };
     } catch (error) {
       console.error(error);
@@ -85,13 +91,12 @@ class UserServices {
         data: "error 404: User not found, changes couldn't be made",
       };
     }
-    
   }
 
   //eliminar user
   static async deleteOne(id) {
     try {
-      const result = await User.findByIdAndDelete(id);
+      const result = await User.findByIdAndRemove(id);
       return {
         error: false,
         data: "User deleted successfully",
