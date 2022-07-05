@@ -84,7 +84,7 @@ const Favorite = () => {
   return (
     <div className="container">
       <div className="favorite">
-        <h2 class="p-3 fs-1 border-top border-bottom border-2">
+        <h2 className="p-3 fs-1 border-top border-bottom border-2">
           {" "}
           <PetsIcon fontSize="large" /> Tu cucha{" "}
         </h2>
@@ -124,7 +124,7 @@ const Favorite = () => {
               <div className="col-1">
                 <button
                   type="button"
-                  class="btn"
+                  className="btn"
                   onClick={() => {
                     deleteAnimal(pet);
                   }}

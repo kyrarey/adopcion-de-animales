@@ -4,7 +4,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 
 const NotFound = () => {
   return (
-    <div class="notFound">
+    <div className="notFound">
       <h2>
         404: Esta pagina no existe! <ErrorIcon style={{ fontSize: 60 }} />
       </h2>
