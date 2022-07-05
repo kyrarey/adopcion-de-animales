@@ -19,12 +19,14 @@ import AssociationProfile from "./components/AssociationProfile/AssociationProfi
 import OrgGrid from "./components/FoundationGrid/FoundationGrid";
 
 const App = () => {
+
   const path = useLocation().pathname.slice(1,8);
 
   return (
     <GlobalProvider>
       <Navbar />
       {path === "account" ? <Sidebar /> : null}
+
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/animals/:id" element={<SinglePetCard />}></Route>
@@ -33,7 +35,7 @@ const App = () => {
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/account/:id" element={<Account />}/>
         <Route path="/account/edit/:id" element={<EditAccount />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search/:search" element={<Search />} />
         <Route path="/association/pages/:id" element={<OrgGrid />} />
         <Route path="/animals/pages/:id" element={<Grid />} />
         <Route path="/form" element={<AdoptantForm />} />

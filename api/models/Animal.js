@@ -47,6 +47,7 @@ var AnimalSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+AnimalSchema.index({ animalname: "text", sex: "text", age: "text", species: "text", location: "text" });
 const Animal = mongoose.model("Animal", AnimalSchema);
 
 module.exports = Animal;
