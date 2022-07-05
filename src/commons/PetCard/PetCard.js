@@ -7,12 +7,15 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { toast } from "react-toastify";
+import { useGlobalContext } from "../../GlobalContext";
 
 const PetCard = ({ pet }) => {
   const notify = (text) => toast(text);
+  const { newUser, setNewUser } = useGlobalContext();
 
-  const user = JSON.parse(localStorage.getItem("user"));
-  //console.log("user :", user);
+  const userStorage = !!localStorage.getItem("newUser")
+    ? JSON.parse(localStorage.getItem("newUser"))
+    : {};
 
   let isFav = false;
 
@@ -21,7 +24,7 @@ const PetCard = ({ pet }) => {
     axios
       .post("http://localhost:3030/favorite/add", {
         animalId: pet._id,
-        userId: user._id,
+        userId: userStorage._id,
       })
       .then(() => {
         isFav ? (isFav = false) : (isFav = true);
@@ -39,7 +42,8 @@ const PetCard = ({ pet }) => {
   return (
     <div className={s.petCard}>
       <Link className={s.link} to={`/animals/${pet._id}`}>
-        <img className={s.petImage}
+        <img
+          className={s.petImage}
           src={require(`../../assets/img/pets${pet.image[0]}`)}
           alt={pet.animalname}
         ></img>
