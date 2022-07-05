@@ -27,8 +27,6 @@ import NewComment from "./components/NewComment/NewComment";
 
 const App = () => {
   const path = useLocation().pathname.slice(1, 8);
-
-
   return (
     <GlobalProvider>
       <ToastContainer />

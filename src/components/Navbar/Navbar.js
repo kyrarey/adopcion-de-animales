@@ -2,11 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../../GlobalContext";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const [search, setSearch] = useState()
   const notify = (text) => toast(text);
   const navigate = useNavigate();
   const { newUser, setNewUser } = useGlobalContext();
