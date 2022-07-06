@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const NewComment = () => {
   const notify = (text) => toast(text);
-  const { foundationId } = useParams();
+  const { foundationId } = useParams().id;
   const [comment, setComment] = useState("");
   const navigate = useNavigate();
 
@@ -18,17 +18,17 @@ const NewComment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:3030/comment/add`, {
+      .post(`http://localhost:3030/comment/add/${foundationId}`, {
         comment: comment,
         userId: user._id,
-        /* foundationId: foundation._id, //? */
+        foundationId: foundationId,
       })
       .then(() => {
-        notify("Creaste exitosamente tu comentario");
-        navigate(`http://localhost:3030/comment/${foundationId}`);
+        notify("Comentario publicado");
+        navigate(`/comment/${foundationId}`);
       })
       .catch(() => {
-        notify("Ya dejaste tu comentario sobre este producto");
+        notify("Ya dejaste un comentario");
       });
   };
 
