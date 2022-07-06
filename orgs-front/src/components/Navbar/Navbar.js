@@ -60,6 +60,7 @@ const Navbar = () => {
             <span></span>
           </button>
         </div>
+
         {userStorage.isAuthenticated ? (
           <div
             className="collapse navbar-collapse justify-content-between"
