@@ -43,8 +43,9 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link to="/">
-          <span className="navbar-brand">Pet Adoption</span>
+          <span className="navbar-brand">Pet House</span>
         </Link>
+        <a href='http://localhost:3000/' className="navbar-brand">Pet Adoption</a>
         <button
           className="navbar-toggler"
           type="button"

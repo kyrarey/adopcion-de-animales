@@ -45,6 +45,7 @@ const Navbar = () => {
         <Link to="/">
           <span className="navbar-brand">Pet Adoption</span>
         </Link>
+        <a href='http://localhost:3005/' className="navbar-brand">Pet House</a>
         <button
           className="navbar-toggler"
           type="button"
