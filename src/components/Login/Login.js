@@ -5,8 +5,10 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import validator from "validator";
 import jwt_decode from "jwt-decode"
+import { useGlobalContext } from "../../GlobalContext";
 
 const Login = () => {
+  const { newUser, setNewUser } = useGlobalContext();
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
@@ -20,12 +22,20 @@ const Login = () => {
           email: loginEmail,
           password: loginPassword,
         });
-        //console.log(user.data, " data")
-        const newUser = {_id: user.data._id, email: user.data.email, fundation: user.data.fundation, token: user.data.token, isAuthenticated:true}
-        localStorage.setItem('user', JSON.stringify(newUser));
-        // console.log(user)
+
+        const loginUser = {
+          _id: user.data._id,
+          email: user.data.email,
+          fundation: user.data.fundation,
+          token: user.data.token,
+          isAuthenticated: true,
+        };
+        localStorage.setItem("newUser", JSON.stringify(loginUser));
+        setNewUser(loginUser);
+        console.log("newUser", newUser);
         navigate("/");
       } catch (error) {
+
         console.log(error.response);
       }
     } else {
@@ -89,7 +99,7 @@ const Login = () => {
               <button onClick={login} className="btn btn-class">
                 Login
               </button>
-              <p class="mt-2">
+              <p className="mt-2">
                 ¿No tenés cuenta?&nbsp;
                 <a href="/register">Crear cuenta</a>
               </p>

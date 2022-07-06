@@ -64,7 +64,7 @@ const Register = () => {
               <button onClick={register} className="btn btn-class">
                 Login
               </button>
-              <p class="mt-2">
+              <p className="mt-2">
                 ¿Ya tenés una cuenta?&nbsp;
                 <a href="/login">Ingresá acá</a>
               </p>

@@ -42,13 +42,13 @@ router.post('/login', async (req, res) => {
       error: "invalid user or password",
     });
   }
-  console.log(user)
+  // console.log(user)
   const userForToken = {
     id: user.id,
     mail: user.mail,
   };
   const token = jwt.sign(userForToken, "organizacion.messi");
-  console.log(user, '   user')
+  // console.log(user, '   user')
   res.send({
     ...user._doc,
     token,
