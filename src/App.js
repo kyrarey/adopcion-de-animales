@@ -51,8 +51,11 @@ const App = () => {
         {/* <Route path="/orgs/pages/:id" element={<OrgGrid />} /> */}
         {/* fundacion */}
         <Route path="/associationProfile" element={<AssociationProfile />} />
-        <Route path="/comment/:id" element={<Comment />} />
-        <Route path="/comment/add/:id" element={<NewComment />} />
+        <Route path="/associationProfile/comment/:id" element={<Comment />} />
+        <Route
+          path="/associationProfile/comment/add/:id"
+          element={<NewComment />}
+        />
         <Route path="*" element={<Navigate to="404" />} />
         <Route path="404" element={<NotFound />} />
       </Routes>
