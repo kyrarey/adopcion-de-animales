@@ -12,10 +12,10 @@ const Navbar = () => {
   const navigate = useNavigate();
   const { newUser, setNewUser } = useGlobalContext();
 
+
   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
     : {};
-
   const handlelogout = (e) => {
     e.preventDefault();
     axios.get("http://localhost:3030/user/logout").then((res) => {
@@ -45,6 +45,7 @@ const Navbar = () => {
         <Link to="/">
           <span className="navbar-brand">Pet Adoption</span>
         </Link>
+        <a href='http://localhost:3005/' className="navbar-brand">Pet House</a>
         <button
           className="navbar-toggler"
           type="button"

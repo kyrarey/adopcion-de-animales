@@ -3,11 +3,25 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import find from "../../hooks/find";
+import { useGlobalContext } from "../../GlobalContext";
 import "./Comment.css";
 
 const Comment = () => {
-  const { foundationId } = useParams();
   const [comment, setComment] = useState("");
+  const [foundation, setFoundation] = useState({});
+  const { newUser } = useGlobalContext();
+  const { foundationId } = useParams().id;
+
+  const userStorage = !!localStorage.getItem("newUser")
+    ? JSON.parse(localStorage.getItem("newUser"))
+    : {};
+
+  useEffect(() => {
+    find(`/user/account/${foundationId}`)
+      .then((foundationObj) => setFoundation(foundationObj))
+      .catch((error) => console.log(error));
+  }, [foundationId]);
 
   useEffect(() => {
     axios
@@ -36,11 +50,16 @@ const Comment = () => {
                   <div className="col-2">
                     <div>
                       <img
-                        id="img"
-                        src="https://moderncss.dev/img/posts/26/avatar1.png"
-                      >
-                        {" "}
-                      </img>
+                        className="userImg"
+                        src={
+                          userStorage.image
+                            ? userStorage.image === "no_user"
+                              ? require(`../../assets/img/users/no_user.jpg`)
+                              : require(`../../assets/img/users${userStorage.image}.jpg`)
+                            : require(`../../assets/img/users/no_user.jpg`)
+                        }
+                        alt="Foto de perfil"
+                      ></img>
                     </div>
                     <div id="date">
                       <p className="text-left">
@@ -59,7 +78,7 @@ const Comment = () => {
       </ul>
       <div className="pb-5" align="center">
         <Link to={`/comment/add/${foundationId}`}>
-          <button type="button" className="btn btn-default cart">
+          <button type="button" className="btn btn-default">
             Agregar comentario
           </button>
         </Link>

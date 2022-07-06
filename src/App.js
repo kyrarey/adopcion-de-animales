@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/animals/:id" element={<SinglePetCard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/favorite" element={<Favorite />} />
+        {/* <Route path="/favorite" element={<Favorite />} /> */}
         <Route path="/account/:id" element={<Account />} />
         <Route path="/account/edit/:id" element={<EditAccount />} />
         <Route path="/search/:search" element={<Search />} />
@@ -51,8 +51,11 @@ const App = () => {
         {/* <Route path="/orgs/pages/:id" element={<OrgGrid />} /> */}
         {/* fundacion */}
         <Route path="/associationProfile" element={<AssociationProfile />} />
-        <Route path="/comment/:id" element={<Comment />} />
-        <Route path="/comment/add/:id" element={<NewComment />} />
+        <Route path="/associationProfile/comment/:id" element={<Comment />} />
+        <Route
+          path="/associationProfile/comment/add/:id"
+          element={<NewComment />}
+        />
         <Route path="*" element={<Navigate to="404" />} />
         <Route path="404" element={<NotFound />} />
       </Routes>
