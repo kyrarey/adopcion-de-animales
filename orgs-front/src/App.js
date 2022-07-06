@@ -4,6 +4,7 @@ import Grid from "./components/Grid/Grid";
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Navbar from "./components/Navbar/Navbar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer";
 import { ToastContainer } from "react-toastify";
 import { GlobalProvider } from "./GlobalContext";
@@ -18,6 +19,7 @@ function App() {
   
     <ToastContainer />
      <Navbar />
+     {path === "account" ? <Sidebar /> : null}
 
       <Routes>
         <Route path="/" element={<Home />} />
