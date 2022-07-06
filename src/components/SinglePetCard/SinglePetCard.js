@@ -13,8 +13,12 @@ const SinglePetCard = () => {
   const id = params.id;
   const navigate = useNavigate();
 
-  const isLoggedIn = true;
+
   const isFormComplete = false;
+  const user = JSON.parse(localStorage.getItem("user"));
+  const isLoggedIn = user.isAuthenticated;
+  console.log("useStorage", user)
+  
 
   const [pet, setPet] = useState({
     "_id": "",
