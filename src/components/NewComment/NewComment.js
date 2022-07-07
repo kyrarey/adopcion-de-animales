@@ -17,6 +17,7 @@ const NewComment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // revisar
     axios
       .post(`http://localhost:3030/comment/add/${foundationId}`, {
         comment: comment,

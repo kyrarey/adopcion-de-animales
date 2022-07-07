@@ -34,12 +34,14 @@ class AnimalServices {
       };
     }
   }
+
   static async addOne(body) {
+  
     try {
-      await Animal.create(body);
+      const data = await Animal.create(body);
       return {
         error: false,
-        data: body,
+        data: data,
       };
     } catch (error) {
       return {
@@ -50,10 +52,10 @@ class AnimalServices {
   }
   static async updateOne(id, body) {
     try {
-      await Animal.findByIdAndUpdate(id, body);
+      const data = await Animal.findByIdAndUpdate(id, body);
       return {
         error: false,
-        data: "Animal updated successfully",
+        data: data,
       };
     } catch (error) {
       console.error(error);

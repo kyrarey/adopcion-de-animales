@@ -25,6 +25,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Comment from "./components/Comment/Comment";
 import NewComment from "./components/NewComment/NewComment";
 
+
 const App = () => {
   const path = useLocation().pathname.slice(1, 8);
   return (

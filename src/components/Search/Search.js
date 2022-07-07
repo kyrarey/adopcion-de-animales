@@ -12,7 +12,7 @@ const SearchResult = () => {
       .get(`http://localhost:3030/search/${type.search}`)
       .then((res) => res.data)
       .then((search) => setSearch(search));
-  }, []);
+  }, [type]);
 
   return (
     <div>

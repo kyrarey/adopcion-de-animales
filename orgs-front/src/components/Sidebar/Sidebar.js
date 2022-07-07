@@ -31,11 +31,13 @@ const Sidebar = () => {
                     </Link>
                 </div>
                 <div className={s.item}>
+                    <Link>
                     <h3 className={s.title}>Animales</h3>
                     <img className={s.img} 
                         src={require(`../../assets/img/animals.jpg`)}
                         alt="">
                     </img>
+                    </Link>
                 </div>
             </div>
         </div>

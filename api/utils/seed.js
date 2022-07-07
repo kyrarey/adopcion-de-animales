@@ -3,6 +3,7 @@ const Species = require("../models/Species");
 // const User = require('../models/User')
 const Animal = require("../models/Animal");
 const axios = require("axios");
+const UserFoundation = require("../models/UserFoundation")
 
 mongoose
   .connect("mongodb://localhost:27017/AnimalesFelices", {
@@ -289,11 +290,80 @@ const fakeAnimals = [
   },
 ];
 
+const fakeOrgs = [
+  {
+      foundationName: "Proyecto 4 patas",
+      image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/188/849/themes/common/logo-1866482157-1574635760-6cf4fcbbca71b55a01145347adaf5bde1574635760.png?0",
+      location: "Buenos Aires, Argentina",
+      description: "Proyecto 4 Patas (P4P) es una organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
+      email:"proyecto4Patas@email.com",
+      password:"1234",
+    },
+    {
+      foundationName: "El campito refugio",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU",
+      location: "Buenos Aires, Argentina",
+      description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
+      email:"elcampito@email.com",
+      password:"1234",
+    },
+    {
+      foundationName: "Patitas al rescate",
+      image: "https://d1fdloi71mui9q.cloudfront.net/DqXHZc8TzCbpsxCGzZ5Z_8LC568lCZ06642U1",
+      location: "Cordoba, Argentina",
+      description: "Rescate, rehabilitación y adopción ",
+      email:"patitas@email.com",
+      password:"1234",
+    },
+    {
+      foundationName: "Zaguates",
+      image: "https://scontent.faep8-3.fna.fbcdn.net/v/t31.18172-8/12182611_452872468230452_8616442658070815663_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hZ7oSDSxIbUAX8gz1ZF&_nc_ht=scontent.faep8-3.fna&oh=00_AT8Asm_WHXdyb8n6PFZ8G6vB7pQlkMIO3K8_Wy8Eq4BVCA&oe=62EB29F6",
+      location: "Zona Norte, Buenos Aires",
+      description: "Somos proteccionistas independientes, hace años que rescatamos animales en situación de calle, en estados deplorables, pidiendo a gritos dejar de ser invisibles.",
+      email:"zaguates@email.com",
+      password:"1234",
+    },
+    {
+      foundationName: "Proyecto 14 patas",
+      image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/188/849/themes/common/logo-1866482157-1574635760-6cf4fcbbca71b55a01145347adaf5bde1574635760.png?0",
+      location: "Buenos Aires, Argentina",
+      description: "Proyecto 14 Patas (P4P) es una organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
+      email:"proyecto4Patas@email.com",
+      password:"1234",
+    },
+    {
+      foundationName: "El refugio",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU",
+      location: "Buenos Aires, Argentina",
+      description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
+      email:"elrefugio@email.com",
+      password:"1234",
+    },
+    {
+      foundationName: "Patitas contentas",
+      image: "https://d1fdloi71mui9q.cloudfront.net/DqXHZc8TzCbpsxCGzZ5Z_8LC568lCZ06642U1",
+      location: "Jujuy, Argentina",
+      description: "Rescate, rehabilitación y adopción ",
+      email:"patitascontentas@email.com",
+      password:"1234",
+    },
+    {
+      foundationName: "Callejeritos Brown",
+      image: "https://www.callejeritosalmirantebrown.org/wp-content/uploads/2020/09/LOGO-CALLEJERITOS-original-01.png",
+      location: "Almirante Brown, Buenos Aires",
+      description: "Callejeritos de Almirante Brown es una Asociación sin fines de lucro, que nace durante el año 2011, fue creada por un grupo de vecinos preocupados por el maltrato y abandono de animales en situación de calle  en las ciudades. Tratando, desde nuestra humilde posibilidad, hacerles la vida más sencilla a quienes han sufrido la desgracia de vivir fuera de un hogar, bajo la indiferencia y el abandono de la gente.",
+      email:"callejeritos@email.com",
+      password:"1234",
+    },
+]
+
 const seedDb = async () => {
   await Animal.deleteMany();
   await Animal.insertMany(fakeAnimals);
   await Species.deleteMany();
   await Species.insertMany(species);
+  await UserFoundation.deleteMany();
+  await UserFoundation.insertMany(fakeOrgs);
 };
 
 seedDb();

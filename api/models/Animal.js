@@ -35,7 +35,7 @@ var AnimalSchema = new mongoose.Schema(
     },
     personality: {
       type: String, 
-      required: true,
+      // required: true, sacaria esto como un requisito
     },
     age: {
       type: String,

@@ -55,11 +55,32 @@ class UserFoundationServices {
 
   //editar usuario
   static async updateOne(id, body) {
+    console.log("entra en el update", body);
     try {
-      await UserFoundation.findByIdAndUpdate(id, body);
+      const data = await UserFoundation.findByIdAndUpdate(id, body);
       return {
         error: false,
-        data: "User updated successfully",
+        data: data,
+      };
+    } catch (error) {
+      console.error(error);
+      return {
+        error: true,
+        data: "error 404: User not found, changes couldn't be made",
+      };
+    }
+  }
+
+  static async addPets(id, body) {
+    console.log("entra en el update", id ,(Object.keys(body)[0]));
+    try {
+      const data = await UserFoundation.updateOne(
+        { _id: id },
+        { $push: { petsForAdoption: (Object.keys(body)[0]) } }
+      );
+      return {
+        error: false,
+        data: data,
       };
     } catch (error) {
       console.error(error);

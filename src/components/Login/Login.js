@@ -6,12 +6,12 @@ import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
 import validator from "validator";
-/* import { useGlobalContext } from "../../GlobalContext"; */
+ import { useGlobalContext } from "../../GlobalContext";
 import jwt_decode from "jwt-decode"
 
 const Login = () => {
   const { toggleAuth } = useContext(AuthContext);
-/*   const { newUser, setNewUser } = useGlobalContext(); */
+  const { newUser, setNewUser } = useGlobalContext(); 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();

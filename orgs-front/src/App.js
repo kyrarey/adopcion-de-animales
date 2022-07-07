@@ -8,24 +8,30 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer";
 import { ToastContainer } from "react-toastify";
 import { GlobalProvider } from "./GlobalContext";
-
-
+import AddAnimal from "./components/AddAnimal/AddAnimal"
+import EditAnimal from "./components/EditAnimal/EditAnimal"
 
 
 function App() {
   const path = useLocation().pathname.slice(1, 8)
   return (
     <GlobalProvider>
-  
     <ToastContainer />
      <Navbar />
      {path === "account" ? <Sidebar /> : null}
 
       <Routes>
         <Route path="/" element={<Home />} />
+        {/* Hay que hacer el individual de cada fundacion */}
+        {/* <Route path="/account/:id" element={< />} /> */}
+        {/* grilla con todos los perros */}
+        {/* <Route path="/account/our-pets" element={< />} /> */}
         <Route path="/foundations/pages/:id" element={<Grid />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        {/* estas de aca abajo van con /account que no se por que no funciona*/}
+        <Route path="/foundations/add-animal" element={<AddAnimal />} />
+        <Route path="/foundations/edit-animal/:id" element={<EditAnimal />} />
       </Routes>
      <Footer /> 
       </GlobalProvider>

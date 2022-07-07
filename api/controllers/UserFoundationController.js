@@ -43,6 +43,18 @@ class UserControllers {
     res.status(200).send(data);
   }
 
+  static async addPets(req, res) {
+    console.log(req.params, "params control", req.body)
+    const { error, data } = await UserFoundationServices.addPets(
+      req.params.userId,
+      req.body
+    );
+    if (error) {
+      return res.status(404).send(data);
+    }
+    res.status(200).send(data);
+  }
+
   //eliminar user
   static async deleteOne(req, res) {
     const { error, data } = await UserFoundationServices.deleteOne(req.params.id);

@@ -7,7 +7,7 @@ const UserFoundationSchema = new mongoose.Schema(
       required: true,
     },
     petsForAdoption:{
-        type: [Object],
+        type: Array,
     },
     internUsers: {
       type: [Object],
