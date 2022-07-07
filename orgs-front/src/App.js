@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import { GlobalProvider } from "./GlobalContext";
 import AddAnimal from "./components/AddAnimal/AddAnimal"
 import EditAnimal from "./components/EditAnimal/EditAnimal"
+import Account from "./components/Account/Account";
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         {/* Hay que hacer el individual de cada fundacion */}
-        {/* <Route path="/account/:id" element={< />} /> */}
+        <Route path="/account/:id" element={<Account />} />
+        {/* <Route path="/account/edit/:id" element={<EditAccount />} /> */}
         {/* grilla con todos los perros */}
         {/* <Route path="/account/our-pets" element={< />} /> */}
         <Route path="/foundations/pages/:id" element={<Grid />} />

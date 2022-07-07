@@ -22,7 +22,8 @@ class UserControllers {
 
   //retornar usuario logeado
   static async getOne(req, res) {
-    const { error, data } = await UserFoundationServices.getOne(req.params.id);
+    console.log("req.params: ", req.params);
+    const { error, data } = await UserFoundationServices.getOne(req.params.userId);
     if (error) {
       return res.status(404).send(data);
     }
