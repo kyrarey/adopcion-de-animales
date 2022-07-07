@@ -45,11 +45,57 @@ const Login = () => {
 
   //google identity services
 
-  function handleCallbackResponse(response) {
+  async function handleCallbackResponse(response) {
     console.log("Encoded JWT ID token: ", response.credential);
     let userObject = jwt_decode(response.credential);
     console.log("esto es userObject: ", userObject);
-  }
+
+  try{
+    const user = await axios.post("http://localhost:3030/user/login", {
+          email: userObject.email,
+          password: userObject.sub,
+        });
+        console.log("esto es user en login: ", user)
+
+        const loginUser = {
+          _id: user.data._id,
+          email: user.data.email,
+          fundation: user.data.fundation,
+          token: user.data.token,
+          isAuthenticated: true,
+        };
+        localStorage.setItem("newUser", JSON.stringify(loginUser));
+        setNewUser(loginUser);
+        console.log("newUser", newUser);
+        navigate("/");
+  } catch(error) {
+    setLoginEmail(userObject.email) // no haria falta modificar ambos estados
+    setLoginPassword(userObject.sub)
+            await axios.post("http://localhost:3030/user/register", {
+          email: userObject.email,
+          password: userObject.sub,
+          image: userObject.picture, // todavia no me toma la imagen
+          name: userObject.given_name,
+          lastname: userObject.family_name,
+        });
+        
+        const user = await axios.post("http://localhost:3030/user/login", {
+          email: userObject.email,
+          password: userObject.sub,
+        });
+
+        const loginUser = {
+          _id: user.data._id,
+          email: user.data.email,
+          fundation: user.data.fundation,
+          token: user.data.token,
+          isAuthenticated: true,
+        };
+        localStorage.setItem("newUser", JSON.stringify(loginUser));
+        setNewUser(loginUser);
+        console.log("newUser", newUser);
+        navigate("/");
+}}
 
 
   useEffect(() => {
