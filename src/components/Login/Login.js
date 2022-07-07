@@ -5,13 +5,19 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
+import find from "../../hooks/find";
 import validator from "validator";
  import { useGlobalContext } from "../../GlobalContext";
 import jwt_decode from "jwt-decode"
 
 const Login = () => {
-  const { toggleAuth } = useContext(AuthContext);
-  const { newUser, setNewUser } = useGlobalContext(); 
+
+  //const { toggleAuth } = useContext(AuthContext);
+  //const { newUser, setNewUser } = useGlobalContext(); 
+
+  const { loggedUser, toggleAuth } = useContext(AuthContext);
+/*   const { newUser, setNewUser } = useGlobalContext(); */
+
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
@@ -36,7 +42,8 @@ const Login = () => {
 /*           isAuthenticated: true, */
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-        toggleAuth(loginUser);
+        find(`/favorite/${loggedUser._id}`)
+        .then(animals => toggleAuth(loginUser, animals));
         //setNewUser(loginUser);
         navigate("/");
       } catch (error) {
@@ -71,8 +78,13 @@ const Login = () => {
           isAuthenticated: true,
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
+
         toggleAuth(loginUser);
         // console.log("newUser", newUser);
+
+        /* setNewUser(loginUser); */
+        /* console.log("newUser", newUser); */
+
         navigate("/");
   } catch(error) {
     setLoginEmail(userObject.email) // no haria falta modificar ambos estados
@@ -99,7 +111,6 @@ const Login = () => {
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
         toggleAuth(loginUser);
-        // console.log("newUser", newUser);
         navigate("/");
 }}
 
