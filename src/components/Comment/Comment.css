@@ -1,0 +1,17 @@
+.comment {
+  margin: 50px;
+  background-color: rgb(215, 201, 231);
+  border: var(--cardShadow);
+}
+
+.comment h3 {
+  font-size: 40px;
+  padding: 20px;
+  font-family: var(--bannerFont);
+  color: var(--mainColor);
+}
+
+.comment p {
+  font-size: 17px;
+  font-family: var(--articleFont);
+}
