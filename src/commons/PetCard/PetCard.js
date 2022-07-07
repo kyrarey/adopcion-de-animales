@@ -1,6 +1,7 @@
 import React from "react";
 import { useContext } from 'react';
 import { AuthContext } from "../../context/AuthContext";
+import { FavContext } from "../../context/FavContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import s from "./PetCard.module.css";
@@ -12,7 +13,8 @@ import { toast } from "react-toastify";
 /* import { useGlobalContext } from "../../GlobalContext"; */
 
 const PetCard = ({ pet }) => {
-  const { loggedUser, favsUser } = useContext(AuthContext);
+  const { loggedUser } = useContext(AuthContext);
+  const { favPets } = useContext(FavContext);
   const notify = (text) => toast(text);
 /*   const { newUser, setNewUser } = useGlobalContext();
 
@@ -24,8 +26,8 @@ const PetCard = ({ pet }) => {
 
   const addToFav = (e) => {
     e.preventDefault();
-    console.log(favsUser)
-    if(favsUser) favsUser.filter(animal => animal.animalId === pet._id).length > 0 ? isFav = true : isFav = false;
+    console.log(favPets)
+    if(favPets) favPets.filter(animal => animal.animalId === pet._id).length > 0 ? isFav = true : isFav = false;
     console.log(isFav)
     if (!isFav) {
     axios

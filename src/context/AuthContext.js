@@ -6,8 +6,6 @@ const authContextInitialState = {
   loggedUser: null,
   isAuthenticated: false,
   toggleAuth: () => null,
-  favsUser: [],
-  listFavs: () => null,
 };
 
 export const AuthContext = createContext(authContextInitialState);
@@ -17,23 +15,21 @@ const AuthContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState({
     loggedUser: null,
     isAuthenticated: false,
-    favsUser: [],
   });
 
-  const toggleAuth = (user, pets) =>
+  const toggleAuth = (user) =>
     setLoggedIn({
       loggedUser: user,
       isAuthenticated: !loggedIn.isAuthenticated,
-      favsUser: pets,
     });
 
-    useEffect(() => {
+  useEffect(() => {
       const userStorage = JSON.parse(localStorage.getItem("newUser"));
       if(userStorage) {
         find(`/favorite/${userStorage._id}`)
-        .then(animals => setLoggedIn({ loggedUser: userStorage, isAuthenticated: true, favsUser: animals }))
+        .then(animals => setLoggedIn({ loggedUser: userStorage, isAuthenticated: true }))
       } else {
-        setLoggedIn({ loggedUser: null, isAuthenticated: false, favsUser: [] })
+        setLoggedIn({ loggedUser: null, isAuthenticated: false })
       }
     }, []);
 

@@ -4,31 +4,35 @@ import find from "../hooks/find";
 
 //estado inicial para el contexto
 const favContextInitialState = {
-  favs: [],
-  toggleFav: () => null,
+  favPets: [],
+  getFavs: () => null,
 };
 
 export const FavContext = createContext(favContextInitialState);
 
 // componente provider
 const FavContextProvider = ({ children }) => {
-  const [favPets, setFavPets] = useState([]);
-  const toggleFav = pets => setFavPets(pets);
+  const [favPetsUser, setFavPetsUser] = useState({
+    favPets: []
+  });
+  
+  const getFavs = pets => setFavPetsUser({
+    favPets: pets,
+  });
 
 
   useEffect(() => {
     const userStorage = JSON.parse(localStorage.getItem("newUser"));
     if(userStorage) {
       find(`/favorite/${userStorage._id}`)
-      .then(animals => {setFavPets(animals)
-      console.log(favPets)})
+      .then(animals => setFavPetsUser({favPets: animals}))
     } else {
-      setFavPets([])
+      setFavPetsUser([])
     }
    }, []);
 
   return (
-    <FavContext.Provider value={{ ...favPets, toggleFav }}>
+    <FavContext.Provider value={{ ...favPetsUser, getFavs }}>
       {children}
     </FavContext.Provider>
   );

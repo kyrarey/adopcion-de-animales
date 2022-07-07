@@ -39,7 +39,6 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
     "react-toastify": "^9.0.5",
-    "redux": "^4.2.0",
     "sass": "^1.53.0",
     "sweetalert2": "^11.4.20",
     "validator": "^13.7.0",
@@ -74,7 +73,6 @@
   },
   "devDependencies": {
     "concurrently": "^7.2.2",
-    "nodemon": "^2.0.18",
-    "redux-devtools": "^3.7.0"
+    "nodemon": "^2.0.18"
   }
 }

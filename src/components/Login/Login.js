@@ -1,22 +1,18 @@
 import "./Login.css";
 import { useContext } from 'react';
 import { AuthContext } from "../../context/AuthContext";
+import { FavContext } from "../../context/FavContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
 import find from "../../hooks/find";
 import validator from "validator";
- import { useGlobalContext } from "../../GlobalContext";
 import jwt_decode from "jwt-decode"
 
 const Login = () => {
-
-  //const { toggleAuth } = useContext(AuthContext);
-  //const { newUser, setNewUser } = useGlobalContext(); 
-
-  const { loggedUser, toggleAuth } = useContext(AuthContext);
-/*   const { newUser, setNewUser } = useGlobalContext(); */
+  const { toggleAuth } = useContext(AuthContext);
+  const { getFavs } = useContext(FavContext);
 
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -39,15 +35,13 @@ const Login = () => {
           isFormComplete: user.data.isFormComplete,
           fundation: user.data.fundation,
           token: user.data.token,
-/*           isAuthenticated: true, */
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-        find(`/favorite/${loggedUser._id}`)
-        .then(animals => toggleAuth(loginUser, animals));
-        //setNewUser(loginUser);
+        toggleAuth(loginUser);
+        find(`/favorite/${loginUser._id}`)
+        .then(animals => animals ? getFavs(animals) : getFavs([]));
         navigate("/");
       } catch (error) {
-
         console.log(error.response);
       }
     } else {
@@ -73,18 +67,15 @@ const Login = () => {
         const loginUser = {
           _id: user.data._id,
           email: user.data.email,
+          isFormComplete: user.data.isFormComplete,
           fundation: user.data.fundation,
           token: user.data.token,
           isAuthenticated: true,
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-
         toggleAuth(loginUser);
-        // console.log("newUser", newUser);
-
-        /* setNewUser(loginUser); */
-        /* console.log("newUser", newUser); */
-
+        find(`/favorite/${loginUser._id}`)
+        .then(animals => animals ? getFavs(animals) : getFavs([]));
         navigate("/");
   } catch(error) {
     setLoginEmail(userObject.email) // no haria falta modificar ambos estados
@@ -105,12 +96,15 @@ const Login = () => {
         const loginUser = {
           _id: user.data._id,
           email: user.data.email,
+          isFormComplete: user.data.isFormComplete,
           fundation: user.data.fundation,
           token: user.data.token,
           isAuthenticated: true,
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
         toggleAuth(loginUser);
+        find(`/favorite/${loginUser._id}`)
+        .then(animals => animals ? getFavs(animals) : getFavs([]));
         navigate("/");
 }}
 
