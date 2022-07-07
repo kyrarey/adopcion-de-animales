@@ -127,7 +127,7 @@ const AssociationProfile = () => {
           </div>
         </div>
       </div>
-      {/*   <Comment /> */}
+      <Comment />
     </section>
   );
 };

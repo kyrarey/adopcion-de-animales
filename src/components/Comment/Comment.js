@@ -11,43 +11,38 @@ const Comment = () => {
   const [comment, setComment] = useState("");
   const [foundation, setFoundation] = useState({});
   const { newUser } = useGlobalContext();
-  const { foundationId } = useParams().id;
+  /* const { foundationId } = useParams().id; */
 
   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
     : {};
 
-  useEffect(() => {
+  /*  useEffect(() => {
     find(`/user/account/${foundationId}`)
       .then((foundationObj) => setFoundation(foundationObj))
       .catch((error) => console.log(error));
-  }, [foundationId]);
+  }, [foundationId]); */
 
-  useEffect(() => {
+  /*  useEffect(() => {
     axios
       .get(`http://localhost:3030/comment/${foundationId}`)
       .then((res) => res.data)
       .then((review) => setComment(review));
-  }, []);
+  }, []); */
 
   return (
-    <div>
+    <div className="comment">
       <ul>
-        <div className="subtitle">
-          <h3 align="center">Comentarios</h3>
-        </div>
-
+        <h3 align="center">Comentarios</h3>
         {comment.length === 0 ? (
-          <div align="center">
-            <p>No hay comentarios aun</p>
-          </div>
+          <p align="center">No hay comentarios aun</p>
         ) : (
           comment.map((review) => (
             <li>
               {console.log(review)}
               <div className="container">
                 <div className="row">
-                  <div className="col-2">
+                  <div className="col-3">
                     <div>
                       <img
                         className="userImg"
@@ -67,7 +62,7 @@ const Comment = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="col-8" id="textReview">
+                  <div className="col-9" id="textReview">
                     <p>"{review.comment}"</p>
                   </div>
                 </div>
@@ -77,11 +72,11 @@ const Comment = () => {
         )}
       </ul>
       <div className="pb-5" align="center">
-        <Link to={`/comment/add/${foundationId}`}>
+        {/* <Link to={`/comment/add/${foundationId}`}>
           <button type="button" className="btn btn-default">
             Agregar comentario
           </button>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

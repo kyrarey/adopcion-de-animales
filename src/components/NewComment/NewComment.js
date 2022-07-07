@@ -28,7 +28,7 @@ const NewComment = () => {
         navigate(`/comment/${foundationId}`);
       })
       .catch(() => {
-        notify("Ya dejaste un comentario");
+        notify("Error al publicar comentario");
       });
   };
 
