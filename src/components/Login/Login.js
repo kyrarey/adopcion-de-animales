@@ -1,18 +1,22 @@
 import "./Login.css";
+import { useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
 import validator from "validator";
-import { useGlobalContext } from "../../GlobalContext";
+/* import { useGlobalContext } from "../../GlobalContext"; */
 import jwt_decode from "jwt-decode"
 
 const Login = () => {
-  const { newUser, setNewUser } = useGlobalContext();
+  const { toggleAuth } = useContext(AuthContext);
+/*   const { newUser, setNewUser } = useGlobalContext(); */
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
   const notify = (text) => toast(text);
+  
 
   const login = async (e) => {
     e.preventDefault();
@@ -26,13 +30,14 @@ const Login = () => {
         const loginUser = {
           _id: user.data._id,
           email: user.data.email,
+          isFormComplete: user.data.isFormComplete,
           fundation: user.data.fundation,
           token: user.data.token,
-          isAuthenticated: true,
+/*           isAuthenticated: true, */
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-        setNewUser(loginUser);
-        console.log("newUser", newUser);
+        toggleAuth(loginUser);
+        //setNewUser(loginUser);
         navigate("/");
       } catch (error) {
 
@@ -42,6 +47,7 @@ const Login = () => {
       notify("Email invalido");
     }
   };
+
 
   //google identity services
 

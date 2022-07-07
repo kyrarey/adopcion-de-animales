@@ -1,27 +1,31 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "../../GlobalContext";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
+/* import { useGlobalContext } from "../../GlobalContext"; */
 import { toast } from "react-toastify";
-import "./Navbar.css";
 import { GoSearch } from "react-icons/go";
+import "./Navbar.css";
 
 const Navbar = () => {
+  const { loggedUser, isAuthenticated, toggleAuth } = useContext(AuthContext);
   const [search, setSearch] = useState();
   const notify = (text) => toast(text);
   const navigate = useNavigate();
-  const { newUser, setNewUser } = useGlobalContext();
+  /* const { newUser, setNewUser } = useGlobalContext(); */
 
-
-  const userStorage = !!localStorage.getItem("newUser")
+console.log("loggedUser", loggedUser)
+/*   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
-    : {};
+    : {}; */
   const handlelogout = (e) => {
     e.preventDefault();
     axios.get("http://localhost:3030/user/logout").then((res) => {
       notify(`Logged out`);
       localStorage.removeItem("newUser");
-      setNewUser({});
+      toggleAuth(null);
+      /* setNewUser({}); */
       navigate("/");
     });
   };
@@ -60,7 +64,7 @@ const Navbar = () => {
           <span></span>
         </button>
         </div>
-        {userStorage.isAuthenticated ? (
+        {/* userStorage. */isAuthenticated ? (
           <div
             className="collapse navbar-collapse justify-content-between"
             id="navbarSupportedContent"
@@ -72,9 +76,9 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="link" to={`/account/${userStorage._id}`}>
+                <Link className="link" to={`/account/${loggedUser._id/* userStorage._id */}`}>
                   {/* <span className="nav-link"> */}
-                    {userStorage?.email?.split("@")[0]}
+                    {/* userStorage */loggedUser?.email?.split("@")[0]}
                   {/* </span> */}
                 </Link>
               </li>

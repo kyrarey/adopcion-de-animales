@@ -24,7 +24,7 @@ const Favorite = () => {
   //borrar un animal de la lista
   const deleteAnimal = (pet) => {
     deletePet(pet);
-    //console.log("pet :", pet);
+    console.log("pet :", pet);
     axios
       .delete(`http://localhost:3030/favorite/${animal._id}`, {
         data: { animalId: pet },
