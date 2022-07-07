@@ -71,8 +71,8 @@ const Login = () => {
           isAuthenticated: true,
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-        setNewUser(loginUser);
-        console.log("newUser", newUser);
+        toggleAuth(loginUser);
+        // console.log("newUser", newUser);
         navigate("/");
   } catch(error) {
     setLoginEmail(userObject.email) // no haria falta modificar ambos estados
@@ -98,8 +98,8 @@ const Login = () => {
           isAuthenticated: true,
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-        setNewUser(loginUser);
-        console.log("newUser", newUser);
+        toggleAuth(loginUser);
+        // console.log("newUser", newUser);
         navigate("/");
 }}
 
