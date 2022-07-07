@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
+import find from "../../hooks/find";
 import validator from "validator";
 /* import { useGlobalContext } from "../../GlobalContext"; */
 import jwt_decode from "jwt-decode"
 
 const Login = () => {
-  const { toggleAuth } = useContext(AuthContext);
+  const { loggedUser, toggleAuth } = useContext(AuthContext);
 /*   const { newUser, setNewUser } = useGlobalContext(); */
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -36,7 +37,8 @@ const Login = () => {
 /*           isAuthenticated: true, */
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-        toggleAuth(loginUser);
+        find(`/favorite/${loggedUser._id}`)
+        .then(animals => toggleAuth(loginUser, animals));
         //setNewUser(loginUser);
         navigate("/");
       } catch (error) {

@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 /* import { useGlobalContext } from "../../GlobalContext"; */
 
 const PetCard = ({ pet }) => {
-  const { loggedUser } = useContext(AuthContext);
+  const { loggedUser, favsUser } = useContext(AuthContext);
   const notify = (text) => toast(text);
 /*   const { newUser, setNewUser } = useGlobalContext();
 
@@ -20,19 +20,24 @@ const PetCard = ({ pet }) => {
     ? JSON.parse(localStorage.getItem("newUser"))
     : {}; */
 
-  let isFav = false;
+  let isFav;
 
   const addToFav = (e) => {
     e.preventDefault();
+    console.log(favsUser)
+    if(favsUser) favsUser.filter(animal => animal.animalId === pet._id).length > 0 ? isFav = true : isFav = false;
+    console.log(isFav)
+    if (!isFav) {
     axios
       .post("http://localhost:3030/favorite/add", {
         animalId: pet._id,
         userId: /* userStorage */loggedUser._id,
       })
       .then(() => {
-        isFav ? (isFav = false) : (isFav = true);
+        /* isFav ? (isFav = false) : (isFav = true); */
         notify("Agregado con exito");
-      });
+      })
+    }
   };
 
 
