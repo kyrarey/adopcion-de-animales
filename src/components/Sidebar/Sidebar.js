@@ -4,7 +4,7 @@ import find from "../../hooks/find";
 import { useState, useEffect } from "react";
 
 const Sidebar = () => {
-    let id = localStorage.getItem('user').slice(8,32)
+    let id = localStorage.getItem('newUser').slice(8,32)
     const [user, setUser] = useState({});
 
     useEffect(() => {
