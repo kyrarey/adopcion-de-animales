@@ -324,14 +324,6 @@ const fakeOrgs = [
       password:"1234",
     },
     {
-      foundationName: "Proyecto 14 patas",
-      image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/188/849/themes/common/logo-1866482157-1574635760-6cf4fcbbca71b55a01145347adaf5bde1574635760.png?0",
-      location: "Buenos Aires, Argentina",
-      description: "Proyecto 14 Patas (P4P) es una organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
-      email:"proyecto4Patas@email.com",
-      password:"1234",
-    },
-    {
       foundationName: "El refugio",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU",
       location: "Buenos Aires, Argentina",
@@ -355,6 +347,63 @@ const fakeOrgs = [
       email:"callejeritos@email.com",
       password:"1234",
     },
+    {
+
+      foundationName: "ADVA",
+      image: "/01.jpg",
+      location: "bahía blanca, buenos aires",
+      description: "ONG sin fines de lucro que desarrolla proyectos en beneficio de los la fauna del país desde el 2006. Albergamos a 650 animales en nuestra red de temporales y santuario.",
+      email: "adva@gmail.com",
+      password: "1234"
+  },
+  {
+      foundationName: "lucky",
+      image: "/02.jpg",
+      location: "neuquén, neuquén",
+      description: "Somos un refugio con 600 animalitos de diferentes especies, nos alimentamos de autogestión.",
+      email: "lucky@hotmail.com",
+      password: "1234"
+  },
+  {
+      foundationName: "segunda oportunidad",
+      image: "/03.jpg",
+      location: "marull, códoba",
+      description: "Manejamos casos de rescate, adopción y hogar temporal y promovemos la tenencia responsable de animales de compañía.",
+      email: "segundaoportunidad@hotmail.com",
+      password: "1234"
+  },
+  {
+      foundationName: "FARA",
+      image: "/04.jpg",
+      location: "la plata, buenos aires",
+      description: "Rescate de alto riesgo animales de todo tipo y tamaños en situación de peligro o que haga peligrar a terceros, fomentar el adiestramiento de perros para búsqueda y rescate, capacitar, recuperación de animales silvestres.",
+      email: "farafndacion@hotmail.com",
+      password: "1234"
+  },
+  {
+      foundationName: "red solidaria animal",
+      image: "/05.jpg",
+      location: "san isidro, buenos aires",
+      description: "Red Solidaria Animal, es una Asociación Civil sin fines de lucro que se dedica al cuidado y protección de los animales",
+      email: "redanimal@gmail.com",
+      password: "1234"
+  },
+  {
+      foundationName: "maneki",
+      image: "/06.jpg",
+      location: "CABA, buenos aires",
+      description: "Maneki rescata, recupera y da en adopcion gatitos en la ciudad de Buenos Aires. Desde hace diez años trabajamos en pro de el bienestar de los felinos. Hoy abrimos nuestro Catshop espacio para los amantes de los felinos.",
+      email: "maneki@gmail.com",
+      password: "1234"
+  },
+  {
+      foundationName: "FASN",
+       image: "/07.jpg",
+      location: "parque siquimán, córdoba",
+      description: "ONG dedica a la protección de perros en situación de calle o maltratados, su rescate, rehabilitación social, castracion y su posterior adopción en hogares.",
+      email: "fundacion1@email.com",
+      password: ""
+  }
 ]
 
 const seedDb = async () => {
