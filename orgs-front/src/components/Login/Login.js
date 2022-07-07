@@ -18,7 +18,7 @@ const Login = () => {
     e.preventDefault();
     if (validator.isEmail(loginEmail)) {
       try {
-        const user = await axios.post("http://localhost:3030/orgs/register", {
+        const user = await axios.post("http://localhost:3030/orgs/login", {
           foundationName: foundationName,
           email: loginEmail,
           password: loginPassword,

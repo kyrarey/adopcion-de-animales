@@ -4,7 +4,7 @@ import axios from "axios";
 
 async function find(path) {
     const res = await axios
-        .get(`http://localhost:3030${path}`);
+        .get(`http://localhost:3005${path}`);
     return res.data;
 }
 

@@ -36,6 +36,7 @@ class UserFoundationServices {
 
   //retornar usuario logeado
   static async getOne(id) {
+    console.log("este es el id de fund: ", id);
     try {
       const data = await UserFoundation.findById(id).exec();
       return {

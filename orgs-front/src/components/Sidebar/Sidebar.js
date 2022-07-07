@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import find from "../../hooks/find";
 import s from "./Sidebar.module.css";
+import axios from "axios";
 
 
 const Sidebar = () => {
@@ -10,7 +11,8 @@ const Sidebar = () => {
     
 
     useEffect(() => {
-        find(`/orgs/account/${id}`)
+        // find(`/orgs/account/${id}`)
+        axios.get(`http://localhost:3030/orgs/account/${id}`)
         .then(userObj => setUser(userObj))
         .catch(error => console.log(error))
     }, [id])
@@ -31,13 +33,13 @@ const Sidebar = () => {
                     </Link>
                 </div>
                 <div className={s.item}>
-                    <Link>
+                    {/* <Link className={s.link}> */}
                     <h3 className={s.title}>Animales</h3>
                     <img className={s.img} 
                         src={require(`../../assets/img/animals.jpg`)}
                         alt="">
                     </img>
-                    </Link>
+                    {/* </Link> */}
                 </div>
             </div>
         </div>
