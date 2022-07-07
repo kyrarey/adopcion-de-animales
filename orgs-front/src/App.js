@@ -25,13 +25,14 @@ function App() {
         {/* Hay que hacer el individual de cada fundacion */}
         {/* <Route path="/account/:id" element={< />} /> */}
         {/* grilla con todos los perros */}
-        {/* <Route path="/account/our-pets" element={< />} /> */}
         <Route path="/foundations/pages/:id" element={<Grid />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         {/* estas de aca abajo van con /account que no se por que no funciona*/}
+        {/* <Route path="/foundations/pages/:id" element={< />} /> */}
         <Route path="/foundations/add-animal" element={<AddAnimal />} />
         <Route path="/foundations/edit-animal/:id" element={<EditAnimal />} />
+        <Route path="/foundations/petsToAdopt/:id" element={<EditAnimal />} />
       </Routes>
      <Footer /> 
       </GlobalProvider>

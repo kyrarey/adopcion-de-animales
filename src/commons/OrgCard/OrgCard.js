@@ -20,7 +20,7 @@ const OrgCard = ({ org }) => {
       <Link to={`orgs/${org._id}`}>
         <img
           className={s.orgImage}
-          src={org.image}
+          src={org.image} 
           alt={org.foundationName}
         ></img>
 

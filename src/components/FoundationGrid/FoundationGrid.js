@@ -18,6 +18,7 @@ const Grid = () => {
             setTotalOrgs(orgsArr.length);
             let orgsAux = [];
             orgsAux = fixedElemArray(orgsArr, orgsPerPage, count);
+            console.log(orgsAux, " aauuux")
             setOrgs(orgsAux);
         })
         .catch(err => console.log(err));
@@ -27,15 +28,18 @@ const Grid = () => {
 
     const addOnClick = () => {
         count  < pagesQty  ? count++ : count = pagesQty;
-        navigate(`/orgs/pages/${count}`);
+        
+        navigate(`/association/pages/${count}`);
     }
 
     const subsOnClick = () => {
         count > 1 ? count-- : count = 1;
-        navigate(`/orgs/pages/${count}`);
+        navigate(`/association/pages/${count}`);
     }
+    
 
-    console.log(orgs, " orgs")
+
+
     return (
         <div className={s.container}>
             <ul className={s.grid}>

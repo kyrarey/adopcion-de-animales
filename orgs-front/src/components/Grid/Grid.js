@@ -7,13 +7,13 @@ import FoundationCard from "../../commons/FoundationCard/FoundationCard";
 import s from "./Grid.module.css";
 
 const Grid = () => {
-/*     const [foundations, setFoundations] = useState([]);
-    const [totalFoundations, setTotalFoundations] = useState(0); */
+    const [foundations, setFoundations] = useState([]);
+    const [totalFoundations, setTotalFoundations] = useState(0);
     const foundationsPerPage = 6;
     const navigate = useNavigate();
     let count = useParams().id;
 
-/*     useEffect(() => {
+    useEffect(() => {
         find("/orgs/all")
         .then(foundationsArr => {
             setTotalFoundations(foundationsArr.length);
@@ -22,11 +22,11 @@ const Grid = () => {
             setFoundations(foundationsAux);
         })
         .catch(err => console.log(err));
-    }, [count]);  */
+    }, [count]);  
 
-    let totalFoundations = orgs.length;
-    let foundationsAux = fixedElemArray(orgs, foundationsPerPage, count);
-    let foundations = foundationsAux;
+    // let totalFoundations = orgs.length;
+    let foundationsAux = fixedElemArray(foundations, foundationsPerPage, count);
+    // let foundations = foundationsAux;
 
     const pagesQty = Math.ceil(totalFoundations/foundationsPerPage);
 
