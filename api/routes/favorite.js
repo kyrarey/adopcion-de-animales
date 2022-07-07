@@ -15,9 +15,10 @@ router.delete("/:favoriteId", FavoriteControllers.deleteOne);
   console.log(req.body);
 }); */
 
-//eliminar favorito
+/* //eliminar favorito
 router.delete("/:favoriteId", (req, res) => {
-  console.log("req.params.id :", req.body.animalId._id);
+  console.log("req.params", req.params)
+  console.log("req.body FAVORITE:", req.body);
   Favorite.findOneAndRemove(req.body.animalId._id)
     .then(() => {
       res.sendStatus(200);
@@ -25,7 +26,7 @@ router.delete("/:favoriteId", (req, res) => {
     .catch((err) => {
       res.status(400).send(err);
     });
-});
+}); */
 
 module.exports = router;
 
