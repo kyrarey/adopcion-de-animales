@@ -1,44 +1,45 @@
-import React from "react";
-import { useContext } from 'react';
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { FavContext } from "../../context/FavContext";
-import { Link } from "react-router-dom";
+import { notLoggedIn } from "../../hooks/alert";
 import axios from "axios";
-import s from "./PetCard.module.css";
+import find from "../../hooks/find";
 import capitalizeFirst from "../../hooks/capitalizeFirst";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import { toast } from "react-toastify";
-/* import { useGlobalContext } from "../../GlobalContext"; */
+import s from "./PetCard.module.css";
+
 
 const PetCard = ({ pet }) => {
   const { loggedUser } = useContext(AuthContext);
-  const { favPets } = useContext(FavContext);
+  const { favPets, getFavs } = useContext(FavContext);
+  const navigate = useNavigate();
   const notify = (text) => toast(text);
-/*   const { newUser, setNewUser } = useGlobalContext();
-
-  const userStorage = !!localStorage.getItem("newUser")
-    ? JSON.parse(localStorage.getItem("newUser"))
-    : {}; */
-
   let isFav;
 
   const addToFav = (e) => {
     e.preventDefault();
-    console.log(favPets)
-    if(favPets) favPets.filter(animal => animal.animalId === pet._id).length > 0 ? isFav = true : isFav = false;
-    console.log(isFav)
-    if (!isFav) {
-    axios
-      .post("http://localhost:3030/favorite/add", {
-        animalId: pet._id,
-        userId: /* userStorage */loggedUser._id,
-      })
-      .then(() => {
-        /* isFav ? (isFav = false) : (isFav = true); */
-        notify("Agregado con exito");
-      })
+    if (loggedUser) {
+      if(favPets) favPets.filter(animal => animal.animalId === pet._id).length > 0 ? isFav = true : isFav = false;
+      /*     console.log(favPets)
+          console.log(isFav) */
+          if (!isFav) {
+          axios.post("http://localhost:3030/favorite/add", {
+            animalId: pet._id,
+            userId: loggedUser._id,
+            })
+          .then(user => {
+            find(`/favorite/${user.data.userId}`)
+            .then(favs => {console.log(favs)
+              getFavs(favs)})
+            .catch(err => console.log(err));
+            notify("Agregado con exito");
+            })
+          } 
+    } else {
+      notLoggedIn();
+      navigate("/login");
     }
   };
 
@@ -61,13 +62,11 @@ const PetCard = ({ pet }) => {
           <span>{capitalizeFirst(pet.location)}</span>
         </div>
       </Link>
-      <button className={s.favButton} type="submit" onClick={addToFav}>
-        {" "}
-        {isFav ? (
-          <FavoriteIcon fontSize="large" />
-        ) : (
-          <FavoriteBorderIcon fontSize="large" />
-        )}
+      <button className={s.favButton} type="submit" onClick={addToFav}>{
+      favPets 
+        ? favPets.filter(animal => animal.animalId === pet._id).length > 0 ? <FaHeart /> : <FaRegHeart />
+        : <FaRegHeart />
+      }
       </button>
     </div>
   );

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useContext } from 'react';
-import { AuthContext } from "../../context/AuthContext";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import { BsWhatsapp } from "react-icons/bs";
 import { notLoggedIn, notFormCompleted } from "../../hooks/alert";
 import find from "../../hooks/find";
@@ -15,8 +14,6 @@ const SinglePetCard = () => {
   const id = params.id;
   const navigate = useNavigate();
   const { loggedUser, isAuthenticated } = useContext(AuthContext);
-
-
 
   const [pet, setPet] = useState({
     "_id": "",

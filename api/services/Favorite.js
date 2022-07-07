@@ -22,12 +22,14 @@ class FavoriteServices {
 
   //añadir animal a favoritos
   static async addOne(body) {
+    console.log("FAVS BODY",body.userId)
     try {
       await Favorite.create(body);
       return {
         error: false,
         data: body,
       };
+      console.log(body)
     } catch (error) {
       return {
         error: true,

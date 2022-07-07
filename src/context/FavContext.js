@@ -20,7 +20,6 @@ const FavContextProvider = ({ children }) => {
     favPets: pets,
   });
 
-
   useEffect(() => {
     const userStorage = JSON.parse(localStorage.getItem("newUser"));
     if(userStorage) {
