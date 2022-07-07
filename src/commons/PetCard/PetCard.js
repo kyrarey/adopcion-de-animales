@@ -1,4 +1,6 @@
 import React from "react";
+import { useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import s from "./PetCard.module.css";
@@ -7,15 +9,16 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { toast } from "react-toastify";
-import { useGlobalContext } from "../../GlobalContext";
+/* import { useGlobalContext } from "../../GlobalContext"; */
 
 const PetCard = ({ pet }) => {
+  const { loggedUser } = useContext(AuthContext);
   const notify = (text) => toast(text);
-  const { newUser, setNewUser } = useGlobalContext();
+/*   const { newUser, setNewUser } = useGlobalContext();
 
   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
-    : {};
+    : {}; */
 
   let isFav = false;
 
@@ -24,7 +27,7 @@ const PetCard = ({ pet }) => {
     axios
       .post("http://localhost:3030/favorite/add", {
         animalId: pet._id,
-        userId: userStorage._id,
+        userId: /* userStorage */loggedUser._id,
       })
       .then(() => {
         isFav ? (isFav = false) : (isFav = true);
@@ -32,12 +35,6 @@ const PetCard = ({ pet }) => {
       });
   };
 
-  /* const addToFav = (e) => {
-    e.preventDefault();
-    isFav ? (isFav = false) : (isFav = true);
-
-    console.log(isFav);
-  }; */
 
   return (
     <div className={s.petCard}>

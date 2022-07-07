@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 //estado inicial para el contexto
 const authContextInitialState = {
-  user: null,
+  loggedUser: null,
   isAuthenticated: false,
   toggleAuth: () => null,
 };
@@ -14,21 +14,21 @@ export const AuthContext = createContext(authContextInitialState);
 // componente provider
 const AuthContextProvider = ({ children }) => {
   const [loggedIn, setLoggedIn] = useState({
-    user: null,
+    loggedUser: null,
     isAuthenticated: false,
   });
 
   const toggleAuth = (user) =>
     setLoggedIn({
-      user: user,
+      loggedUser: user,
       isAuthenticated: !loggedIn.isAuthenticated,
     });
 
     useEffect(() => {
-      const userStorage = JSON.parse(localStorage.getItem("user"));
+      const userStorage = JSON.parse(localStorage.getItem("newUser"));
       userStorage
-        ? setLoggedIn({ user: userStorage.name, isAuthenticated: true })
-        : setLoggedIn({ user: null, isAuthenticated: false });
+        ? setLoggedIn({ loggedUser: userStorage, isAuthenticated: true })
+        : setLoggedIn({ loggedUser: null, isAuthenticated: false });
     }, []);
 
   return (
