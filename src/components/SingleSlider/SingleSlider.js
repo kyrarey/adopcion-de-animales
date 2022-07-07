@@ -5,8 +5,6 @@ import s from "./SingleSlider.module.css";
 
 
 const SingleSlider = ({ images }) => {
-    console.log("IMAGES",images)
-
     const variants = {
         enter: (direction) => {
           return {

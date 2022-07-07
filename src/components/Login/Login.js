@@ -1,17 +1,23 @@
 import "./Login.css";
-import { useState } from "react";
+import { useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
+import find from "../../hooks/find";
 import validator from "validator";
-import { useGlobalContext } from "../../GlobalContext";
+/* import { useGlobalContext } from "../../GlobalContext"; */
+import jwt_decode from "jwt-decode"
 
 const Login = () => {
-  const { newUser, setNewUser } = useGlobalContext();
+  const { loggedUser, toggleAuth } = useContext(AuthContext);
+/*   const { newUser, setNewUser } = useGlobalContext(); */
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const navigate = useNavigate();
   const notify = (text) => toast(text);
+  
 
   const login = async (e) => {
     e.preventDefault();
@@ -25,13 +31,15 @@ const Login = () => {
         const loginUser = {
           _id: user.data._id,
           email: user.data.email,
+          isFormComplete: user.data.isFormComplete,
           fundation: user.data.fundation,
           token: user.data.token,
-          isAuthenticated: true,
+/*           isAuthenticated: true, */
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-        setNewUser(loginUser);
-        console.log("newUser", newUser);
+        find(`/favorite/${loggedUser._id}`)
+        .then(animals => toggleAuth(loginUser, animals));
+        //setNewUser(loginUser);
         navigate("/");
       } catch (error) {
 
@@ -41,6 +49,75 @@ const Login = () => {
       notify("Email invalido");
     }
   };
+
+
+  //google identity services
+
+  async function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token: ", response.credential);
+    let userObject = jwt_decode(response.credential);
+    console.log("esto es userObject: ", userObject);
+
+  try{
+    const user = await axios.post("http://localhost:3030/user/login", {
+          email: userObject.email,
+          password: userObject.sub,
+        });
+        console.log("esto es user en login: ", user)
+
+        const loginUser = {
+          _id: user.data._id,
+          email: user.data.email,
+          fundation: user.data.fundation,
+          token: user.data.token,
+          isAuthenticated: true,
+        };
+        localStorage.setItem("newUser", JSON.stringify(loginUser));
+        /* setNewUser(loginUser); */
+        /* console.log("newUser", newUser); */
+        navigate("/");
+  } catch(error) {
+    setLoginEmail(userObject.email) // no haria falta modificar ambos estados
+    setLoginPassword(userObject.sub)
+            await axios.post("http://localhost:3030/user/register", {
+          email: userObject.email,
+          password: userObject.sub,
+          image: userObject.picture, // todavia no me toma la imagen
+          name: userObject.given_name,
+          lastname: userObject.family_name,
+        });
+        
+        const user = await axios.post("http://localhost:3030/user/login", {
+          email: userObject.email,
+          password: userObject.sub,
+        });
+
+        const loginUser = {
+          _id: user.data._id,
+          email: user.data.email,
+          fundation: user.data.fundation,
+          token: user.data.token,
+          isAuthenticated: true,
+        };
+        localStorage.setItem("newUser", JSON.stringify(loginUser));
+        toggleAuth(loginUser);
+        /* console.log("newUser", newUser); */
+        navigate("/");
+}}
+
+
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "612122618522-uosm7c7e9t124jnulbmlitb1isotp1oq.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    });
+
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      { theme: "outline", size: "large" }
+    )
+  }, [])
 
   return (
     <>
@@ -80,6 +157,7 @@ const Login = () => {
                 ¿No tenés cuenta?&nbsp;
                 <a href="/register">Crear cuenta</a>
               </p>
+          <div id="signInDiv"></div>
             </form>
           </div>
         </div>

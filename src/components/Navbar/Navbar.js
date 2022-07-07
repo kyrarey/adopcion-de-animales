@@ -1,27 +1,31 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "../../GlobalContext";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
+/* import { useGlobalContext } from "../../GlobalContext"; */
 import { toast } from "react-toastify";
-import "./Navbar.css";
 import { GoSearch } from "react-icons/go";
+import "./Navbar.css";
 
 const Navbar = () => {
+  const { loggedUser, isAuthenticated, toggleAuth } = useContext(AuthContext);
   const [search, setSearch] = useState();
   const notify = (text) => toast(text);
   const navigate = useNavigate();
-  const { newUser, setNewUser } = useGlobalContext();
+  /* const { newUser, setNewUser } = useGlobalContext(); */
 
-
-  const userStorage = !!localStorage.getItem("newUser")
+console.log("loggedUser", loggedUser)
+/*   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
-    : {};
+    : {}; */
   const handlelogout = (e) => {
     e.preventDefault();
     axios.get("http://localhost:3030/user/logout").then((res) => {
       notify(`Logged out`);
       localStorage.removeItem("newUser");
-      setNewUser({});
+      toggleAuth(null);
+      /* setNewUser({}); */
       navigate("/");
     });
   };
@@ -42,9 +46,10 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link to="/">
-          <span className="navbar-brand">Pet Adoption</span>
+        <Link className="titleLink" to="/">
+          {/* <span className="navbar-brand"> */}Pet Adoption{/* </span> */}
         </Link>
+        <div className="bgButton">
         <button
           className="navbar-toggler"
           type="button"
@@ -58,22 +63,23 @@ const Navbar = () => {
           <span></span>
           <span></span>
         </button>
-        {userStorage.isAuthenticated ? (
+        </div>
+        {/* userStorage. */isAuthenticated ? (
           <div
             className="collapse navbar-collapse justify-content-between"
             id="navbarSupportedContent"
           >
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link to="/">
-                  <span className="nav-link active">Home</span>
+                <Link className="link" to="/">
+                  {/* <span className="nav-link active"> */}Home{/* </span> */}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to={`/account/${userStorage._id}`}>
-                  <span className="nav-link">
-                    {userStorage?.email?.split("@")[0]}
-                  </span>
+                <Link className="link" to={`/account/${loggedUser._id/* userStorage._id */}`}>
+                  {/* <span className="nav-link"> */}
+                    {/* userStorage */loggedUser?.email?.split("@")[0]}
+                  {/* </span> */}
                 </Link>
               </li>
               <li className="nav-item">
@@ -86,12 +92,13 @@ const Navbar = () => {
                 </Link>
               </li> */}
               <li className="nav-item">
-                <Link to="/association/pages/1">
-                  <span className="nav-link">Fundaciones</span>
+                <Link className="link" to="/association/pages/1">
+                  {/* <span className="nav-link"> */}Fundaciones{/* </span> */}
                 </Link>
               </li>
-              <li className="nav-item dropdown">
-                <a
+              
+              <li className="link">
+                <a 
                   className="nav-link dropdown-toggle"
                   href="#"
                   id="navbarDropdown"
@@ -102,23 +109,23 @@ const Navbar = () => {
                   Más
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <Link to="/contact">
-                      <span className="dropdown-item">Contacto</span>
+                  <li className="subLi">
+                    <Link className="subLink" to="/contact">
+                      <span /* className="dropdown-item" */>Contacto</span>
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/aboutus">
-                      <span className="dropdown-item">Sobre nosotros</span>
+                  <li className="subLi">
+                    <Link className="subLink" to="/aboutus">
+                      {/* <span className="dropdown-item"> */}Sobre nosotros{/* </span> */}
                     </Link>
                   </li>
                   <li>
                     <hr className="dropdown-divider" />
                   </li>
-                  <li>
-                    <Link to="/feedback">
-                      <span className="dropdown-item">Reportar un error</span>
-                    </Link>
+                  <li className="subLi">
+                    <a className="subLink" href="mailto:info@petsadoption.org?Subject=Reporte%20de%20error%20en%20web">
+                      {/* <span className="dropdown-item"> */}Reportar error{/* </span> */}
+                    </a>
                   </li>
                 </ul>
               </li>

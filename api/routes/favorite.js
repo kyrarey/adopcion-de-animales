@@ -17,7 +17,8 @@ router.delete("/:favoriteId", FavoriteControllers.deleteOne);
 
 /* //eliminar favorito
 router.delete("/:favoriteId", (req, res) => {
-  // console.log("req.params.id :", req.body.animalId._id);
+  console.log("req.params", req.params)
+  console.log("req.body FAVORITE:", req.body);
   Favorite.findOneAndRemove(req.body.animalId._id)
     .then(() => {
       res.sendStatus(200);

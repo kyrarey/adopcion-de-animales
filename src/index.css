@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 :root {
     --mainColor: #6504b5; /*Color primario en el cuerpo del documento */
@@ -7,5 +9,8 @@
     --articleFont: 'Comic Neue'; /*Fuente de párrafos en el cuerpo del documento */
     --bannerFont: 'Amatic SC'; /*Fuente de títulos en el cuerpo del documento */
     --cardShadow: 0 2px 5px rgba(0,0,0,0.3); /*Sombra aplicada a las cards de animales */
+    --navColor:  #e74c3c; /*Color activo para la Navbar*/
+    --navTitleFont: 'Pacifico'; /*Fuente para el logo en la Navbar*/
+    --navFont: 'Poppins'; /*Fuente para los links de la Navbar */
 }
 

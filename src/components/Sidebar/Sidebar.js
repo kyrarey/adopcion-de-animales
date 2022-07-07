@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
-import s from "./Sidebar.module.css";
-import find from "../../hooks/find";
+import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import find from "../../hooks/find";
+import s from "./Sidebar.module.css";
+
 
 const Sidebar = () => {
-  let id = localStorage.getItem("newUser").slice(8, 32);
-  const [user, setUser] = useState({});
+    let id = useLocation().pathname.slice(9,33)
+    const [user, setUser] = useState({});
 
   useEffect(() => {
     find(`/user/account/${id}`)
