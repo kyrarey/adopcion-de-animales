@@ -28,3 +28,18 @@ export const fixedElemArray = (arr, arrLength, count) => {
         }
     return petsAux;
 }
+
+//Función que devuelve un arreglo conteniendo los elementos que se encuentren en los 2 arreglos pasados como parámetros
+//Los arreglos pasados por parámetros (los objetos de arr1 contienen una key llamada _.id y los del arr2 una key llamada animalId), así como el arreglo resultante, son arreglos de objetos.
+
+export const filteredArray = (arr1, arr2) => {
+    let petsAux = [];
+    for (let i = 0; i < arr1.length; i++) {
+      for (let j = 0; j < arr2.length; j++) {
+        if (arr1[i].animalId === arr2[j]._id) {
+          petsAux.push(arr2[j]);
+        }
+      }
+    }
+    return petsAux;
+}

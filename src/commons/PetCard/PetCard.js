@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { FavContext } from "../../context/FavContext";
@@ -14,6 +14,7 @@ import s from "./PetCard.module.css";
 const PetCard = ({ pet }) => {
   const { loggedUser } = useContext(AuthContext);
   const { favPets, getFavs } = useContext(FavContext);
+  const [favId, setFavId] = useState("");
   const navigate = useNavigate();
   const notify = (text) => toast(text);
   let isFav;
@@ -22,21 +23,28 @@ const PetCard = ({ pet }) => {
     e.preventDefault();
     if (loggedUser) {
       if(favPets) favPets.filter(animal => animal.animalId === pet._id).length > 0 ? isFav = true : isFav = false;
-      /*     console.log(favPets)
-          console.log(isFav) */
-          if (!isFav) {
-          axios.post("http://localhost:3030/favorite/add", {
-            animalId: pet._id,
-            userId: loggedUser._id,
-            })
-          .then(user => {
-            find(`/favorite/${user.data.userId}`)
-            .then(favs => {console.log(favs)
-              getFavs(favs)})
-            .catch(err => console.log(err));
-            notify("Agregado con exito");
-            })
-          } 
+      if (!isFav) {
+        axios.post("http://localhost:3030/favorite/add", {
+          animalId: pet._id,
+          userId: loggedUser._id,
+        })
+        .then(user => {
+          setFavId(user.data._id)
+          find(`/favorite/${user.data.userId}`)
+          .then(favs => getFavs(favs))
+          .catch(err => console.log(err));
+        })
+      } else {
+        axios.delete(`http://localhost:3030/favorite/${favId}`)
+        .then(() => {
+          isFav = false;
+          notify("Eliminado de favoritos"); 
+        })
+        .catch(err => {
+          console.log(err);
+        });
+        ;
+      }
     } else {
       notLoggedIn();
       navigate("/login");

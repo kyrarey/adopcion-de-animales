@@ -1,84 +1,58 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
+import { filteredArray } from "../../hooks/arrGen";
 import find from "../../hooks/find";
 import capitalizeFirst from "../../hooks/capitalizeFirst";
-import "./Favorite.css";
 import PetsIcon from "@mui/icons-material/Pets";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { toast } from "react-toastify";
-import { useGlobalContext } from "../../GlobalContext";
+import "./Favorite.css";
+
 
 const Favorite = () => {
-  const notify = (text) => toast(text);
-  const navigate = useNavigate();
+  const { loggedUser } = useContext(AuthContext);
   const [animal, setAnimal] = useState([]);
   const [petsArr, setPetsArr] = useState([]);
-  const { newUser } = useGlobalContext();
-  const filterAnimals = [];
+  const navigate = useNavigate();
+  const notify = (text) => toast(text);
 
+/* 
   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
-    : {};
+    : {}; */
+
+    //traer todos los animales favoritos
+  useEffect(() => {
+    if(loggedUser) {
+      find(`/favorite/${loggedUser._id}`)
+      .then(userFavs => setAnimal(userFavs))
+      .catch(err => console.log(err));
+
+      find("/animal/all")
+      .then(allPets => setPetsArr(allPets))
+      .catch(err => console.log(err));
+    }
+  }, );
+
+  let favPets = filteredArray(animal, petsArr );
+
 
   //borrar un animal de la lista
   const deleteAnimal = (pet) => {
-    deletePet(pet);
-       axios
-      .delete(`http://localhost:3030/favorite/${pet._id}`, {
-        data: { animalId: pet },
-      })
+    const favToDelete = animal.filter(animal => animal.animalId === pet._id);
+    const favId = favToDelete[0]._id;
+      axios.delete(`http://localhost:3030/favorite/${favId}`)
       .then(() => {
-        /*    let index = 0; */
-        for (let i = 0; i < filterAnimals.length; i++) {
-          if (filterAnimals[i]._id === pet._id) filterAnimals.splice(i, i + 1);
-          console.log("filterAnimals :", filterAnimals);
-          if (i > filterAnimals.length) return filterAnimals;
-          console.log("i :", i);
-        }
-        /* console.log("index :", index);
-        filterAnimals.slice(index, index + 1); */
+        /* favPets = animal.filter(animal => animal.animalId !== pet._id); */
         notify("Eliminado con exito");
       })
-      .catch(() => {
+      .catch(err => {
+        console.log(err);
         notify("No se pudo eliminar");
       });
   };
-
-  const deletePet = (params) => {
-    //console.log("params :", params._id);
-    const newAnimal = animal.filter((pet) => pet._id !== params._id);
-    setAnimal(newAnimal);
-  };
-
-  //traer todos los animales favoritos
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3030/favorite/${userStorage._id}`)
-      .then((res) => res.data)
-      .then((pet) => {
-        setAnimal(pet);
-      });
-
-    find("/animal/all")
-      .then((petsArr) => {
-        setPetsArr(petsArr);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  const filter = () => {
-    for (let j = 0; j < petsArr.length; j++) {
-      for (let i = 0; i < animal.length; i++) {
-        if (petsArr[j]._id === animal[i].animalId) {
-          filterAnimals.push(petsArr[j]);
-        }
-      }
-    }
-/*     console.log("animal :", animal);
-    console.log("filterAnimals :", filterAnimals); */
-  };
-  filter();
 
   return (
     <div className="container">
@@ -90,7 +64,7 @@ const Favorite = () => {
         {animal.length === 0 ? (
           <p>No tienes animales agregados aun! </p>
         ) : (
-          filterAnimals.map((pet) => (
+          favPets.map((pet) => (
             <div className="row">
               <div
                 className="col-2"
@@ -124,9 +98,7 @@ const Favorite = () => {
                 <button
                   type="button"
                   className="btn"
-                  onClick={() => {
-                    deleteAnimal(pet);
-                  }}
+                  onClick={() => deleteAnimal(pet)}
                 >
                   <RemoveIcon />
                 </button>
