@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from 'react';
-import { AuthContext } from "../../context/AuthContext";
+// import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import s from "./PetCard.module.css";
@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 /* import { useGlobalContext } from "../../GlobalContext"; */
 
 const PetCard = ({ pet }) => {
-  const { loggedUser, favsUser } = useContext(AuthContext);
+  // const { loggedUser, favsUser } = useContext(AuthContext);
   const notify = (text) => toast(text);
 /*   const { newUser, setNewUser } = useGlobalContext();
 
@@ -23,21 +23,7 @@ const PetCard = ({ pet }) => {
   let isFav;
 
   const addToFav = (e) => {
-    e.preventDefault();
-    console.log(favsUser)
-    if(favsUser) favsUser.filter(animal => animal.animalId === pet._id).length > 0 ? isFav = true : isFav = false;
-    console.log(isFav)
-    if (!isFav) {
-    axios
-      .post("http://localhost:3030/favorite/add", {
-        animalId: pet._id,
-        userId: /* userStorage */loggedUser._id,
-      })
-      .then(() => {
-        /* isFav ? (isFav = false) : (isFav = true); */
-        notify("Agregado con exito");
-      })
-    }
+
   };
 
 
@@ -59,14 +45,14 @@ const PetCard = ({ pet }) => {
           <span>{capitalizeFirst(pet.location)}</span>
         </div>
       </Link>
-      <button className={s.favButton} type="submit" onClick={addToFav}>
+      {/* <button className={s.favButton} type="submit" onClick={addToFav}>
         {" "}
         {isFav ? (
           <FavoriteIcon fontSize="large" />
         ) : (
           <FavoriteBorderIcon fontSize="large" />
         )}
-      </button>
+      </button> */}
     </div>
   );
 };

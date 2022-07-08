@@ -70,9 +70,8 @@ class UserFoundationServices {
       };
     }
   }
-
+g
   static async addPets(id, body) {
-    console.log("entra en el update", id ,(Object.keys(body)[0]));
     try {
       const data = await UserFoundation.updateOne(
         { _id: id },

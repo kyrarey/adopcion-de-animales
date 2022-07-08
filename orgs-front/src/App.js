@@ -10,7 +10,7 @@ import { ToastContainer } from "react-toastify";
 import { GlobalProvider } from "./GlobalContext";
 import AddAnimal from "./components/AddAnimal/AddAnimal"
 import EditAnimal from "./components/EditAnimal/EditAnimal"
-
+import AnimalGrid from "./components/AnimalGrid/AnimalGrid"
 
 function App() {
   const path = useLocation().pathname.slice(1, 8)
@@ -32,7 +32,7 @@ function App() {
         {/* <Route path="/foundations/pages/:id" element={< />} /> */}
         <Route path="/foundations/add-animal" element={<AddAnimal />} />
         <Route path="/foundations/edit-animal/:id" element={<EditAnimal />} />
-        <Route path="/foundations/petsToAdopt/:id" element={<EditAnimal />} />
+        <Route path="/foundations/petsToAdopt/:id" element={<AnimalGrid />} />
       </Routes>
      <Footer /> 
       </GlobalProvider>
