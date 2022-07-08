@@ -49,6 +49,7 @@ console.log("loggedUser", loggedUser)
         <Link className="titleLink" to="/">
           {/* <span className="navbar-brand"> */}Pet Adoption{/* </span> */}
         </Link>
+        <a className='titleLink' href="http://localhost:3005">Pet House</a>
         <div className="bgButton">
         <button
           className="navbar-toggler"
