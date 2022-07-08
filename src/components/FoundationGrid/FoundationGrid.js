@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams} from "react-router-dom";
-import find from "../../hooks/find";
 import { fixedElemArray } from "../../hooks/arrGen";
+import find from "../../hooks/find";
 import OrgCard from "../../commons/OrgCard/OrgCard";
 import s from "./FoundationGrid.module.css";
 
@@ -27,16 +27,15 @@ const Grid = () => {
 
     const addOnClick = () => {
         count  < pagesQty  ? count++ : count = pagesQty;
-        navigate(`/orgs/pages/${count}`);
+        navigate(`/association/pages/${count}`);
     }
 
     const subsOnClick = () => {
         count > 1 ? count-- : count = 1;
-        navigate(`/orgs/pages/${count}`);
+        navigate(`/association/pages/${count}`);
     }
 
-    console.log(orgs, " orgs")
-    return (
+        return (
         <div className={s.container}>
             <ul className={s.grid}>
                 { orgs.map(org => <OrgCard key={org.foundationName} org={org}/>)}

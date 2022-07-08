@@ -28,11 +28,11 @@ const Favorite = () => {
     if(loggedUser) {
       find(`/favorite/${loggedUser._id}`)
       .then(userFavs => setAnimal(userFavs))
-      .catch(err => console.log(err));
+      /* .catch(err => console.log(err)); */
 
       find("/animal/all")
       .then(allPets => setPetsArr(allPets))
-      .catch(err => console.log(err));
+      /* .catch(err => console.log(err)); */
     }
   }, );
 

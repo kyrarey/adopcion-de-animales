@@ -3,7 +3,7 @@ const Favorite = require("../models/Favorite");
 class FavoriteServices {
   //ver favoritos
   static async getById(params) {
-    console.log("params :", params);
+    /* console.log("params :", params); */
 
     try {
       const data = await Favorite.find({ userId: params.userId });
@@ -42,7 +42,7 @@ class FavoriteServices {
 
   //eliminar favorito
   static async deleteOne(id) {
-    console.log("FAV SERVICES ID", id)
+    /* console.log("FAV SERVICES ID", id) */
     try {
       const result = await Favorite.findByIdAndRemove(id);
       return {

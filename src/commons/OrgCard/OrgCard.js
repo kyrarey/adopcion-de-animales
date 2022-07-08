@@ -17,17 +17,18 @@ const OrgCard = ({ org }) => {
 
   return (
     <div className={s.orgCard}>
-      <Link to={`orgs/${org._id}`}>
+      <Link className={s.link} to={`/association/${org._id}`}>
         <img
           className={s.orgImage}
-          src={org.image}
+          src={require(`../../assets/img/foundations${org.image}`)}
           alt={org.foundationName}
         ></img>
-
         <div className={s.orgInfo}>
           <span className={s.orgName}>{capitalizeFirst(org.foundationName)}</span>
           <br />
           <span>{capitalizeFirst(org.location)}</span>
+          {/* <br />
+          <span>{org.description}</span> */}
         </div>
       </Link>
       <button className={s.favButton} type="submit" onClick={addToFav}>
