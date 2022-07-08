@@ -22,14 +22,16 @@ class FavoriteServices {
 
   //añadir animal a favoritos
   static async addOne(body) {
-    console.log("FAVS BODY",body.userId)
     try {
-      await Favorite.create(body);
+      const data = await Favorite.create(body);
       return {
         error: false,
-        data: body,
+        data: {
+          _id: data._id,
+          animalId: data.animalId,
+          userId: data.userId
+        },
       };
-      console.log(body)
     } catch (error) {
       return {
         error: true,
@@ -40,6 +42,7 @@ class FavoriteServices {
 
   //eliminar favorito
   static async deleteOne(id) {
+    console.log("FAV SERVICES ID", id)
     try {
       const result = await Favorite.findByIdAndRemove(id);
       return {

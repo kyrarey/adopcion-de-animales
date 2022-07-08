@@ -21,6 +21,7 @@ class FavoriteControllers {
   }
 
   static async deleteOne(req, res) {
+    console.log("FAVORITE REQ.PARAMS",req.params)
     const { error, data } = await FavoriteServices.deleteOne(req.params.favoriteId);
     if (error) {
       return res.status(404).send(data);
