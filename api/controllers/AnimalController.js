@@ -47,7 +47,6 @@ class AnimalControllers {
   }
 
   static async updateOne(req, res) {
-    console.log(req.body, "body")
     const { error, data } = await AnimalServices.updateOne(
       req.params.id,
       req.body

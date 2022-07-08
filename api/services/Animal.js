@@ -19,7 +19,7 @@ class AnimalServices {
   }
 
   static async getOne(id) {
-    console.log("entra al get one services")
+    /* console.log("entra al get one services") */
     try {
       const data = await Animal.findById(id).exec();
       return {

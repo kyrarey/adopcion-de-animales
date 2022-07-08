@@ -21,7 +21,7 @@ class CommentControllers {
 
   //editar comment
   static async updateOne(req, res) {
-    console.log(req.body,"req body", req.params.id,   "controller")
+    /* console.log(req.body,"req body", req.params.id,   "controller") */
     const { error, data } = await CommentServices.updateOne(
       req.params.id,
       req.body

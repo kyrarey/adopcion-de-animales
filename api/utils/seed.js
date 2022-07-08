@@ -25,7 +25,7 @@ const fakeAnimals = [
     history:
       "Este pequeño nació en un criadero para consumo de reptiles y fue rescatado por una de nuestras activistas",
     image: ["/01-01.jpg", "/01-02.jpg", "/01-03.jpg"],
-    fundationId: "1",
+    fundationId: "01",
     location: "bahía blanca, buenos aires",
     size: "pequeño",
     species: "hamster",
@@ -39,8 +39,8 @@ const fakeAnimals = [
     history:
       "Se la encontró corriendo alrededor de un basurero en el centro de la ciudad antes de ser rescatada. Fue acogida por un hogar temporal mientras se recuperaba y ahora está lista para ser adoptada.",
     image: ["/02-01.jpg", "/02-02.jpg", "/02-03.jpg"],
-    fundationId: "1",
-    location: "bahía blanca, buenos aires",
+    fundationId: "08",
+    location: "almirante brown, buenos aires",
     size: "mediano",
     species: "hamster",
     sex: "hembra",
@@ -54,7 +54,7 @@ const fakeAnimals = [
     history:
       "Se la encontró corriendo alrededor de un basurero en el centro de la ciudad antes de ser rescatada. Fue acogida por un hogar temporal mientras se recuperaba y ahora está lista para ser adoptada.",
     image: ["/03-01.jpg", "/03-02.jpg", "/03-03.jpg"],
-    fundationId: "2",
+    fundationId: "02",
     location: "neuquén, neuquén",
     size: "mediano",
     species: "cabra",
@@ -69,7 +69,7 @@ const fakeAnimals = [
     history:
       "El ojo izquierdo de fa fue removido quirúrgicamente debido a un abseso que estab creciendo detrás de él. Después de la cirugía, su ojo no fue completamente cerrado y necesitá limpieza externa en caso de que exista alguna descarga desde el interior.",
     image: ["/04-01.jpg", "/04-02.jpg", "/04-03.jpg"],
-    fundationId: "1",
+    fundationId: "01",
     location: "bahía blanca, buenos aires",
     size: "grande",
     species: "hamster",
@@ -84,7 +84,7 @@ const fakeAnimals = [
     history:
       "Joker formaba parte de una manada de gatos ferales rescatados en el norte de la ciudad. Al principio le costaba adaptarse a la presencia de humanos u otras especies, pero ahora le encanta pasar el día recibiendo mimos. Se ha convertido en un gato de interiores, por lo que no se recomienda mantenerlo fuera de su hogar o permitirle salir a la calle.",
     image: ["/05-01.jpg", "/05-02.jpg", "/05-03.jpg"],
-    fundationId: "3",
+    fundationId: "03",
     location: "marull, códoba",
     size: "mediano",
     species: "cat",
@@ -99,7 +99,7 @@ const fakeAnimals = [
     history:
       "La familia de apolo se tuvo que mudar de país y lo dejaron en la fundación para que encuentre un nuevo hogar",
     image: ["/06-01.jpg", "/06-02.jpg", "/06-03.jpg"],
-    fundationId: "4",
+    fundationId: "04",
     location: "la plata, buenos aires",
     size: "mediano",
     species: "perro",
@@ -114,7 +114,7 @@ const fakeAnimals = [
     history:
       "El humano de Lola falleció hace unos días y la fundación se hizo cargo de ella mientras encuentra una nueva familia.",
     image: ["/07-01.jpg", "/07-02.jpg", "/07-03.jpg"],
-    fundationId: "5",
+    fundationId: "05",
     location: "san isidro, buenos aires",
     size: "grande",
     species: "perro",
@@ -129,8 +129,8 @@ const fakeAnimals = [
     history:
       "La familia de baco atraviesa por graves problemas económicos, que no les permite darle la vida que se merece, por tal razón lo trajeron con nosotros para encontrarle un hogar que lo ame tanto como ellos y que le pueda brindar un hogar con las comodidades que un perrito de su edad necesita. ",
     image: ["/08-01.jpg", "/08-02.jpg", "/08-03.jpg"],
-    fundationId: "5",
-    location: "san isidro, buenos aires",
+    fundationId: "09",
+    location: "jujuy, argentina",
     size: "pequeño",
     species: "perro",
     sex: "macho",
@@ -144,8 +144,8 @@ const fakeAnimals = [
     history:
       "Esta pequeña es un manojo de amor, fue encontrada deambulando en el centro de la ciudad cuando un alma gentil la rescató y la trajo con nosotros.",
     image: ["/09-01.jpg", "/09-02.jpg", "/09-03.jpg"],
-    fundationId: "5",
-    location: "san isidro, buenos aires",
+    fundationId: "10",
+    location: "buenos aires, argentina",
     size: "pequeño",
     species: "perro",
     sex: "hembra",
@@ -159,7 +159,7 @@ const fakeAnimals = [
     history:
       "Hermosa gatita encontrada en las inmediaciones del hospital docente, fue traída por una estudiante a la que le pedía comida diariamente.",
     image: ["/10-01.jpg", "/10-02.jpg", "/10-03.jpg"],
-    fundationId: "6",
+    fundationId: "06",
     location: "CABA, buenos aires",
     size: "mediano",
     species: "gato",
@@ -174,8 +174,8 @@ const fakeAnimals = [
     history:
       "Antes de ser rescatada se la veía frecuentemente sobre los techos de las casas de Villa Urquiza, en busca de ratones o alguna que otra paloma.",
     image: ["/11-01.jpg", "/11-02.jpg", "/11-03.jpg"],
-    fundationId: "6",
-    location: "CABA, buenos aires",
+    fundationId: "11",
+    location: "zona norte, buenos aires",
     size: "mediano",
     species: "gato",
     sex: "hembra",
@@ -189,8 +189,8 @@ const fakeAnimals = [
     history:
       "Este guapo caballero fue encontrado por una de nuestras voluntarias en las inmediaciones del mercado de Liniers, se acercó muy amigablemente y fue traído a la fundación.",
     image: ["/12-01.jpg", "/12-02.jpg", "/12-03.jpg"],
-    fundationId: "6",
-    location: "CABA, buenos aires",
+    fundationId: "12",
+    location: "cordoba, argentina",
     size: "pequeño",
     species: "gato",
     sex: "macho",
@@ -204,7 +204,7 @@ const fakeAnimals = [
     history:
       "Solía pasar sus días alegrando los paseos de los turistas que acuden a Caminito, hasta que un día fue atropellado, llevado a una clínica por un turista y luego vino con nosotros, que lo estamos cuidando hasta ahora.",
     image: ["/13-01.jpg", "/13-02.jpg", "/13-03.jpg"],
-    fundationId: "6",
+    fundationId: "06",
     location: "CABA, buenos aires",
     size: "mediano",
     species: "gato",
@@ -219,8 +219,8 @@ const fakeAnimals = [
     history:
       "Este guapo gato dorado tiene leucemia felina, por lo que requiere tomar su medicina a diario (lo cual hace sin chistar) y no debe salir de su casa para evitar contagiar a otros gatitos.",
     image: ["/14-01.jpg", "/14-02.jpg", "/14-03.jpg"],
-    fundationId: "6",
-    location: "CABA, buenos aires",
+    fundationId: "13",
+    location: "buenos aires, argentina",
     size: "grande",
     species: "gato",
     sex: "macho",
@@ -234,8 +234,8 @@ const fakeAnimals = [
     history:
       "El esposo de su humana desarrollo un grave cuadro respiratorio y por recomemdación médica no puede estar cerca de gatos o perros, por eso este increíble animal está ahora con nosostros en busca de una nueva familia.",
     image: ["/15-01.jpg", "/15-02.jpg", "/15-03.jpg"],
-    fundationId: "6",
-    location: "CABA, buenos aires",
+    fundationId: "14",
+    location: "buenos aires, argentina",
     size: "grande",
     species: "gato",
     sex: "macho",
@@ -249,7 +249,7 @@ const fakeAnimals = [
     history:
       "No se sabe por qué, pero un día de primavera se vió a Francis caminando sin rumbo a la orilla del río e inmediatamente fue traído con nosotros.",
     image: ["/16-01.jpg", "/16-02.jpg", "/16-03.jpg"],
-    fundationId: "2",
+    fundationId: "02",
     location: "neuquén, neuquén",
     size: "mediano",
     species: "ganzo",
@@ -264,7 +264,7 @@ const fakeAnimals = [
     history:
       "Carmelita llegó a nosotros después de que desarrolló un padecimiento que impide que su lana crezca normalmente. Su antiguo hogar era una granja de producción de lana de oveja.",
     image: ["/17-01.jpg", "/17-02.jpg", "/17-03.jpg"],
-    fundationId: "2",
+    fundationId: "02",
     location: "neuquén, neuquén",
     size: "grande",
     species: "oveja",
@@ -278,7 +278,7 @@ const fakeAnimals = [
     history:
       "La granja en la que vivía este intrépido burrito fue vendida y él fue traído con nosotros de inmediato.",
     image: ["/18-01.jpg", "/18-02.jpg", "/18-03.jpg"],
-    fundationId: "2",
+    fundationId: "02",
     location: "neuquén, neuquén",
     size: "extra-grande",
     species: "burro",
@@ -291,65 +291,9 @@ const fakeAnimals = [
 ];
 
 const fakeOrgs = [
-  {
-      foundationName: "Proyecto 4 patas",
-      image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/188/849/themes/common/logo-1866482157-1574635760-6cf4fcbbca71b55a01145347adaf5bde1574635760.png?0",
-      location: "Buenos Aires, Argentina",
-      description: "Proyecto 4 Patas (P4P) es una organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
-      email:"proyecto4Patas@email.com",
-      password:"1234",
-    },
     {
-      foundationName: "El campito refugio",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU",
-      location: "Buenos Aires, Argentina",
-      description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
-      email:"elcampito@email.com",
-      password:"1234",
-    },
-    {
-      foundationName: "Patitas al rescate",
-      image: "https://d1fdloi71mui9q.cloudfront.net/DqXHZc8TzCbpsxCGzZ5Z_8LC568lCZ06642U1",
-      location: "Cordoba, Argentina",
-      description: "Rescate, rehabilitación y adopción ",
-      email:"patitas@email.com",
-      password:"1234",
-    },
-    {
-      foundationName: "Zaguates",
-      image: "https://scontent.faep8-3.fna.fbcdn.net/v/t31.18172-8/12182611_452872468230452_8616442658070815663_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hZ7oSDSxIbUAX8gz1ZF&_nc_ht=scontent.faep8-3.fna&oh=00_AT8Asm_WHXdyb8n6PFZ8G6vB7pQlkMIO3K8_Wy8Eq4BVCA&oe=62EB29F6",
-      location: "Zona Norte, Buenos Aires",
-      description: "Somos proteccionistas independientes, hace años que rescatamos animales en situación de calle, en estados deplorables, pidiendo a gritos dejar de ser invisibles.",
-      email:"zaguates@email.com",
-      password:"1234",
-    },
-    {
-      foundationName: "El refugio",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU",
-      location: "Buenos Aires, Argentina",
-      description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
-      email:"elrefugio@email.com",
-      password:"1234",
-    },
-    {
-      foundationName: "Patitas contentas",
-      image: "https://d1fdloi71mui9q.cloudfront.net/DqXHZc8TzCbpsxCGzZ5Z_8LC568lCZ06642U1",
-      location: "Jujuy, Argentina",
-      description: "Rescate, rehabilitación y adopción ",
-      email:"patitascontentas@email.com",
-      password:"1234",
-    },
-    {
-      foundationName: "Callejeritos Brown",
-      image: "https://www.callejeritosalmirantebrown.org/wp-content/uploads/2020/09/LOGO-CALLEJERITOS-original-01.png",
-      location: "Almirante Brown, Buenos Aires",
-      description: "Callejeritos de Almirante Brown es una Asociación sin fines de lucro, que nace durante el año 2011, fue creada por un grupo de vecinos preocupados por el maltrato y abandono de animales en situación de calle  en las ciudades. Tratando, desde nuestra humilde posibilidad, hacerles la vida más sencilla a quienes han sufrido la desgracia de vivir fuera de un hogar, bajo la indiferencia y el abandono de la gente.",
-      email:"callejeritos@email.com",
-      password:"1234",
-    },
-    {
-
       foundationName: "ADVA",
+      petsForAdoption: [],
       image: "/01.jpg",
       location: "bahía blanca, buenos aires",
       description: "ONG sin fines de lucro que desarrolla proyectos en beneficio de los la fauna del país desde el 2006. Albergamos a 650 animales en nuestra red de temporales y santuario.",
@@ -358,6 +302,7 @@ const fakeOrgs = [
   },
   {
       foundationName: "lucky",
+      petsForAdoption: [],
       image: "/02.jpg",
       location: "neuquén, neuquén",
       description: "Somos un refugio con 600 animalitos de diferentes especies, nos alimentamos de autogestión.",
@@ -403,6 +348,69 @@ const fakeOrgs = [
       description: "ONG dedica a la protección de perros en situación de calle o maltratados, su rescate, rehabilitación social, castracion y su posterior adopción en hogares.",
       email: "fundacion1@email.com",
       password: ""
+  },
+  {
+    foundationName: "callejeritos brown",
+    /* image: "https://www.callejeritosalmirantebrown.org/wp-content/uploads/2020/09/LOGO-CALLEJERITOS-original-01.png", */
+    image: "/08.jpg",
+    location: "almirante brown, buenos aires",
+    description: "Callejeritos de Almirante Brown es una Asociación sin fines de lucro, que nace durante el año 2011, fue creada por un grupo de vecinos preocupados por el maltrato y abandono de animales en situación de calle  en las ciudades. Tratando, desde nuestra humilde posibilidad, hacerles la vida más sencilla a quienes han sufrido la desgracia de vivir fuera de un hogar, bajo la indiferencia y el abandono de la gente.",
+    email:"callejeritos@email.com",
+    password:"1234",
+  },
+  {
+    foundationName: "patitas contentas",
+    /* image: "https://d1fdloi71mui9q.cloudfront.net/DqXHZc8TzCbpsxCGzZ5Z_8LC568lCZ06642U1", */
+    image: "/09.jpg",
+    location: "jujuy, argentina",
+    description: "Rescate, rehabilitación y adopción ",
+    email:"patitascontentas@email.com",
+    password:"1234",
+  },
+  {
+    foundationName: "el refugio",
+    /* image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU", */
+    image: "/10.jpg",
+    location: "buenos aires, argentina",
+    description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
+    email:"elrefugio@email.com",
+    password:"1234",
+  },
+  {
+    foundationName: "zaguates",
+    /* image: "https://scontent.faep8-3.fna.fbcdn.net/v/t31.18172-8/12182611_452872468230452_8616442658070815663_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hZ7oSDSxIbUAX8gz1ZF&_nc_ht=scontent.faep8-3.fna&oh=00_AT8Asm_WHXdyb8n6PFZ8G6vB7pQlkMIO3K8_Wy8Eq4BVCA&oe=62EB29F6", */
+    image: "/11.jpg",
+    location: "zona norte, buenos aires",
+    description: "Somos proteccionistas independientes, hace años que rescatamos animales en situación de calle, en estados deplorables, pidiendo a gritos dejar de ser invisibles.",
+    email:"zaguates@email.com",
+    password:"1234",
+  },
+  {
+    foundationName: "patitas al rescate",
+    /* image: "https://d1fdloi71mui9q.cloudfront.net/DqXHZc8TzCbpsxCGzZ5Z_8LC568lCZ06642U1", */
+    image: "/12.jpg",
+    location: "cordoba, argentina",
+    description: "Rescate, rehabilitación y adopción ",
+    email:"patitas@email.com",
+    password:"1234",
+  },
+  {
+    foundationName: "el campito refugio",
+    /* image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU", */
+    image: "/13.jpg",
+    location: "buenos aires, argentina",
+    description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
+    email:"elcampito@email.com",
+    password:"1234",
+  },
+  {
+    foundationName: "Proyecto 4 patas",
+    /* image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/188/849/themes/common/logo-1866482157-1574635760-6cf4fcbbca71b55a01145347adaf5bde1574635760.png?0", */
+    image: "/14.jpg",
+    location: "buenos aires, argentina",
+    description: "Proyecto 4 Patas (P4P) es una organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
+    email:"proyecto4Patas@email.com",
+    password:"1234",
   }
 ]
 

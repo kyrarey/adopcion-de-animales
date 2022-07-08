@@ -15,7 +15,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   /* const { newUser, setNewUser } = useGlobalContext(); */
 
-console.log("loggedUser", loggedUser)
+//console.log("loggedUser", loggedUser)
 /*   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
     : {}; */

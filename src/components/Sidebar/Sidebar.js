@@ -1,12 +1,17 @@
+import { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import find from "../../hooks/find";
 import s from "./Sidebar.module.css";
 
 
 const Sidebar = () => {
-    let id = useLocation().pathname.slice(9,33)
-    const [user, setUser] = useState({});
+  const { loggedUser } = useContext(AuthContext);
+  const id = loggedUser ? loggedUser._id : null;
+  const [user, setUser] = useState({});
+
+  /* let id = useLocation().pathname.slice(9,33) */
+    
 
   useEffect(() => {
     find(`/user/account/${id}`)

@@ -7,7 +7,6 @@ import axios from "axios";
 import find from "../../hooks/find";
 import capitalizeFirst from "../../hooks/capitalizeFirst";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { toast } from "react-toastify";
 import s from "./PetCard.module.css";
 
 
@@ -16,7 +15,6 @@ const PetCard = ({ pet }) => {
   const { favPets, getFavs } = useContext(FavContext);
   const [favId, setFavId] = useState("");
   const navigate = useNavigate();
-  const notify = (text) => toast(text);
   let isFav;
 
   const addToFav = (e) => {
@@ -29,6 +27,7 @@ const PetCard = ({ pet }) => {
           userId: loggedUser._id,
         })
         .then(user => {
+          console.log(user)
           setFavId(user.data._id)
           find(`/favorite/${user.data.userId}`)
           .then(favs => getFavs(favs))
@@ -37,8 +36,10 @@ const PetCard = ({ pet }) => {
       } else {
         axios.delete(`http://localhost:3030/favorite/${favId}`)
         .then(() => {
-          isFav = false;
-          notify("Eliminado de favoritos"); 
+          find(`/favorite/${loggedUser._id}`)
+          .then(favs => getFavs(favs))
+          .catch(err => console.log(err));
+
         })
         .catch(err => {
           console.log(err);
@@ -63,9 +64,7 @@ const PetCard = ({ pet }) => {
         <div className={s.petInfo}>
           <span className={s.petName}>{capitalizeFirst(pet.animalname)}</span>
           <br />
-          <span>{`${capitalizeFirst(pet.age)}, ${capitalizeFirst(
-            pet.sex
-          )}`}</span>
+          <span>{`${capitalizeFirst(pet.age)}, ${capitalizeFirst(pet.sex)}`}</span>
           <br />
           <span>{capitalizeFirst(pet.location)}</span>
         </div>

@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
+import SingleOrgCard from "./components/SingleOrgCard/SingleOrgCard";
 import Navbar from "./components/Navbar/Navbar";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
@@ -37,12 +38,13 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/animals/:id" element={<SinglePetCard />} />
+        <Route path="/association/:id" element={<SingleOrgCard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/search/:search" element={<Search />} />
         {/* <Route path="/favorite" element={<Favorite />} /> */}
         <Route path="/account/:id" element={<Account />} />
         <Route path="/account/edit/:id" element={<EditAccount />} />
-        <Route path="/search/:search" element={<Search />} />
         <Route path="/account/form/:id" element={<UserForm />} />
         <Route path="/account/form/edit/:id" element={<EditForm />} />
         <Route path="/account/favorite" element={<Favorite />} />

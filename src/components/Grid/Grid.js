@@ -39,7 +39,7 @@ const Grid = () => {
     return (
         <div className={s.container}>
             <ul className={s.grid}>
-                { pets.map(pet => <PetCard key={pet.animalname} pet={pet}/>)}
+                { pets.map((pet, index) => <PetCard key={index} pet={pet}/>)}
             </ul>
             {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}
             {count < pagesQty ? <button className={s.button} type="submit" onClick={addOnClick}>Siguiente</button> : ""}

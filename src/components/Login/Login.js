@@ -53,16 +53,16 @@ const Login = () => {
   //google identity services
 
   async function handleCallbackResponse(response) {
-    console.log("Encoded JWT ID token: ", response.credential);
+    /* console.log("Encoded JWT ID token: ", response.credential); */
     let userObject = jwt_decode(response.credential);
-    console.log("esto es userObject: ", userObject);
+    /* console.log("esto es userObject: ", userObject); */
 
   try{
     const user = await axios.post("http://localhost:3030/user/login", {
           email: userObject.email,
           password: userObject.sub,
         });
-        console.log("esto es user en login: ", user)
+        /* console.log("esto es user en login: ", user) */
 
         const loginUser = {
           _id: user.data._id,
@@ -70,7 +70,7 @@ const Login = () => {
           isFormComplete: user.data.isFormComplete,
           fundation: user.data.fundation,
           token: user.data.token,
-          isAuthenticated: true,
+/*           isAuthenticated: true, */
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
         toggleAuth(loginUser);
@@ -99,7 +99,7 @@ const Login = () => {
           isFormComplete: user.data.isFormComplete,
           fundation: user.data.fundation,
           token: user.data.token,
-          isAuthenticated: true,
+/*           isAuthenticated: true, */
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
         toggleAuth(loginUser);
