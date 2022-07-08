@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const UserControllers = require("../controllers/UserController");
+const nodemailer = require("nodemailer")
 
 //This code allows you to save a file, which was sent via frontend form, on the server
 const storage = multer.diskStorage({
@@ -35,6 +36,35 @@ router.post("/register", async (req, res) => {
       password,
     };
     const user = await User.create(newUser);
+    (async () => {
+      try{
+        const transporter = nodemailer.createTransport({
+          host: 'smtp.gmail.com',
+          port: 465,
+          secure: true,
+          auth: {
+              user: 'gastonchemi@gmail.com',
+              pass: 'yxafglrxkbnguphk'
+          }
+      });
+  let mailOptions = {
+    from: "Ceibo",
+    to: "gastonchemi@gmail.com",
+    subject: "Confirmacion de usuario",
+    text: "Su usuario se ah creado correctamente"
+  }
+  transporter.sendMail(mailOptions,(error, info) =>{
+    if(error) {
+      res.status(500).send(error.message)
+    } else{ 
+      console.log("email enviado")
+      res.status(200).json(req.body)
+    } 
+  })
+} catch (error) {
+  console.log(error.message)
+}
+    })()
     res.status(201).send(user);
   } catch (err) {
     console.error(err);
