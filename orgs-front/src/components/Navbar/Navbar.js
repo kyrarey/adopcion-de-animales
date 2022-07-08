@@ -43,8 +43,9 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         <Link className="titleLink" to="/">
-          {/* <span className="navbar-brand"> */}Pet Adoption{/* </span> */}
+          {/* <span className="navbar-brand"> */}Pet House{/* </span> */}
         </Link>
+         <a className='titleLink' href="http://localhost:3000">Pet Adoption</a>
         <div className="bgButton">
           <button
             className="navbar-toggler"
@@ -75,7 +76,7 @@ const Navbar = () => {
               <li className="nav-item">
                 <Link className="link" to={`/account/${userStorage._id}`}>
                   {/* <span className="nav-link"> */}
-                    {userStorage?.email?.split("@")[0]}
+                  {userStorage?.email?.split("@")[0]}
                   {/* </span> */}
                 </Link>
               </li>
@@ -107,7 +108,7 @@ const Navbar = () => {
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li className="subLi">
                     <Link className="subLink" to="/contact">
-                     {/*  <span className="dropdown-item"> */}Contacto{/* </span> */}
+                      {/*  <span className="dropdown-item"> */}Contacto{/* </span> */}
                     </Link>
                   </li>
                   <li className="subLi">
@@ -119,14 +120,14 @@ const Navbar = () => {
                     <hr className="dropdown-divider" />
                   </li>
                   <li className="subLi">
-                  <a className="subLink" href="mailto:info@petsadoption.org?Subject=Reporte%20de%20error%20en%20web">
+                    <a className="subLink" href="mailto:info@petsadoption.org?Subject=Reporte%20de%20error%20en%20web">
                       {/* <span className="dropdown-item"> */}Reportar error{/* </span> */}
                     </a>
                   </li>
                 </ul>
               </li>
             </ul>
-                    
+
             <ul className="navbar-nav ms-auto">
               <Link to="/">
                 <button className="btn" onClick={handlelogout}>
@@ -137,7 +138,7 @@ const Navbar = () => {
           </div>
         ) : (
           <>
-      
+
             <ul className="navbar-nav ms-auto">
               <Link to="/login">
                 <button className="btn"> Login </button>
