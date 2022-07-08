@@ -132,7 +132,7 @@ console.log("loggedUser", loggedUser)
               </li>
             </ul>
             <ul className=" ">
-              <form className="nav-item d-flex align-self-center">
+              <form onSubmit={onSearch} className="nav-item d-flex align-self-center">
                 <div className="input-group ">
                   <input
                     type="text"
@@ -144,7 +144,7 @@ console.log("loggedUser", loggedUser)
                     className="btn btn-outline-secondary"
                     type="button"
                     id="button-addon2"
-                    onClick={onSearch}
+                    // onClick={onSearch}
                   >
                     {<GoSearch />}
                   </button>
@@ -172,7 +172,7 @@ console.log("loggedUser", loggedUser)
                   />
                   <button
                     className="btn btn-outline-secondary"
-                    type="button"
+                    type="submit"
                     id="button-addon2"
                     onClick={onSearch}
                   >
