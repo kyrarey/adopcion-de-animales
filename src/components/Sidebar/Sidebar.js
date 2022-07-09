@@ -31,7 +31,7 @@ const Sidebar = () => {
                 user.image
                   ? user.image === "no_user"
                     ? require(`../../assets/img/users/no_user.jpg`)
-                    : require(`../../assets/img/users${user.image}.jpg`)
+                    : require(`../../assets/img/users/${user.image}.jpg`)
                   : require(`../../assets/img/users/no_user.jpg`)
               }
               alt="Foto de perfil"

@@ -294,7 +294,7 @@ const fakeOrgs = [
     {
       foundationName: "ADVA",
       petsForAdoption: [],
-      image: "/01.jpg",
+      image: "01",
       location: "bahía blanca, buenos aires",
       description: "ONG sin fines de lucro que desarrolla proyectos en beneficio de los la fauna del país desde el 2006. Albergamos a 650 animales en nuestra red de temporales y santuario.",
       email: "adva@gmail.com",
@@ -303,7 +303,7 @@ const fakeOrgs = [
   {
       foundationName: "lucky",
       petsForAdoption: [],
-      image: "/02.jpg",
+      image: "02",
       location: "neuquén, neuquén",
       description: "Somos un refugio con 600 animalitos de diferentes especies, nos alimentamos de autogestión.",
       email: "lucky@hotmail.com",
@@ -311,7 +311,7 @@ const fakeOrgs = [
   },
   {
       foundationName: "segunda oportunidad",
-      image: "/03.jpg",
+      image: "03",
       location: "marull, códoba",
       description: "Manejamos casos de rescate, adopción y hogar temporal y promovemos la tenencia responsable de animales de compañía.",
       email: "segundaoportunidad@hotmail.com",
@@ -319,7 +319,7 @@ const fakeOrgs = [
   },
   {
       foundationName: "FARA",
-      image: "/04.jpg",
+      image: "04",
       location: "la plata, buenos aires",
       description: "Rescate de alto riesgo animales de todo tipo y tamaños en situación de peligro o que haga peligrar a terceros, fomentar el adiestramiento de perros para búsqueda y rescate, capacitar, recuperación de animales silvestres.",
       email: "farafndacion@hotmail.com",
@@ -327,7 +327,7 @@ const fakeOrgs = [
   },
   {
       foundationName: "red solidaria animal",
-      image: "/05.jpg",
+      image: "05",
       location: "san isidro, buenos aires",
       description: "Red Solidaria Animal, es una Asociación Civil sin fines de lucro que se dedica al cuidado y protección de los animales",
       email: "redanimal@gmail.com",
@@ -335,7 +335,7 @@ const fakeOrgs = [
   },
   {
       foundationName: "maneki",
-      image: "/06.jpg",
+      image: "06",
       location: "CABA, buenos aires",
       description: "Maneki rescata, recupera y da en adopcion gatitos en la ciudad de Buenos Aires. Desde hace diez años trabajamos en pro de el bienestar de los felinos. Hoy abrimos nuestro Catshop espacio para los amantes de los felinos.",
       email: "maneki@gmail.com",
@@ -343,7 +343,7 @@ const fakeOrgs = [
   },
   {
       foundationName: "FASN",
-       image: "/07.jpg",
+       image: "07",
       location: "parque siquimán, córdoba",
       description: "ONG dedica a la protección de perros en situación de calle o maltratados, su rescate, rehabilitación social, castracion y su posterior adopción en hogares.",
       email: "fundacion1@email.com",
@@ -352,7 +352,7 @@ const fakeOrgs = [
   {
     foundationName: "callejeritos brown",
     /* image: "https://www.callejeritosalmirantebrown.org/wp-content/uploads/2020/09/LOGO-CALLEJERITOS-original-01.png", */
-    image: "/08.jpg",
+    image: "08",
     location: "almirante brown, buenos aires",
     description: "Callejeritos de Almirante Brown es una Asociación sin fines de lucro, que nace durante el año 2011, fue creada por un grupo de vecinos preocupados por el maltrato y abandono de animales en situación de calle  en las ciudades. Tratando, desde nuestra humilde posibilidad, hacerles la vida más sencilla a quienes han sufrido la desgracia de vivir fuera de un hogar, bajo la indiferencia y el abandono de la gente.",
     email:"callejeritos@email.com",
@@ -361,7 +361,7 @@ const fakeOrgs = [
   {
     foundationName: "patitas contentas",
     /* image: "https://d1fdloi71mui9q.cloudfront.net/DqXHZc8TzCbpsxCGzZ5Z_8LC568lCZ06642U1", */
-    image: "/09.jpg",
+    image: "09",
     location: "jujuy, argentina",
     description: "Rescate, rehabilitación y adopción ",
     email:"patitascontentas@email.com",
@@ -370,7 +370,7 @@ const fakeOrgs = [
   {
     foundationName: "el refugio",
     /* image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU", */
-    image: "/10.jpg",
+    image: "10",
     location: "buenos aires, argentina",
     description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
     email:"elrefugio@email.com",
@@ -379,7 +379,7 @@ const fakeOrgs = [
   {
     foundationName: "zaguates",
     /* image: "https://scontent.faep8-3.fna.fbcdn.net/v/t31.18172-8/12182611_452872468230452_8616442658070815663_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hZ7oSDSxIbUAX8gz1ZF&_nc_ht=scontent.faep8-3.fna&oh=00_AT8Asm_WHXdyb8n6PFZ8G6vB7pQlkMIO3K8_Wy8Eq4BVCA&oe=62EB29F6", */
-    image: "/11.jpg",
+    image: "11",
     location: "zona norte, buenos aires",
     description: "Somos proteccionistas independientes, hace años que rescatamos animales en situación de calle, en estados deplorables, pidiendo a gritos dejar de ser invisibles.",
     email:"zaguates@email.com",
@@ -388,7 +388,7 @@ const fakeOrgs = [
   {
     foundationName: "patitas al rescate",
     /* image: "https://d1fdloi71mui9q.cloudfront.net/DqXHZc8TzCbpsxCGzZ5Z_8LC568lCZ06642U1", */
-    image: "/12.jpg",
+    image: "12",
     location: "cordoba, argentina",
     description: "Rescate, rehabilitación y adopción ",
     email:"patitas@email.com",
@@ -397,7 +397,7 @@ const fakeOrgs = [
   {
     foundationName: "el campito refugio",
     /* image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU", */
-    image: "/13.jpg",
+    image: "13",
     location: "buenos aires, argentina",
     description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
     email:"elcampito@email.com",
@@ -406,7 +406,7 @@ const fakeOrgs = [
   {
     foundationName: "Proyecto 4 patas",
     /* image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/188/849/themes/common/logo-1866482157-1574635760-6cf4fcbbca71b55a01145347adaf5bde1574635760.png?0", */
-    image: "/14.jpg",
+    image: "14",
     location: "buenos aires, argentina",
     description: "Proyecto 4 Patas (P4P) es una organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
     email:"proyecto4Patas@email.com",

@@ -62,7 +62,7 @@ const EditAccount = () => {
                         if (values.email) body.append( "email", values.email.toLowerCase());
                         if (values.password) body.append( "password", values.password);
                         if (values.photo) {
-                            body.append("image",`/${id}`)
+                            body.append("image",`${id}`)
                             body.append( "photo", values.photo)
                         };
           

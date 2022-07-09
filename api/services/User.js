@@ -24,6 +24,7 @@ class UserServices {
     //console.log("entra al get one services");
     try {
       const data = await User.findById(id).exec();
+      console.log(`src/assets/img/users/${data.image}.jpg`)
       return {
 
         error: false,
@@ -60,12 +61,12 @@ class UserServices {
   static async updateOne(id, body) {
     try {
       const data = await User.findByIdAndUpdate(id, body);
-      //console.log("BODY", body)
+      /* console.log("DATA", data) */
       if (fs.existsSync("src/assets/img/users/01.jpg")) {
-        data.image = `/${data.id}.jpg`;
+        let newFileName = `/${data.id}.jpg`;
         fs.rename(
           "src/assets/img/users/01.jpg",
-          `src/assets/img/users${data.image}`,
+          `src/assets/img/users${newFileName}`,
           (err) => {
             if (err) console.log(err);
           }
