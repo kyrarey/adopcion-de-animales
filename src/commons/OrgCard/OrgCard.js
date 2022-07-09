@@ -20,7 +20,7 @@ const OrgCard = ({ org }) => {
       <Link className={s.link} to={`/association/${org._id}`}>
         <img
           className={s.orgImage}
-          src={require(`../../assets/img/foundations${org.image}`)}
+          src={require(`../../assets/img/foundations/${org.image}.jpg`)}
           alt={org.foundationName}
         ></img>
         <div className={s.orgInfo}>

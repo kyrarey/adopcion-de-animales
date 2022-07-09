@@ -56,7 +56,7 @@ const SingleOrgCard = () => {
         <h1 className={s.title}>{org.foundationName}</h1>
         <div className={s.content}>
             <img className={s.image}
-            src={org.image && require(`../../assets/img/foundations${org.image}`)}
+            src={org.image && require(`../../assets/img/foundations/${org.image}.jpg`)}
             alt={org.foundationName}
             ></img>
           {/* <SingleSlider images={org.image}/> */}
