@@ -30,6 +30,15 @@ class UserControllers {
     res.status(200).send(data);
   }
 
+    //retornar la info de la fundación haciendo una búsqueda por una key determinada
+    static async getOneByKey(req, res) {
+      const { error, data } = await UserFoundationServices.getOneByKey(req.params.keyId);
+      if (error) {
+        return res.status(404).send(data);
+      }
+      res.status(200).send(data);
+    }
+
   //logout user
 
   //editar usuario

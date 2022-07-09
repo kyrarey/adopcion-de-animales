@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { BsWhatsapp } from "react-icons/bs";
 import { notLoggedIn, notFormCompleted } from "../../hooks/alert";
@@ -29,13 +29,25 @@ const SinglePetCard = () => {
     "age": "",
     "vaccines": ""
   });
+  const [org, setOrg] = useState([]);
   
   useEffect(() => {
     find(`/animal/${id}`)
       .then(petObj => setPet(petObj))
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
   }, [id]);
 
+  console.log(pet)
+  useEffect(() => {
+  if(pet._id) {
+    //console.log(pet.fundationId);
+    find(`/orgs/key/${pet.fundationId}`)
+    .then(orgArr => setOrg(orgArr))
+    .catch(err => console.log(err));
+  }
+}, [pet.fundationId])
+
+    console.log(org[0])
   const handleClick = (e) => {
     e.preventDefault();
     if (isAuthenticated) {
@@ -72,6 +84,12 @@ const SinglePetCard = () => {
             <p  className={s.info}>{pet.history}</p>
             <h4 className={s.subTitle}>Ubicación</h4>
             <p  className={s.info}>{pet.location && capitalizeFirst(pet.location)}</p>
+            <h4 className={s.subTitle}>{`Fundación a cargo de ${pet.animalname && capitalizeFirst(pet.animalname)}`}</h4>
+            <p  className={s.info}>
+              <Link className={s.link}to={org[0] ? `/association/${org[0]._id}` : "#"}>
+                {org[0] ? capitalizeFirst(org[0].foundationName) : ""} 
+              </Link>
+            </p>
             <h4 className={s.subTitle}>{`Ayuda a ${pet.animalname && capitalizeFirst(pet.animalname)} a llegar a más personas`}</h4>
             <div className={s.columns}>
               <p  className={s.info}>Comparte su historia con tus amigos</p>

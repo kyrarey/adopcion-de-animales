@@ -36,7 +36,7 @@ class UserFoundationServices {
 
   //retornar usuario logeado
   static async getOne(id) {
-    console.log("este es el id de fund: ", id);
+    /* console.log("este es el id de fund: ", id); */
     try {
       const data = await UserFoundation.findById(id).exec();
       return {
@@ -52,6 +52,23 @@ class UserFoundationServices {
     }
   }
 
+  //retornar la info de la fundación haciendo una búsqueda por una key determinada
+  static async getOneByKey(image) {
+    try {
+      const data = await UserFoundation.find({image: image}).exec();
+      console.log("DATA",data)
+      return {
+        error: false,
+        data: data,
+      };
+    } catch (error) {
+      console.error(error, "    error");
+      return {
+        error: true,
+        data: "error 404: Animal not found",
+      };
+    }
+  }
   //logout user
 
   //editar usuario
