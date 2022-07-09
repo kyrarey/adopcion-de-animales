@@ -30,6 +30,16 @@ class AnimalControllers {
     res.status(200).send(data);
   }
 
+  static async getAllByFoundation(req, res) {
+    const { error, data } = await AnimalServices.getAll({
+      fundationId: req.params.foundationId,
+    });
+    if (error) {
+      return res.status(404).send(data);
+    }
+    res.status(200).send(data);
+  }
+
   static async getOne(req, res) {
     const { error, data } = await AnimalServices.getOne(req.params.id);
     if (error) {

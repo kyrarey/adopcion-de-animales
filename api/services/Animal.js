@@ -3,6 +3,7 @@ const Animal = require("../models/Animal");
 
 class AnimalServices {
   static async getAll(params) {
+    console.log("PARAMS", params)
     try {
       const data = await Animal.find(params).exec();
       return {

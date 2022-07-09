@@ -25,6 +25,7 @@ import OrgGrid from "./components/FoundationGrid/FoundationGrid";
 import NotFound from "./components/NotFound/NotFound";
 import Comment from "./components/Comment/Comment";
 import NewComment from "./components/NewComment/NewComment";
+import FoundationAnimalsGrid from "./components/FoundationAnimalsGrid/FoundationAnimalsGrid";
 
 
 const App = () => {
@@ -49,6 +50,7 @@ const App = () => {
         <Route path="/account/form/edit/:id" element={<EditForm />} />
         <Route path="/account/favorite" element={<Favorite />} />
         <Route path="/association/pages/:id" element={<OrgGrid />} />
+        <Route path="/association/animals/:foundationId/:id" element={<FoundationAnimalsGrid />} />
         <Route path="/animals/pages/:id" element={<Grid />} />
         <Route path="/form" element={<AdoptantForm />} />
         {/* <Route path="/orgs/pages/:id" element={<OrgGrid />} /> */}

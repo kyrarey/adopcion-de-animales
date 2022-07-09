@@ -6,8 +6,9 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
 
 //router.post("/register", UserFoundationControllers.addOne);
-router.get("/account/:userId", UserFoundationControllers.getOne);
 router.get("/all", UserFoundationControllers.getAll);
+router.get("/account/:userId", UserFoundationControllers.getOne);
+router.get("/key/:keyId", UserFoundationControllers.getOneByKey); //busca una fundación haciendo por un key dado
 router.put("/:userId", UserFoundationControllers.updateOne);
 router.put("/addpets/:userId", UserFoundationControllers.addPets);
 router.delete("/:userId", UserFoundationControllers.deleteOne);

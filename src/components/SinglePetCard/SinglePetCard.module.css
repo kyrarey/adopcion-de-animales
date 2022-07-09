@@ -46,6 +46,11 @@
   font-family: var(--articleFont);
 }
 
+.link {
+  text-decoration: none;
+  color: dodgerblue;
+}
+
 .waIcon {
   color: #00bb2d;
 }
