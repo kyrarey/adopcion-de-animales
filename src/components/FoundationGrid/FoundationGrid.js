@@ -18,6 +18,7 @@ const Grid = () => {
             setTotalOrgs(orgsArr.length);
             let orgsAux = [];
             orgsAux = fixedElemArray(orgsArr, orgsPerPage, count);
+            console.log(orgsAux, " aauuux")
             setOrgs(orgsAux);
         })
         .catch(err => console.log(err));
@@ -34,6 +35,10 @@ const Grid = () => {
         count > 1 ? count-- : count = 1;
         navigate(`/association/pages/${count}`);
     }
+    
+
+
+
 
         return (
         <div className={s.container}>

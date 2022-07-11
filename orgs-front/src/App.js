@@ -11,6 +11,7 @@ import { GlobalProvider } from "./GlobalContext";
 import AddAnimal from "./components/AddAnimal/AddAnimal"
 import EditAnimal from "./components/EditAnimal/EditAnimal"
 import Account from "./components/Account/Account";
+import AnimalGrid from "./components/AnimalGrid/AnimalGrid"
 
 
 function App() {
@@ -27,13 +28,14 @@ function App() {
         <Route path="/account/:id" element={<Account />} />
         {/* <Route path="/account/edit/:id" element={<EditAccount />} /> */}
         {/* grilla con todos los perros */}
-        {/* <Route path="/account/our-pets" element={< />} /> */}
         <Route path="/foundations/pages/:id" element={<Grid />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         {/* estas de aca abajo van con /account que no se por que no funciona*/}
+        {/* <Route path="/foundations/pages/:id" element={< />} /> */}
         <Route path="/foundations/add-animal" element={<AddAnimal />} />
         <Route path="/foundations/edit-animal/:id" element={<EditAnimal />} />
+        <Route path="/foundations/petsToAdopt/:id" element={<AnimalGrid />} />
       </Routes>
      <Footer /> 
       </GlobalProvider>

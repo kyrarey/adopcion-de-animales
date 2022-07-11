@@ -10,13 +10,14 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import s from "./PetCard.module.css";
 
 
+
 const PetCard = ({ pet }) => {
   const { loggedUser } = useContext(AuthContext);
   const { favPets, getFavs } = useContext(FavContext);
   const [favId, setFavId] = useState("");
   const navigate = useNavigate();
   let isFav;
-
+  console.log(pet, "pet PetCard")
   const addToFav = (e) => {
     e.preventDefault();
     if (loggedUser) {

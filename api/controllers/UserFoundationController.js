@@ -54,7 +54,7 @@ class UserControllers {
   }
 
   static async addPets(req, res) {
-    /* console.log(req.params, "params control", req.body) */
+
     const { error, data } = await UserFoundationServices.addPets(
       req.params.userId,
       req.body

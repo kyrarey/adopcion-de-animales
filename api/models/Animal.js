@@ -10,7 +10,7 @@ var AnimalSchema = new mongoose.Schema(
       type: String,
     },
     image: {
-      type: [Object], //cambio, era un STRING para poder almacenar varias fotos del animal
+      type: Array, //cambio, era un STRING para poder almacenar varias fotos del animal
       required: false, //cambiado a false por Cris
     },
     fundationId: {

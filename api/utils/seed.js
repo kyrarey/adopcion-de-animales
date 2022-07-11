@@ -322,11 +322,12 @@ const fakeOrgs = [
       image: "04",
       location: "la plata, buenos aires",
       description: "Rescate de alto riesgo animales de todo tipo y tamaños en situación de peligro o que haga peligrar a terceros, fomentar el adiestramiento de perros para búsqueda y rescate, capacitar, recuperación de animales silvestres.",
-      email: "farafndacion@hotmail.com",
+      email: "farafundacion@hotmail.com",
       password: "1234"
   },
   {
       foundationName: "red solidaria animal",
+
       image: "05",
       location: "san isidro, buenos aires",
       description: "Red Solidaria Animal, es una Asociación Civil sin fines de lucro que se dedica al cuidado y protección de los animales",
@@ -335,13 +336,16 @@ const fakeOrgs = [
   },
   {
       foundationName: "maneki",
+
       image: "06",
+
       location: "CABA, buenos aires",
       description: "Maneki rescata, recupera y da en adopcion gatitos en la ciudad de Buenos Aires. Desde hace diez años trabajamos en pro de el bienestar de los felinos. Hoy abrimos nuestro Catshop espacio para los amantes de los felinos.",
       email: "maneki@gmail.com",
       password: "1234"
   },
   {
+
       foundationName: "FASN",
        image: "07",
       location: "parque siquimán, córdoba",
@@ -411,6 +415,7 @@ const fakeOrgs = [
     description: "Proyecto 4 Patas (P4P) es una organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
     email:"proyecto4Patas@email.com",
     password:"1234",
+
   }
 ]
 
