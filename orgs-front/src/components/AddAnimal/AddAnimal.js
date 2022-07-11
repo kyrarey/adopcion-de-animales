@@ -39,8 +39,8 @@ const EditAccount = () => {
                         species: Yup.string("Debe ser una cadena de caracteres"),
                         sex: Yup.string("Debe ser una cadena de caracteres"),
                     })}
-                    onSubmit={values => {
-                        const body = new FormData();
+                     onSubmit={values => {
+                         const body = new FormData();
 
                         if (values.animalname) body.append( "animalname", values.animalname);
                         if (values.location) body.append( "location", values.location);
@@ -48,11 +48,11 @@ const EditAccount = () => {
                         if (values.species) body.append( "species", values.species);
                         if (values.sex) body.append( "sex", values.sex);
                         values.fundationId = fundationId._id
-                        axios.post("http://localhost:3030/animal", values)
+                         axios.post("http://localhost:3030/animal", values)
                         .then(res => res.data)
                         .then(animal => setAnimalId(animal._id))
-                        axios.put(`http://localhost:3030/orgs/addpets/${fundationId._id}`, animalId)
-                        .then(res => res.data)
+                         .then(()=>{axios.post(`http://localhost:3030/orgs/addpets/${fundationId._id}`, animalId)
+                        .then(res => res.data)} )
 
                         // cambiar el foundations de abajo por account cuando este el resto listo
                         //navigate(`/foundations/edit-animal/${animalId}`)

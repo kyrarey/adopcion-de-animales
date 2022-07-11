@@ -14,27 +14,30 @@ const EditAccount = () => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    find(`/user/account/${id}`)
-      .then((userObj) => setUser(userObj))
+    find(`/animal/${id}`)
+      .then((obj) => setUser(obj))
       .catch((error) => console.log(error));
   }, [id]);
+
+  // console.log(user, "user");
 
   return (
     <div className={s.container}>
       <div className={s.formContainer}>
         <h1 className={s.title}>Edite la informacion del animal</h1>
         <Formik
+          enableReinitialize={true}
           initialValues={{
-            animalname: "",
+            animalname: user.animalname,
             history: "",
-            location: "",
-            size: "",
-            species: "",
-            sex: "",
+            location: user.location,
+            size: user.size,
+            species: user.species,
+            sex: user.sex,
             personality: "",
             age: "",
             vaccines: "",
-            image: "",
+            photo: "",
           }}
           validationSchema={Yup.object({
             animalname: Yup.string("Debe ser una cadena de caracteres"),
@@ -46,20 +49,20 @@ const EditAccount = () => {
             personality: Yup.string("Debe ser una cadena de caracteres"),
             age: Yup.string("Debe ser una cadena de caracteres"),
             vaccines: Yup.string("Debe ser una cadena de caracteres"),
-            image: Yup.mixed()
-              .test(
-                "fileSize",
-                "El archivo es demasiado grande",
-                (value) => !value || (value && value.size <= 160 * 1024)
-              )
-              .test(
-                "fileFormat",
-                "El archivo debe tener formato .jpg",
-                (value) =>
-                  !value ||
-                  ((value) =>
-                    value && ["image/jpg", "image/jpeg"].includes(value.type))
-              ),
+            // image: Yup.mixed()
+            //   .test(
+            //     "fileSize",
+            //     "El archivo es demasiado grande",
+            //     (value) => !value || (value && value.size <= 160 * 1024)
+            //   )
+            //   .test(
+            //     "fileFormat",
+            //     "El archivo debe tener formato .jpg",
+            //     (value) =>
+            //       !value ||
+            //       ((value) =>
+            //         value && ["image/jpg", "image/jpeg"].includes(value.type))
+            //   ),
           })}
           onSubmit={(values) => {
             const body = new FormData();
@@ -74,16 +77,22 @@ const EditAccount = () => {
               body.append("personality", values.personality);
             if (values.age) body.append("age", values.age);
             if (values.vaccines) body.append("vaccines", values.vaccines);
-            if (values.image) {
-              body.append("image", `/${id}`);
-              body.append("image", values.image);
+            if (values.photo) {
+              body.append("image", [`/${id}-${user.image.length}`]);
+              body.append("photo", values.photo);
             }
             console.log(
               values,
               "body y esta la imagen como string, la necesitamos como objeto"
             );
-            axios
-              .put(`http://localhost:3030/animal/${id}`, values)
+            axios({
+              method: "put",
+              url: `http://localhost:3030/animal/${id}`,
+              data: body,
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            })
               .then((res) =>
                 console.log(res.data, "recibimos la data de la db sin imagen")
               )
@@ -99,7 +108,13 @@ const EditAccount = () => {
           {(formProps) => (
             <Form className={s.form}>
               <div>Nombre del animal</div>
-              <Field className={s.input} name="animalname" type="text" /> <br />
+              <Field
+                className={s.input}
+                name="animalname"
+                type="text"
+                initialValues={user.animalname}
+              />{" "}
+              <br />
               <div className={s.error}>
                 <ErrorMessage name="animalname" /> <br />
               </div>
@@ -147,15 +162,15 @@ const EditAccount = () => {
               <div>Foto</div>
               <input
                 className={s.input}
-                name="image"
+                name="photo"
                 type="file"
                 onChange={(e) =>
-                  formProps.setFieldValue("image", e.target.files[0])
+                  formProps.setFieldValue("photo", e.target.files[0])
                 }
               />
               <br />
               <div className={s.error}>
-                <ErrorMessage name="image" /> <br />
+                <ErrorMessage name="photo" /> <br />
               </div>
               <button className={s.button} type="submit">
                 LISTO

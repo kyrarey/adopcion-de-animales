@@ -15,13 +15,13 @@ const PetCard = ({ pet }) => {
   const { loggedUser, favsUser } = useContext(AuthContext);
   const notify = (text) => toast(text);
 /*   const { newUser, setNewUser } = useGlobalContext();
-
+  
   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
     : {}; */
 
   let isFav;
-
+  console.log(pet, "pet PetCard")
   const addToFav = (e) => {
     e.preventDefault();
     console.log(favsUser)

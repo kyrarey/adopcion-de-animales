@@ -9,7 +9,7 @@ const jwt = require("jsonwebtoken");
 router.get("/account/:userId", UserFoundationControllers.getOne);
 router.get("/all", UserFoundationControllers.getAll);
 router.put("/:userId", UserFoundationControllers.updateOne);
-router.put("/addpets/:userId", UserFoundationControllers.addPets);
+router.post("/addpets/:userId", UserFoundationControllers.addPets);
 router.delete("/:userId", UserFoundationControllers.deleteOne);
 
 

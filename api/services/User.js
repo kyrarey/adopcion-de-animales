@@ -25,7 +25,6 @@ class UserServices {
     try {
       const data = await User.findById(id).exec();
       return {
-
         error: false,
         data: {
           id: data._id,
