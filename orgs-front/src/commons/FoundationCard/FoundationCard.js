@@ -11,7 +11,7 @@ const FoundationCard = ({ foundation }) => {
       <Link className={s.link} to={"#" /* `/foundations/${foundation._id}` */}>
         <img
           className={s.foundationImage}
-          src={foundation.image}
+          src={require(`../../assets/img/foundations${foundation.image}`)}
           alt=""
         ></img>
         <div className={s.foundationInfo}>

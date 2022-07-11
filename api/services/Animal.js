@@ -27,8 +27,19 @@ class AnimalServices {
       console.log(data, "Dateishion");
       return {
         error: false,
-        data: {...data,
-        image:fs.existsSync(`src/assets/img/pets/${data.image[0]}.jpg`) ? data.image[0] : "no_user"},
+        data: {
+          age: data.age,
+        animalname: data.animalname,
+        fundationId: data.foundationId,
+        history: data.history,
+        location: data.location,
+        personality: data.personality,
+        sex: data.sex,
+        size: data.size,
+        species: data.species,
+        vaccines: data.vaccines,
+        image:(fs.existsSync(`src/assets/img/pets${data.image[0]}`) ? data.image : "no_user")
+      },
       };
     } catch (error) {
       console.error(error, "    error");

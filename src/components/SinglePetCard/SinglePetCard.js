@@ -63,7 +63,7 @@ const SinglePetCard = () => {
     }
   }
 
-
+  console.log(pet, "pet")
   return (
     <div className={s.container}>
       <div className={s.card}>
