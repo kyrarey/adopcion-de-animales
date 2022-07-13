@@ -10,7 +10,7 @@ const Account = () => {
     let id = useParams().id;
     const [user, setUser] = useState({})
 
-    console.log("id:", id)
+    //console.log("id:", id)
 
     useEffect(() => {
         //find(`/orgs/account/${id}`)
@@ -19,7 +19,7 @@ const Account = () => {
         .catch(error => console.log(error))
     }, [id])
 
-    console.log("datos de fundacion: ", user.data);
+    //console.log("datos de fundacion: ", user.data);
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -51,7 +51,7 @@ const Account = () => {
                     <h4 className={s.subTitle}>Contraseña</h4>
                     <p  className={s.info}>***********</p>
                 </div>
-            <button className={s.button} onClick={handleClick}>Editar info</button>
+            <button className={s.button} onClick={handleClick}>Editar cuenta</button>
             </div>
         </div>
   )

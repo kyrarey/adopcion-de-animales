@@ -68,7 +68,7 @@ const AddAnimal = () => {
                         axios.post("http://localhost:3030/animal", values)
                         .then(animal => {
                             update();
-                            navigate(`/foundations/edit-animal/${animal.data._id}`)
+                            navigate(`/account/edit-animal/${animal.data._id}`)
                         })
                         .catch(err => console.log(err))
                         

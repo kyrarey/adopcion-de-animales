@@ -15,6 +15,7 @@ const UserForm = () => {
         .catch(error => console.log(error))
     }, [id])
 
+    //console.log("USER",user)
     const handleClick = (e) => {
         e.preventDefault();
         navigate(`/account/form/edit/${id}`)

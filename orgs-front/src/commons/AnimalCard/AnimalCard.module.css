@@ -1,14 +1,14 @@
-.petCard {
+.animalCard {
     list-style: none;
     border-radius: 5%;
     border-style: solid 1px grey;
     background-color: white;
     transition: all 200ms;
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
 }
 
-.petCard:hover {
+.animalCard:hover {
     transform: scale(1.08);
     opacity: 1;
     transition-duration: 1s;
@@ -23,14 +23,16 @@
     color:inherit
 }
 
-.petImage {
+.animalImage {
     border-radius: 5% 5% 0% 0%;
     width: 100%;
     height: 20em;
     pointer-events: none;
 }
 
-.petInfo {
+.animalInfo {
+    width: 100%;
+    height: 8em;
     padding: 5% 5% 5% 5%;
     line-height: 1.4;
     letter-spacing: .07em;
@@ -38,29 +40,9 @@
     font-size: 1.1em;
 }
 
-.petName {
+.animalName {
     color: var(--mainColor);
     font-size: 2em;
     letter-spacing: .08em;
 }
 
-
-.favButton {
-    border:none;
-    background-color:transparent;
-    font-size: 2em;
-    color: red;
-    background-position: center  ;
-    margin: 0% 0% 5% 5%;
-    position: relative;
-}
-
-.favRegHeartButton {
-    border:none;
-    background-color:transparent;
-    font-size: 2em;
-    color: red;
-    background-position: center  ;
-    margin: 0% 0% 5% 5%;
-    position: relative;
-}

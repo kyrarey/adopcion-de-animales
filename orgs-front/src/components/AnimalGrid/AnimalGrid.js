@@ -14,6 +14,8 @@ const AnimalGrid = () => {
     let count = useParams().id;
     let foundationId = useParams().foundationId;
 
+    console.log("use params", useParams())
+
 
     useEffect(() => {
         find(`/animal/foundation/${foundationId}`)
@@ -29,22 +31,22 @@ const AnimalGrid = () => {
     const pagesQty = Math.ceil(totalAnimals/animalsPerPage);
 
     const addAnimalOnClick = () => {
-        navigate(`/foundations/add-animal`)
+        navigate(`/account/add-animal`)
     }
 
     const addOnClick = () => {
         count  < pagesQty  ? count++ : count = pagesQty;
-        navigate(`/animals/pages/${count}`);
+        navigate(`/account/petsToAdopt/${foundationId}/${count}`);
     }
 
     const subsOnClick = () => {
         count > 1 ? count-- : count = 1;
-        navigate(`/animals/pages/${count}`);
+        navigate(`/account/petsToAdopt/${foundationId}/${count}`);
     }
 
     return (
         <div className={s.container}>
-            <button className={s.addButton} type="submit" onClick={addAnimalOnClick}>Añadir animal</button>
+            <button className={s.addButton} type="submit" onClick={addAnimalOnClick}>+ Añadir animal</button>
             <ul className={s.grid}>
                 { animals.map((animal, index) => <AnimalCard key={index} animal={animal}/>)}
             </ul>

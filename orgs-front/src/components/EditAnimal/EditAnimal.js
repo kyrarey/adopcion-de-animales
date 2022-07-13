@@ -19,6 +19,10 @@ const EditAccount = () => {
       .then((obj) => setUser(obj))
       .catch((error) => console.log(error));
   }, [id]);
+  
+  if (user){
+    console.log("ARRAY IMAGE LENGTH",user)
+  }
 
   // console.log(user, "user");
 
@@ -78,6 +82,7 @@ const EditAccount = () => {
             if (values.age) body.append("age", values.age);
             if (values.vaccines) body.append("vaccines", values.vaccines);
             if (values.photo) {
+              console.log(user.image.length)
               body.append("image", [`/${id}-${user.image.length}.jpg`]);
               body.append("photo", values.photo);
             }
@@ -97,10 +102,9 @@ const EditAccount = () => {
                 console.log(res.data, "recibimos la data de la db sin imagen")
               )
               .then((serverAnswer) => {
-                // console.log("SERVER RESPONSE: ",serverAnswer);
+                //console.log("SERVER RESPONSE: ",serverAnswer);
                 update();
-
-                //navigate(`/account/${serverAnswer.data.id}`);
+                navigate(`/account/animal/${id}`);
               })
               .catch((err) => console.log(err));
           }}
