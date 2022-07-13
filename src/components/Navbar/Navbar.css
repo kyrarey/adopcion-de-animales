@@ -27,7 +27,7 @@ ul {
 .navbar {
   background: white;
   padding: 3rem 2rem;
-/*   height: 0rem;
+  /*   height: 0rem;
   min-height: 12vh; */
 }
 
@@ -85,7 +85,7 @@ ul {
 } */
 
 .navbar-nav button {
-    padding: 1.2rem 0;
+  padding: 1.2rem 0;
 }
 
 .navbar-nav .btn {
@@ -102,18 +102,17 @@ ul {
   color: grey;
 }
 
-.searchBarOut{
+.searchBarOut {
   display: flex;
-
 }
 
-.searchBarOut{
+/* .searchBarOut{
   display: flex;
   
-}
+} */
 
 .bgButton {
-  background-color: var(--navColor)
+  background-color: var(--navColor);
 }
 
 .titleLink {
@@ -121,7 +120,7 @@ ul {
   font-family: var(--navTitleFont);
   font-size: 2.5rem;
   color: var(--navColor);
-  margin: 3%
+  margin: 3%;
 }
 
 .titleLink:hover {
@@ -150,7 +149,7 @@ ul {
 }
 
 .subLi:hover {
-  background-color:  var(--bGroundColor);
+  background-color: var(--bGroundColor);
 }
 
 .subLink {
@@ -163,4 +162,3 @@ ul {
 .subLink:hover {
   color: black;
 }
-

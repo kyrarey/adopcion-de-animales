@@ -3,7 +3,7 @@ const Species = require("../models/Species");
 // const User = require('../models/User')
 const Animal = require("../models/Animal");
 const axios = require("axios");
-const UserFoundation = require("../models/UserFoundation")
+const UserFoundation = require("../models/UserFoundation");
 
 mongoose
   .connect("mongodb://localhost:27017/AnimalesFelices", {
@@ -85,9 +85,9 @@ const fakeAnimals = [
       "Joker formaba parte de una manada de gatos ferales rescatados en el norte de la ciudad. Al principio le costaba adaptarse a la presencia de humanos u otras especies, pero ahora le encanta pasar el día recibiendo mimos. Se ha convertido en un gato de interiores, por lo que no se recomienda mantenerlo fuera de su hogar o permitirle salir a la calle.",
     image: ["/05-01.jpg", "/05-02.jpg", "/05-03.jpg"],
     fundationId: "03",
-    location: "marull, códoba",
+    location: "marull, córdoba",
     size: "mediano",
-    species: "cat",
+    species: "gato",
     sex: "macho",
     personality:
       "Bueno para interactual con otros humanos, no le gustan otros gatos. Juguetón y mimoso",
@@ -291,76 +291,83 @@ const fakeAnimals = [
 ];
 
 const fakeOrgs = [
-    {
-      foundationName: "ADVA",
-      petsForAdoption: [],
-      image: "01",
-      location: "bahía blanca, buenos aires",
-      description: "ONG sin fines de lucro que desarrolla proyectos en beneficio de los la fauna del país desde el 2006. Albergamos a 650 animales en nuestra red de temporales y santuario.",
-      email: "adva@gmail.com",
-      password: "1234"
+  {
+    foundationName: "ADVA",
+    petsForAdoption: [],
+    image: "01",
+    location: "bahía blanca, buenos aires",
+    description:
+      "ONG sin fines de lucro que desarrolla proyectos en beneficio de los la fauna del país desde el 2006. Albergamos a 650 animales en nuestra red de temporales y santuario.",
+    email: "adva@gmail.com",
+    password: "1234",
   },
   {
-      foundationName: "lucky",
-      petsForAdoption: [],
-      image: "02",
-      location: "neuquén, neuquén",
-      description: "Somos un refugio con 600 animalitos de diferentes especies, nos alimentamos de autogestión.",
-      email: "lucky@hotmail.com",
-      password: "1234"
+    foundationName: "lucky",
+    petsForAdoption: [],
+    image: "02",
+    location: "neuquén, neuquén",
+    description:
+      "Somos un refugio con 600 animalitos de diferentes especies, nos alimentamos de autogestión.",
+    email: "lucky@hotmail.com",
+    password: "1234",
   },
   {
-      foundationName: "segunda oportunidad",
-      image: "03",
-      location: "marull, códoba",
-      description: "Manejamos casos de rescate, adopción y hogar temporal y promovemos la tenencia responsable de animales de compañía.",
-      email: "segundaoportunidad@hotmail.com",
-      password: "1234"
+    foundationName: "segunda oportunidad",
+    image: "03",
+    location: "marull, córdoba",
+    description:
+      "Manejamos casos de rescate, adopción y hogar temporal y promovemos la tenencia responsable de animales de compañía.",
+    email: "segundaoportunidad@hotmail.com",
+    password: "1234",
   },
   {
-      foundationName: "FARA",
-      image: "04",
-      location: "la plata, buenos aires",
-      description: "Rescate de alto riesgo animales de todo tipo y tamaños en situación de peligro o que haga peligrar a terceros, fomentar el adiestramiento de perros para búsqueda y rescate, capacitar, recuperación de animales silvestres.",
-      email: "farafundacion@hotmail.com",
-      password: "1234"
+    foundationName: "FARA",
+    image: "04",
+    location: "la plata, buenos aires",
+    description:
+      "Rescate de alto riesgo animales de todo tipo y tamaños en situación de peligro o que haga peligrar a terceros, fomentar el adiestramiento de perros para búsqueda y rescate, capacitar, recuperación de animales silvestres.",
+    email: "farafundacion@hotmail.com",
+    password: "1234",
   },
   {
-      foundationName: "red solidaria animal",
+    foundationName: "red solidaria animal",
 
-      image: "05",
-      location: "san isidro, buenos aires",
-      description: "Red Solidaria Animal, es una Asociación Civil sin fines de lucro que se dedica al cuidado y protección de los animales",
-      email: "redanimal@gmail.com",
-      password: "1234"
+    image: "05",
+    location: "san isidro, buenos aires",
+    description:
+      "Red Solidaria Animal, es una Asociación Civil sin fines de lucro que se dedica al cuidado y protección de los animales",
+    email: "redanimal@gmail.com",
+    password: "1234",
   },
   {
-      foundationName: "maneki",
+    foundationName: "maneki",
 
-      image: "06",
+    image: "06",
 
-      location: "CABA, buenos aires",
-      description: "Maneki rescata, recupera y da en adopcion gatitos en la ciudad de Buenos Aires. Desde hace diez años trabajamos en pro de el bienestar de los felinos. Hoy abrimos nuestro Catshop espacio para los amantes de los felinos.",
-      email: "maneki@gmail.com",
-      password: "1234"
+    location: "CABA, buenos aires",
+    description:
+      "Maneki rescata, recupera y da en adopcion gatitos en la ciudad de Buenos Aires. Desde hace diez años trabajamos en pro de el bienestar de los felinos. Hoy abrimos nuestro Catshop espacio para los amantes de los felinos.",
+    email: "maneki@gmail.com",
+    password: "1234",
   },
   {
-
-      foundationName: "FASN",
-       image: "07",
-      location: "parque siquimán, córdoba",
-      description: "ONG dedica a la protección de perros en situación de calle o maltratados, su rescate, rehabilitación social, castracion y su posterior adopción en hogares.",
-      email: "fundacion1@email.com",
-      password: ""
+    foundationName: "FASN",
+    image: "07",
+    location: "parque siquimán, córdoba",
+    description:
+      "ONG dedica a la protección de perros en situación de calle o maltratados, su rescate, rehabilitación social, castracion y su posterior adopción en hogares.",
+    email: "fundacion1@email.com",
+    password: "",
   },
   {
     foundationName: "callejeritos brown",
     /* image: "https://www.callejeritosalmirantebrown.org/wp-content/uploads/2020/09/LOGO-CALLEJERITOS-original-01.png", */
     image: "08",
     location: "almirante brown, buenos aires",
-    description: "Asociación sin fines de lucro, que nace durante el año 2011, fue creada por un grupo de vecinos preocupados por el maltrato y abandono de animales en situación de calle  en las ciudades.",
-    email:"callejeritos@email.com",
-    password:"1234",
+    description:
+      "Asociación sin fines de lucro, que nace durante el año 2011, fue creada por un grupo de vecinos preocupados por el maltrato y abandono de animales en situación de calle  en las ciudades.",
+    email: "callejeritos@email.com",
+    password: "1234",
   },
   {
     foundationName: "patitas contentas",
@@ -368,26 +375,28 @@ const fakeOrgs = [
     image: "09",
     location: "jujuy, argentina",
     description: "Rescate, rehabilitación y adopción ",
-    email:"patitascontentas@email.com",
-    password:"1234",
+    email: "patitascontentas@email.com",
+    password: "1234",
   },
   {
     foundationName: "el refugio",
     /* image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU", */
     image: "10",
     location: "buenos aires, argentina",
-    description: "El refugio tiene una población que ronda los 750 perros.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
-    email:"elrefugio@email.com",
-    password:"1234",
+    description:
+      "El refugio tiene una población que ronda los 750 perros.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
+    email: "elrefugio@email.com",
+    password: "1234",
   },
   {
     foundationName: "zaguates",
     /* image: "https://scontent.faep8-3.fna.fbcdn.net/v/t31.18172-8/12182611_452872468230452_8616442658070815663_o.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=hZ7oSDSxIbUAX8gz1ZF&_nc_ht=scontent.faep8-3.fna&oh=00_AT8Asm_WHXdyb8n6PFZ8G6vB7pQlkMIO3K8_Wy8Eq4BVCA&oe=62EB29F6", */
     image: "11",
     location: "zona norte, buenos aires",
-    description: "Somos proteccionistas independientes, hace años que rescatamos animales en situación de calle, en estados deplorables, pidiendo a gritos dejar de ser invisibles.",
-    email:"zaguates@email.com",
-    password:"1234",
+    description:
+      "Somos proteccionistas independientes, hace años que rescatamos animales en situación de calle, en estados deplorables, pidiendo a gritos dejar de ser invisibles.",
+    email: "zaguates@email.com",
+    password: "1234",
   },
   {
     foundationName: "patitas al rescate",
@@ -395,29 +404,30 @@ const fakeOrgs = [
     image: "12",
     location: "cordoba, argentina",
     description: "Rescate, rehabilitación y adopción ",
-    email:"patitas@email.com",
-    password:"1234",
+    email: "patitas@email.com",
+    password: "1234",
   },
   {
     foundationName: "el campito refugio",
     /* image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU", */
     image: "13",
     location: "buenos aires, argentina",
-    description: "Único en el mundo por albergar 130 perros inválidos entre sus 500 habitantes, El Campito busca concientizar y es pionero del sistema de puertas abiertas.",
-    email:"elcampito@email.com",
-    password:"1234",
+    description:
+      "Único en el mundo por albergar 130 perros inválidos entre sus 500 habitantes, El Campito busca concientizar y es pionero del sistema de puertas abiertas.",
+    email: "elcampito@email.com",
+    password: "1234",
   },
   {
     foundationName: "proyecto 4 patas",
     /* image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/188/849/themes/common/logo-1866482157-1574635760-6cf4fcbbca71b55a01145347adaf5bde1574635760.png?0", */
     image: "14",
     location: "buenos aires, argentina",
-    description: "Organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
-    email:"proyecto4Patas@email.com",
-    password:"1234",
-
-  }
-]
+    description:
+      "Organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
+    email: "proyecto4Patas@email.com",
+    password: "1234",
+  },
+];
 
 const seedDb = async () => {
   await Animal.deleteMany();
