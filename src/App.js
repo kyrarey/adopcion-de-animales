@@ -26,7 +26,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Comment from "./components/Comment/Comment";
 import NewComment from "./components/NewComment/NewComment";
 import FoundationAnimalsGrid from "./components/FoundationAnimalsGrid/FoundationAnimalsGrid";
-
+import Socket from "./components/Chat/Socket"
 
 const App = () => {
   const path = useLocation().pathname.slice(1, 8);
@@ -58,6 +58,7 @@ const App = () => {
         <Route path="/associationProfile" element={<AssociationProfile />} />
         <Route path="/comment/:id" element={<Comment />} />
         <Route path="/comment/add/:id" element={<NewComment />} />
+        <Route path="/chat" element={<Socket />} />
         <Route path="*" element={<Navigate to="404" />} />
         <Route path="404" element={<NotFound />} />
       </Routes>
