@@ -1,6 +1,5 @@
 import React from "react";
 import logo from "../../assets/img/fundacionLogo.svg";
-import Comment from "../Comment/Comment";
 
 const AssociationProfile = () => {
   return (
@@ -127,7 +126,6 @@ const AssociationProfile = () => {
           </div>
         </div>
       </div>
-      <Comment />
     </section>
   );
 };
