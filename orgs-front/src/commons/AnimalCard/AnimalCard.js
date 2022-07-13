@@ -7,7 +7,7 @@ const AnimalCard = ({ animal }) => {
 
   return (
     <div className={s.animalCard}>
-      <Link className={s.link} to={`/animals/${animal._id}`}>
+      <Link className={s.link} to={`/account/animal/${animal._id}`}>
         <img
           className={s.animalImage}
           src={animal.image[0] 

@@ -93,7 +93,7 @@ const EditAccount = () => {
                         </div>
                         
                         <div>E-mail</div>
-                        <Field className={s.input} name="email" type="text" placeholder=""Ingrese su email/> <br/>
+                        <Field className={s.input} name="email" type="text" placeholder="Ingrese su email"/> <br/>
                         <div className={s.error} >
                             <ErrorMessage name="email" /> <br/>
                         </div>

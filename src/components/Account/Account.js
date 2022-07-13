@@ -15,7 +15,7 @@ const Account = () => {
         .catch(error => console.log(error))
     }, [id])
 
-    console.log("USER", user)
+    //console.log("USER", user)
     const handleClick = (e) => {
         e.preventDefault();
         navigate(`/account/edit/${id}`)

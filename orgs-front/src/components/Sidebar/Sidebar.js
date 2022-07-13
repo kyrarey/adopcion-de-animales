@@ -43,10 +43,19 @@ const Sidebar = () => {
                     </Link>
                 </div>
                 <div className={s.item}>
-                    <Link className={s.link} to={`/foundations/petsToAdopt/${id}`}>
+                    <Link className={s.link} to={`/account/petsToAdopt/${id}/1`}>
                     <h3 className={s.title}>Mis animales</h3>
                     <img className={s.img} 
                         src={require(`../../assets/img/animals.jpg`)}
+                        alt="">
+                    </img>
+                    </Link>
+                </div>
+                <div className={s.item}>
+                    <Link className={s.link} to={"#"/* `/account/petsToAdopt/${id}/1` */}>
+                    <h3 className={s.title}>Mis chats</h3>
+                    <img className={s.img} 
+                        src={require(`../../assets/img/chat.jpg`)}
                         alt="">
                     </img>
                     </Link>

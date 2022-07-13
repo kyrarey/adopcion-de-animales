@@ -14,6 +14,7 @@ import EditAccount from "./components/EditAccount/EditAccount";
 import FoundationForm from "./components/FoundationForm/FoundationForm";
 import EditForm from "./components/EditForm/EditForm";
 import AnimalGrid from "./components/AnimalGrid/AnimalGrid";
+import SingleAnimalCard from "./components/SingleAnimalCard/SingleAnimalCard";
 import { ToastContainer } from "react-toastify";
 import { GlobalProvider } from "./GlobalContext";
 
@@ -29,18 +30,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/foundations/:id" element={<SingleFoundationCard />} />
+        <Route path="/foundations/pages/:id" element={<Grid />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/account/:id" element={<Account />} />
         <Route path="/account/edit/:id" element={<EditAccount />} />
         <Route path="/account/form/:id" element={<FoundationForm />} />
         <Route path="/account/form/edit/:id" element={<EditForm />} />
-        {/* grilla con todos los animales  */}
-        <Route path="/foundations/pages/:id" element={<Grid />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        {/* estas de aca abajo van con /account que no se por que no funciona*/}
-        <Route path="/foundations/add-animal" element={<AddAnimal />} />
-        <Route path="/foundations/edit-animal/:id" element={<EditAnimal />} />
-        <Route path="/foundations/petsToAdopt/:id" element={<AnimalGrid />} />
+        <Route path="/account/add-animal" element={<AddAnimal />} />
+        <Route path="/account/edit-animal/:id" element={<EditAnimal />} />
+        <Route path="/account/animal/:id" element={<SingleAnimalCard />} />
+        <Route path="/account/petsToAdopt/:foundationId/:id" element={<AnimalGrid />} />
       </Routes>
      <Footer /> 
       </GlobalProvider>
