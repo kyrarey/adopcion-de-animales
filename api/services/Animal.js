@@ -85,8 +85,7 @@ class AnimalServices {
         );
         if (fs.existsSync("orgs-front/src/assets/img/pets/01.jpg")) {
           //console.log(data,"Data")
-          let newImage = `/${body.image}.jpg`;
-
+          let newImage = `${body.image}`;
           fs.rename(
             "orgs-front/src/assets/img/pets/01.jpg",
             `orgs-front/src/assets/img/pets${newImage}`,
@@ -98,7 +97,7 @@ class AnimalServices {
         if (fs.existsSync("src/assets/img/pets/01.jpg")) {
           //console.log(data,"Data")
           // let count = body.image.length;
-          let newImage = `/${body.image}.jpg`;
+          let newImage = `${body.image}`;
           fs.rename(
             "src/assets/img/pets/01.jpg",
             `src/assets/img/pets${newImage}`,

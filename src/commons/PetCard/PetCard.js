@@ -59,7 +59,7 @@ const PetCard = ({ pet }) => {
       <Link className={s.link} to={`/animals/${pet._id}`}>
         <img className={s.petImage}
           src={pet.image[0] 
-            ? pet.image[0] === "no_pet" ? require(`../../assets/img/pets/no_pet.jpg`) : require(`../../assets/img/pets${pet.image[0]}`)
+            ? pet.image[0] === "/no_pet.jpg" ? require(`../../assets/img/pets/no_pet.jpg`) : require(`../../assets/img/pets${pet.image[0]}`)
             : require(`../../assets/img/pets/no_pet.jpg`)
           }
           alt=""
