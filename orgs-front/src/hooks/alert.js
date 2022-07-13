@@ -20,6 +20,16 @@ export function registered(){
   })
 }
 
+export function notValid(){
+  Swal.fire({
+    position: 'center',
+    icon: 'error',
+    title: 'Datos incorrectos, por favor vuelve a intentar',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
+
 export function notLoggedIn(){
   Swal.fire({
     position: 'center',

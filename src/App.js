@@ -1,8 +1,5 @@
 import React from "react";
-import { GlobalProvider } from "./GlobalContext";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
 import SingleOrgCard from "./components/SingleOrgCard/SingleOrgCard";
@@ -16,7 +13,7 @@ import UserForm from "./components/UserForm/UserForm";
 import EditForm from "./components/EditForm/EditForm";
 import Favorite from "./components/Favorite/Favorite";
 import Search from "./components/Search/Search";
-import Association from "./components/Association/Association";
+//import Association from "./components/Association/Association";
 import Grid from "./components/Grid/Grid";
 import Footer from "./components/Footer/Footer";
 import AdoptantForm from "./components/Form/AdoptantForm";
@@ -26,6 +23,9 @@ import NotFound from "./components/NotFound/NotFound";
 import Comment from "./components/Comment/Comment";
 import NewComment from "./components/NewComment/NewComment";
 import FoundationAnimalsGrid from "./components/FoundationAnimalsGrid/FoundationAnimalsGrid";
+import { GlobalProvider } from "./GlobalContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const App = () => {

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import find from "../../hooks/find";
 import s from "./Sidebar.module.css";
@@ -11,7 +11,6 @@ const Sidebar = () => {
   const [user, setUser] = useState({});
 
   /* let id = useLocation().pathname.slice(9,33) */
-    
 
   useEffect(() => {
     find(`/user/account/${id}`)
@@ -30,11 +29,10 @@ const Sidebar = () => {
               src={
                 user.image
                   ? user.image === "no_user"
-                    ? require(`../../assets/img/users/no_user.jpg`)
-                    : require(`../../assets/img/users/${user.image}.jpg`)
+                    ? require(`../../assets/img/users/no_user.jpg`) : require(`../../assets/img/users/${user.image}.jpg`)
                   : require(`../../assets/img/users/no_user.jpg`)
               }
-              alt="Foto de perfil"
+              alt=""
             ></img>
           </Link>
         </div>

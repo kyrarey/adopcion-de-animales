@@ -358,7 +358,7 @@ const fakeOrgs = [
     /* image: "https://www.callejeritosalmirantebrown.org/wp-content/uploads/2020/09/LOGO-CALLEJERITOS-original-01.png", */
     image: "08",
     location: "almirante brown, buenos aires",
-    description: "Callejeritos de Almirante Brown es una Asociación sin fines de lucro, que nace durante el año 2011, fue creada por un grupo de vecinos preocupados por el maltrato y abandono de animales en situación de calle  en las ciudades. Tratando, desde nuestra humilde posibilidad, hacerles la vida más sencilla a quienes han sufrido la desgracia de vivir fuera de un hogar, bajo la indiferencia y el abandono de la gente.",
+    description: "Asociación sin fines de lucro, que nace durante el año 2011, fue creada por un grupo de vecinos preocupados por el maltrato y abandono de animales en situación de calle  en las ciudades.",
     email:"callejeritos@email.com",
     password:"1234",
   },
@@ -376,7 +376,7 @@ const fakeOrgs = [
     /* image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU", */
     image: "10",
     location: "buenos aires, argentina",
-    description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
+    description: "El refugio tiene una población que ronda los 750 perros.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
     email:"elrefugio@email.com",
     password:"1234",
   },
@@ -403,16 +403,16 @@ const fakeOrgs = [
     /* image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpQuBYEj6IxjbLiDkMz66aItpE6NhyOgwa0Q&usqp=CAU", */
     image: "13",
     location: "buenos aires, argentina",
-    description: "El refugio tiene una población que ronda los 750 perros. El trabajo de rescate y recuperación NO TIENE PRECEDENTES EN AMERICA LATINA.  Por ser un REFUGIO NO EUTANÁSICO no considera inviable a ninguno de sus animales.  ",
+    description: "Único en el mundo por albergar 130 perros inválidos entre sus 500 habitantes, El Campito busca concientizar y es pionero del sistema de puertas abiertas.",
     email:"elcampito@email.com",
     password:"1234",
   },
   {
-    foundationName: "Proyecto 4 patas",
+    foundationName: "proyecto 4 patas",
     /* image: "https://d3ugyf2ht6aenh.cloudfront.net/stores/188/849/themes/common/logo-1866482157-1574635760-6cf4fcbbca71b55a01145347adaf5bde1574635760.png?0", */
     image: "14",
     location: "buenos aires, argentina",
-    description: "Proyecto 4 Patas (P4P) es una organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
+    description: "Organización sin fines de lucro liderada por un grupo de voluntarios que buscan superar la situación de sobrepoblación, abandono, crueldad e indiferencia que viven millones de animales en nuestro país. ",
     email:"proyecto4Patas@email.com",
     password:"1234",
 
