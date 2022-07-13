@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import find from "../../hooks/find";
+import capitalizeFirst from "../../hooks/capitalizeFirst";
 import { update } from "../../hooks/alert";
 import s from "./EditAnimal.module.css";
 const FormData = require("form-data");
@@ -28,15 +29,15 @@ const EditAccount = () => {
         <Formik
           enableReinitialize={true}
           initialValues={{
-            animalname: user.animalname,
-            history: "",
-            location: user.location,
+            animalname: user.animalname ? capitalizeFirst(user.animalname) : "",
+            history: user.history,
+            location: user.location ? capitalizeFirst(user.location) : "",
             size: user.size,
-            species: user.species,
+            species: user.species ? capitalizeFirst(user.species) : "",
             sex: user.sex,
-            personality: "",
-            age: "",
-            vaccines: "",
+            personality: user.personality,
+            age: user.age,
+            vaccines: user.vaccines,
             photo: "",
           }}
           validationSchema={Yup.object({
@@ -71,10 +72,9 @@ const EditAccount = () => {
             if (values.history) body.append("history", values.history);
             if (values.location) body.append("location", values.location);
             if (values.size) body.append("size", values.size);
-            if (values.species) body.append("species", values.species);
+            if (values.species) body.append("species", values.species); 
             if (values.sex) body.append("sex", values.sex);
-            if (values.personality)
-              body.append("personality", values.personality);
+            if (values.personality) body.append("personality", values.personality);
             if (values.age) body.append("age", values.age);
             if (values.vaccines) body.append("vaccines", values.vaccines);
             if (values.photo) {
@@ -108,13 +108,7 @@ const EditAccount = () => {
           {(formProps) => (
             <Form className={s.form}>
               <div>Nombre del animal</div>
-              <Field
-                className={s.input}
-                name="animalname"
-                type="text"
-                initialValues={user.animalname}
-              />{" "}
-              <br />
+              <Field className={s.input} name="animalname" type="text"/> <br />
               <div className={s.error}>
                 <ErrorMessage name="animalname" /> <br />
               </div>
@@ -129,7 +123,12 @@ const EditAccount = () => {
                 <ErrorMessage name="location" /> <br />
               </div>
               <div>Tamaño</div>
-              <Field className={s.input} name="size" type="text" /> <br />
+              <Field as="select" className={s.input} name="size" type="text">
+                <option value="">Seleccionar</option>
+                <option value="pequeño">Pequeño</option>
+                <option value="mediano">Mediano</option>
+                <option value="grande">Grande</option>
+              </Field>
               <div className={s.error}>
                 <ErrorMessage name="size" /> <br />
               </div>
@@ -139,23 +138,38 @@ const EditAccount = () => {
                 <ErrorMessage name="species" /> <br />
               </div>
               <div>Sexo</div>
-              <Field className={s.input} name="sex" type="text" /> <br />
+              <Field as="select" className={s.input} name="sex" type="text">
+                  <option value="">Seleccionar</option>
+                  <option value="macho">Macho</option>
+                  <option value="hembra">Hembra</option>
+              </Field>
               <div className={s.error}>
                 <ErrorMessage name="sex" /> <br />
               </div>
-              <div>Caracteristicas de la personalidad</div>
+              <div>Personalidad</div>
               <Field className={s.input} name="personality" type="text" />{" "}
               <br />
               <div className={s.error}>
                 <ErrorMessage name="personality" /> <br />
               </div>
               <div>Edad</div>
-              <Field className={s.input} name="age" type="text" /> <br />
+              <Field as="select" className={s.input} name="age" type="text">
+                  <option value="">Seleccionar</option>
+                  <option value="cachorro">Cachorro</option>
+                  <option value="jóven">Jóven</option>
+                  <option value="adulto">Adulto</option>
+                  <option value="senior">Senior</option>
+              </Field>
               <div className={s.error}>
                 <ErrorMessage name="age" /> <br />
               </div>
               <div>Vacunas</div>
-              <Field className={s.input} name="vaccines" type="text" /> <br />
+              <Field as="select" className={s.input} name="vaccines" type="text">
+                  <option value="">Seleccionar</option>
+                  <option value="Al día">Al día</option>
+                  <option value="No requeridas para esta especie">No requeridas</option>
+                  <option value="Incompletas">Incompletas</option>
+              </Field> 
               <div className={s.error}>
                 <ErrorMessage name="vaccines" /> <br />
               </div>
