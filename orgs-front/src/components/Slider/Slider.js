@@ -7,7 +7,7 @@ import { randElemArray } from '../../hooks/arrGen';
 import s from './Slider.module.css';
 
 const Slider = () => {
-/*     const [foundations, setFoundations] = useState([]);
+    const [foundations, setFoundations] = useState([]);
 
     useEffect(() => {
         find("/orgs/all")
@@ -16,7 +16,7 @@ const Slider = () => {
             setFoundations(foundationsAux);
         })
         .catch(err => console.log(err));
-    }, []); */ 
+    }, []); 
 
     //let foundationsAux = randElemArray(foundations, 7);
    

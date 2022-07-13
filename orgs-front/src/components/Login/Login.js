@@ -1,16 +1,20 @@
 import "./Login.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import { notValid } from "../../hooks/alert";
+import { toast } from "react-toastify";
 import validator from "validator";
-import { useGlobalContext } from "../../GlobalContext";
+//import { useGlobalContext } from "../../GlobalContext";
 
 const Login = () => {
-  const [foundationName, setFoundationName] = useState("")
-  const { newUser, setNewUser } = useGlobalContext();
+  const { toggleAuth } = useContext(AuthContext);
+
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
+  const [foundationName, setFoundationName] = useState("")
+  //const { newUser, setNewUser } = useGlobalContext();
   const navigate = useNavigate();
   const notify = (text) => toast(text);
 
@@ -27,16 +31,17 @@ const Login = () => {
         const loginUser = {
           _id: user.data._id,
           email: user.data.email,
-          fundation: user.data.fundation,
+          //fundation: user.data.fundation,
           token: user.data.token,
-          isAuthenticated: true,
+          //isAuthenticated: true,
         };
         localStorage.setItem("newUser", JSON.stringify(loginUser));
-        setNewUser(loginUser);
-        console.log("newUser", newUser);
+        toggleAuth(loginUser);
+        //setNewUser(loginUser);
+        //console.log("newUser", newUser);
         navigate("/");
       } catch (error) {
-
+        notValid();
         console.log(error.response);
       }
     } else {

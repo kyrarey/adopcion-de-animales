@@ -1,32 +1,34 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useGlobalContext } from "../../GlobalContext";
+import React, { /* useState, */ useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 import { toast } from "react-toastify";
 import "./Navbar.css";
-import { GoSearch } from "react-icons/go";
+//import { GoSearch } from "react-icons/go";
 
 const Navbar = () => {
-  const [search, setSearch] = useState();
-  const notify = (text) => toast(text);
+  const { loggedUser, isAuthenticated, toggleAuth } = useContext(AuthContext);
+  //const [search, setSearch] = useState();
+  //const notify = (text) => toast(text);
   const navigate = useNavigate();
-  const { newUser, setNewUser } = useGlobalContext();
+  //const { newUser, setNewUser } = useGlobalContext();
 
-  const userStorage = !!localStorage.getItem("newUser")
+/*   const userStorage = !!localStorage.getItem("newUser")
     ? JSON.parse(localStorage.getItem("newUser"))
-    : {};
+    : {}; */
 
   const handlelogout = (e) => {
     e.preventDefault();
     axios.get("http://localhost:3030/user/logout").then((res) => {
-      notify(`Logged out`);
+      //notify(`Logged out`); Nota de Cris: Comenté esta linea porque estaba produciendo un error al hacer logout y no supe como resolverlo
       localStorage.removeItem("newUser");
-      setNewUser({});
+      toggleAuth(null)
+      //setNewUser({});
       navigate("/");
     });
   };
 
-  const onChange = (e) => {
+/*   const onChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
@@ -37,7 +39,7 @@ const Navbar = () => {
       .then((res) => res.data)
       .then((search) => setSearch(search));
     navigate(`/search/${search}`);
-  };
+  }; */
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -62,7 +64,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        {userStorage.isAuthenticated ? (
+        {/* userStorage. */isAuthenticated ? (
           <div
             className="collapse navbar-collapse justify-content-between"
             id="navbarSupportedContent"
@@ -74,9 +76,9 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="link" to={`/account/${userStorage._id}`}>
+                <Link className="link" to={`/account/${loggedUser._id /* userStorage._id */}`}>
                   {/* <span className="nav-link"> */}
-                  {userStorage?.email?.split("@")[0]}
+                  {/* userStorage? */loggedUser.email?.split("@")[0]}
                   {/* </span> */}
                 </Link>
               </li>
@@ -90,7 +92,7 @@ const Navbar = () => {
                 </Link>
               </li> */}
               <li className="nav-item">
-                <Link className="link" to="/association/pages/1">
+                <Link className="link" to="/foundations/pages/1">
                   {/* <span className="nav-link"> */}Otras Fundaciones{/* </span> */}
                 </Link>
               </li>

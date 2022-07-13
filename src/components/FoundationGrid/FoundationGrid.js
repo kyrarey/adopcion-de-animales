@@ -18,6 +18,7 @@ const Grid = () => {
             setTotalOrgs(orgsArr.length);
             let orgsAux = [];
             orgsAux = fixedElemArray(orgsArr, orgsPerPage, count);
+            //console.log(orgsAux, " aauuux")
             setOrgs(orgsAux);
         })
         .catch(err => console.log(err));
@@ -34,11 +35,15 @@ const Grid = () => {
         count > 1 ? count-- : count = 1;
         navigate(`/association/pages/${count}`);
     }
+    
+
+
+
 
         return (
         <div className={s.container}>
             <ul className={s.grid}>
-                { orgs.map(org => <OrgCard key={org.foundationName} org={org}/>)}
+                { orgs.map((org, index) => <OrgCard key={index} org={org}/>)}
             </ul>
             {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}
             {count < pagesQty ? <button className={s.button} type="submit" onClick={addOnClick}>Siguiente</button> : ""}

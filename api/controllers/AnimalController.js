@@ -49,6 +49,7 @@ class AnimalControllers {
   }
 
   static async addOne(req, res) {
+    //console.log("REQ EN ADD------------",req)
     const { error, data } = await AnimalServices.addOne(req.body);
     if (error) {
       return res.status(500).send({ message: data.message });
@@ -57,6 +58,7 @@ class AnimalControllers {
   }
 
   static async updateOne(req, res) {
+
     const { error, data } = await AnimalServices.updateOne(
       req.params.id,
       req.body

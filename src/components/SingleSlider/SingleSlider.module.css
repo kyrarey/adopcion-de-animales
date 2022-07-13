@@ -42,7 +42,7 @@
 }
   
 .prev {
-    top: 70%;
+    top: 60%;
     left: 30%;
     transform: scale(-1);
     position: absolute;
@@ -61,7 +61,7 @@
 }
 
 .next {
-    top: 70%;
+    top: 60%;
     right: 30%;
     position: absolute;
     background: white;

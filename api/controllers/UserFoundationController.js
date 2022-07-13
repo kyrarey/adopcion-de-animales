@@ -32,6 +32,7 @@ class UserControllers {
 
     //retornar la info de la fundación haciendo una búsqueda por una key determinada
     static async getOneByKey(req, res) {
+      //console.log("GETONEBYKEY",req.params)
       const { error, data } = await UserFoundationServices.getOneByKey(req.params.keyId);
       if (error) {
         return res.status(404).send(data);
@@ -43,8 +44,9 @@ class UserControllers {
 
   //editar usuario
   static async updateOne(req, res) {
+    console.log("REQ", req)
     const { error, data } = await UserFoundationServices.updateOne(
-      req.params.id,
+      req.params.userId,
       req.body
     );
     if (error) {
@@ -54,7 +56,7 @@ class UserControllers {
   }
 
   static async addPets(req, res) {
-    /* console.log(req.params, "params control", req.body) */
+
     const { error, data } = await UserFoundationServices.addPets(
       req.params.userId,
       req.body

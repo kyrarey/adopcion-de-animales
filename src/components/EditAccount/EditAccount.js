@@ -24,9 +24,10 @@ const EditAccount = () => {
             <div className={s.formContainer}>
                 <h1 className={s.title}>Mi cuenta</h1>
                 <Formik
+                enableReinitialize={true}
                     initialValues= {{
-                        username: "",
-                        email: "",
+                        username: user.username ? user.username : "",
+                        email: user.email ? user.email : "",
                         password: "",
                         confirm_password: "",
                         photo: ""
@@ -86,13 +87,13 @@ const EditAccount = () => {
                     <Form className={s.form}>
                      
                         <div>Usuario</div>
-                        <Field className={s.input} name="username" type="text" placeholder={user.username ? `${user.username}` : ""}/> <br/>
+                        <Field className={s.input} name="username" type="text" placeholder="Ingrese su usuario"/> <br/>
                         <div className={s.error} >
                             <ErrorMessage name="username" /> <br/>
                         </div>
                         
                         <div>E-mail</div>
-                        <Field className={s.input} name="email" type="text" placeholder={user.email ? `${user.email}` : ""}/> <br/>
+                        <Field className={s.input} name="email" type="text" placeholder=""Ingrese su email/> <br/>
                         <div className={s.error} >
                             <ErrorMessage name="email" /> <br/>
                         </div>

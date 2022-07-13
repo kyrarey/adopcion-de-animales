@@ -24,9 +24,8 @@ class UserServices {
     //console.log("entra al get one services");
     try {
       const data = await User.findById(id).exec();
-      console.log(`src/assets/img/users/${data.image}.jpg`)
+      //console.log(`src/assets/img/users/${data.image}.jpg`)
       return {
-
         error: false,
         data: {
           id: data._id,

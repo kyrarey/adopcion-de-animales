@@ -12,7 +12,7 @@ const FoundationAnimalsGrid = () => {
     const navigate = useNavigate();
     let count = useParams().id;
     let foundationId = useParams().foundationId;
-
+    
     useEffect(() => {
         find(`/animal/foundation/${foundationId}`)
         .then(petsArr => {
@@ -28,17 +28,17 @@ const FoundationAnimalsGrid = () => {
 
     const addOnClick = () => {
         count  < pagesQty  ? count++ : count = pagesQty;
-        navigate(`/animals/pages/${count}`);
+        navigate(`/association/animals/${foundationId}/${count}`);
     }
 
     const subsOnClick = () => {
         count > 1 ? count-- : count = 1;
-        navigate(`/animals/pages/${count}`);
+        navigate(`/association/animals/${foundationId}/${count}`);
     }
 
     return (
         <div className={s.container}>
-            <ul className={s.FoundationAnimalsGrid}>
+            <ul className={s.grid}>
                 { pets.map((pet, index) => <PetCard key={index} pet={pet}/>)}
             </ul>
             {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}

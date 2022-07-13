@@ -10,13 +10,14 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import s from "./PetCard.module.css";
 
 
+
 const PetCard = ({ pet }) => {
   const { loggedUser } = useContext(AuthContext);
   const { favPets, getFavs } = useContext(FavContext);
   const [favId, setFavId] = useState("");
   const navigate = useNavigate();
   let isFav;
-
+  //console.log(pet, "pet PetCard")
   const addToFav = (e) => {
     e.preventDefault();
     if (loggedUser) {
@@ -27,7 +28,7 @@ const PetCard = ({ pet }) => {
           userId: loggedUser._id,
         })
         .then(user => {
-          console.log(user)
+          //console.log(user)
           setFavId(user.data._id)
           find(`/favorite/${user.data.userId}`)
           .then(favs => getFavs(favs))
@@ -56,17 +57,19 @@ const PetCard = ({ pet }) => {
   return (
     <div className={s.petCard}>
       <Link className={s.link} to={`/animals/${pet._id}`}>
-        <img
-          className={s.petImage}
-          src={require(`../../assets/img/pets${pet.image[0]}`)}
-          alt={pet.animalname}
+        <img className={s.petImage}
+          src={pet.image[0] 
+            ? pet.image[0] === "/no_pet.jpg" ? require(`../../assets/img/pets/no_pet.jpg`) : require(`../../assets/img/pets${pet.image[0]}`)
+            : require(`../../assets/img/pets/no_pet.jpg`)
+          }
+          alt=""
         ></img>
         <div className={s.petInfo}>
-          <span className={s.petName}>{capitalizeFirst(pet.animalname)}</span>
+          <span className={s.petName}>{pet.animalname && capitalizeFirst(pet.animalname)}</span>
           <br />
-          <span>{`${capitalizeFirst(pet.age)}, ${capitalizeFirst(pet.sex)}`}</span>
+          <span>{`${pet.age && capitalizeFirst(pet.age)}, ${pet.sex && capitalizeFirst(pet.sex)}`}</span>
           <br />
-          <span>{capitalizeFirst(pet.location)}</span>
+          <span>{pet.location && capitalizeFirst(pet.location)}</span>
         </div>
       </Link>
       <button className={s.favButton} type="submit" onClick={addToFav}>{
