@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { FavContext } from "../../context/FavContext";
 import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
 import axios from "axios";
 import { notValid } from "../../hooks/alert";
 import { toast } from "react-toastify";
@@ -43,7 +42,7 @@ const Login = () => {
         );
         navigate("/");
       } catch (error) {
-        notValid ();
+        notValid();
         console.log(error.response);
       }
     } else {
