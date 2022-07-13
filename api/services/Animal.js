@@ -38,7 +38,7 @@ class AnimalServices {
         size: data.size,
         species: data.species,
         vaccines: data.vaccines,
-        image:(fs.existsSync(`src/assets/img/pets${data.image[0]}`) ? data.image : "no_pet")
+        image:(fs.existsSync(`src/assets/img/pets${data.image[0]}`) ? data.image : ["/no_pet.jpg"])
       },
       };
     } catch (error) {

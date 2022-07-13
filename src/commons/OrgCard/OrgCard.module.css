@@ -25,28 +25,7 @@
     color:inherit
 }
 
-.favButton {
-    border:none;
-    background-color:transparent;
-    font-size: 2em;
-    color: red;
-    background-position: center  ;
-    margin: 0% 0% 5% 5%;
-    position: relative;
-}
-
-.favRegHeartButton {
-    border:none;
-    background-color:transparent;
-    font-size: 2em;
-    color: red;
-    background-position: center  ;
-    margin: 0% 0% 5% 5%;
-    position: relative;
-}
-
 .orgImage {
-    text-decoration: none;
     border-radius: 5% 5% 0% 0%;
     width: 100%;
     height: 20em;
@@ -54,7 +33,8 @@
 }
 
 .orgInfo {
-    text-decoration: none;
+    width: 100%;
+    height: 13em;
     padding: 5% 5% 5% 5%;
     line-height: 1.4;
     letter-spacing: .07em;
@@ -63,7 +43,6 @@
 }
 
 .orgName {
-    text-decoration: none;
     color: var(--mainColor);
     font-size: 2em;
     letter-spacing: .08em;

@@ -28,7 +28,7 @@ const PetCard = ({ pet }) => {
           userId: loggedUser._id,
         })
         .then(user => {
-          console.log(user)
+          //console.log(user)
           setFavId(user.data._id)
           find(`/favorite/${user.data.userId}`)
           .then(favs => getFavs(favs))
@@ -57,7 +57,7 @@ const PetCard = ({ pet }) => {
   return (
     <div className={s.petCard}>
       <Link className={s.link} to={`/animals/${pet._id}`}>
-        <img lassName={s.petImage}
+        <img className={s.petImage}
           src={pet.image[0] 
             ? pet.image[0] === "no_pet" ? require(`../../assets/img/pets/no_pet.jpg`) : require(`../../assets/img/pets${pet.image[0]}`)
             : require(`../../assets/img/pets/no_pet.jpg`)

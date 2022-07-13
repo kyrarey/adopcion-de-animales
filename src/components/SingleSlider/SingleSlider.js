@@ -6,7 +6,9 @@ import s from "./SingleSlider.module.css";
 
 const SingleSlider = ({ images }) => {
 
-  //console.log(images, "images")
+  /* console.log("IMAGES", images)
+  console.log("TYPEOF IMAGES:", typeof images) */
+
     const variants = {
         enter: (direction) => {
           return {

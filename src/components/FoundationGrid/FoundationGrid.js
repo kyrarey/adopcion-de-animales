@@ -43,7 +43,7 @@ const Grid = () => {
         return (
         <div className={s.container}>
             <ul className={s.grid}>
-                { orgs.map(org => <OrgCard key={org.foundationName} org={org}/>)}
+                { orgs.map((org, index) => <OrgCard key={index} org={org}/>)}
             </ul>
             {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}
             {count < pagesQty ? <button className={s.button} type="submit" onClick={addOnClick}>Siguiente</button> : ""}
