@@ -41,7 +41,7 @@ const App = () => {
         <Route path="/association/:id" element={<SingleOrgCard />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/search/:search" element={<Search />} />
+        <Route path="/search" element={<Search />} />
         {/* <Route path="/favorite" element={<Favorite />} /> */}
         <Route path="/account/:id" element={<Account />} />
         <Route path="/account/edit/:id" element={<EditAccount />} />

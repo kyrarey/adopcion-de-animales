@@ -30,11 +30,11 @@ var AnimalSchema = new mongoose.Schema(
       required: true,
     },
     sex: {
-      type: String, //or boolean?
+      type: String,
       required: true,
     },
     personality: {
-      type: String, 
+      type: String,
       // required: true, sacaria esto como un requisito
     },
     age: {
@@ -43,11 +43,17 @@ var AnimalSchema = new mongoose.Schema(
     vaccines: {
       type: String,
     },
-},
+  },
   { timestamps: true }
 );
 
-AnimalSchema.index({ animalname: "text", sex: "text", age: "text", species: "text", location: "text" });
+AnimalSchema.index({
+  animalname: "text",
+  sex: "text",
+  age: "text",
+  species: "text",
+  location: "text",
+});
 const Animal = mongoose.model("Animal", AnimalSchema);
 
 module.exports = Animal;

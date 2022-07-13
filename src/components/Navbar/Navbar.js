@@ -92,16 +92,17 @@ const Navbar = () => {
                 <li className="nav-item">
                   <Link to="/favorite/:userId"></Link>
                 </li>
-                {/* <li className="nav-item">
 
-                <Link to="/search">
-                  <span className="nav-link">Buscar mascota</span>
-                </Link>
-              </li> */}
                 <li className="nav-item">
                   <Link className="link" to="/association/pages/1">
                     {/* <span className="nav-link"> */}Fundaciones
                     {/* </span> */}
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link className="link" to="/search">
+                    Buscar
                   </Link>
                 </li>
 
@@ -146,7 +147,7 @@ const Navbar = () => {
                   </ul>
                 </li>
               </ul>
-              <ul className=" ">
+              {/*  <ul className=" ">
                 <form
                   onSubmit={onSearch}
                   className="nav-item d-flex align-self-center"
@@ -168,7 +169,7 @@ const Navbar = () => {
                     </button>
                   </div>
                 </form>
-              </ul>
+              </ul> */}
               <ul className="navbar-nav ms-auto">
                 <Link to="/">
                   <button className="btn" onClick={handlelogout}>
