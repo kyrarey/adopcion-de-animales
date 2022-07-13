@@ -78,7 +78,7 @@ const EditAccount = () => {
             if (values.age) body.append("age", values.age);
             if (values.vaccines) body.append("vaccines", values.vaccines);
             if (values.photo) {
-              body.append("image", [`/${id}-${user.image.length}`]);
+              body.append("image", [`/${id}-${user.image.length}.jpg`]);
               body.append("photo", values.photo);
             }
             console.log(

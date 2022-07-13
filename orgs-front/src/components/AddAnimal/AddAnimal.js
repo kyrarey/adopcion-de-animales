@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate  } from "react-router-dom";
+//import { useState, useEffect } from "react";
+import { useNavigate  } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -11,7 +11,7 @@ const AddAnimal = () => {
     const navigate = useNavigate();
     const fundationId = JSON.parse(localStorage.getItem("newUser"))
     // let id = useParams().id;
-    const [animalId, setAnimalId] = useState();
+    //const [animalId, setAnimalId] = useState();
     // console.log(fundationId, "fundationid")
     // useEffect(() => {
     //     find(`/user/account/${id}`)
@@ -64,16 +64,17 @@ const AddAnimal = () => {
                         if (values.species) body.append( "species", values.species);
                         if (values.sex) body.append( "sex", values.sex); */
                         values.fundationId = fundationId._id
-                         axios.post("http://localhost:3030/animal", values)
-                        .then(res => res.data)
-                        .then(animal => setAnimalId(animal._id))
-                         .then(()=>{axios.post(`http://localhost:3030/orgs/addpets/${fundationId._id}`, animalId)
-                        .then(res => {
-                            console.log(animalId)
+
+                        axios.post("http://localhost:3030/animal", values)
+                        .then(animal => {
                             update();
-                            navigate(`/foundations/edit-animal/${animalId}`)
-                            //console.log(res.data)
-                        })} )
+                            navigate(`/foundations/edit-animal/${animal.data._id}`)
+                        })
+                        .catch(err => console.log(err))
+                        
+                        //Probar después esta linea cuando se setee el estado animalId correctamente
+                        //axios.post(`http://localhost:3030/orgs/addpets/${fundationId._id}`, animalId)
+
 
                         // cambiar el foundations de abajo por account cuando este el resto listo
                         //navigate(`/foundations/edit-animal/${animalId}`)
