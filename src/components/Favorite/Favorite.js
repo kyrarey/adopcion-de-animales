@@ -44,7 +44,7 @@ const Favorite = () => {
     const favToDelete = animal.filter(animal => animal.animalId === pet._id);
     const favId = favToDelete[0]._id;
       axios.delete(`http://localhost:3030/favorite/${favId}`)
-      .then(() => {
+      .then((data) => {
         /* favPets = animal.filter(animal => animal.animalId !== pet._id); */
         notify("Eliminado con exito");
       })

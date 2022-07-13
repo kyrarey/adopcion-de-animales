@@ -31,6 +31,8 @@
 }
 
 .petInfo {
+    width: 100%;
+    height: 8em;
     padding: 5% 5% 5% 5%;
     line-height: 1.4;
     letter-spacing: .07em;

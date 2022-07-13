@@ -35,7 +35,7 @@ const Grid = () => {
         count > 1 ? count-- : count = 1;
         navigate(`/animals/pages/${count}`);
     }
-    console.log(pets, "pets grid")
+    //console.log(pets, "pets grid")
     return (
         <div className={s.container}>
             <ul className={s.grid}>

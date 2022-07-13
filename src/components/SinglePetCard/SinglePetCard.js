@@ -70,7 +70,7 @@ const SinglePetCard = () => {
       <div className={s.card}>
         <h1 className={s.title}>{pet.animalname}</h1>
         <div className={s.content}>
-          {!pet.image ? pet.image = ["/no_pet.jpg"] : null}
+          {/* {!pet.image ? pet.image = ["/no_pet.jpg"] : null} */}
           <SingleSlider images={pet.image}/>
           <div className={s.text}>
             <p >{`${pet.species && capitalizeFirst(pet.species)} • ${pet.sex && capitalizeFirst(pet.sex)}`}</p>

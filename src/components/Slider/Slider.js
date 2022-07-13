@@ -23,8 +23,8 @@ const Slider = () => {
     return (
         <motion.div className={s.sliderContainer}>
             <motion.div className={s.slider} drag="x" dragConstraints={{ right: 0, left: -1350 }}>
-                {pets.map(pet => (
-                    <motion.div key={pet.animalname} className={s.item}>
+                {pets.map((pet, index) => (
+                    <motion.div key={index} className={s.item}>
                             <PetCard  pet={pet} />
                     </motion.div>)
                 )}
