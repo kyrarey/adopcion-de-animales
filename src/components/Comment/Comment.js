@@ -1,34 +1,25 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 import find from "../../hooks/find";
-import { useGlobalContext } from "../../GlobalContext";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import "./Comment.css";
 
 const Comment = () => {
-  const [comment, setComment] = useState("");
-  const [foundation, setFoundation] = useState({});
-  const { newUser } = useGlobalContext();
-  /* const { foundationId } = useParams().id; */
+  const [comment, setComment] = useState([]);
+  const { loggedUser } = useContext(AuthContext);
+  const params = useParams();
+  const foundationId = params.id;
 
-  const userStorage = !!localStorage.getItem("newUser")
-    ? JSON.parse(localStorage.getItem("newUser"))
-    : {};
+  console.log("loggedUser :", loggedUser);
 
-  /*  useEffect(() => {
-    find(`/user/account/${foundationId}`)
-      .then((foundationObj) => setFoundation(foundationObj))
-      .catch((error) => console.log(error));
-  }, [foundationId]); */
-
-  /*  useEffect(() => {
+  useEffect(() => {
     axios
       .get(`http://localhost:3030/comment/${foundationId}`)
       .then((res) => res.data)
       .then((review) => setComment(review));
-  }, []); */
+  }, []);
 
   return (
     <div className="comment">
@@ -38,45 +29,44 @@ const Comment = () => {
           <p align="center">No hay comentarios aun</p>
         ) : (
           comment.map((review) => (
-            <li>
+            <>
               {console.log(review)}
               <div className="container">
-                <div className="row">
-                  <div className="col-3">
-                    <div>
+                <div id="single-comment">
+                  <div className="row">
+                    <div className="col-3">
+                      <h5 id="name"> {loggedUser?.email?.split("@")[0]}</h5>
                       <img
                         className="userImg"
                         src={
-                          userStorage.image
-                            ? userStorage.image === "no_user"
-                              ? require(`../../assets/img/users/no_user.jpg`)
-                              : require(`../../assets/img/users${userStorage.image}.jpg`)
-                            : require(`../../assets/img/users/no_user.jpg`)
+                          /* require(`../../assets/img/users${loggedUser._id}.jpg`) */
+
+                          require(`../../assets/img/users/no_user.jpg`)
                         }
                         alt="Foto de perfil"
                       ></img>
                     </div>
-                    <div id="date">
-                      <p className="text-left">
-                        {new Date(review.createdAt).toLocaleDateString("es-AR")}{" "}
+
+                    <div className="col-9">
+                      <p id="textReview">"{review.comment}"</p>
+                      <p id="date">
+                        <CalendarMonthIcon />
+                        {new Date(review.createdAt).toLocaleDateString("es-AR")}
                       </p>
                     </div>
                   </div>
-                  <div className="col-9" id="textReview">
-                    <p>"{review.comment}"</p>
-                  </div>
                 </div>
               </div>
-            </li>
+            </>
           ))
         )}
       </ul>
       <div className="pb-5" align="center">
-        {/* <Link to={`/comment/add/${foundationId}`}>
-          <button type="button" className="btn btn-default">
+        <Link to={`/comment/add/${foundationId}`}>
+          <button type="button" className="btn btn-dark">
             Agregar comentario
           </button>
-        </Link> */}
+        </Link>
       </div>
     </div>
   );

@@ -7,33 +7,33 @@ import find from "../../hooks/find";
 import capitalizeFirst from "../../hooks/capitalizeFirst";
 //import SingleSlider from "../SingleSlider/SingleSlider";
 import s from "./SingleOrgCard.module.css";
-
+import Comment from "../Comment/Comment";
 
 const SingleOrgCard = () => {
   const params = useParams();
   const id = params.id;
-/*   const navigate = useNavigate();
+  /*   const navigate = useNavigate();
   const { loggedUser, isAuthenticated } = useContext(AuthContext); */
 
   const [org, setOrg] = useState({
-    "_id": "",
-    "foundationName": "",
-    "petsForAdoption": [],
-    "internUsers": {},
-    "image": "",
-    "location": "",
-    "description": ""
+    _id: "",
+    foundationName: "",
+    petsForAdoption: [],
+    internUsers: {},
+    image: "",
+    location: "",
+    description: "",
   });
-  
+
   useEffect(() => {
-    if(id) {
-    find(`/orgs/account/${id}`)
-      .then(orgObj => setOrg(orgObj))
-      .catch(error => console.log(error))
+    if (id) {
+      find(`/orgs/account/${id}`)
+        .then((orgObj) => setOrg(orgObj))
+        .catch((error) => console.log(error));
     }
   }, [id]);
 
-/*   const handleClick = (e) => {
+  /*   const handleClick = (e) => {
     e.preventDefault();
     if (isAuthenticated) {
       if (loggedUser.isFormComplete) {
@@ -47,7 +47,6 @@ const SingleOrgCard = () => {
         navigate("/login");
     }
   } */
-
 
   return (
     <div className={s.container}>
@@ -81,16 +80,11 @@ const SingleOrgCard = () => {
           {/* <button className={s.button} onClick={handleClick}>
             {`Adoptar a ${org.animalname && capitalizeFirst(org.animalname)}`}
           </button> */}
-
         </div>
+        <Comment />
       </div>
-
     </div>
-
-  )
-}
+  );
+};
 
 export default SingleOrgCard;
-
-
-

@@ -3,7 +3,9 @@ const CommentServices = require("../services/Comment");
 class CommentControllers {
   //ver comentarios
   static async getComments(req, res) {
-    const { error, data } = await CommentServices.getComments(req.params.id);
+    const { error, data } = await CommentServices.getComments(
+      req.params.foundationId
+    );
     if (error) {
       return res.status(500).send({ message: data.message });
     }

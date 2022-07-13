@@ -27,7 +27,6 @@ import { GlobalProvider } from "./GlobalContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const App = () => {
   const path = useLocation().pathname.slice(1, 8);
   return (
@@ -50,7 +49,10 @@ const App = () => {
         <Route path="/account/form/edit/:id" element={<EditForm />} />
         <Route path="/account/favorite" element={<Favorite />} />
         <Route path="/association/pages/:id" element={<OrgGrid />} />
-        <Route path="/association/animals/:foundationId/:id" element={<FoundationAnimalsGrid />} />
+        <Route
+          path="/association/animals/:foundationId/:id"
+          element={<FoundationAnimalsGrid />}
+        />
         <Route path="/animals/pages/:id" element={<Grid />} />
         <Route path="/form" element={<AdoptantForm />} />
         {/* <Route path="/orgs/pages/:id" element={<OrgGrid />} /> */}

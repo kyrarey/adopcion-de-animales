@@ -1,0 +1,18 @@
+.new-comment {
+  margin: 50px;
+  padding: 40px;
+  border: var(--cardShadow);
+  background-color: rgb(215, 201, 231);
+}
+
+.new-comment h1 {
+  font-size: 40px;
+  padding: 20px;
+  font-family: var(--bannerFont);
+  color: var(--mainColor);
+}
+
+.new-comment img {
+  padding: 20px;
+  max-width: 330px;
+}

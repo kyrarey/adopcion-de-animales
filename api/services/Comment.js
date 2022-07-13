@@ -4,7 +4,8 @@ class CommentServices {
   //ver los comentarios
   static async getComments(params) {
     try {
-      const data = await Comment.find(params).exec();
+      const data = await Comment.find({ foundationId: params }).exec();
+
       return {
         error: false,
         data: data,
@@ -37,7 +38,7 @@ class CommentServices {
 
   //editar comment
   static async updateOne(id, body) {
-    console.log(id, body, "   id y body")
+    console.log(id, body, "   id y body");
     try {
       await Comment.findByIdAndUpdate(id, body);
       return {

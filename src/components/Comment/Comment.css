@@ -1,6 +1,5 @@
 .comment {
   margin: 50px;
-  background-color: rgb(215, 201, 231);
   border: var(--cardShadow);
 }
 
@@ -14,4 +13,22 @@
 .comment p {
   font-size: 17px;
   font-family: var(--articleFont);
+}
+
+#single-comment {
+  padding: 50px;
+  box-shadow: var(--cardShadow);
+  background-color: rgb(215, 201, 231);
+}
+
+.comment img {
+  max-width: 100px;
+}
+
+#name {
+  font-size: 20px;
+}
+
+#textReview {
+  padding: 30px;
 }
