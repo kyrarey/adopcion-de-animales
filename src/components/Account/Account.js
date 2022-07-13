@@ -15,6 +15,7 @@ const Account = () => {
         .catch(error => console.log(error))
     }, [id])
 
+    console.log("USER", user)
     const handleClick = (e) => {
         e.preventDefault();
         navigate(`/account/edit/${id}`)
@@ -32,7 +33,7 @@ const Account = () => {
                             ? user.image === "no_user" ? require(`../../assets/img/users/no_user.jpg`) : require(`../../assets/img/users/${user.image}.jpg`)
                             : require(`../../assets/img/users/no_user.jpg`)
                         }
-                        alt="Foto de perfil">
+                        alt="">
                     </img>
                     </div>
                     <h4 className={s.subTitle}>Usuario</h4>

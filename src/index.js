@@ -6,7 +6,7 @@ import AuthContextProvider from "./context/AuthContext";
 import FavContextProvider from "./context/FavContext";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.js";
 // import bootstrap from 'bootstrap'
 // import { configureStore } from "redux"; 

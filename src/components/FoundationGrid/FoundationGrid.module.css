@@ -1,7 +1,6 @@
 .container {
     background-color: var(--bGroundColor);
     text-align: right;
-    margin-bottom: 110px;
 }
 
 .grid {

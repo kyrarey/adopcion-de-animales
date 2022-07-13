@@ -18,7 +18,7 @@ const Grid = () => {
             setTotalOrgs(orgsArr.length);
             let orgsAux = [];
             orgsAux = fixedElemArray(orgsArr, orgsPerPage, count);
-            console.log(orgsAux, " aauuux")
+            //console.log(orgsAux, " aauuux")
             setOrgs(orgsAux);
         })
         .catch(err => console.log(err));

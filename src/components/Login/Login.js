@@ -5,6 +5,8 @@ import { FavContext } from "../../context/FavContext";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { notValid } from "../../hooks/alert";
+import { toast } from "react-toastify";
 import find from "../../hooks/find";
 import validator from "validator";
 import jwt_decode from "jwt-decode";
@@ -41,6 +43,7 @@ const Login = () => {
         );
         navigate("/");
       } catch (error) {
+        notValid ();
         console.log(error.response);
       }
     } else {

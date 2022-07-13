@@ -4,7 +4,7 @@ const fs = require("fs");
 
 class AnimalServices {
   static async getAll(params) {
-    console.log("PARAMS", params)
+    //console.log("PARAMS", params)
     try {
       const data = await Animal.find(params).exec();
       return {
@@ -24,13 +24,13 @@ class AnimalServices {
 
     try {
       const data = await Animal.findById(id);
-      console.log(data, "Dateishion");
+      //console.log(data, "Dateishion");
       return {
         error: false,
         data: {
-          age: data.age,
+        age: data.age,
         animalname: data.animalname,
-        fundationId: data.foundationId,
+        fundationId: data.fundationId,
         history: data.history,
         location: data.location,
         personality: data.personality,
@@ -38,7 +38,7 @@ class AnimalServices {
         size: data.size,
         species: data.species,
         vaccines: data.vaccines,
-        image:(fs.existsSync(`src/assets/img/pets${data.image[0]}`) ? data.image : "no_user")
+        image:(fs.existsSync(`src/assets/img/pets${data.image[0]}`) ? data.image : "no_pet")
       },
       };
     } catch (error) {
@@ -51,7 +51,7 @@ class AnimalServices {
   }
 
   static async addOne(body) {
-    console.log(body, "body del addone")
+    //console.log(body, "body del addone")
     try {
       const data = await Animal.create(body);
       return {
@@ -66,7 +66,7 @@ class AnimalServices {
     }
   }
   static async updateOne(id, body) {
-    console.log(body, "body en services", id);
+    //console.log(body, "body en services", id);
     try {
       const data = await Animal.updateOne(
         { _id: id },
@@ -84,7 +84,7 @@ class AnimalServices {
       }
         );
         if (fs.existsSync("orgs-front/src/assets/img/pets/01.jpg")) {
-          console.log(data,"Data")
+          //console.log(data,"Data")
           let newImage = `/${body.image}.jpg`;
 
           fs.rename(
@@ -96,7 +96,7 @@ class AnimalServices {
           );
         }
         if (fs.existsSync("src/assets/img/pets/01.jpg")) {
-          console.log(data,"Data")
+          //console.log(data,"Data")
           // let count = body.image.length;
           let newImage = `/${body.image}.jpg`;
           fs.rename(

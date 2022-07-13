@@ -13,8 +13,8 @@ const Register = () => {
   const notify = (text) => toast(text);
 
   const register = async (e) => {
-    console.log(registerEmail);
-    console.log(registerPassword);
+    /* console.log(registerEmail);
+    console.log(registerPassword); */
 
     e.preventDefault();
     if (validator.isEmail(registerEmail)) {
@@ -62,7 +62,7 @@ const Register = () => {
                 ></input>
               </div>
               <button onClick={register} className="btn btn-class">
-                Login
+                Register
               </button>
               <p className="mt-2">
                 ¿Ya tenés una cuenta?&nbsp;

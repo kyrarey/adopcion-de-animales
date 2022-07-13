@@ -1,8 +1,7 @@
-import React from 'react'
 import { useState, useEffect } from "react";
 import { useParams, useNavigate  } from "react-router-dom";
-import find from "../../hooks/find";
-import capitalizeFirst from "../../hooks/capitalizeFirst";
+//import find from "../../hooks/find";
+//import capitalizeFirst from "../../hooks/capitalizeFirst";
 import s from "./Account.module.css";
 import axios from 'axios';
 
@@ -11,14 +10,17 @@ const Account = () => {
     let id = useParams().id;
     const [user, setUser] = useState({})
 
+    console.log("id:", id)
+
     useEffect(() => {
-        // find(`/orgs/account/${id}`)
+        //find(`/orgs/account/${id}`)
         axios.get(`http://localhost:3030/orgs/account/${id}`)
         .then(userObj => setUser(userObj))
         .catch(error => console.log(error))
     }, [id])
 
-    console.log("datos de fundacion: ", user);
+    console.log("datos de fundacion: ", user.data);
+
     const handleClick = (e) => {
         e.preventDefault();
         navigate(`/account/edit/${id}`)
@@ -31,15 +33,19 @@ const Account = () => {
                 <div className={s.data}>
                     <div className={s.imgContainer}>
                     <img className={s.userImage} 
-                        src={user.image 
-                            ? user.image === "no_user" ? require(`../../assets/img/accounts/no_user.jpg`) : require(`../../assets/img/users${user.image}.jpg`)
-                            : require(`../../assets/img/accounts/no_user.jpg`)
+                        src={user.data
+                            ? user.data.image === "no_user" ? require(`../../assets/img/foundations/no_user.jpg`) : require(`../../assets/img/foundations/${user.data.image}.jpg`)
+                            : require(`../../assets/img/foundations/no_user.jpg`)
                         }
-                        alt="Foto de perfil">
+                        alt="">
                     </img>
                     </div>
-                    <h4 className={s.subTitle}>Usuario</h4>
-                    <p  className={s.info}>{user.data ? user.data.foundationName : null}</p>
+                    {/* <h4 className={s.subTitle}>Nombre de la fundación</h4>
+                    <p  className={s.info}>{user.data 
+                        ? user.data.foundationName ? capitalizeFirst(user.data.foundationName) : ""
+                        : null
+                        }
+                    </p> */}
                     <h4 className={s.subTitle}>E-mail</h4>
                     <p  className={s.info}>{user.data ? user.data.email : null}</p>
                     <h4 className={s.subTitle}>Contraseña</h4>

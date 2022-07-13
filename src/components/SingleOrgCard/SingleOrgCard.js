@@ -53,44 +53,30 @@ const SingleOrgCard = () => {
       <div className={s.card}>
         <h1 className={s.title}>{org.foundationName}</h1>
         <div className={s.content}>
-          <img
-            className={s.image}
-            src={
-              org.image &&
-              require(`../../assets/img/foundations/${org.image}.jpg`)
+            <img className={s.image}
+            src={org.image 
+              ? org.image === "no_user" ? require(`../../assets/img/foundations/no_user.jpg`) : require(`../../assets/img/foundations/${org.image}.jpg`)
+              : require(`../../assets/img/foundations/no_user.jpg`)
             }
-            alt={org.foundationName}
-          ></img>
-          <div className={s.text}>
-            <h4 className={s.subTitle}>Historia</h4>
-            <p className={s.info}>{org.description}</p>
-            <h4 className={s.subTitle}>Ubicación </h4>
-            <p className={s.info}>
-              {org.location && capitalizeFirst(org.location)}
-            </p>
-            <h4 className={s.subTitle}>Contacto</h4>
-            <p className={s.info}>
-              <a
-                className={s.link}
-                href={`mailto:${org.email}?Subject=Quisiera%20más%20información%20sobre%20${org.foundationName}`}
-              >
-                {org.email}
-              </a>
-            </p>
-            <h4 className={s.subTitle}>Nuestros animalitos</h4>
-            <p className={s.info}>
-              Si quieres conocer a todos los animalitos de los que{" "}
-              {org.foundationName && capitalizeFirst(org.foundationName)} se
-              ocupa, da click
-              <Link
-                className={s.link}
-                to={`/association/animals/${org.image}/1`}
-              >
-                {" "}
-                AQUÍ
-              </Link>
-            </p>
-          </div>
+            alt=""
+            ></img>
+            <div className={s.text}>
+                <h4 className={s.subTitle}>Historia</h4>
+                <p  className={s.info}>{org.description ? org.description : "La fundación aún no ha cargado su historia"}</p>
+                <h4 className={s.subTitle}>Ubicación </h4>
+                <p  className={s.info}>{org.location ? capitalizeFirst(org.location): "La fundación aún no ha cargado su ubicación"}</p>
+                <h4 className={s.subTitle}>Contacto</h4>
+                <p  className={s.info}>
+                  <a className={s.link} href={`mailto:${org.email}?Subject=Quisiera%20más%20información%20sobre%20${org.foundationName}` } >
+                  {org.email}
+                  </a>
+                </p>
+                <h4 className={s.subTitle}>Nuestros animalitos</h4>
+                <p  className={s.info}>
+                  Si quieres conocer a todos los animalitos de los que {org.foundationName && capitalizeFirst(org.foundationName)} se ocupa, da click 
+                  <Link className={s.link} to={`/association/animals/${org.image}/1`}> AQUÍ</Link>
+                </p>
+            </div>
           {/* <button className={s.button} onClick={handleClick}>
             {`Adoptar a ${org.animalname && capitalizeFirst(org.animalname)}`}
           </button> */}
