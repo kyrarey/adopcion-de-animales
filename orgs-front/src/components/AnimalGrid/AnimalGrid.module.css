@@ -1,6 +1,6 @@
 .container {
     background-color: var(--bGroundColor);
-    text-align: right;
+/*     text-align: right; */
     /* margin-bottom: 4%; */
 }
 
@@ -40,4 +40,18 @@
     background-color: var(--mainColor);
     background-position: right;
     margin: 3% 5% 6% 0%;
+}
+
+.addButton {
+    font-family: var(--articleFont);
+    font-size: 1.5em;
+    font-weight: bold;
+    color: white;
+    height: 2em;
+    width: 8em;
+    border: none;
+    /* border-radius: 9%; */
+    background-color: dodgerblue;
+    background-position: left;
+    margin: 3% 5% 6% 3%;
 }

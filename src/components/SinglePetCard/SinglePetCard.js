@@ -37,17 +37,18 @@ const SinglePetCard = () => {
       .catch(error => console.log(error));
   }, [id]);
 
-  console.log(pet)
+  //console.log(pet, "pet")
+
   useEffect(() => {
-  if(pet._id) {
-    //console.log(pet.fundationId);
+  //if(pet._id) {
+    //console.log("PET FUNDATION ID:",pet.fundationId);
     find(`/orgs/key/${pet.fundationId}`)
     .then(orgArr => setOrg(orgArr))
     .catch(err => console.log(err));
-  }
+  //}
 }, [pet.fundationId])
 
-    console.log(org[0])
+  //console.log("FUNDACION:", org[0])
   const handleClick = (e) => {
     e.preventDefault();
     if (isAuthenticated) {
@@ -63,12 +64,13 @@ const SinglePetCard = () => {
     }
   }
 
-  console.log(pet, "pet")
+
   return (
     <div className={s.container}>
       <div className={s.card}>
         <h1 className={s.title}>{pet.animalname}</h1>
         <div className={s.content}>
+          {!pet.image ? pet.image = ["/no_pet.jpg"] : null}
           <SingleSlider images={pet.image}/>
           <div className={s.text}>
             <p >{`${pet.species && capitalizeFirst(pet.species)} • ${pet.sex && capitalizeFirst(pet.sex)}`}</p>

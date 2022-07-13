@@ -1,11 +1,11 @@
 import "./Login.css";
-import { useContext } from 'react';
+import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { FavContext } from "../../context/FavContext";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
 import axios from "axios";
+import { notValid } from "../../hooks/alert";
+import { toast } from "react-toastify";
 import find from "../../hooks/find";
 import validator from "validator";
 import jwt_decode from "jwt-decode"
@@ -42,6 +42,7 @@ const Login = () => {
         .then(animals => animals ? getFavs(animals) : getFavs([]));
         navigate("/");
       } catch (error) {
+        notValid ();
         console.log(error.response);
       }
     } else {

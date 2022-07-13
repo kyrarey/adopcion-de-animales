@@ -2,22 +2,21 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams} from "react-router-dom";
 import find from "../../hooks/find";
 import { fixedElemArray } from "../../hooks/arrGen";
-import PetCard from "../../commons/PetCard/PetCard";
+import AnimalCard from "../../commons/AnimalCard/AnimalCard";
 import s from "./AnimalGrid.module.css";
-import axios from "axios";
+//import axios from "axios";
 
-const Grid = () => {
+const AnimalGrid = () => {
     const [animals, setAnimals] = useState([]);
     const [totalAnimals, setTotalAnimals] = useState(0);
     const animalsPerPage = 6;
     const navigate = useNavigate();
     let count = useParams().id;
-    const fundationId = JSON.parse(localStorage.getItem("newUser"))
+    let foundationId = useParams().foundationId;
 
 
     useEffect(() => {
-        axios.get("http://localhost:3030/animal/all")
-        .then(res => res.data)
+        find(`/animal/foundation/${foundationId}`)
         .then(animalsArr => {
             setTotalAnimals(animalsArr.length);
             let animalsAux = [];
@@ -25,30 +24,29 @@ const Grid = () => {
             setAnimals(animalsAux);
         })
         .catch(err => console.log(err));
-    }, [count]);  
-
-    console.log(animals, "all animals")
-    console.log(fundationId, "fundationId")
-    // let totalFoundations = orgs.length;
-    let animalsAux = fixedElemArray(animals, animalsPerPage, count);
-    // let pets = animalsAux;
+    }, [count]); 
 
     const pagesQty = Math.ceil(totalAnimals/animalsPerPage);
 
+    const addAnimalOnClick = () => {
+        navigate(`/foundations/add-animal`)
+    }
+
     const addOnClick = () => {
         count  < pagesQty  ? count++ : count = pagesQty;
-        // navigate(`/account/animals/pages/${count}`);
+        navigate(`/animals/pages/${count}`);
     }
 
     const subsOnClick = () => {
         count > 1 ? count-- : count = 1;
-        // navigate(`/account/animals/pages/${count}`);
+        navigate(`/animals/pages/${count}`);
     }
 
     return (
         <div className={s.container}>
+            <button className={s.addButton} type="submit" onClick={addAnimalOnClick}>Añadir animal</button>
             <ul className={s.grid}>
-                {/* { pets.map(pet => <PetCard pet={pet}/>)} */}
+                { animals.map((animal, index) => <AnimalCard key={index} animal={animal}/>)}
             </ul>
             {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}
             {count < pagesQty ? <button className={s.button} type="submit" onClick={addOnClick}>Siguiente</button> : ""}
@@ -56,4 +54,4 @@ const Grid = () => {
     )
 }
 
-export default Grid;
+export default AnimalGrid;
