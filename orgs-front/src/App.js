@@ -16,7 +16,7 @@ import EditForm from "./components/EditForm/EditForm";
 import AnimalGrid from "./components/AnimalGrid/AnimalGrid";
 import { ToastContainer } from "react-toastify";
 import { GlobalProvider } from "./GlobalContext";
-
+import Socket from "./components/Chat/Socket"
 
 function App() {
   const path = useLocation().pathname.slice(1, 8)
@@ -41,6 +41,7 @@ function App() {
         <Route path="/foundations/add-animal" element={<AddAnimal />} />
         <Route path="/foundations/edit-animal/:id" element={<EditAnimal />} />
         <Route path="/foundations/petsToAdopt/:id" element={<AnimalGrid />} />
+        <Route path="/chat/:foundationId" element={<Socket />} />
       </Routes>
      <Footer /> 
       </GlobalProvider>

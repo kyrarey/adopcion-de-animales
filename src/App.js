@@ -64,7 +64,7 @@ const App = () => {
         <Route path="/associationProfile" element={<AssociationProfile />} />
         <Route path="/comment/:id" element={<Comment />} />
         <Route path="/comment/add/:id" element={<NewComment />} />
-        <Route path="/chat" element={<Socket />} />
+        <Route path="/chat/:userId" element={<Socket />} />
         <Route path="*" element={<Navigate to="404" />} />
         <Route path="404" element={<NotFound />} />
       </Routes>
