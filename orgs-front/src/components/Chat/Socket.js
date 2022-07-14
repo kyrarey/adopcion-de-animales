@@ -1,7 +1,6 @@
 import SocketIoClient from "socket.io-client";
 import { useEffect, useState } from "react";
-import Chat from "./Chat";
-import Recipient from "./Recipient";
+import "./Chat.css"
 import axios from "axios";
 import {useParams} from "react-router-dom"
 
@@ -12,7 +11,8 @@ const Socket = () => {
   const [click, setClick] = useState({});
   const [chatRoom, setChatRoom] = useState([]);
  
-  const userId = useParams().userId
+  const foundationId = useParams().foundationId
+
   const socket = SocketIoClient("http://localhost:3030/");
 
   useEffect(() => {
@@ -23,13 +23,12 @@ const Socket = () => {
   },[]);
 
   let activeChats= []
-  activeChats = recipient.filter((chat) => chat.user === userId)
-
+  activeChats = recipient.filter((chat) => chat.foundation === foundationId)
 
   const onSubmit = (e) => {
     e.preventDefault();
     socket.emit("send message", value);    
-    axios.post(`http://localhost:3030/chat/update/${click.user}`,{
+    axios.post(`http://localhost:3030/chat/update/${click.foundation}`,{
       user: click.user,
       foundation: click.foundation,
       content: {sender:"user", message:value},
@@ -47,11 +46,11 @@ const Socket = () => {
       })
       .then((res) => setChatRoom(res.data));
   }, [click]);
+
   
-  
-  console.log(chatRoom, "chatroom")
   // console.log(oldMessages, "oldm")
   // console.log(recipient, "recipient")
+  // console.log(click, "click")
   // console.log(chatRoom, "room")
 
   useEffect(() => {
@@ -80,7 +79,7 @@ const Socket = () => {
                 >
                   <div className="chat_people">
                     <div className="chat_ib">
-                      <h5>{activeChats.foundation} </h5>
+                      <h5>{activeChats.user} </h5>
                       {/* <span className="chat_date">Dec 25</span></h5> */}
                       {/* <p>Test, which is a new approach to have all solutions */}
                       {/* astrology under one roof.</p> */}
@@ -95,7 +94,7 @@ const Socket = () => {
               <div className="msg_history">
                 {chatRoom[0] ? (
                   chatRoom[0].content.map((message) => {
-                    if (message.sender === "user") {
+                    if (message.sender === "foundation") {
                       return(
                       <div className="sent_msg">
                         <p>
