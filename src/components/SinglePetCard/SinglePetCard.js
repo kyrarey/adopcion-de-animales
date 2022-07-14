@@ -14,7 +14,9 @@ const SinglePetCard = () => {
   const id = params.id;
   const navigate = useNavigate();
   const { loggedUser, isAuthenticated } = useContext(AuthContext);
-  console.log("LOGGEDUSER", loggedUser)
+  const [org, setOrg] = useState([]);
+  const [formState, setFormState] = useState(false);
+  //console.log("LOGGEDUSER", loggedUser)
 
   const [pet, setPet] = useState({
     "_id": "",
@@ -30,8 +32,7 @@ const SinglePetCard = () => {
     "age": "",
     "vaccines": ""
   });
-  const [org, setOrg] = useState([]);
-  const [formState, setFormState] = useState(false);
+
   
   useEffect(() => {
     find(`/animal/${id}`)
@@ -47,15 +48,16 @@ const SinglePetCard = () => {
 
   useEffect(() => {
   //if(pet._id) {
-    console.log("PET ",pet);
-    console.log("PETFUNDATIONID ",pet.fundationId);
+    /* console.log("PET ",pet);
+    console.log("PETFUNDATIONID ",pet.fundationId); */
     find(`/orgs/key/${pet.fundationId}`)
     .then(orgArr => setOrg(orgArr))
     .catch(err => console.log(err));
   //}
 }, [pet.fundationId])
 
-  console.log("FUNDACION:", org[0])
+  console.log("FUNDACION:", org)
+
   const handleClick = (e) => {
     e.preventDefault();
     

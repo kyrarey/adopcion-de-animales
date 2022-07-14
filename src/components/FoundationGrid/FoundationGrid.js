@@ -36,11 +36,7 @@ const Grid = () => {
         navigate(`/association/pages/${count}`);
     }
     
-
-
-
-
-        return (
+    return (
         <div className={s.container}>
             <ul className={s.grid}>
                 { orgs.map((org, index) => <OrgCard key={index} org={org}/>)}

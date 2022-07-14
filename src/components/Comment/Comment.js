@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import find from "../../hooks/find";
+//import find from "../../hooks/find";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import "./Comment.css";
 
@@ -12,7 +12,7 @@ const Comment = () => {
   const params = useParams();
   const foundationId = params.id;
 
-  console.log("loggedUser :", loggedUser);
+  //console.log("loggedUser :", loggedUser);
 
   useEffect(() => {
     axios
@@ -35,7 +35,7 @@ const Comment = () => {
                 <div id="single-comment">
                   <div className="row">
                     <div className="col-3">
-                      <h5 id="name"> {loggedUser?.email?.split("@")[0]}</h5>
+                      <h5 id="name"> {loggedUser ? loggedUser.username : ""}</h5>
                       <img
                         className="userImg"
                         src={

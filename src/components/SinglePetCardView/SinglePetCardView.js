@@ -2,7 +2,7 @@ import s from "./SinglePetCardView.module.css";
 
 const SinglePetCardView = ({pet}) => {
 
-    {console.log(pet.image)}
+    //{console.log(pet.image)}
 
   return (
 

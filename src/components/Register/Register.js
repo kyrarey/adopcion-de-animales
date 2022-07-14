@@ -21,6 +21,7 @@ const Register = () => {
       await axios.post("http://localhost:3030/user/register", {
         email: registerEmail,
         password: registerPassword,
+        username: registerEmail.split("@")[0],
       });
       /*  notify("Registro exitoso"); */
       registered();

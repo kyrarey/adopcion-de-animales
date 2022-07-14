@@ -1,0 +1,11 @@
+var http = require('http');
+function serverHandler (request, response){
+response.end('Hello World!');
+}
+
+
+http.createServer(serverHandler).listen(3000)
+
+puerto 80 HTTP
+puerto 443 HTTPS
+puerto 597 y 588 EMAIL

@@ -30,6 +30,7 @@ const Login = () => {
 
         const loginUser = {
           _id: user.data._id,
+          username: user.data.username,
           email: user.data.email,
           isFormComplete: user.data.isFormComplete,
           fundation: user.data.fundation,
