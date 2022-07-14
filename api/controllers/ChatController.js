@@ -18,6 +18,13 @@ class ChatControllers {
     res.status(201).send(data);
   }
 
+  static async updateOne(req, res) {
+    const { error, data } = await ChatServices.updateOne(req.params.foundationId, req.body);
+    if (error) {
+      return res.status(500).send({ message: data.message });
+    }
+    res.status(201).send(data);
+  }
 }
 
 module.exports = ChatControllers;
