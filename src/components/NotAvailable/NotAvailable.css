@@ -1,0 +1,16 @@
+.notAvailable {
+  background: url(./dog.jpg) no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notAvailable h2 {
+  padding: 5%;
+  font-size: 66px;
+  font-family: var(--bannerFont);
+  background-color: var(--mainColor);
+}

@@ -52,7 +52,7 @@ const Sidebar = () => {
                     </Link>
                 </div>
                 <div className={s.item}>
-                    <Link className={s.link} to={`/account/chat/${id}/1`}>
+                    <Link className={s.link} to={`/chat/${id}`}>
                     <h3 className={s.title}>Mis chats</h3>
                     <img className={s.img} 
                         src={require(`../../assets/img/chat.jpg`)}

@@ -60,7 +60,7 @@ class UserServices {
   static async updateOne(id, body) {
     try {
       const data = await User.findByIdAndUpdate(id, body);
-      /* console.log("DATA", data) */
+      //console.log("DATA", data)
       if (fs.existsSync("src/assets/img/users/01.jpg")) {
         let newFileName = `/${data.id}.jpg`;
         fs.rename(
@@ -71,17 +71,19 @@ class UserServices {
           }
         );
       }
+      const updatedData = await User.findById(id);
+      //console.log("DATA ACTUALIZADA",updatedData)
       return {
         error: false,
         data: {
-          id: data._id,
-          name: data.name,
-          lastname: data.lastname,
-          username: data.username,
-          email: data.email,
-          bio: data.bio,
-          image: data.image,
-          location: data.location,
+          id: updatedData._id,
+          name: updatedData.name,
+          lastname: updatedData.lastname,
+          username: updatedData.username,
+          email: updatedData.email,
+          bio: updatedData.bio,
+          image: updatedData.image,
+          location: updatedData.location,
         },
       };
     } catch (error) {

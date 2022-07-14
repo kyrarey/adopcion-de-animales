@@ -16,7 +16,7 @@ const EditAccount = () => {
 
     useEffect(() => {
         axios.get(`http://localhost:3030/orgs/account/${id}`)
-        //find(`/orgs/${id}`)
+        //find(`/orgs/account/${id}`)
         .then(userObj => setUser(userObj.data))
         .catch(error => console.log(error))
     }, [id])

@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import { motion  } from "framer-motion";
-import foundations from "../../assets/foundations.json";
+//import foundations from "../../assets/foundations.json";
 import FoundationCard from "../../commons/FoundationCard/FoundationCard";
 import find from "../../hooks/find";
 import { randElemArray } from '../../hooks/arrGen';
