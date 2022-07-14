@@ -7,10 +7,12 @@ class AnimalServices {
     //console.log("PARAMS", params)
     try {
       const data = await Animal.find(params).exec();
+      //console.log("DATA",data);
       return {
         error: false,
         data: data,
       };
+      
     } catch (error) {
       console.error(error);
       return {
@@ -66,12 +68,16 @@ class AnimalServices {
     }
   }
   static async updateOne(id, body) {
-    //console.log(body, "body en services", id);
+    //console.log("body en services", body);
+    //console.log("ID--------------", id);
+    const newPath = id;
     try {
+      //const data = await Animal.findByIdAndUpdate(id, body);
       const data = await Animal.updateOne(
         { _id: id },
-        { $push: { image: body.image } ,
-          $set :{animalname : body.animalname,
+        { $set :{
+            image:[`${body.image0}`, `${body.image1}`, `${body.image2}`],
+            animalname : body.animalname,
             location : body.location,
             size : body.size,
             species : body.species,
@@ -81,14 +87,15 @@ class AnimalServices {
             vaccines : body.vaccines,
             personality : body.personality
           }
-      }
-        );
+        }
+      );
         if (fs.existsSync("orgs-front/src/assets/img/pets/01.jpg")) {
           //console.log(data,"Data")
-          let newImage = `${body.image}`;
+          /* let newImage = `${body.image[0]}`;
+          console.log(body.image) */
           fs.rename(
             "orgs-front/src/assets/img/pets/01.jpg",
-            `orgs-front/src/assets/img/pets${newImage}`,
+            `orgs-front/src/assets/img/pets/${newPath}-01.jpg`,
             (err) => {
               if (err) console.log(err);
             }
@@ -97,15 +104,52 @@ class AnimalServices {
         if (fs.existsSync("src/assets/img/pets/01.jpg")) {
           //console.log(data,"Data")
           // let count = body.image.length;
-          let newImage = `${body.image}`;
+          //let newImage = `${body.image[0]}`;
           fs.rename(
             "src/assets/img/pets/01.jpg",
-            `src/assets/img/pets${newImage}`,
+            `src/assets/img/pets/${newPath}-01.jpg`,
             (err) => {
               if (err) console.log(err);
             }
           );
         }
+        if (fs.existsSync("orgs-front/src/assets/img/pets/02.jpg")) {
+          fs.rename(
+            "orgs-front/src/assets/img/pets/02.jpg",
+            `orgs-front/src/assets/img/pets/${newPath}-02.jpg`,
+            (err) => {
+              if (err) console.log(err);
+            }
+          );
+        }
+        if (fs.existsSync("src/assets/img/pets/02.jpg")) {
+          fs.rename(
+            "src/assets/img/pets/02.jpg",
+            `src/assets/img/pets/${newPath}-02.jpg`,
+            (err) => {
+              if (err) console.log(err);
+            }
+          );
+        }
+        if (fs.existsSync("orgs-front/src/assets/img/pets/03.jpg")) {
+          fs.rename(
+            "orgs-front/src/assets/img/pets/03.jpg",
+            `orgs-front/src/assets/img/pets/${newPath}-03.jpg`,
+            (err) => {
+              if (err) console.log(err);
+            }
+          );
+        }
+        if (fs.existsSync("src/assets/img/pets/03.jpg")) {
+          fs.rename(
+            "src/assets/img/pets/03.jpg",
+            `src/assets/img/pets/${newPath}-03.jpg`,
+            (err) => {
+              if (err) console.log(err);
+            }
+          );
+        }
+
       return {
         error: false,
         data: data,

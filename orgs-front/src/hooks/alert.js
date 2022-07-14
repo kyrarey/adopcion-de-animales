@@ -10,6 +10,15 @@ export function update(){
     })
 }
 
+export function toUpdatePhotos(){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Proceda a cargar las imágenes',
+    showConfirmButton: false,
+    timer: 1600
+  })
+}
 export function registered(){
   Swal.fire({
     position: 'center',

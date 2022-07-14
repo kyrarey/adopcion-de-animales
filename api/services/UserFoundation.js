@@ -128,7 +128,7 @@ class UserFoundationServices {
   }
 g
   static async addPets(id, body) {
-    console.log("Addpets", body, id)
+    //console.log("Addpets", body, id)
     try {
       const data = await UserFoundation.updateOne(
         { _id: id },

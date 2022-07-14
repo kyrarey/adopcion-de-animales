@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer";
 import AddAnimal from "./components/AddAnimal/AddAnimal";
+import AddAnimalImages from "./components/AddAnimalImages/AddAnimalImages";
 import EditAnimal from "./components/EditAnimal/EditAnimal";
 import Account from "./components/Account/Account";
 import EditAccount from "./components/EditAccount/EditAccount";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/account/form/:id" element={<FoundationForm />} />
         <Route path="/account/form/edit/:id" element={<EditForm />} />
         <Route path="/account/add-animal" element={<AddAnimal />} />
+        <Route path="/account/add-animal/:animalId" element={<AddAnimalImages />} />
         <Route path="/account/edit-animal/:id" element={<EditAnimal />} />
         <Route path="/account/animal/:id" element={<SingleAnimalCard />} />
         <Route path="/account/petsToAdopt/:foundationId/:id" element={<AnimalGrid />} />

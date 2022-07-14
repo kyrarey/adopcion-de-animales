@@ -10,20 +10,22 @@ const storage = multer.diskStorage({
       cb(null, "src/assets/img/pets");
     },
     filename: function (req, file, cb) {
-      //const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-      //cb(null, file.fieldname + '-' + uniqueSuffix)
-      cb(null, "01.jpg");
+      console.log(req)
+      if(file.fieldname==="photo1") cb(null, "01.jpg");
+      else if(file.fieldname==="photo2") cb(null, "02.jpg");            
+      else if(file.fieldname==="photo3") cb(null, "03.jpg");
     },
   });
 
-const upload = multer({ storage: storage }/*.array()*/);
+const upload = multer({ storage: storage });
 
 router.get("/all",AnimalControllers.getAll)
 router.get("/:id",AnimalControllers.getOne)
 router.get("/name/:name",AnimalControllers.getAllByName)
 router.get("/foundation/:foundationId",AnimalControllers.getAllByFoundation)
 router.post("/",AnimalControllers.addOne)
-router.put("/:id",upload.single("photo"),AnimalControllers.updateOne)
+router.put("/:id",upload.fields([{ name: 'photo1', maxCount: 1 }, { name: 'photo2', 
+maxCount: 1 }, { name: 'photo3', maxCount: 1 }]),AnimalControllers.updateOne)
 router.delete("/:id",AnimalControllers.deleteOne)
 router.get("/species/:species",AnimalControllers.getAllBySpecie)
 
