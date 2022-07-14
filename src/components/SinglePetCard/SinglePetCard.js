@@ -47,14 +47,15 @@ const SinglePetCard = () => {
 
   useEffect(() => {
   //if(pet._id) {
-    //console.log("PET FUNDATION ID:",pet.fundationId);
+    console.log("PET ",pet);
+    console.log("PETFUNDATIONID ",pet.fundationId);
     find(`/orgs/key/${pet.fundationId}`)
     .then(orgArr => setOrg(orgArr))
     .catch(err => console.log(err));
   //}
 }, [pet.fundationId])
 
-  //console.log("FUNDACION:", org[0])
+  console.log("FUNDACION:", org[0])
   const handleClick = (e) => {
     e.preventDefault();
     

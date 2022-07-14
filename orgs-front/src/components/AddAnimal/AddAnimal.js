@@ -3,26 +3,18 @@ import { useNavigate  } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { update } from "../../hooks/alert";
+import { toUpdatePhotos } from "../../hooks/alert";
 import s from "./AddAnimal.module.css";
-//const FormData = require('form-data');
 
 const AddAnimal = () => {
     const navigate = useNavigate();
     const fundationId = JSON.parse(localStorage.getItem("newUser"))
-    // let id = useParams().id;
-    //const [animalId, setAnimalId] = useState();
-    // console.log(fundationId, "fundationid")
-    // useEffect(() => {
-    //     find(`/user/account/${id}`)
-    //     .then(userObj => setUser(userObj))
-    //     .catch(error => console.log(error))
-    // }, [id])
 
     return (
         <div className={s.container}>
             <div className={s.formContainer}>
                 <h1 className={s.title}>Agregue un amigo nuevo</h1>
+                <h4>Parte 1  de 2 </h4>
                 <Formik
                     initialValues= {{
                         animalname: "",
@@ -56,19 +48,12 @@ const AddAnimal = () => {
                         .required("Campo requerido"),
                     })}
                      onSubmit={values => {
-/*                         const body = new FormData();
-
-                        if (values.personality) body.append( "personality", values.personality);
-                        if (values.location) body.append( "location", values.location);
-                        if (values.size) body.append( "size", values.size);
-                        if (values.species) body.append( "species", values.species);
-                        if (values.sex) body.append( "sex", values.sex); */
                         values.fundationId = fundationId._id
 
                         axios.post("http://localhost:3030/animal", values)
                         .then(animal => {
-                            update();
-                            navigate(`/account/edit-animal/${animal.data._id}`)
+                            toUpdatePhotos();
+                            navigate(`/account/add-animal/${animal.data._id}`)
                         })
                         .catch(err => console.log(err))
                         

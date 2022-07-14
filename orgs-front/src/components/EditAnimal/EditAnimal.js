@@ -20,9 +20,9 @@ const EditAccount = () => {
       .catch((error) => console.log(error));
   }, [id]);
   
-  if (user){
+/*   if (user){
     console.log("ARRAY IMAGE LENGTH",user)
-  }
+  } */
 
   // console.log(user, "user");
 
@@ -42,7 +42,9 @@ const EditAccount = () => {
             personality: user.personality,
             age: user.age,
             vaccines: user.vaccines,
-            photo: "",
+            photo1: "",
+            photo2: "",
+            photo3: "",
           }}
           validationSchema={Yup.object({
             animalname: Yup.string("Debe ser una cadena de caracteres"),
@@ -81,15 +83,22 @@ const EditAccount = () => {
             if (values.personality) body.append("personality", values.personality);
             if (values.age) body.append("age", values.age);
             if (values.vaccines) body.append("vaccines", values.vaccines);
-            if (values.photo) {
-              console.log(user.image.length)
-              body.append("image", [`/${id}-${user.image.length}.jpg`]);
-              body.append("photo", values.photo);
+            body.append("image0", [`/${id}-01.jpg` ]);
+            if (values.photo1) {
+              body.append("photo1", values.photo1);
             }
-            console.log(
+            body.append("image1", [`/${id}-02.jpg`]);
+            if (values.photo2) {
+              body.append("photo2", values.photo2);
+            }
+            body.append("image2", [`/${id}-03.jpg`]);
+            if (values.photo3) {
+               body.append("photo3", values.photo3);
+            }
+/*             console.log(
               values,
               "body y esta la imagen como string, la necesitamos como objeto"
-            );
+            ); */
             axios({
               method: "put",
               url: `http://localhost:3030/animal/${id}`,
@@ -98,9 +107,9 @@ const EditAccount = () => {
                 "Content-Type": "multipart/form-data",
               },
             })
-              .then((res) =>
+/*               .then((res) =>
                 console.log(res.data, "recibimos la data de la db sin imagen")
-              )
+              ) */
               .then((serverAnswer) => {
                 //console.log("SERVER RESPONSE: ",serverAnswer);
                 update();
@@ -177,19 +186,46 @@ const EditAccount = () => {
               <div className={s.error}>
                 <ErrorMessage name="vaccines" /> <br />
               </div>
-              <div>Foto</div>
+              <div>Foto principal</div>
               <input
                 className={s.input}
-                name="photo"
+                name="photo1"
                 type="file"
                 onChange={(e) =>
-                  formProps.setFieldValue("photo", e.target.files[0])
+                  formProps.setFieldValue("photo1", e.target.files[0])
                 }
               />
               <br />
               <div className={s.error}>
-                <ErrorMessage name="photo" /> <br />
+                <ErrorMessage name="photo1" /> <br />
               </div>
+              <div>Foto 2</div>
+              <input
+                className={s.input}
+                name="photo2"
+                type="file"
+                onChange={(e) =>
+                  formProps.setFieldValue("photo2", e.target.files[0])
+                }
+              />
+              <br />
+              <div className={s.error}>
+                <ErrorMessage name="photo2" /> <br />
+              </div>
+              <div>Foto 3</div>
+              <input
+                className={s.input}
+                name="photo3"
+                type="file"
+                onChange={(e) =>
+                  formProps.setFieldValue("photo3", e.target.files[0])
+                }
+              />
+              <br />
+              <div className={s.error}>
+                <ErrorMessage name="photo3" /> <br />
+              </div>
+
               <button className={s.button} type="submit">
                 LISTO
               </button>

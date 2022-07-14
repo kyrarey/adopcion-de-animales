@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams/* , Link */ } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { BsWhatsapp } from "react-icons/bs";
-import { notLoggedIn, notFormCompleted } from "../../hooks/alert";
+//import { BsWhatsapp } from "react-icons/bs";
+import { notLoggedIn/* , notFormCompleted */ } from "../../hooks/alert";
 import find from "../../hooks/find";
 import capitalizeFirst from "../../hooks/capitalizeFirst";
 import SingleSlider from "../SingleSlider/SingleSlider";
@@ -13,7 +13,7 @@ const SingleAnimalCard = () => {
   const params = useParams();
   const id = params.id;
   const navigate = useNavigate();
-  const { loggedUser, isAuthenticated } = useContext(AuthContext);
+  const { /* loggedUser, */ isAuthenticated } = useContext(AuthContext);
 
   const [pet, setPet] = useState({
     "_id": "",
@@ -81,9 +81,6 @@ const SingleAnimalCard = () => {
             <p  className={s.info}>{pet.history}</p>
             <h4 className={s.subTitle}>Ubicación</h4>
             <p  className={s.info}>{pet.location && capitalizeFirst(pet.location)}</p>
-            
-         
-            <h4 className={s.subTitle}>{`Ayuda a ${pet.animalname && capitalizeFirst(pet.animalname)} a llegar a más personas`}</h4>
           </div>
           <button className={s.button} onClick={handleClick}>
             {`Editar info`}
