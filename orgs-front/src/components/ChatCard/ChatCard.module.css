@@ -1,0 +1,68 @@
+.petCard {
+    list-style: none;
+    border-radius: 5%;
+    border-style: solid 1px grey;
+    background-color: white;
+    transition: all 200ms;
+    width: 400px;
+    margin: 0 auto;
+}
+
+.petCard:hover {
+    transform: scale(1.08);
+    opacity: 1;
+    transition-duration: 1s;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit
+}
+
+.link:hover {
+    color:inherit
+}
+
+.petImage {
+    border-radius: 5% 5% 0% 0%;
+    width: 100%;
+    height: 20em;
+    pointer-events: none;
+}
+
+.petInfo {
+    width: 100%;
+    height: 8em;
+    padding: 5% 5% 5% 5%;
+    line-height: 1.4;
+    letter-spacing: .07em;
+    font-family: var(--articleFont);
+    font-size: 1.1em;
+}
+
+.petName {
+    color: var(--mainColor);
+    font-size: 2em;
+    letter-spacing: .08em;
+}
+
+
+.favButton {
+    border:none;
+    background-color:transparent;
+    font-size: 2em;
+    color: red;
+    background-position: center  ;
+    margin: 0% 0% 5% 5%;
+    position: relative;
+}
+
+.favRegHeartButton {
+    border:none;
+    background-color:transparent;
+    font-size: 2em;
+    color: red;
+    background-position: center  ;
+    margin: 0% 0% 5% 5%;
+    position: relative;
+}

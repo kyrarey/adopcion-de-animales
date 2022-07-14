@@ -15,6 +15,7 @@ import EditAccount from "./components/EditAccount/EditAccount";
 import FoundationForm from "./components/FoundationForm/FoundationForm";
 import EditForm from "./components/EditForm/EditForm";
 import AnimalGrid from "./components/AnimalGrid/AnimalGrid";
+import ChatGrid from "./components/ChatGrid/ChatGrid";
 import SingleAnimalCard from "./components/SingleAnimalCard/SingleAnimalCard";
 import { ToastContainer } from "react-toastify";
 import { GlobalProvider } from "./GlobalContext";
@@ -43,6 +44,7 @@ function App() {
         <Route path="/account/edit-animal/:id" element={<EditAnimal />} />
         <Route path="/account/animal/:id" element={<SingleAnimalCard />} />
         <Route path="/account/petsToAdopt/:foundationId/:id" element={<AnimalGrid />} />
+        <Route path="/account/chat/:id" element={<ChatGrid />} />
       </Routes>
      <Footer /> 
       </GlobalProvider>
