@@ -10,22 +10,41 @@ const Socket = () => {
   const [oldMessages, setOldMessages] = useState([]);
   const [click, setClick] = useState({});
   const [chatRoom, setChatRoom] = useState([]);
- 
+  const [allUsers, setAllUsers] = useState([])
   const foundationId = useParams().foundationId
 
   const socket = SocketIoClient("http://localhost:3030/");
 
-  console.log("test")
+  // console.log("test")
 
   useEffect(() => {
     socket.emit("Connect");
     socket.on("load chats", (data) => {
+      //recibo todos los chats
       setRecipient(data);
     });
-  },[]);
 
+    //get de all users para despues filtrar
+    axios
+      .get(`http://localhost:3030/user/all`)
+      .then((res) => setAllUsers(res.data));
+  },[]);
+  console.log(allUsers, "allUsers")
+
+  //active chats de todos los chats
   let activeChats= []
   activeChats = recipient.filter((chat) => chat.foundation === foundationId)
+  console.log(activeChats, "ActiveChats")
+
+   //traigo el objeto de toda la fundacion para las conversaciones que hay
+   let activeUsers = [];
+   activeUsers = allUsers.filter((user) => {
+     for (let i = 0; i < recipient.length; i++) {
+       if(user._id==recipient[i].user)
+         return user
+     }
+   });
+   console.log(activeUsers, "Active users")
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +56,7 @@ const Socket = () => {
     });
   };
 
-  //no hace un loop infinito
+
   useEffect(() => {
     setOldMessages("")
     axios
@@ -52,11 +71,15 @@ const Socket = () => {
 
   useEffect(() => {
     socket.on("new message", function (data) {
-      setOldMessages([...oldMessages, data]);
+      let aux = oldMessages
+      console.log(aux,"auxilar de old")
+      setOldMessages([...oldMessages,data]);
     });
     return () => {
       socket.off()}
     }, [oldMessages]);
+    console.log(oldMessages, "oldMessages")
+
 
   return (
     <div>
@@ -76,7 +99,12 @@ const Socket = () => {
                 >
                   <div className="chat_people">
                     <div className="chat_ib">
-                      <h5>{activeChats.user} </h5>
+                      <h5>{activeUsers.map((user)=>{
+                        if(user._id === activeChats.user){
+                          const nombre = user.username ? user.username : user.email
+                          return nombre
+                        }
+                      })} </h5>
                       {/* <span className="chat_date">Dec 25</span></h5> */}
                       {/* <p>Test, which is a new approach to have all solutions */}
                       {/* astrology under one roof.</p> */}
@@ -108,14 +136,34 @@ const Socket = () => {
                 ) : (
                   <></>
                 )}
-                {oldMessages ? oldMessages.map((message) => (
-                  <div className="sent_msg">
-                  <p>
-                    {message}
-                    <br />
-                  </p>
-                </div>
-              )): <></>}
+               {oldMessages ? 
+                  oldMessages.map((message) => (
+                    <div className="sent_msg">
+                    <p>
+                      {message}
+                      <br />
+                    </p>
+                  </div>
+                    // if (message.sender === "foundation") {
+                    //   return (
+                    //     <div className="sent_msg">
+                    //       <p>
+                    //         {message.messages}
+                    //         <br />
+                    //       </p>
+                    //     </div>
+                    //   );
+                    // } else {
+                    //   return (
+                    //     <div className="outgoing_msg">
+                    //       <p>{message.messages}</p>
+                    //     </div>
+                    //   );
+                    // }
+                  
+                )) : (
+                  <></>
+                )}
                 {/* <div className="outgoing_msg">
     <div className="sent_msg">
       <p>Apollo University, Delhi, India Test</p>

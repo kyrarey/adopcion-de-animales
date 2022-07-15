@@ -22,6 +22,14 @@ class UserControllers {
     res.status(200).send(data);
   }
 
+  static async getAll(req, res) {
+    const { error, data } = await UserServices.getAll();
+    if (error) {
+      return res.status(404).send(data);
+    }
+    res.status(200).send(data);
+  }
+
   //logout user
 
   //editar usuario
