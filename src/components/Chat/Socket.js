@@ -30,9 +30,9 @@ const Socket = () => {
     });
 
     //get de all foundations para despues filtrar
-    axios
-      .get(`http://localhost:3030/orgs/all`)
-      .then((res) => setAllFoundations(res.data));
+    // axios
+    //   .get(`http://localhost:3030/orgs/all`)
+    //   .then((res) => setAllFoundations(res.data));
   }, []);
 
 
@@ -42,14 +42,14 @@ const Socket = () => {
   console.log(activeChats, "active chats")
 
   //traigo el objeto de toda la fundacion para las conversaciones que hay
-  let activeFoundations = [];
-  activeFoundations = allFoundations.filter((foundation) => {
-    for (let i = 0; i < recipient.length; i++) {
-      if(foundation._id==recipient[i].foundation)
-        return foundation
-    }
-  });
-  console.log(activeFoundations, "Active foundations")
+  // let activeFoundations = [];
+  // activeFoundations = allFoundations.filter((foundation) => {
+  //   for (let i = 0; i < recipient.length; i++) {
+  //     if(foundation._id==recipient[i].foundation)
+  //       return foundation
+  //   }
+  // });
+  // console.log(activeFoundations, "Active foundations")
   
   
   const onSubmit = (e) => {
@@ -107,10 +107,12 @@ const Socket = () => {
                 >
                   <div className="chat_people">
                     <div className="chat_ib">
-                      <h5>{activeFoundations.map((foundation)=>{
-                        if(foundation._id === activeChats.foundation)
-                          return foundation.foundationName
-                      })} </h5>
+                      <h5>{activeChats.foundationName
+                      // activeFoundations.map((foundation)=>{
+                      //   if(foundation._id === activeChats.foundation)
+                      //     return foundation.foundationName
+                      // })
+                      } </h5>
                       {/* <span className="chat_date">Dec 25</span></h5> */}
                       {/* <p>Test, which is a new approach to have all solutions */}
                       {/* astrology under one roof.</p> */}

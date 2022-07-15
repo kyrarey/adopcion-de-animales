@@ -25,11 +25,11 @@ const Socket = () => {
     });
 
     //get de all users para despues filtrar
-    axios
-      .get(`http://localhost:3030/user/all`)
-      .then((res) => setAllUsers(res.data));
+    // axios
+    //   .get(`http://localhost:3030/user/all`)
+    //   .then((res) => setAllUsers(res.data));
   },[]);
-  console.log(allUsers, "allUsers")
+  // console.log(allUsers, "allUsers")
 
   //active chats de todos los chats
   let activeChats= []
@@ -37,14 +37,14 @@ const Socket = () => {
   console.log(activeChats, "ActiveChats")
 
    //traigo el objeto de toda la fundacion para las conversaciones que hay
-   let activeUsers = [];
-   activeUsers = allUsers.filter((user) => {
-     for (let i = 0; i < recipient.length; i++) {
-       if(user._id==recipient[i].user)
-         return user
-     }
-   });
-   console.log(activeUsers, "Active users")
+  //  let activeUsers = [];
+  //  activeUsers = allUsers.filter((user) => {
+  //    for (let i = 0; i < recipient.length; i++) {
+  //      if(user._id==recipient[i].user)
+  //        return user
+  //    }
+  //  });
+  //  console.log(activeUsers, "Active users")
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -99,12 +99,12 @@ const Socket = () => {
                 >
                   <div className="chat_people">
                     <div className="chat_ib">
-                      <h5>{activeUsers.map((user)=>{
-                        if(user._id === activeChats.user){
-                          const nombre = user.username ? user.username : user.email
-                          return nombre
-                        }
-                      })} </h5>
+                      <h5>{activeChats.userName
+                      // <h5>{activeUsers.map((user)=>{
+                        // if(user._id === activeChats.user){
+                          // const nombre = user.username ? user.username : user.email
+                          // return nombre}
+                      } </h5>
                       {/* <span className="chat_date">Dec 25</span></h5> */}
                       {/* <p>Test, which is a new approach to have all solutions */}
                       {/* astrology under one roof.</p> */}
