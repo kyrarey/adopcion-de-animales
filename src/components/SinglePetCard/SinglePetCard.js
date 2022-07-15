@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { BsWhatsapp } from "react-icons/bs";
 import { notLoggedIn, notFormCompleted } from "../../hooks/alert";
@@ -33,30 +33,35 @@ const SinglePetCard = () => {
     "vaccines": ""
   });
 
-  
+/*   console.log("USEPARAMS", useParams())
+  console.log("loggeduser", loggedUser) */
+
   useEffect(() => {
     find(`/animal/${id}`)
       .then(petObj => setPet(petObj))
       .catch(error => console.log(error));
 
-    find(`/user/account/${loggedUser._id}`)
-    .then(userObj => setFormState(userObj.isFormComplete))
-    .catch(error => console.log(error))
   }, [id]);
 
+  const user = JSON.parse(localStorage.getItem("newUser"));
+  //console.log(user)
+
+  useEffect(() => {
+    if(user) {
+    find(`/user/account/${user._id}`)
+    .then(userObj => setFormState(userObj.isFormComplete))
+    .catch(error => console.log(error))
+  }
+  }, []);
   //console.log(pet, "pet")
 
   useEffect(() => {
-  //if(pet._id) {
-    /* console.log("PET ",pet);
-    console.log("PETFUNDATIONID ",pet.fundationId); */
     find(`/orgs/key/${pet.fundationId}`)
     .then(orgArr => setOrg(orgArr))
     .catch(err => console.log(err));
-  //}
 }, [pet.fundationId])
 
-  console.log("FUNDACION:", org)
+  //console.log("FUNDACION:", org)
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -65,6 +70,7 @@ const SinglePetCard = () => {
       if (formState) {
         navigate("/form")
       } else {
+
         notFormCompleted();
         navigate(`/account/form/edit/${loggedUser._id}`)
       }

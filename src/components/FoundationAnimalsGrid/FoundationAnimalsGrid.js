@@ -39,14 +39,18 @@ const FoundationAnimalsGrid = () => {
 
     return (
         <div className={s.container}>
-            <ul className={s.grid}>
-                { pets.length > 0 
-                ? pets.map((pet, index) => <PetCard key={index} pet={pet}/>)
-                : <NotAvailable />
-                }
-            </ul>
-            {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}
-            {count < pagesQty ? <button className={s.button} type="submit" onClick={addOnClick}>Siguiente</button> : ""}
+            {pets.length !== 0 
+            ? ( <>
+                    <ul className={s.grid}>
+                        {pets.map((pet, index) => <PetCard key={index} pet={pet}/>)}
+                    </ul>
+                    {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}
+                    {count < pagesQty ? <button className={s.button} type="submit" onClick={addOnClick}>Siguiente</button> : ""}
+                </>
+              )
+            : ( <NotAvailable /> )
+
+            }
         </div>
     )
 }

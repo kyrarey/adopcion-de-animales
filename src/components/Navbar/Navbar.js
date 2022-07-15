@@ -43,7 +43,7 @@ const Navbar = () => {
     navigate(`/search/${search}`);
   }; */
 
-  //console.log("CONETXT", loggedUser)
+  //console.log("", loggedUser)
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
@@ -84,7 +84,7 @@ const Navbar = () => {
                 <li className="nav-item">
                   <Link
                     className="link"
-                    to={`/account/${loggedUser.id /* userStorage._id */}`}
+                    to={`/account/${loggedUser._id /* userStorage._id */}`}
                   >
                     {/* <span className="nav-link"> */}
                     {/* userStorage */ loggedUser ? loggedUser.username : ""}
