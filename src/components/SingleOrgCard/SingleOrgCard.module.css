@@ -22,6 +22,12 @@
     font-family: var(--bannerFont);
     color: var(--mainColor);
   }
+
+  .image {
+    width: 100%;
+    height: 25em;
+    margin-bottom: 3%;
+  }
   
   .columns {
     display: flex;

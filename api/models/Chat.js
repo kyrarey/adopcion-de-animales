@@ -6,12 +6,18 @@ const ChatSchema = new mongoose.Schema(
         type: String,
         required: false,
     },
+    userName: {
+      type:String
+    },
     foundation: {
         type: String,
         required: false,
     },
+    foundationName:{
+      type: String,
+    },
     content: {
-        type: String,
+        type: [Object],
         required: false,
     },
   },

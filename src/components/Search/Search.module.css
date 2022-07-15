@@ -14,8 +14,18 @@
   font-family: var(--articleFont);
 }
 
+
 /* .searchBarOut {
   text-align: center;
+
+.filterContainer {
+  display: grid;
+  grid-template-columns: 4;
+
+}
+/* 
+.container button {
+  margin: 10px;
 } */
 
 .grid {

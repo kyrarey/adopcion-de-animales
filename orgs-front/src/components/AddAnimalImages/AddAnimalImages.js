@@ -82,7 +82,7 @@ const AddAnimalImages = () => {
                 console.log(res.data, "recibimos la data de la db sin imagen")
               ) */
               .then((serverAnswer) => {
-                //console.log("SERVER RESPONSE: ",serverAnswer);
+                console.log("SERVER RESPONSE: ",serverAnswer);
                 update();
                 navigate(`/account/animal/${id}`);
               })

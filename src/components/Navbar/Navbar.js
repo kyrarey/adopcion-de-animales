@@ -1,15 +1,15 @@
-import React, { useState, useContext } from "react";
+import React, { /* useState, */ useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 /* import { useGlobalContext } from "../../GlobalContext"; */
 import { toast } from "react-toastify";
-import { GoSearch } from "react-icons/go";
+//import { GoSearch } from "react-icons/go";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const { loggedUser, isAuthenticated, toggleAuth } = useContext(AuthContext);
-  const [search, setSearch] = useState();
+  const { loggedUser, isAuthenticated, toggleAuthOut } = useContext(AuthContext);
+  //const [search, setSearch] = useState();
   const notify = (text) => toast(text);
   const navigate = useNavigate();
   /* const { newUser, setNewUser } = useGlobalContext(); */
@@ -20,16 +20,17 @@ const Navbar = () => {
     : {}; */
   const handlelogout = (e) => {
     e.preventDefault();
-    axios.get("http://localhost:3030/user/logout").then((res) => {
+    axios.get("http://localhost:3030/user/logout")
+    .then((res) => {
       notify(`Logged out`);
       localStorage.removeItem("newUser");
-      toggleAuth(null);
+      toggleAuthOut();
       /* setNewUser({}); */
       navigate("/");
     });
   };
 
-  const onChange = (e) => {
+/*   const onChange = (e) => {
     e.preventDefault();
     setSearch(e.target.value);
   };
@@ -40,7 +41,10 @@ const Navbar = () => {
       .then((res) => res.data)
       .then((search) => setSearch(search));
     navigate(`/search/${search}`);
-  };
+  }; */
+
+
+  // console.log("CONETXT", loggedUser)
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -85,7 +89,7 @@ const Navbar = () => {
                     to={`/account/${loggedUser._id /* userStorage._id */}`}
                   >
                     {/* <span className="nav-link"> */}
-                    {/* userStorage */ loggedUser?.email?.split("@")[0]}
+                    {/* userStorage */ loggedUser ? loggedUser.username : ""}
                     {/* </span> */}
                   </Link>
                 </li>
@@ -180,7 +184,7 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <ul className="searchBarOut">
+              {/* <ul className="searchBarOut">
                 <form className="nav-item d-flex align-self-center">
                   <div className="input-group ">
                     <input
@@ -199,7 +203,7 @@ const Navbar = () => {
                     </button>
                   </div>
                 </form>
-              </ul>
+              </ul> */}
               <ul className="navbar-nav ms-auto">
                 <Link to="/login">
                   <button className="btn"> Login </button>

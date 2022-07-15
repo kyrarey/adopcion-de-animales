@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 import Home from "./components/Home/Home";
 import SinglePetCard from "./components/SinglePetCard/SinglePetCard";
@@ -23,6 +23,7 @@ import NotFound from "./components/NotFound/NotFound";
 import Comment from "./components/Comment/Comment";
 import NewComment from "./components/NewComment/NewComment";
 import FoundationAnimalsGrid from "./components/FoundationAnimalsGrid/FoundationAnimalsGrid";
+import { AuthContext } from "./context/AuthContext";
 
 import Socket from "./components/Chat/Socket"
 
@@ -33,11 +34,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const path = useLocation().pathname.slice(1, 8);
+  const { isAuthenticated } = useContext(AuthContext);
   return (
     <GlobalProvider>
       <ToastContainer />
       <Navbar />
-      {path === "account" ? <Sidebar /> : null}
+      {path === "account" && isAuthenticated ? <Sidebar /> : null}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -64,7 +66,7 @@ const App = () => {
         <Route path="/associationProfile" element={<AssociationProfile />} />
         <Route path="/comment/:id" element={<Comment />} />
         <Route path="/comment/add/:id" element={<NewComment />} />
-        <Route path="/chat" element={<Socket />} />
+        <Route path="/chat/:userId" element={<Socket />} />
         <Route path="*" element={<Navigate to="404" />} />
         <Route path="404" element={<NotFound />} />
       </Routes>

@@ -15,6 +15,7 @@ const SingleAnimalCard = () => {
   const navigate = useNavigate();
   const { /* loggedUser, */ isAuthenticated } = useContext(AuthContext);
 
+  //console.log("PARAMS", useParams().id)
   const [pet, setPet] = useState({
     "_id": "",
     "animalname": "",

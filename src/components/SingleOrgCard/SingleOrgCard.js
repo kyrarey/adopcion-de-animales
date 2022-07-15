@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useEffect, useState/* , useContext */ } from "react";
+import { /* useNavigate, */ useParams, Link } from "react-router-dom";
+//import { AuthContext } from "../../context/AuthContext";
 /* import { BsWhatsapp } from "react-icons/bs";
 import { notLoggedIn, notFormCompleted } from "../../hooks/alert"; */
 import find from "../../hooks/find";

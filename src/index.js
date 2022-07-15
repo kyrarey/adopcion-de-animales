@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import AuthContextProvider from "./context/AuthContext";
 import FavContextProvider from "./context/FavContext";
+import HistoryContextProvider from "./context/HistoryContext";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 //import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,7 +20,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <AuthContextProvider>
         <FavContextProvider>
-          <App />
+          <HistoryContextProvider>
+            <App />
+          </HistoryContextProvider>
         </FavContextProvider>
       </AuthContextProvider>
     </BrowserRouter>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams} from "react-router-dom";
-import orgs from "../../assets/foundations.json";
+//import orgs from "../../assets/foundations.json";
 import find from "../../hooks/find";
 import { fixedElemArray } from "../../hooks/arrGen";
 import FoundationCard from "../../commons/FoundationCard/FoundationCard";
@@ -25,7 +25,7 @@ const Grid = () => {
     }, [count]);  
 
     // let totalFoundations = orgs.length;
-    let foundationsAux = fixedElemArray(foundations, foundationsPerPage, count);
+    //let foundationsAux = fixedElemArray(foundations, foundationsPerPage, count);
     // let foundations = foundationsAux;
 
     const pagesQty = Math.ceil(totalFoundations/foundationsPerPage);
@@ -43,7 +43,7 @@ const Grid = () => {
     return (
         <div className={s.container}>
             <ul className={s.grid}>
-                { foundations.map(foundation => <FoundationCard key={foundation.foundationName} foundation={foundation}/>)}
+                { foundations.map((foundation, index) => <FoundationCard key={index} foundation={foundation}/>)}
             </ul>
             {count > 1 ? <button className={s.button} type="submit" onClick={subsOnClick}>Anterior</button> : ""}
             {count < pagesQty ? <button className={s.button} type="submit" onClick={addOnClick}>Siguiente</button> : ""}

@@ -13,9 +13,11 @@ const Sidebar = () => {
   /* let id = useLocation().pathname.slice(9,33) */
 
   useEffect(() => {
+    //if(id){
     find(`/user/account/${id}`)
       .then((userObj) => setUser(userObj))
       .catch((error) => console.log(error));
+    //}
   }, [id]);
 
   return (
@@ -54,6 +56,15 @@ const Sidebar = () => {
               src={require(`../../assets/img/favs.jpg`)}
               alt="Favs"
             ></img>
+          </Link>
+        </div>
+        <div className={s.item}>
+          <Link className={s.link} to={`/chat/${id}`}>
+            <h3 className={s.title}>Mis chats</h3>
+            <img className={s.img} 
+                src={require(`../../assets/img/chat.jpg`)}
+                alt="">
+            </img>
           </Link>
         </div>
         <div className={s.item}>

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate  } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { AuthContext } from "../../context/AuthContext";
 import * as Yup from "yup";
 import axios from "axios";
 import find from "../../hooks/find";
@@ -10,13 +11,16 @@ const FormData = require('form-data');
 
 const EditAccount = () => {
     const navigate = useNavigate();
+    const { toggleAuth } = useContext(AuthContext);
     let id = useParams().id;
     const [user, setUser] = useState({});
 
     useEffect(() => {
+        if(id){
         find(`/user/account/${id}`)
         .then(userObj => setUser(userObj))
         .catch(error => console.log(error))
+        }
     }, [id])
 
     return (
@@ -33,7 +37,8 @@ const EditAccount = () => {
                         photo: ""
                     }}
                     validationSchema= {Yup.object({
-                        username: Yup.string("Debe ser una cadena de caracteres"),
+                        username: Yup.string("Debe ser una cadena de caracteres")
+                                 .max(25, "Máximo 25 caracteres"),
                         email: Yup.string()
                                 .email("Ingrese un email válido"),
                         password: Yup.string("")
@@ -76,9 +81,11 @@ const EditAccount = () => {
                             }
                         })
                         .then(serverAnswer => {
-                            //console.log("SERVER RESPONSE: ",serverAnswer);
+                            //console.log("SERVER RESPONSE: ",serverAnswer.data);
+                            localStorage.setItem("newUser", JSON.stringify(serverAnswer.data));
+                            toggleAuth(serverAnswer.data);
                             update();
-                            navigate(`/account/${serverAnswer.data.id}`);
+                            navigate(`/account/${serverAnswer.data._id}`);
                         })
                         .catch(err => console.log(err))
                     }}

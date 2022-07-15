@@ -20,7 +20,13 @@ const AuthContextProvider = ({ children }) => {
   const toggleAuth = (user) =>
     setLoggedIn({
       loggedUser: user,
-      isAuthenticated: !loggedIn.isAuthenticated,
+      isAuthenticated: true,
+    });
+
+  const toggleAuthOut = () =>
+    setLoggedIn({
+      loggedUser: null,
+      isAuthenticated: false,
     });
 
   useEffect(() => {
@@ -34,7 +40,7 @@ const AuthContextProvider = ({ children }) => {
     }, []);
 
   return (
-    <AuthContext.Provider value={{ ...loggedIn, toggleAuth }}>
+    <AuthContext.Provider value={{ ...loggedIn, toggleAuth, toggleAuthOut }}>
       {children}
     </AuthContext.Provider>
   );

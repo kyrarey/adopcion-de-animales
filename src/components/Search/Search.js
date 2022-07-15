@@ -176,7 +176,6 @@ const SearchResult = () => {
             >
               Edad
             </button>
-
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
               <li>
                 <button
@@ -212,9 +211,7 @@ const SearchResult = () => {
         </div>
 
         <ul className={S.grid}>
-          {search.map((item) => (
-            <PetCard pet={item} />
-          ))}
+          {search.map((item, index) => (<PetCard key={index} pet={item} />))}
         </ul>
       </div>
     </div>
