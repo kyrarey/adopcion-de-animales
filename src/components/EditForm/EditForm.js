@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+//import { HistoryContext } from "../../context/HistoryContext";
 import find from "../../hooks/find";
 import capitalizeFirst from "../../hooks/capitalizeFirst";
 import s from "./EditForm.module.css";
@@ -18,7 +19,6 @@ const EditForm = () => {
             .then(userObj => setUser(userObj))
             .catch(error => console.log(error))
     }, [id])
-
 
     return (
         <div className={s.container}>
@@ -86,7 +86,8 @@ const EditForm = () => {
                         })
                             .then(serverAnswer => {
                                 //console.log("SERVER RESPONSE: ",serverAnswer);
-                                navigate(`/account/form/${serverAnswer.data.id}`);
+                                //console.log("HISTORY", window.history.go(-1))
+                                navigate(`/account/form/${serverAnswer.data._id}`);
                             })
                             .catch(err => console.log(err))
                     }}

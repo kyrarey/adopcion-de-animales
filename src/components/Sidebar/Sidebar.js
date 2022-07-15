@@ -7,7 +7,7 @@ import s from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const { loggedUser } = useContext(AuthContext);
-  const id = loggedUser ? loggedUser.id : null;
+  const id = loggedUser ? loggedUser._id : null;
   const [user, setUser] = useState({});
 
   /* let id = useLocation().pathname.slice(9,33) */

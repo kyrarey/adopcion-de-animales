@@ -13,6 +13,9 @@ const NewComment = () => {
   const { loggedUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
+  /* console.log("LOGGEDUSER", loggedUser)
+  console.log("LOGGEDUSERID", loggedUser.id)
+  console.log("LOGGEDUSER_ID", loggedUser._id) */
   const handleSubmit = (e) => {
     e.preventDefault();
 

@@ -1,14 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { notLoggedIn } from "../../hooks/alert";
 //import find from "../../hooks/find";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import "./Comment.css";
 
 const Comment = () => {
   const [comment, setComment] = useState([]);
-  const { loggedUser } = useContext(AuthContext);
+  const { loggedUser, isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
   const params = useParams();
   const foundationId = params.id;
 
@@ -20,6 +22,15 @@ const Comment = () => {
       .then((res) => res.data)
       .then((review) => setComment(review));
   }, []);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (isAuthenticated) navigate(`/comment/add/${foundationId}`)
+    else {
+      notLoggedIn();
+      navigate("/login");
+    } 
+  }
 
   return (
     <div className="comment">
@@ -62,11 +73,17 @@ const Comment = () => {
         )}
       </ul>
       <div className="pb-5" align="center">
-        <Link to={`/comment/add/${foundationId}`}>
+
+      <button type="button" className="btn btn-dark" onClick={handleClick}>
+        Agregar comentario
+      </button>
+
+
+{/*         <Link to={`/comment/add/${foundationId}`}>
           <button type="button" className="btn btn-dark">
             Agregar comentario
           </button>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

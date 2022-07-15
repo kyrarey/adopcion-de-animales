@@ -85,7 +85,7 @@ const EditAccount = () => {
                             localStorage.setItem("newUser", JSON.stringify(serverAnswer.data));
                             toggleAuth(serverAnswer.data);
                             update();
-                            navigate(`/account/${serverAnswer.data.id}`);
+                            navigate(`/account/${serverAnswer.data._id}`);
                         })
                         .catch(err => console.log(err))
                     }}

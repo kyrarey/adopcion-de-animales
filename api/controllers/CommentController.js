@@ -14,6 +14,7 @@ class CommentControllers {
 
   //agregar comentario
   static async addOne(req, res) {
+    //console.log("BODY", req.body)
     const { error, data } = await CommentServices.addOne(req.body);
     if (error) {
       return res.status(500).send({ message: data.message });
