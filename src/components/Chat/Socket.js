@@ -19,7 +19,7 @@ const Socket = () => {
   const socket = SocketIoClient("http://localhost:3030/");
 
   const onReset = () => {
-    setFormState("");
+    setFormState();
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const Socket = () => {
   //   }
   // });
   // console.log(activeFoundations, "Active foundations")
-  
+  // 
   
   const onSubmit = (e) => {
     e.preventDefault();
@@ -60,6 +60,7 @@ const Socket = () => {
       foundation: click.foundation,
       content: { sender: "user", message: value },
     });
+
   };
 
   //no hace un loop infinito
@@ -84,6 +85,7 @@ const Socket = () => {
       setOldMessages([...oldMessages, data])
       // setOldMessages(...oldMessages,[{sender:"user", messages : data}]);
     });
+    setValue("")
     return () => {
       socket.off();
     };
@@ -122,7 +124,7 @@ const Socket = () => {
               ))}
             </div>
           </div>
-          <form onSubmit={onSubmit} onReset={onReset}>
+          <form onSubmit={onSubmit}>
             <div className="mesgs">
               <div className="msg_history">
                 {chatRoom[0] ? (
@@ -199,6 +201,7 @@ const Socket = () => {
                   <input
                     onChange={(e) => setValue(e.target.value)}
                     type="text"
+                    value={value}
                     className="write_msg"
                     placeholder="Type a message"
                   />

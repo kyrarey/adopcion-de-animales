@@ -61,16 +61,22 @@ const SinglePetCard = () => {
     .catch(err => console.log(err));
 }, [pet.fundationId])
 
-  //console.log("FUNDACION:", org)
+  console.log("FUNDACION:", org)
 
   const handleClick = (e) => {
     e.preventDefault();
     
     if (isAuthenticated) {
       if (formState) {
-        axios.post(`http://localhost:3030/chat`,{user:loggedUser._id, foundation:pet.fundationId})
+        if(loggedUser.username){
+        axios.post(`http://localhost:3030/chat`,{user:loggedUser._id, foundation:pet.fundationId, userName: loggedUser.username, foundationName: org[0].foundationName})
         .then(res => console.log(res.data, "post del data"))
-        navigate(`/chat/${loggedUser._id}`)
+        navigate(`/chat/${loggedUser._id}`)}
+        else{
+          axios.post(`http://localhost:3030/chat`,{user:loggedUser._id, foundation:pet.fundationId, userName: loggedUser.email, foundationName: org[0].foundationName})
+          .then(res => console.log(res.data, "post del data"))
+          navigate(`/chat/${loggedUser._id}`)
+        }
       } else {
 
         notFormCompleted();

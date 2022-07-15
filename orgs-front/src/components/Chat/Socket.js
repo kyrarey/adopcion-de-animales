@@ -16,7 +16,6 @@ const Socket = () => {
   const socket = SocketIoClient("http://localhost:3030/");
 
   // console.log("test")
-
   useEffect(() => {
     socket.emit("Connect");
     socket.on("load chats", (data) => {
