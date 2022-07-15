@@ -43,7 +43,9 @@ const Navbar = () => {
     navigate(`/search/${search}`);
   }; */
 
-  //console.log("", loggedUser)
+
+  // console.log("CONETXT", loggedUser)
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">

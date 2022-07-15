@@ -7,7 +7,7 @@ import find from "../../hooks/find";
 import capitalizeFirst from "../../hooks/capitalizeFirst";
 import SingleSlider from "../SingleSlider/SingleSlider";
 import s from "./SinglePetCard.module.css";
-
+import axios from "axios"
 
 const SinglePetCard = () => {
   const params = useParams();
@@ -68,7 +68,9 @@ const SinglePetCard = () => {
     
     if (isAuthenticated) {
       if (formState) {
-        navigate("/form")
+        axios.post(`http://localhost:3030/chat`,{user:loggedUser._id, foundation:pet.fundationId})
+        .then(res => console.log(res.data, "post del data"))
+        navigate(`/chat/${loggedUser._id}`)
       } else {
 
         notFormCompleted();

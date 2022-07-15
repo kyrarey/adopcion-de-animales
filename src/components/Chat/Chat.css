@@ -173,7 +173,6 @@
 	color: #fff;
 	padding: 5px 10px 5px 12px;
 	width:100%;
-	display: block;	
 
 }
 
@@ -185,21 +184,20 @@
 	color: #fff;
 	padding: 5px 10px 5px 12px;
 	width: 50%;
-	display: block;	
+
 }
 
 .outgoing_msg {
-	overflow: hidden;
+	/* overflow: hidden; */
 	margin: 26px 0 26px;
-	display: block;
+
 }
 
 .sent_msg {
-	float: right;
-	overflow: hidden;
+	align-self: flex-end;
 	margin: 26px 0 26px;
 	width: 46%;
-	display: block;
+
 }
 
 .input_msg_write input {
@@ -238,7 +236,6 @@
 .msg_history {
 	height: 516px;
 	overflow-y: auto;
-	/* display: grid;
-	grid-template-columns: 2;
-	flex-direction: column; */
+	display: flex;
+	flex-direction: column;
 }

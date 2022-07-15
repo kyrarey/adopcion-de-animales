@@ -17,6 +17,23 @@ class UserServices {
       };
     }
   }
+
+  static async getAll(params) {
+    try {
+      const data = await User.find(params).exec();
+      return {
+        error: false,
+        data: data,
+      };
+    } catch (error) {
+      console.error(error);
+      return {
+        error: true,
+        data: "error 404: page not found",
+      };
+    }
+  }
+
   //login usuario con JWT
 
   //retornar usuario logeado

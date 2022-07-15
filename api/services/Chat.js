@@ -18,6 +18,7 @@ class ChatServices {
   }
 
   static async addOne(body) {
+    console.log(body, "body en create")
     try {
       const data = await Chat.create(body);
       return {
