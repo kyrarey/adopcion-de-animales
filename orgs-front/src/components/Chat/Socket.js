@@ -15,6 +15,8 @@ const Socket = () => {
 
   const socket = SocketIoClient("http://localhost:3030/");
 
+  console.log("test")
+
   useEffect(() => {
     socket.emit("Connect");
     socket.on("load chats", (data) => {
@@ -31,7 +33,7 @@ const Socket = () => {
     axios.post(`http://localhost:3030/chat/update/${click.foundation}`,{
       user: click.user,
       foundation: click.foundation,
-      content: {sender:"user", message:value},
+      content: {sender:"foundation", message:value},
     });
   };
 
@@ -47,11 +49,6 @@ const Socket = () => {
       .then((res) => setChatRoom(res.data));
   }, [click]);
 
-  
-  // console.log(oldMessages, "oldm")
-  // console.log(recipient, "recipient")
-  // console.log(click, "click")
-  // console.log(chatRoom, "room")
 
   useEffect(() => {
     socket.on("new message", function (data) {

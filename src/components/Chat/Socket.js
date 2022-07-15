@@ -11,13 +11,19 @@ const Socket = () => {
   const [oldMessages, setOldMessages] = useState([]);
   const [click, setClick] = useState({});
   const [chatRoom, setChatRoom] = useState([]);
- 
+  const [formState, setFormState] = useState('')
+  
   const userId = useParams().userId
   const socket = SocketIoClient("http://localhost:3030/");
+
+  const onReset =() => {
+      setFormState('')
+      }
 
   useEffect(() => {
     socket.emit("Connect");
     socket.on("load chats", (data) => {
+      console.log(data, "dataaa")
       setRecipient(data);
     });
   },[]);
@@ -48,8 +54,9 @@ const Socket = () => {
       .then((res) => setChatRoom(res.data));
   }, [click]);
   
-  
-  console.log(chatRoom, "chatroom")
+
+
+  // console.log(chatRoom, "chatroom")
   // console.log(oldMessages, "oldm")
   // console.log(recipient, "recipient")
   // console.log(chatRoom, "room")
@@ -90,7 +97,7 @@ const Socket = () => {
               ))}
             </div>
           </div>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} onReset={ onReset}>
             <div className="mesgs">
               <div className="msg_history">
                 {chatRoom[0] ? (

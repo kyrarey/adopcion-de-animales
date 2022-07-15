@@ -11,6 +11,7 @@ class ChatControllers {
   }
 
   static async addOne(req, res) {
+    console.log("entra al controller")
     const { error, data } = await ChatServices.addOne(req.body);
     if (error) {
       return res.status(500).send({ message: data.message });
