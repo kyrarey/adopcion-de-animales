@@ -15,26 +15,27 @@ const Socket = () => {
 
   const socket = SocketIoClient("http://localhost:3030/");
 
+  socket.emit("Connect");
+  socket.send()
+  socket.on("load chats", (data) => {
+    //recibo todos los chats
+    setRecipient(data);
+  });
   // console.log("test")
   useEffect(() => {
-    socket.emit("Connect");
-    socket.on("load chats", (data) => {
-      //recibo todos los chats
-      setRecipient(data);
-    });
-
+// 
     //get de all users para despues filtrar
     // axios
     //   .get(`http://localhost:3030/user/all`)
     //   .then((res) => setAllUsers(res.data));
   },[]);
   // console.log(allUsers, "allUsers")
-
+// 
   //active chats de todos los chats
   let activeChats= []
   activeChats = recipient.filter((chat) => chat.foundation === foundationId)
-  console.log(activeChats, "ActiveChats")
-
+  // console.log(activeChats, "ActiveChats")
+// 
    //traigo el objeto de toda la fundacion para las conversaciones que hay
   //  let activeUsers = [];
   //  activeUsers = allUsers.filter((user) => {
@@ -67,17 +68,18 @@ const Socket = () => {
       .then((res) => setChatRoom(res.data));
   }, [click]);
 
-
+// 
   useEffect(() => {
     socket.on("new message", function (data) {
       let aux = oldMessages
-      console.log(aux,"auxilar de old")
+      // console.log(aux,"auxilar de old")
       setOldMessages([...oldMessages,data]);
+      
     });
     return () => {
       socket.off()}
     }, [oldMessages]);
-    console.log(oldMessages, "oldMessages")
+    // console.log(oldMessages, "oldMessages")
 
 
   return (

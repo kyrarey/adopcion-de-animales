@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
       cb(null, "src/assets/img/pets");
     },
     filename: function (req, file, cb) {
-      console.log(req)
+      // console.log(req)
       if(file.fieldname==="photo1") cb(null, "01.jpg");
       else if(file.fieldname==="photo2") cb(null, "02.jpg");            
       else if(file.fieldname==="photo3") cb(null, "03.jpg");

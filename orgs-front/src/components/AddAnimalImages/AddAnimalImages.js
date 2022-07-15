@@ -46,7 +46,7 @@ const AddAnimalImages = () => {
             .required(),
           })}
           onSubmit={(values) => {
-            console.log(values)
+            // console.log(values)
             const body = new FormData();
             //body.append("image", [`/${id}-01.jpg`, `/${id}-02.jpg`, `/${id}-03.jpg` ]);
 /*             body.append("image", [`/${id}-01.jpg`]);

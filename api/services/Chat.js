@@ -18,7 +18,7 @@ class ChatServices {
   }
 
   static async addOne(body) {
-    console.log(body, "body en create")
+    // console.log(body, "body en create")
     try {
       const data = await Chat.create(body);
       return {
@@ -34,7 +34,7 @@ class ChatServices {
   }
 
   static async updateOne(id, body) {
-    console.log(body, "body en services", id);
+    // console.log(body, "body en services", id);
     try {
       const data = await Chat.updateOne(
         { foundation: body.foundation,

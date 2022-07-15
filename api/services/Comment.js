@@ -38,7 +38,7 @@ class CommentServices {
 
   //editar comment
   static async updateOne(id, body) {
-    console.log(id, body, "   id y body");
+    // console.log(id, body, "   id y body");
     try {
       await Comment.findByIdAndUpdate(id, body);
       return {

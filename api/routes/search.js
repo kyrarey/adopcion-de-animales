@@ -4,7 +4,7 @@ const Animal = require("../models/Animal");
 const db = require("../db/index");
 
 router.get("/:text", (req, res) => {
-  console.log("req.params.text :", req.params.text);
+  // console.log("req.params.text :", req.params.text);
   Animal.find({
     animalname: req.params.text,
     /* $text: { $search: req.params.search }, */

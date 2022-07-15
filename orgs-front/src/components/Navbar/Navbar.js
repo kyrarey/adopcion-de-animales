@@ -108,19 +108,19 @@ const Navbar = () => {
                   Más
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li className="subLi">
+                  {/* <li className="subLi">
                     <Link className="subLink" to="/contact">
-                      {/*  <span className="dropdown-item"> */}Contacto{/* </span> */}
-                    </Link>
+                      {/*  <span className="dropdown-item"> */}{/* </span> */}
+                    {/*</Link>
                   </li>
                   <li className="subLi">
                     <Link className="subLink" to="/aboutus">
-                      {/* <span className="dropdown-item"> */}Sobre nosotros{/* </span> */}
-                    </Link>
-                  </li>
-                  <li>
+                      {/* <span className="dropdown-item"> */} {/* </span> */}
+                    {/*</Link>
+                  </li>*/}
+                  {/* <li>
                     <hr className="dropdown-divider" />
-                  </li>
+                  </li> */}
                   <li className="subLi">
                     <a className="subLink" href="mailto:info@petsadoption.org?Subject=Reporte%20de%20error%20en%20web">
                       {/* <span className="dropdown-item"> */}Reportar error{/* </span> */}

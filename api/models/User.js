@@ -31,8 +31,8 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minlength: [8, "La constraseña debe tener cmo minimo 8 caracteres"],
-      match: [/^[a-zA-Z0-9]+$/, "no es valida"], //caracteres permitidos
+      // minlength: [8, "La constraseña debe tener cmo minimo 8 caracteres"],
+      // match: [/^[a-zA-Z0-9]+$/, "no es valida"], //caracteres permitidos
     },
     fundation: {
       type: Boolean,

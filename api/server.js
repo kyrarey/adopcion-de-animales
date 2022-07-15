@@ -36,14 +36,17 @@ const io = require("socket.io")(server, {
   },
 });
 
-io.on("connection", (socket) => {
+//recibir en el onconnection por jwt para autenticar, json del usuario
+//en connect pasarle el usuario, id
+
+io.on("connection", (socket, ) => {
   // let messages = await Chat.find({})
   // socket.emit("Connect", messages);
   socket.on("Connect", async () => {
     console.log("el usuario se connecto");
 
     try {
-      const allChats = await Chat.find({})
+      const allChats = await Chat.find({user})
       // console.log(allChats, " allchast");
       socket.emit("load chats", allChats);
     } catch (err) {
@@ -56,7 +59,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send message", function (data) {
-    console.log(data, "llego el submit");
+    // console.log(data, "llego el submit");
     io.sockets.emit("new message", data);
   });
 });

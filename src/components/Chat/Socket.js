@@ -62,7 +62,7 @@ const Socket = () => {
     });
 
   };
-
+// 
   //no hace un loop infinito
   useEffect(() => {
     setOldMessages("");

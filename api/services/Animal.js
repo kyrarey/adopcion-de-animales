@@ -68,8 +68,8 @@ class AnimalServices {
     }
   }
   static async updateOne(id, body) {
-    console.log("body en services", body);
-    console.log("ID--------------", id);
+    // console.log("body en services", body);
+    // console.log("ID--------------", id);
     const newPath = id;
     try {
       //const data = await Animal.findByIdAndUpdate(id, body);
